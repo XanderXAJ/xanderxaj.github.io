@@ -5,24 +5,29 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>Uploading to Google Play Music without matching</title>
-  <meta property="og:title" content="Uploading to Google Play Music without matching" />
-  <meta name="twitter:title" content="Uploading to Google Play Music without matching" />
-  <meta name="description" content="I&rsquo;ve had some trouble with Google Play Music&rsquo;s scan and match service. It sometimes matches tracks to the wrong versions of them. Sometimes the volume of a track is wildly different from what I have locally (with or without ReplayGain). Unfortunately, there is no way to disable matching in Google&rsquo;s official Music Manager application.
-gmusicapi supports uploading to Google Play Music without their &ldquo;scan and match&rdquo; service. gmusicapi-scripts utilises gmusicapi. Let&rsquo;s use them!">
-  <meta property="og:description" content="I&rsquo;ve had some trouble with Google Play Music&rsquo;s scan and match service. It sometimes matches tracks to the wrong versions of them. Sometimes the volume of a track is wildly different from what I have locally (with or without ReplayGain). Unfortunately, there is no way to disable matching in Google&rsquo;s official Music Manager application.
-gmusicapi supports uploading to Google Play Music without their &ldquo;scan and match&rdquo; service. gmusicapi-scripts utilises gmusicapi. Let&rsquo;s use them!">
-  <meta name="twitter:description" content="I&rsquo;ve had some trouble with Google Play Music&rsquo;s scan and match service. It sometimes matches tracks to the wrong versions of them. Sometimes the volume of a track is wildly different from …">
+  <title>Re-use Commit Message in Git</title>
+  <meta property="og:title" content="Re-use Commit Message in Git" />
+  <meta name="twitter:title" content="Re-use Commit Message in Git" />
+  <meta name="description" content="To re-use a commit&rsquo;s message verbatim, including authorship and timestamp information, use -C &lt;commit&gt;:
+git commit --amend -C @ Pro Tip: @ is a synonym for HEAD, the currently checked-out commit.
+To reset the date as well, use --date now; to reset the author too, use --reset-author:
+git commit --amend -C @ --date now git commit --amend -C @ --reset-author git commit --amend -C @ --date now --reset-author If you want to use an existing commit&rsquo;s message and also want a chance to edit it, use -c &lt;commit&gt;:">
+  <meta property="og:description" content="To re-use a commit&rsquo;s message verbatim, including authorship and timestamp information, use -C &lt;commit&gt;:
+git commit --amend -C @ Pro Tip: @ is a synonym for HEAD, the currently checked-out commit.
+To reset the date as well, use --date now; to reset the author too, use --reset-author:
+git commit --amend -C @ --date now git commit --amend -C @ --reset-author git commit --amend -C @ --date now --reset-author If you want to use an existing commit&rsquo;s message and also want a chance to edit it, use -c &lt;commit&gt;:">
+  <meta name="twitter:description" content="To re-use a commit&rsquo;s message verbatim, including authorship and timestamp information, use -C &lt;commit&gt;:
+git commit --amend -C @ Pro Tip: @ is a synonym for HEAD, the currently checked-out …">
   <meta name="author" content="Alex Palmer"/>
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@XanderXAJ" />
   <meta name="twitter:creator" content="@XanderXAJ" />
-  <meta property="og:url" content="/post/uploading-to-google-play-music-without-matching/" />
+  <meta property="og:url" content="/post/re-use-commit-message-in-git/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Forged Defiance" />
 
   <meta name="generator" content="Hugo 0.41" />
-  <link rel="canonical" href="/post/uploading-to-google-play-music-without-matching/" />
+  <link rel="canonical" href="/post/re-use-commit-message-in-git/" />
   <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Forged Defiance">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -154,13 +159,13 @@ gmusicapi supports uploading to Google Play Music without their &ldquo;scan and 
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
-              <h1>Uploading to Google Play Music without matching</h1>
+              <h1>Re-use Commit Message in Git</h1>
                 
                 
                   <span class="post-meta">
   
   
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on September 10, 2017
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on June 3, 2018
   
   
   
@@ -181,29 +186,20 @@ gmusicapi supports uploading to Google Play Music without their &ldquo;scan and 
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <p>I&rsquo;ve had some trouble with Google Play Music&rsquo;s scan and match service.  It sometimes matches tracks to the wrong versions of them.  Sometimes the volume of a track is wildly different from what I have locally (with or without ReplayGain).  Unfortunately, there is no way to disable matching in Google&rsquo;s official Music Manager application.</p>
+        <p>To re-use a commit&rsquo;s message verbatim, including authorship and timestamp information, use <code>-C &lt;commit&gt;</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git commit --amend -C @</code></pre></div>
+<p><strong>Pro Tip:</strong> <code>@</code> is a synonym for <code>HEAD</code>, the currently checked-out commit.</p>
 
-<p><a href="https://github.com/simon-weber/gmusicapi"><code>gmusicapi</code></a> supports uploading to Google Play Music without their &ldquo;scan and match&rdquo; service.  <a href="https://github.com/thebigmunch/gmusicapi-scripts"><code>gmusicapi-scripts</code></a> utilises <code>gmusicapi</code>.  Let&rsquo;s use them!</p>
-
-<ol>
-<li><p>Install <a href="https://thebigmunch.github.io/gmusicapi-scripts">gmusicapi-scripts</a>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Windows
-</span><span style="color:#75715e"></span>py -3 -m pip install gmusicapi-scripts
-<span style="color:#75715e"># Others
-</span><span style="color:#75715e"></span>pip install gmusicapi-scripts</code></pre></div></li>
-
-<li><p>Convert tracks (if needed) to 320kbps MP3 and place them in <code>&lt;directory&gt;</code>.</p>
-
-<ul>
-<li>If you place non-MP3 files in this directory, <code>gmsync</code> will try to convrt them with FFMPEG or AVConv if they are on the <code>PATH</code>.  <a href="https://thebigmunch.github.io/gmusicapi-scripts">Look at the docs</a> to see what formats it supports.</li>
-</ul></li>
-
-<li><p>Run <code>gmsync</code>.  Follow any instructions it provides:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gmsync up &lt;directory&gt;</code></pre></div></li>
-</ol>
-
-<p><code>gmsync</code> uploads without matching by default. Perfect.</p>
-
+<p>To reset the date as well, use <code>--date now</code>; to reset the author too, use <code>--reset-author</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git commit --amend -C @ --date now
+git commit --amend -C @ --reset-author
+git commit --amend -C @ --date now --reset-author</code></pre></div>
+<p>If you want to use an existing commit&rsquo;s message and also want a chance to edit it, use <code>-c &lt;commit&gt;</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git commit --amend -c @</code></pre></div>
+<p><code>-c</code> is compatible with <code>--date</code> and <code>--reset-author</code> too:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git commit --amend -c @ --date now
+git commit --amend -c @ --reset-author
+git commit --amend -c @ --date now --reset-author</code></pre></div>
 
         
 
@@ -214,13 +210,9 @@ gmusicapi supports uploading to Google Play Music without their &ldquo;scan and 
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="/post/working-around-intel-cpu-running-at-a-maximum-of-49-50/" data-toggle="tooltip" data-placement="top" title="Working around Intel CPU Running at a Maximum of 49%/50%">&larr; Previous Post</a>
+              <a href="/post/uploading-to-google-play-music-without-matching/" data-toggle="tooltip" data-placement="top" title="Uploading to Google Play Music without matching">&larr; Previous Post</a>
             </li>
           
-          
-            <li class="next">
-              <a href="/post/re-use-commit-message-in-git/" data-toggle="tooltip" data-placement="top" title="Re-use Commit Message in Git">Next Post &rarr;</a>
-            </li>
           
         </ul>
       

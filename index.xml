@@ -6,10 +6,22 @@
     <description>Recent content on Forged Defiance</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Sun, 10 Sep 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 03 Jun 2018 09:24:41 +0100</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Re-use Commit Message in Git</title>
+      <link>/post/re-use-commit-message-in-git/</link>
+      <pubDate>Sun, 03 Jun 2018 09:24:41 +0100</pubDate>
+      
+      <guid>/post/re-use-commit-message-in-git/</guid>
+      <description>To re-use a commit&amp;rsquo;s message verbatim, including authorship and timestamp information, use -C &amp;lt;commit&amp;gt;:
+git commit --amend -C @ Pro Tip: @ is a synonym for HEAD, the currently checked-out commit.
+To reset the date as well, use --date now; to reset the author too, use --reset-author:
+git commit --amend -C @ --date now git commit --amend -C @ --reset-author git commit --amend -C @ --date now --reset-author If you want to use an existing commit&amp;rsquo;s message and also want a chance to edit it, use -c &amp;lt;commit&amp;gt;:</description>
+    </item>
     
     <item>
       <title>Uploading to Google Play Music without matching</title>
