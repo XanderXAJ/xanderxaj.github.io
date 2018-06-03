@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Dynamic DNS (DDNS) on Asus routers</title>
+  <meta property="og:title" content="Dynamic DNS (DDNS) on Asus routers" />
+  <meta name="twitter:title" content="Dynamic DNS (DDNS) on Asus routers" />
+  <meta name="description" content="When using the stock or Merlin firmware on various Asus routers (I have an RT-N66U), you can use dynamic DNS to get a web domain to point to your router&rsquo;s IP address.
+To use dynamic DNS, do the following:
+ Go to your router&rsquo;s administration console (sometimes available at http://router.asus.com) and head to WAN &gt; DDNS. There is also a link on the Network Map page. Enable the DDNS client, set Server to Custom and set the hostname to the web domain you will be updating (e.">
+  <meta property="og:description" content="When using the stock or Merlin firmware on various Asus routers (I have an RT-N66U), you can use dynamic DNS to get a web domain to point to your router&rsquo;s IP address.
+To use dynamic DNS, do the following:
+ Go to your router&rsquo;s administration console (sometimes available at http://router.asus.com) and head to WAN &gt; DDNS. There is also a link on the Network Map page. Enable the DDNS client, set Server to Custom and set the hostname to the web domain you will be updating (e.">
+  <meta name="twitter:description" content="When using the stock or Merlin firmware on various Asus routers (I have an RT-N66U), you can use dynamic DNS to get a web domain to point to your router&rsquo;s IP address.
+To use dynamic DNS, do the …">
+  <meta name="author" content="Alex Palmer"/>
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@XanderXAJ" />
+  <meta name="twitter:creator" content="@XanderXAJ" />
+  <meta property="og:url" content="/post/dynamic-dns-ddns-on-asus-routers/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Forged Defiance" />
+
+  <meta name="generator" content="Hugo 0.41" />
+  <link rel="canonical" href="/post/dynamic-dns-ddns-on-asus-routers/" />
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Forged Defiance">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="/css/syntax.css" /><link rel="stylesheet" href="/css/codeblock.css" />
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Forged Defiance</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="About" href="/about">About</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Contact" href="/contact">Contact</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Privacy Policy" href="/privacy-policy">Privacy Policy</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>Dynamic DNS (DDNS) on Asus routers</h1>
+                
+                
+                  <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on February 7, 2016
+  
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>When using the stock or Merlin firmware on various Asus routers (I have an RT-N66U), you can use dynamic DNS to get a web domain to point to your router&rsquo;s IP address.</p>
+
+<p>To use dynamic DNS, do the following:</p>
+
+<ol>
+<li>Go to your router&rsquo;s administration console (sometimes available at <a href="http://router.asus.com">http://router.asus.com</a>) and head to <em>WAN &gt; DDNS</em>.  There is also a link on the <em>Network Map</em> page.</li>
+<li><em>Enable the DDNS client</em>, set <em>Server</em> to <em>Custom</em> and set the hostname to the web domain you will be updating (e.g. example.com).</li>
+<li>Connect to the router.  I tend to enable SSH (and disable Telnet) via <em>Administration &gt; System</em>.</li>
+
+<li><p>Create the script that will update your DDNS at <em><code>/jffs/scripts/ddns-start</code></em>.  My favoured tactic here is to run:</p>
+
+<pre><code>cat &gt; /jffs/scripts/ddns-start
+</code></pre>
+
+<p>Then paste the code, ensure the cursor is on a blank line (press Enter if not), then press Ctrl+D.</p></li>
+
+<li><p>Finally, ensure the script is executable:</p>
+
+<pre><code>chmod +x /jffs/scripts/ddns-start
+</code></pre></li>
+</ol>
+
+<p>In my case, I&rsquo;m updating an address using the <a href="http://afraid.org">http://afraid.org</a> service.  I get my private key from <a href="http://freedns.afraid.org/dynamic/">the dynamic section of the Afraid.org site</a>, and I use a <a href="https://github.com/RMerl/asuswrt-merlin/wiki/Custom-DDNS">script taken almost verbatim from the Merlin wiki</a>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
+</span><span style="color:#75715e"></span>
+curl <span style="color:#e6db74">&#34;https://freedns.afraid.org/dynamic/update.php?&lt;PRIVATE_KEY_HERE&gt;&#34;</span>
+
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $? -eq <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+    /sbin/ddns_custom_updated <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">else</span>
+    /sbin/ddns_custom_updated <span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">fi</span></code></pre></div>
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="/post/connecting-to-an-adb-over-network-android-device/" data-toggle="tooltip" data-placement="top" title="Connecting to an ADB-over-network Android device">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="/post/caching-git-credentials-on-windows/" data-toggle="tooltip" data-placement="top" title="Caching git credentials on Windows">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="https://github.com/XanderXAJ" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/XanderXAJ" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://stackoverflow.com/users/5893392/alex-palmer" title="StackOverflow">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/channel/UCIqfeTPDnN9doZzKlVXpqww" title="Youtube">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://xanderxaj.bandcamp.com/" title="Bandcamp">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-bandcamp fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="https://xanderx.com">Alex Palmer</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;
+          2018
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="/">Forged Defiance</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.41</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="/js/main.js"></script><script> renderMathInElement(document.body); </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script>
+<script src="/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+  </body>
+</html>
+

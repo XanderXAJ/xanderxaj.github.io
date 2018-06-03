@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Tips for Ripping Blu-Ray Audio</title>
+  <meta property="og:title" content="Tips for Ripping Blu-Ray Audio" />
+  <meta name="twitter:title" content="Tips for Ripping Blu-Ray Audio" />
+  <meta name="description" content="I recently ripped my first Blu-Ray audio discs. Here are a few tips I&rsquo;ve discovered along the way:
+tl;dr Backup the disc using MakeMKV and extract the audio using the updated version of the command under Putting it all together.
+Ripping the discs MakeMKV can be used to rip and, if necessary, decrypt Blu-Ray audio discs. While it is in beta, it can be evaluated by using the current beta key.">
+  <meta property="og:description" content="I recently ripped my first Blu-Ray audio discs. Here are a few tips I&rsquo;ve discovered along the way:
+tl;dr Backup the disc using MakeMKV and extract the audio using the updated version of the command under Putting it all together.
+Ripping the discs MakeMKV can be used to rip and, if necessary, decrypt Blu-Ray audio discs. While it is in beta, it can be evaluated by using the current beta key.">
+  <meta name="twitter:description" content="I recently ripped my first Blu-Ray audio discs. Here are a few tips I&rsquo;ve discovered along the way:
+tl;dr Backup the disc using MakeMKV and extract the audio using the updated version of the …">
+  <meta name="author" content="Alex Palmer"/>
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@XanderXAJ" />
+  <meta name="twitter:creator" content="@XanderXAJ" />
+  <meta property="og:url" content="/post/tips-for-ripping-blu-ray-audio/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Forged Defiance" />
+
+  <meta name="generator" content="Hugo 0.41" />
+  <link rel="canonical" href="/post/tips-for-ripping-blu-ray-audio/" />
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Forged Defiance">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="/css/syntax.css" /><link rel="stylesheet" href="/css/codeblock.css" />
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Forged Defiance</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="About" href="/about">About</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Contact" href="/contact">Contact</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Privacy Policy" href="/privacy-policy">Privacy Policy</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>Tips for Ripping Blu-Ray Audio</h1>
+                
+                
+                  <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on April 29, 2017
+  
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        
+
+<p>I recently ripped my first Blu-Ray audio discs.  Here are a few tips I&rsquo;ve discovered along the way:</p>
+
+<h2 id="tl-dr">tl;dr</h2>
+
+<p>Backup the disc using <a href="http://www.makemkv.com/download/">MakeMKV</a> and extract the audio using the updated version of the command under <em>Putting it all together</em>.</p>
+
+<h2 id="ripping-the-discs">Ripping the discs</h2>
+
+<p><a href="http://www.makemkv.com/download/">MakeMKV</a> can be used to rip and, if necessary, decrypt Blu-Ray audio discs.  While it is in beta, it can be evaluated by <a href="http://www.makemkv.com/forum2/viewtopic.php?f=5&amp;t=1053">using the current beta key</a>.</p>
+
+<p>I use the complete Blu-Ray backup feature so I have the raw stream files to work with.</p>
+
+<h2 id="extracting-the-audio-from-the-video-files">Extracting the audio from the video files</h2>
+
+<p><a href="http://ffmpeg.org/">ffmpeg</a> can be used to extract the audio track(s) from the video streams on the Blu-Ray.</p>
+
+<p>First interrogate one of your streams using <code>ffprobe</code> to see how the different tracks are laid out:</p>
+
+<pre><code>ffprobe -hide_banner BDMV/STREAM/00002.m2ts
+</code></pre>
+
+<p>I use <code>-hide_banner</code> to reduce the amount of text printed to the terminal.  If you have troubles and decide to ask others for help, be sure to omit <code>-hide_banner</code> as the information it emits can be useful when debugging!</p>
+
+<p>Here is the output I got:</p>
+
+<pre><code>Input #0, mpegts, from 'BDMV/STREAM/00002.m2ts':
+  Duration: 00:01:47.07, start: 4200.000000, bitrate: 7133 kb/s
+  Program 1
+    Stream #0:0[0x1011]: Video: h264 (High) (HDMV / 0x564D4448), yuv420p(progressive), 1920x1080 [SAR 1:1 DAR 16:9], 23.98 fps, 23.98 tbr, 90k tbn, 47.95 tbc
+    Stream #0:1[0x1100]: Audio: pcm_bluray (HDMV / 0x564D4448), 48000 Hz, stereo, s16, 1536 kb/s
+</code></pre>
+
+<p>In my case I only have one audio stream to worry about at address <code>0:1</code>.  Note it is labelled <code>s16</code> which means that it is a signed 16-bit depth audio stream.  These details will be important in a moment.</p>
+
+<p>Next comes the extraction:</p>
+
+<p><em>Update 2017-09-10:</em> I now think it is much more straightforward to trust FFMPEG to do the right thing:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> i in BDMV/STREAM/*.m2ts; <span style="color:#66d9ef">do</span> ffmpeg -hide_banner -i <span style="color:#e6db74">&#34;</span>$i<span style="color:#e6db74">&#34;</span> -map <span style="color:#ae81ff">0</span>:1 <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>basename <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>i%.*<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">.flac&#34;</span>; <span style="color:#66d9ef">done</span></code></pre></div>
+<p>Note that I do not set the audio codec, and merely set the file extension to <code>.flac</code> as that is the format that I want.</p>
+
+<p>For reference, this is original command I used:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> i in BDMV/STREAM/*.m2ts; <span style="color:#66d9ef">do</span> ffmpeg -hide_banner -i <span style="color:#e6db74">&#34;</span>$i<span style="color:#e6db74">&#34;</span> -map <span style="color:#ae81ff">0</span>:1 -acodec pcm_s16le <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>basename <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>i%.*<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">.wav&#34;</span>; <span style="color:#66d9ef">done</span></code></pre></div>
+<p>The <code>-map 0:1</code> refers to our address from earlier.  The <code>s16</code> part of <code>-acodec pcm_s16le</code> matches the description of the stream <code>ffprobe</code> gave us.  We cannot use <code>-acodec copy</code> as <code>ffmpeg</code> cannot encode <code>pcm_bluray</code>.</p>
+
+<p>Make sure to use <code>.wav</code> at the end of the filename, as <code>ffmpeg</code> considers it important.  I was originally trying to use <code>.pcm</code>, but all I got was this error message:</p>
+
+<pre><code>[NULL @ 000000000283dc20] Unable to find a suitable output format for '00002.pcm'
+</code></pre>
+
+<p>If you have multiple streams, re-run this command, changing <code>-map</code>, <code>-acodec</code> and the output filename (to not overwrite your previous extractions!) as appropriate.</p>
+
+<h2 id="removing-initial-silence">Removing initial silence</h2>
+
+<p>After I had extracted the audio, I noticed that every track had about 1.0-1.6 seconds of silence at the beginning.  I had no interest in keeping this, so I used <code>ffmpeg</code> with the <a href="https://ffmpeg.org/ffmpeg-filters.html#silenceremove"><code>silenceremove</code> filter</a>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir no-silence
+<span style="color:#66d9ef">for</span> i in *.wav; <span style="color:#66d9ef">do</span> ffmpeg -i <span style="color:#e6db74">&#34;</span>$i<span style="color:#e6db74">&#34;</span> -af silenceremove<span style="color:#f92672">=</span>start_periods<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>:detection<span style="color:#f92672">=</span>peak <span style="color:#e6db74">&#34;no-silence/</span><span style="color:#66d9ef">$(</span>basename <span style="color:#e6db74">&#34;</span>$i<span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>; <span style="color:#66d9ef">done</span></code></pre></div>
+<p><code>start_periods=1</code> means remove one block of silence from the beginning of the track, a.k.a. the silence before any audio begins.  I use <code>detection=peak</code> because I know I&rsquo;m working with audio with digital silence; if you&rsquo;re working with audio that was originally recorded from analogue, omit this option.</p>
+
+<h2 id="putting-it-all-together">Putting it all together</h2>
+
+<p>Incidentally, this filter could have been added to the original extraction command, if I knew that I wanted it at the time. :)</p>
+
+<p><em>Update 2017-09-10:</em> As above, I now think it is much more straightforward to trust FFMPEG to do the right thing:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> i in BDMV/STREAM/*.m2ts; <span style="color:#66d9ef">do</span> ffmpeg -hide_banner -i <span style="color:#e6db74">&#34;</span>$i<span style="color:#e6db74">&#34;</span> -map <span style="color:#ae81ff">0</span>:1 -af silenceremove<span style="color:#f92672">=</span>start_periods<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>:detection<span style="color:#f92672">=</span>peak <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>basename <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>i%.*<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">.flac&#34;</span>; <span style="color:#66d9ef">done</span></code></pre></div>
+<p>For reference, this is original command I used:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> i in BDMV/STREAM/*.m2ts; <span style="color:#66d9ef">do</span> ffmpeg -hide_banner -i <span style="color:#e6db74">&#34;</span>$i<span style="color:#e6db74">&#34;</span> -map <span style="color:#ae81ff">0</span>:1 -acodec pcm_s16le -af silenceremove<span style="color:#f92672">=</span>start_periods<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>:detection<span style="color:#f92672">=</span>peak <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>basename <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>i%.*<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">.wav&#34;</span>; <span style="color:#66d9ef">done</span></code></pre></div>
+<p><em>Update 2017-05-14:</em> Changed <code>${i/.*}</code> to <code>${i%.*}</code> to remove file extensions, as the new way will only remove everything following the last <code>.</code> in the filename, not the first.  Thanks to my good friend <a href="http://m.holland-avery.com/">Mark Holland-Avery</a> for the suggestion!</p>
+
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="/post/fix-yarn-global-installs-on-macos-sierra/" data-toggle="tooltip" data-placement="top" title="Fix Yarn global installs on macOS Sierra">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="/post/working-around-intel-cpu-running-at-a-maximum-of-49-50/" data-toggle="tooltip" data-placement="top" title="Working around Intel CPU Running at a Maximum of 49%/50%">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="https://github.com/XanderXAJ" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/XanderXAJ" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://stackoverflow.com/users/5893392/alex-palmer" title="StackOverflow">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/channel/UCIqfeTPDnN9doZzKlVXpqww" title="Youtube">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://xanderxaj.bandcamp.com/" title="Bandcamp">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-bandcamp fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="https://xanderx.com">Alex Palmer</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;
+          2018
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="/">Forged Defiance</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.41</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="/js/main.js"></script><script> renderMathInElement(document.body); </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script>
+<script src="/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+  </body>
+</html>
+

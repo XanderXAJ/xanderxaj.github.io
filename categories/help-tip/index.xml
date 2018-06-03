@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Help Tip on Forged Defiance</title>
+    <link>/categories/help-tip/</link>
+    <description>Recent content in Help Tip on Forged Defiance</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Wed, 14 Oct 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/help-tip/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fix installing packages for python2 in openSUSE</title>
+      <link>/post/fix-installing-packages-for-python2-in-opensuse/</link>
+      <pubDate>Wed, 14 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/fix-installing-packages-for-python2-in-opensuse/</guid>
+      <description>If you have both python2 and python3 installed on openSUSE, you might find when you use pip to install packages that they install for python3, not python2!
+This seems to be because the pip command that is run comes directly from the python3 install.
+To fix it, install the python-pip SUSE package, then use it as default:
+zypper install -n python-pip update-alternatives --config pip  When prompted for which pip to use, ensure you select the python2 version.</description>
+    </item>
+    
+    <item>
+      <title>Enable spell checking in Sublime Text just for Markdown (or any individual syntax)</title>
+      <link>/post/enable-spell-checking-in-sublime-text-for-markdown-or-any-individual-syntax/</link>
+      <pubDate>Sat, 10 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/enable-spell-checking-in-sublime-text-for-markdown-or-any-individual-syntax/</guid>
+      <description>Open or create a Markdown document (or another file type you want to enable spell-checking for) Go to Preferences &amp;gt; Settings - More &amp;gt; Syntax Specific - User Add the following code:
+{ &amp;quot;spell_check&amp;quot;: true }   If you&amp;rsquo;ve made any spelling errors or used some funky words, you should notice some of the titular red squiggly lines.
+Incidentally, you can set any option for individual syntaxes in this manner.</description>
+    </item>
+    
+  </channel>
+</rss>

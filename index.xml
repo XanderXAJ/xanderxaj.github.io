@@ -1,0 +1,887 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Forged Defiance</title>
+    <link>/</link>
+    <description>Recent content on Forged Defiance</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sun, 10 Sep 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Uploading to Google Play Music without matching</title>
+      <link>/post/uploading-to-google-play-music-without-matching/</link>
+      <pubDate>Sun, 10 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/uploading-to-google-play-music-without-matching/</guid>
+      <description>I&amp;rsquo;ve had some trouble with Google Play Music&amp;rsquo;s scan and match service. It sometimes matches tracks to the wrong versions of them. Sometimes the volume of a track is wildly different from what I have locally (with or without ReplayGain). Unfortunately, there is no way to disable matching in Google&amp;rsquo;s official Music Manager application.
+gmusicapi supports uploading to Google Play Music without their &amp;ldquo;scan and match&amp;rdquo; service. gmusicapi-scripts utilises gmusicapi. Let&amp;rsquo;s use them!</description>
+    </item>
+    
+    <item>
+      <title>Working around Intel CPU Running at a Maximum of 49%/50%</title>
+      <link>/post/working-around-intel-cpu-running-at-a-maximum-of-49-50/</link>
+      <pubDate>Sat, 10 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/working-around-intel-cpu-running-at-a-maximum-of-49-50/</guid>
+      <description>My laptop had been feeling slower than it had used to, and I was getting more and more certain that it wasn&amp;rsquo;t just me.
+One time I opened Task Manager and noticed that whenever I put load on the machine, it maxed out at 49%. Every time. Cooling wasn&amp;rsquo;t the issue as the laptop fan (which is a dumb fan controlled by hardware, not software) wasn&amp;rsquo;t spinning up much.
+After searching online, I stumbled across a thread that would provide the (really rather insane) workaround: Move the Intel processor driver so Windows does not use it.</description>
+    </item>
+    
+    <item>
+      <title>Tips for Ripping Blu-Ray Audio</title>
+      <link>/post/tips-for-ripping-blu-ray-audio/</link>
+      <pubDate>Sat, 29 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/tips-for-ripping-blu-ray-audio/</guid>
+      <description>I recently ripped my first Blu-Ray audio discs. Here are a few tips I&amp;rsquo;ve discovered along the way:
+tl;dr Backup the disc using MakeMKV and extract the audio using the updated version of the command under Putting it all together.
+Ripping the discs MakeMKV can be used to rip and, if necessary, decrypt Blu-Ray audio discs. While it is in beta, it can be evaluated by using the current beta key.</description>
+    </item>
+    
+    <item>
+      <title>Fix Yarn global installs on macOS Sierra</title>
+      <link>/post/fix-yarn-global-installs-on-macos-sierra/</link>
+      <pubDate>Mon, 20 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/fix-yarn-global-installs-on-macos-sierra/</guid>
+      <description>I was having some trouble getting yarn to globally install some commands, such as jest-cli.
+Fortunately zmorris on Github found a reasonably elegant solution:
+yarn config set prefix /usr/local/ yarn global remove &amp;lt;package&amp;gt; yarn global add &amp;lt;package&amp;gt;</description>
+    </item>
+    
+    <item>
+      <title>Using the option key in macOS Terminal</title>
+      <link>/post/using-the-option-key-in-macos-terminal/</link>
+      <pubDate>Sun, 19 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/using-the-option-key-in-macos-terminal/</guid>
+      <description>I like using the Meta+left/right to navigate back and forth between words. On macOS by default, no key is mapped to Meta!
+Fortunately for me, it is possible to configure the Option key to act as a Meta key. With the Terminal app selected, this can be done by going in to Terminal &amp;gt; Preferences (Cmd+,) &amp;gt; Profiles &amp;gt; Select your profile &amp;gt; Keyboard &amp;gt; Use Option as Meta.</description>
+    </item>
+    
+    <item>
+      <title>React: Unexpected token &lt;</title>
+      <link>/post/react-unexpected-token/</link>
+      <pubDate>Sat, 25 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/react-unexpected-token/</guid>
+      <description>I&amp;rsquo;ve been fiddling around with React recently and made some pages with some normal-looking URLs, despite being a single-page application. This was done using React Router and configuring it to use the History API with browserHistory. Here is one of those URLS:
+http://localhost:3000/course/react-flux-building-applications  When the page was refreshed (either manually or by the hot loader), or when I visited that page manually, I got this odd error in the console:</description>
+    </item>
+    
+    <item>
+      <title>Working around Chroma Subsampling over HDMI on Nvidia cards</title>
+      <link>/post/working-around-chroma-subsampling-over-hdmi-on-nvidia-cards/</link>
+      <pubDate>Sat, 27 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/post/working-around-chroma-subsampling-over-hdmi-on-nvidia-cards/</guid>
+      <description>If you have chroma subsampling issues when connecting a display via HDMI on an Nvidia card, despite all the settings appearing as if there shouldn&amp;rsquo;t be any, try creating a new custom profile at a fractionally higher refresh rate and using that new profile.
+ Go in to the Nvidia Control Panel. Go to Display &amp;gt; Change resolution Select Customise&amp;hellip; Check &amp;ldquo;Enable resolutions not exposed by the display&amp;rdquo; Select Create Custom Resolution&amp;hellip; Select the correct horizontal pixels, vertical pixels, colour depth and scan type.</description>
+    </item>
+    
+    <item>
+      <title>Earth Defense Force 4.1 manual</title>
+      <link>/post/earth-defense-forces-4-1-manual/</link>
+      <pubDate>Tue, 15 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/post/earth-defense-forces-4-1-manual/</guid>
+      <description>Here&amp;rsquo;s a link in case you need to refer to the manual for Earth Defense Force 4.1: The Shadow of New Despair outside of the PS4:
+https://16b97286d5888280c8536397f6f64628f8db87a0.googledrive.com/host/0B2Sn62HabglUaVJtR2piVmJFcWs/edf4_1_output.html</description>
+    </item>
+    
+    <item>
+      <title>Printing Brother labels through GIMP</title>
+      <link>/post/printing-brother-labels-through-gimp/</link>
+      <pubDate>Sun, 06 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/post/printing-brother-labels-through-gimp/</guid>
+      <description>I&amp;rsquo;ve been fiddling with a Brother P-Touch D600, which is able to connect to a computer through USB. Since I&amp;rsquo;ve realised that it appears to Windows as a standard printer, I&amp;rsquo;ve been trying to see if any applications can print to the device. They can!
+Notepad works (albeit not in the most useful fashion). But I had a bit of trouble with GIMP.
+I found that, for some reason, even after setting the correct image/DPI settings and running through page setup, GIMP still seems to think it is printing via A4.</description>
+    </item>
+    
+    <item>
+      <title>How to update Qualcomm Atheros QCA61x4 drivers</title>
+      <link>/post/how-to-update-qualcomm-atheros-qca61x4-drivers/</link>
+      <pubDate>Sat, 27 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/post/how-to-update-qualcomm-atheros-qca61x4-drivers/</guid>
+      <description>Qualcomm seem to make up-to-date wireless and wireless+bluetooth drivers available to Killer Networking first. Forunately you are able to download and install them yourself.
+ Go to the Killer Networking driver page. Download the Standard drivers (no Killer Features). If your wireless adapter has Bluetooth, download the Bluetooth drivers as well.  My QCA61x4 device has Bluetooth, so I downloaded the Bluetooth driver for the K1525/1535.  Install the driver(s) in the usual manual way: Device Manager &amp;gt; your wireless adapter &amp;gt; Driver &amp;gt; Update driver&amp;hellip; &amp;gt; Browse &amp;gt; Let me pick &amp;gt; Have disk&amp;hellip; &amp;gt; Browse to driver.</description>
+    </item>
+    
+    <item>
+      <title>Making CD Mixtapes</title>
+      <link>/post/making-cd-mixtapes/</link>
+      <pubDate>Sat, 13 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/post/making-cd-mixtapes/</guid>
+      <description>If I&amp;rsquo;m making informal CD mixtapes (mixdiscs?), use Foobar2000 (or other software) to convert the tracks to WAV, and then use ImgBurn to create a CUE file (Tools &amp;gt; Create CUE file&amp;hellip;), drag and drop the tracks in to the new window, and customise the disc before burning it.
+EAC can also be used for this (and is likely the better choice for making clones of audio CDs), but seems to be a little unreliable on my laptop.</description>
+    </item>
+    
+    <item>
+      <title>Caching git credentials on Windows</title>
+      <link>/post/caching-git-credentials-on-windows/</link>
+      <pubDate>Sun, 07 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/post/caching-git-credentials-on-windows/</guid>
+      <description>You may have already used the git credential cache to cache your remote credentials for some time, via something like:
+git config --global credential.helper &#39;cache --timeout=3600&#39;  However this will not work on Windows, as cache communicates over a Unix socket.
+Fortunately, support for Windows&amp;rsquo;s built-in credential manager has been added to the Windows git distribution (along with msysgit). To leverage it, use the wincred helper:
+git config --global credential.helper wincred  If, like me, you like to use your dotfiles across many platforms, you may not want to put this in your global .</description>
+    </item>
+    
+    <item>
+      <title>Dynamic DNS (DDNS) on Asus routers</title>
+      <link>/post/dynamic-dns-ddns-on-asus-routers/</link>
+      <pubDate>Sun, 07 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/post/dynamic-dns-ddns-on-asus-routers/</guid>
+      <description>When using the stock or Merlin firmware on various Asus routers (I have an RT-N66U), you can use dynamic DNS to get a web domain to point to your router&amp;rsquo;s IP address.
+To use dynamic DNS, do the following:
+ Go to your router&amp;rsquo;s administration console (sometimes available at http://router.asus.com) and head to WAN &amp;gt; DDNS. There is also a link on the Network Map page. Enable the DDNS client, set Server to Custom and set the hostname to the web domain you will be updating (e.</description>
+    </item>
+    
+    <item>
+      <title>Connecting to an ADB-over-network Android device</title>
+      <link>/post/connecting-to-an-adb-over-network-android-device/</link>
+      <pubDate>Sat, 06 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/post/connecting-to-an-adb-over-network-android-device/</guid>
+      <description>Just a quick reminder to myself in future.
+To connect to an Android device using ADB over network (in my case when using cyanogen mod), use the following command:
+adb connect &amp;lt;IP address/hostname&amp;gt;  </description>
+    </item>
+    
+    <item>
+      <title>Kodi with Sony Bravia TVs</title>
+      <link>/post/kodi-with-sony-bravia-tvs/</link>
+      <pubDate>Sat, 26 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/kodi-with-sony-bravia-tvs/</guid>
+      <description>I&amp;rsquo;ve been setting up Kodi on my Sony Bravia Android TV &amp;mdash; you can install it from the Google Play Store.
+Here are a few notes to help set things up how I like them:
+ My favourite skin so far is Arctic: Zephyr as it doesn&amp;rsquo;t have lots of gaudy images, runs fast, and displays long titles reasonably well (good for both music and long video names). I&amp;rsquo;ve added some useful functions to the Sony remote control; install the Keymap Editor add-on and then make the following adjustments:  Information (i+) button: Global &amp;gt; Navigation &amp;gt; Context Menu Red button : Global &amp;gt; Window &amp;gt; Open Home Green button: Global &amp;gt; Window &amp;gt; Open Favourites Yellow button: Global &amp;gt; Window &amp;gt; Open Fullscreen Video (allows you to return to a video if you go in to a menu) Blue button: Nothing yet!</description>
+    </item>
+    
+    <item>
+      <title>Building and Testing a Jekyll website with Docker on Windows</title>
+      <link>/post/building-and-testing-a-jekyll-website-on-windows-with-docker/</link>
+      <pubDate>Sun, 08 Nov 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/building-and-testing-a-jekyll-website-on-windows-with-docker/</guid>
+      <description>I&amp;rsquo;ve recently talked about [how I&amp;rsquo;ve changed my website to be created with Jekyll][migrate-to-jekyll]. One of the big reasons was to simplify how the site is built and run.
+Well, if it&amp;rsquo;s so simple now, then I should be able to modify it on the go within Windows, right? I&amp;rsquo;ve recently been using an openSUSE VM to modify the site, but figured I could do one better and operate (mostly) natively.</description>
+    </item>
+    
+    <item>
+      <title>Deploying Jekyll website on git commit</title>
+      <link>/post/deploying-jekyll-website-on-git-commit/</link>
+      <pubDate>Sun, 08 Nov 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/deploying-jekyll-website-on-git-commit/</guid>
+      <description>One reason for [migrating to static site generation][migrate-to-jekyll] is that the site becomes more straightforward to keep in version control systems such as git. And I do like version control; I naturally ran git init before I ran jekyll new!
+In my workflow, once I have made and committed changes locally, I push the changes remotely. But now I need to build and deploy the new version of the site. What if I could get that to happen automatically?</description>
+    </item>
+    
+    <item>
+      <title>JavaScript Promises Notes</title>
+      <link>/post/javascript-promises-notes/</link>
+      <pubDate>Sat, 07 Nov 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/javascript-promises-notes/</guid>
+      <description>Some notes to remind future me why Promises are pretty neat.
+What do they give me?  They let you regain error handling for asynchronous operations. They let you avoid nested callbacks (and the pyramid indentation that comes with them).  Can I use them? They were initially formalised in the Promises/A+ specification, and have been officially adopted in to JavaScript with ES6.
+They&amp;rsquo;ve been supported in all major browsers (except IE) for a while now.</description>
+    </item>
+    
+    <item>
+      <title>Fix installing packages for python2 in openSUSE</title>
+      <link>/post/fix-installing-packages-for-python2-in-opensuse/</link>
+      <pubDate>Wed, 14 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/fix-installing-packages-for-python2-in-opensuse/</guid>
+      <description>If you have both python2 and python3 installed on openSUSE, you might find when you use pip to install packages that they install for python3, not python2!
+This seems to be because the pip command that is run comes directly from the python3 install.
+To fix it, install the python-pip SUSE package, then use it as default:
+zypper install -n python-pip update-alternatives --config pip  When prompted for which pip to use, ensure you select the python2 version.</description>
+    </item>
+    
+    <item>
+      <title>Enable spell checking in Sublime Text just for Markdown (or any individual syntax)</title>
+      <link>/post/enable-spell-checking-in-sublime-text-for-markdown-or-any-individual-syntax/</link>
+      <pubDate>Sat, 10 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/enable-spell-checking-in-sublime-text-for-markdown-or-any-individual-syntax/</guid>
+      <description>Open or create a Markdown document (or another file type you want to enable spell-checking for) Go to Preferences &amp;gt; Settings - More &amp;gt; Syntax Specific - User Add the following code:
+{ &amp;quot;spell_check&amp;quot;: true }   If you&amp;rsquo;ve made any spelling errors or used some funky words, you should notice some of the titular red squiggly lines.
+Incidentally, you can set any option for individual syntaxes in this manner.</description>
+    </item>
+    
+    <item>
+      <title>Getting battery life back on an Acer Aspire 5820TG running Windows 10</title>
+      <link>/post/getting-battery-life-back-on-an-acer-aspire-5820tg-running-windows-10/</link>
+      <pubDate>Fri, 09 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/getting-battery-life-back-on-an-acer-aspire-5820tg-running-windows-10/</guid>
+      <description>Details upfront: My workaround is to completely disable the AMD GPU via a modded BIOS and let Windows Update install a valid driver for the Intel card. If this concerns you, then don&amp;rsquo;t follow the instructions on this page!
+==Disclaimer: I can&amp;rsquo;t be held responsible should things go wrong etc. etc. I can only describe what worked for me.==
+I&amp;rsquo;ll be careful. Instructions please! I first made sure that I had uninstalled all of the graphics drivers.</description>
+    </item>
+    
+    <item>
+      <title>Troubleshooting keyboard shortcuts in Sublime Text</title>
+      <link>/post/troubleshooting-keyboard-shortcuts-in-sublime-text/</link>
+      <pubDate>Thu, 08 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/troubleshooting-keyboard-shortcuts-in-sublime-text/</guid>
+      <description>I recently installed a couple of new plugins to Sublime Text, and then Ctrl+Shift+R, the shortcut for searching through all symbols in a project, stopped working!
+You can get Sublime Text to display what&amp;rsquo;s actually going on when you press the shortcut &amp;mdash; that information may give you a hint as to what plugin or configuration has changed your value.
+Is the shortcut reaching Sublime? The following commands are run in the Sublime Text Console; you can access on Linux and Windows by pressing Ctrl+`.</description>
+    </item>
+    
+    <item>
+      <title>Migrating from Wordpress to Jekyll</title>
+      <link>/post/migrating-from-wordpress-to-jekyll/</link>
+      <pubDate>Sun, 04 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/migrating-from-wordpress-to-jekyll/</guid>
+      <description>I&amp;rsquo;ve recently moved from the rather dynamic Wordpress to the rather static Jekyll. Can you tell?
+I&amp;rsquo;ve come to like the idea of simply serving a bunch of static files instead of dynamically building them when required. Static files are simple, cheap to host and serve, introduce no further security problems beyond the web server and configuration, and easy enough for me, as a developer, to edit.
+I&amp;rsquo;ve still got plenty of hurdles to work through &amp;mdash; in particular how to host all my pictures &amp;mdash; but this can all be worked out over time one way or another (including reverting back to Wordpress!</description>
+    </item>
+    
+    <item>
+      <title>Larger tab close buttons in Firefox</title>
+      <link>/post/larger-tab-close-buttons-in-firefox/</link>
+      <pubDate>Sun, 19 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/larger-tab-close-buttons-in-firefox/</guid>
+      <description>I&amp;rsquo;m using a Windows 8 tablet (the Linx 10 if you&amp;rsquo;re curious) and found that the close buttons in Firefox were a bit small and difficult to press.
+I&amp;rsquo;ve fixed this by adding the following to my userChrome.css file:
+{% highlight css %} .tab-close-button { border-radius: 20%; background: rgba(0,0,0,0.1) !important; width: 32px !important; height: 32px !important; } {% endhighlight %}</description>
+    </item>
+    
+    <item>
+      <title>A fix for VirtualBox causing Windows host to think it&#39;s on a public network</title>
+      <link>/post/a-fix-for-virtualbox-causing-host-windows-to-think-its-on-a-public-network/</link>
+      <pubDate>Sat, 06 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/a-fix-for-virtualbox-causing-host-windows-to-think-its-on-a-public-network/</guid>
+      <description>Have a look at Brokenwire.NET&amp;rsquo;s article on the subject.
+I&amp;rsquo;ll briefly mirror the instructions here:
+ Open regedit. Search (Ctrl+F) for VirtualBox Host-Only Ethernet Adapter. Keep searching until you&amp;rsquo;re inside HKLM\SYSTEM\CurrentControlSet\Control\Class\{4D36E972-E325-11CE-BFC1-08002BE10318} &amp;mdash; you&amp;rsquo;ll probably be highlighting the DriverDesc key. Add/modify a DWORD value, called NdisDeviceType, and give it a value of 1. Restart the machine.  </description>
+    </item>
+    
+    <item>
+      <title>Fixing Gran Turismo 5&#39;s slow loading times</title>
+      <link>/post/fixing-gran-turismo-5s-slow-loading-times/</link>
+      <pubDate>Sun, 02 Jun 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/post/fixing-gran-turismo-5s-slow-loading-times/</guid>
+      <description>Just this morning Gran Turismo 5 just out of nowhere started loading really slowly.
+I fixed this by signing out of PSN. It&amp;rsquo;s not ideal if you want to play online, but it&amp;rsquo;s worked for me.
+It should be noted that the problem can been seen from the XMB before you even launch the game – just after it displays the message that you&amp;rsquo;ve &amp;ldquo;signed in&amp;rdquo;, watch the clock and see how long it spins; this is the console synchronizing the time with PSN.</description>
+    </item>
+    
+    <item>
+      <title>Searchlight 1.6</title>
+      <link>/post/searchlight-1-6-2/</link>
+      <pubDate>Sat, 01 Jun 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/post/searchlight-1-6-2/</guid>
+      <description>I&amp;rsquo;ve released another update to Searchlight!
+This one contains some experimental code for devices that use the CyanogenMod SysFS interface to toggle their light. Naturally, given it&amp;rsquo;s experimental, it might not work. :-) That&amp;rsquo;s because I don&amp;rsquo;t have any devices that actually make use of it.
+Get in touch via Google Play or the contact page if you have problems, or just want to give me a good word!
+As always, you can download the update via Google Play or directly.</description>
+    </item>
+    
+    <item>
+      <title>Searchlight 1.5</title>
+      <link>/post/searchlight-1-5/</link>
+      <pubDate>Sun, 12 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/post/searchlight-1-5/</guid>
+      <description>Looks like I forgot to write about this when I released it in February, but Searchlight 1.5 is out!
+The big thing this update adds is a widget that can be added to your launcher or to your lock screen on 4.2+ devices. That means you can toggle the light without unlocking the device!
+As always you can download it from Google Play and directly from this site.
+Also, for the sake of completeness, since I never got around to writing about version 1.</description>
+    </item>
+    
+    <item>
+      <title>Searchlight 1.3 is out!</title>
+      <link>/post/searchlight-1-3-is-out/</link>
+      <pubDate>Tue, 28 Aug 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/post/searchlight-1-3-is-out/</guid>
+      <description>It&amp;rsquo;s been 8 months since the previous release (and I know I skipped even mentioning the previous release here!), but it&amp;rsquo;s worth it as I&amp;rsquo;ve tackled a rather serious bug that would cause the wakelock to be held even after the torch has been switched off.
+If you didn&amp;rsquo;t get a word of what I just said, it means that Searchlight will no longer use battery power unnecessarily. Yay!
+Download it direct or from Google Play.</description>
+    </item>
+    
+    <item>
+      <title>I&#39;m Helping with a Monster Hunter Portable 3rd English Fan Translation!</title>
+      <link>/post/im-helping-with-a-monster-hunter-portable-3rd-english-fan-translation/</link>
+      <pubDate>Sun, 09 Oct 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/post/im-helping-with-a-monster-hunter-portable-3rd-english-fan-translation/</guid>
+      <description>Recently I&amp;rsquo;ve been helping out Team Maverick One translate Monster Hunter Portable 3rd to English! It&amp;rsquo;s a fan translation with the aim of making the game playable in regions it was never officially released.
+I&amp;rsquo;ve been correcting machine-translated English and writing lots of useful scripts to help everyone out. ^^
+So if you&amp;rsquo;re wondering what I&amp;rsquo;ve been up to lately, that&amp;rsquo;s probably it! Check it out if you have a PSP and are in to Monster Hunter.</description>
+    </item>
+    
+    <item>
+      <title>Searchlight 1.1 released</title>
+      <link>/post/searchlight-1-1-released/</link>
+      <pubDate>Fri, 26 Aug 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/post/searchlight-1-1-released/</guid>
+      <description>Searchlight, my application for lighting up your world (or at least a few metres in front of you) using your Android device&amp;rsquo;s LED has been updated to 1.1.
+This update brings better behaviour on HTC Sense devices, where the screen is kept on (as this is necessary to keep the device&amp;rsquo;s light switched on). In addition, when the screen is switched off (manually) and switched on again, it can switch on the light again; previously it didn&amp;rsquo;t switch the light back on, yet still ran the service.</description>
+    </item>
+    
+    <item>
+      <title>Searchlight: An Android LED torch powered by the Search button</title>
+      <link>/post/searchlight-an-android-led-torch-powered-by-the-search-button/</link>
+      <pubDate>Mon, 04 Jul 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/post/searchlight-an-android-led-torch-powered-by-the-search-button/</guid>
+      <description>In case there aren&amp;rsquo;t enough of them out there, I&amp;rsquo;ve decided to chip in my own effort on the Android LED torch scene.
+In a sort of sequel to my first Android app Torchure, I have just released Searchlight on to the Android Market.
+The unique thing about this flashlight is that it&amp;rsquo;s activated by long-pressing the Search button. Each time you do this, the LED will toggle on or off.</description>
+    </item>
+    
+    <item>
+      <title>Descent</title>
+      <link>/post/descent/</link>
+      <pubDate>Thu, 30 Dec 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/descent/</guid>
+      <description>Time for my obligatory seagull picture.
+Here you can see a couple of seagulls going in for the kill — on some bread. Would they have it any other way?
+I&amp;rsquo;ve increased the contrast and played around with saturation a bit. Call me crazy, but I decided not to crop the picture.</description>
+    </item>
+    
+    <item>
+      <title>Finding Froggy</title>
+      <link>/post/finding-froggy/</link>
+      <pubDate>Fri, 15 Oct 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/finding-froggy/</guid>
+      <description>This is for all the people who wasted their lives on Sonic Adventure trying to find Big the Cat&amp;rsquo;s best friend, Froggy. Here he is.
+For the curious this is yet another of the amphibians to get themselves stuck in Huntersdale&amp;rsquo;s basement. But instead of the legions of toads, we have a frog this time! It was a fair bit larger than the toads, although the bubble wrap in the background of this photo gives you the sense that he wasn&amp;rsquo;t that large after all — and just how small the toads are!</description>
+    </item>
+    
+    <item>
+      <title>Bid for Freedom</title>
+      <link>/post/bid-for-freedom/</link>
+      <pubDate>Sun, 10 Oct 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/bid-for-freedom/</guid>
+      <description>Here&amp;rsquo;s just a couple of the many toads that have recently hatched near Huntersdale at Royal Holloway, rescued from a dark, dry basement down a set of stairs much too steep for them to climb back up!</description>
+    </item>
+    
+    <item>
+      <title>I&#39;ve Been Expecting You…</title>
+      <link>/post/ive-been-expecting-you/</link>
+      <pubDate>Tue, 05 Oct 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/ive-been-expecting-you/</guid>
+      <description>I&amp;rsquo;m finally getting around to sorting out many of the photos I&amp;rsquo;ve taken over the last year, partly thanks to getting a new laptop, but probably mostly because I&amp;rsquo;m motivating myself to do so!
+This guy likes nothing more than a bit of bread on the Thames. In fact, the expression tells me he almost expects it…
+I&amp;rsquo;ve been trying out a few post-processing techniques, so there have been some tweaks to contrast, balance and saturation, plus a bit of noise reduction has been applied.</description>
+    </item>
+    
+    <item>
+      <title>Making Ringtones Loop on Android</title>
+      <link>/post/making-ringtones-loop-on-android/</link>
+      <pubDate>Wed, 25 Aug 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/making-ringtones-loop-on-android/</guid>
+      <description>Update 2012-01-06: ICS appears to have a bug where the end of the file is chopped off, so ringtones do not loop properly. If I find or hear a solution I&amp;rsquo;ll update again!
+Update 2010-11-09: Added clarification on why I suggest having a short (sub-10 second) ringtone. You want it to loop, right? =P
+Following on from my previous articles on ringtones, I&amp;rsquo;ve finally worked out how to make ringtones loop seamlessly in Android.</description>
+    </item>
+    
+    <item>
+      <title>Team orders in F1? They&#39;re here to stay–get over it!</title>
+      <link>/post/team-orders-in-f1-theyre-here-to-stay-get-over-it/</link>
+      <pubDate>Sun, 25 Jul 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/team-orders-in-f1-theyre-here-to-stay-get-over-it/</guid>
+      <description>Just wanted to quickly chime in on the whole Ferrari one-two fiasco.
+I basically agree with what David Coulthard kept saying on the BBC&amp;rsquo;s extended coverage–no matter what fans or press may shout, you can&amp;rsquo;t take the teams out of Formula 1.
+They spend millions of pounds on research, design, manufacture, promotion and, of course, the drivers: so is it so bad when sometimes the drivers have to follow &amp;ldquo;team orders&amp;rdquo; to make their team happy?</description>
+    </item>
+    
+    <item>
+      <title>Torchure 1.1.1 Released</title>
+      <link>/post/torchure-1-1-1-released/</link>
+      <pubDate>Wed, 21 Jul 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/torchure-1-1-1-released/</guid>
+      <description>I&amp;rsquo;ve uploaded a minor bugfix release for Torchure to the Android Market, which fixes the buggy systems preference not taking effect.
+Don&amp;rsquo;t remind me of the irony…</description>
+    </item>
+    
+    <item>
+      <title>Torchure 1.1 Released</title>
+      <link>/post/torchure-1-1-released/</link>
+      <pubDate>Sun, 18 Jul 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/torchure-1-1-released/</guid>
+      <description>My first Android Market update! Hope this goes well.
+This update includes:
+ A new colour! You can change the screen to red, to help preserve night vision. This makes the torch less effective, mind.  To switch colour, either swipe sideways on the screen or use the new menu option!  New preferences have been added to let you choose what colour you want on starting Torchure: white, red, or whatever you last used.</description>
+    </item>
+    
+    <item>
+      <title>Torchure for Android</title>
+      <link>/post/torchure-for-android/</link>
+      <pubDate>Wed, 14 Jul 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/torchure-for-android/</guid>
+      <description>Ever found yourself in need of a torch, but only had your phone handy? Look no further!
+Torchure (for Android) is a pretty simple application. It turns the screen white and, as default, whacks up the backlight to maximum. I did say simple, didn&amp;rsquo;t I?
+However, it also lets you change that backlight brightness (useful if, say, you&amp;rsquo;ve been to a particularly wild party and you need to step over some people without waking/blinding them) and lock it so you don&amp;rsquo;t go accidentally changing it.</description>
+    </item>
+    
+    <item>
+      <title>Desperate Struggle</title>
+      <link>/post/desperate-struggle/</link>
+      <pubDate>Wed, 30 Jun 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/desperate-struggle/</guid>
+      <description>Update 16:41: Re-uploaded the photo as I&amp;rsquo;d stripped the EXIF data by accident.
+This is less a super-amazing photo I&amp;rsquo;m proud of, and more just here for the duckling factor.
+Can you argue with that? Really?
+Anyway, here&amp;rsquo;s a photo of some ducklings (naw) climbing over a sleeper on the River Thames trying to get back to their mother. You&amp;rsquo;ll be glad to know that they all made it!
+That reminds me, I should get around to completing No More Heroes…</description>
+    </item>
+    
+    <item>
+      <title>BeetleSpider</title>
+      <link>/post/beetlespider/</link>
+      <pubDate>Fri, 21 May 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/beetlespider/</guid>
+      <description>Nature&amp;rsquo;s accumulated too many costs recently, so it&amp;rsquo;s consolidating many of its species in an attempt to rein in expenditure. First up is this BeetleSpider, with the legs and spinnerets of a spider, plus the body of a beetle!
+… Otherwise known as a Walnut Orb Spider, commonly found outdoors in the UK. Not that I can remember seeing one!
+As always, unedited except for a resize for your internet viewing pleasure.</description>
+    </item>
+    
+    <item>
+      <title>My Personal Ninite Installer</title>
+      <link>/post/my-personal-ninite-installer/</link>
+      <pubDate>Tue, 04 May 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/my-personal-ninite-installer/</guid>
+      <description>This is basically for my own future reference, but the last few Windows installs I&amp;rsquo;ve done I&amp;rsquo;ve used Ninite to install most of my favourite software — easily and quickly!
+If you&amp;rsquo;ve yet to discover it, check it out! Or if you&amp;rsquo;d rather just install software other people recommend wihout thinking, you can install my particular favourite software loadout.
+Update 15:42 UTC+0100: Just a couple of things that I should mention about the Ninite installer:</description>
+    </item>
+    
+    <item>
+      <title>Supreme Commander 2 Hidden Objectives List</title>
+      <link>/post/supreme-commander-2-hidden-objectives-list/</link>
+      <pubDate>Mon, 22 Mar 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/supreme-commander-2-hidden-objectives-list/</guid>
+      <description>Update 2010-03-26: Missed &amp;ldquo;Master of Pawns&amp;rdquo; hidden objective off of Cybran mission 6. Added it.
+Trying to find and complete all the secret missions in SupCom 2? Here&amp;rsquo;s a quick and dirty list of them all!
+This information is copied from the map files within the SupCom 2 directory.
+Feel free to copy and paste — a link back to this page would be appreciated!
+The List UEF  1 – Prime Target  Survivor  Survive the initial wave of Cybran attackers without losing any units.</description>
+    </item>
+    
+    <item>
+      <title>Gnome Power Manager Hides Do Nothing</title>
+      <link>/post/gnome-power-manager-hides-do-nothing/</link>
+      <pubDate>Tue, 16 Feb 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/gnome-power-manager-hides-do-nothing/</guid>
+      <description>Found this rather handy post that tells you what to do in newer versions of Gnome Power Manager, which for some reason hide the Do Nothing options as default.
+Personally I find it irritating as the battery readout in all the distros of Linux I&amp;rsquo;ve used on my Eee report the battery at 0% over half an hour before the battery is actually dead. No amount of conditioning or software modification seems to fix it, so I&amp;rsquo;m living with it.</description>
+    </item>
+    
+    <item>
+      <title>Introducing BitButcher — An Open-Source NDS ROM Trimmer</title>
+      <link>/post/introducing-bitbutcher-an-open-source-nds-rom-trimmer/</link>
+      <pubDate>Wed, 27 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/introducing-bitbutcher-an-open-source-nds-rom-trimmer/</guid>
+      <description>I&amp;rsquo;ve always wanted to make a software headline like that. Eee!
+Welcome to BitButcher, a small program designed to do one thing and one thing well: trim Nintendo DS ROMs.
+I got a bit fed up of the ones already out there, most because they were either closed-source or they had bad GUI design combined with clashing backgrounds. Search as I may, I couldn&amp;rsquo;t find anything that fit my demands.</description>
+    </item>
+    
+    <item>
+      <title>Take Control of Your Settings: Configuring Synaptics Touchpads and Making GNOME Respect Them</title>
+      <link>/post/take-control-of-your-settings-configuring-synaptics-touchpads-and-making-gnome-respect-them/</link>
+      <pubDate>Mon, 18 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/take-control-of-your-settings-configuring-synaptics-touchpads-and-making-gnome-respect-them/</guid>
+      <description>Update 2010-05-28: If you&amp;rsquo;re using Fedora 13, then the configuration for synaptics touchpads is done through what is practically the old xorg.conf method. (This is as udev now handles devices instead of HAL.) Check out the Fedora Wiki for more information.
+The Problem Today I&amp;rsquo;ve been trying to configure the touchpad on my Eee PC 901 to my liking. It&amp;rsquo;s a Synaptics touchpad, and supports tracking multiple fingers, and I wanted to take more advantage of that.</description>
+    </item>
+    
+    <item>
+      <title>Stop Exact Audio Copy Crashing on Windows 7</title>
+      <link>/post/stop-exact-audio-copy-crashing-on-windows-7/</link>
+      <pubDate>Fri, 18 Dec 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/stop-exact-audio-copy-crashing-on-windows-7/</guid>
+      <description>When I tried to rip a disc using Exact Audio Copy on Windows 7 x64, I found it kept crashing as soon as the rip tried to start. Bummer.
+Remembering the previous times I&amp;rsquo;ve used EAC, when you click a button to start a rip, it asks you where you want to save the ripped files.
+Turns out if you set EAC to save into a predetermined location instead of asking, EAC manages to rip perfectly fine!</description>
+    </item>
+    
+    <item>
+      <title>Delete Songs From Smart Playlists in iTunes</title>
+      <link>/post/delete-songs-from-smart-playlists-in-itunes/</link>
+      <pubDate>Fri, 20 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/delete-songs-from-smart-playlists-in-itunes/</guid>
+      <description>Update 2009-11-23: Corrected Mac keyboard keys. I don&amp;rsquo;t own a Mac myself, but a friend of mine tells me that iTunes defies the normal behaviour of many other Apple applications. Probably because it&amp;rsquo;s ancient and desperately needs an update.
+Made a smart playlist to find songs you want to delete, then found that the delete function no longer works?
+Just hold Shift. Or Option.
+Pressing Shift+Delete on Windows or Option+Delete on Mac will give you a prompt to delete songs just like any other delete operation performed in the library.</description>
+    </item>
+    
+    <item>
+      <title>Pinch to Zoom?  Nah, I&#39;m Fine, Thanks</title>
+      <link>/post/pinch-to-zoom-nah-im-fine-thanks/</link>
+      <pubDate>Wed, 18 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/pinch-to-zoom-nah-im-fine-thanks/</guid>
+      <description>What is this generation&amp;rsquo;s obsession with pinch to zoom? It&amp;rsquo;s so often touted as &amp;ldquo;natural&amp;rdquo;, &amp;ldquo;intuitive&amp;rdquo;, and &amp;ldquo;cool&amp;rdquo; that it&amp;rsquo;s beginning to make me go insane! Yes, it might be cool, but have the people who say these things even thought implications of both what they say and the use of such an interface?
+Intuitive First, let&amp;rsquo;s get the bit out of the way that always grates me. Pinch to zoom isn&amp;rsquo;t &amp;ldquo;natural&amp;rdquo; or &amp;ldquo;intuitive&amp;rdquo;, contrary to what people say.</description>
+    </item>
+    
+    <item>
+      <title>I am Your God; BOW DOWN TO ME</title>
+      <link>/post/i-am-your-god-bow-down-to-me/</link>
+      <pubDate>Tue, 17 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/i-am-your-god-bow-down-to-me/</guid>
+      <description>Another of my friends chilling down at the river.
+Where there&amp;rsquo;s food, there&amp;rsquo;s fighting.
+Where there&amp;rsquo;s bread, there&amp;rsquo;s dread.</description>
+    </item>
+    
+    <item>
+      <title>The Windows 7 Taskbar — Keyboard Goodness</title>
+      <link>/post/the-windows-7-taskbar-keyboard-goodness/</link>
+      <pubDate>Sun, 15 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/the-windows-7-taskbar-keyboard-goodness/</guid>
+      <description>If you&amp;rsquo;re fortunate enough to be using Windows 7, then no doubt you&amp;rsquo;ve noticed the new taskbar. Well, here&amp;rsquo;s a couple of golden nuggets of info for you:
+Did you know that all the icons you line up on the taskbar automatically get keyboard shortcuts? If you want to launch one of them, just press the Windows key and the number of the program&amp;rsquo;s position along the list. So to launch the first program, press Win+1; to launch the second, press Win+2; this continues all the way up to Win+0, which opens the tenth program.</description>
+    </item>
+    
+    <item>
+      <title>A Word of Warning: Check Your Windows 7 Backup Settings</title>
+      <link>/post/a-word-of-warning-check-your-windows-7-backup-settings/</link>
+      <pubDate>Thu, 12 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/a-word-of-warning-check-your-windows-7-backup-settings/</guid>
+      <description>Backups in Windows 7 have been greatly improved, what with the fact you can restore from them (without needing to take a separate backup) and that they backup to networks better.
+However, there has been one change which caught me out, thanks to a subtle and ambiguous rewording of the backups dialog.
+When backups are taken, as default only user folders that were created by Windows are backed up. For reference that&amp;rsquo;s Appdata, Contacts, Desktop, Downloads, Favorites, Links, Music, Pictures, Saved Games, Searches and Videos.</description>
+    </item>
+    
+    <item>
+      <title>Adding your most recent Twitter tweet to your Pidgin status</title>
+      <link>/post/adding-your-most-recent-twitter-tweet-to-your-pidgin-status/</link>
+      <pubDate>Tue, 10 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/adding-your-most-recent-twitter-tweet-to-your-pidgin-status/</guid>
+      <description>This guide is intended to be a more up-to-date mirror of the guide you can find at Tech Jawa. All credit to them for the original instructions! Basically nothing changes, but I just like to be comprehensive.
+ Download the TwitterStatus plugin. It&amp;rsquo;ll be a file ending in .pl. Move this file to your Pidgin plugins folder. If any folders don&amp;rsquo;t exist, create them:  Linux: ~/.purple/plugins/ Windows Vista/7: C:\Users&amp;lt;Username&amp;gt;\AppData\Roaming.purple\plugins  Install Perl:  Linux: It&amp;rsquo;s probably already installed.</description>
+    </item>
+    
+    <item>
+      <title>Ogg Vorbis Encoder for Windows</title>
+      <link>/post/ogg-vorbis-encoder-for-windows/</link>
+      <pubDate>Sun, 08 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/ogg-vorbis-encoder-for-windows/</guid>
+      <description>I not so long ago made a post about using Ogg Vorbis for Ringtones on Android, as it considerably reduces the lag between getting a phone call and the phone actually playing the ringtone. The same goes for music on the device–it just starts playing quicker.
+Anyway, just now I realised that I didn&amp;rsquo;t link to any encoders for it. So if anyone wondered what I used to accomplish the task, they&amp;rsquo;d be stuck!</description>
+    </item>
+    
+    <item>
+      <title>Use Ogg Vorbis for Lag-free Ringtones on Android</title>
+      <link>/post/use-ogg-vorbis-for-lag-free-ringtones-on-android/</link>
+      <pubDate>Mon, 21 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/use-ogg-vorbis-for-lag-free-ringtones-on-android/</guid>
+      <description>Update 2010-06-21: If you want to use custom ringtones in the first place, install Rings Extended from the Android Market, then go to Home  Settings  Sound &amp; display  Phone ringtone. When it asks which application you want to use, select Rings Extended, and check the checkbox so that it doesn&#39;t ask you again.  This will work anywhere any application asks for you to pick a ringtone, assuming it asks via a standard means!</description>
+    </item>
+    
+    <item>
+      <title>Strip ID3v1 Tags from MP3s in Linux</title>
+      <link>/post/strip-id3v1-tags-from-mp3s-in-linux/</link>
+      <pubDate>Wed, 16 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/strip-id3v1-tags-from-mp3s-in-linux/</guid>
+      <description>For kicks I decided to remove all the ID3v1 tags from my music files today. They were just getting in the way and served no useful purpose — since I had perfectly fine ID3v2 tags — so they just had to go.
+I cooked up a little command to help out here! But first, we need to make sure you have the command that we&amp;rsquo;re going to need here, id3v2. Install it from the official repositories using your distribution&amp;rsquo;s package manager.</description>
+    </item>
+    
+    <item>
+      <title>Forgotten the Installation Code for your Sagem Digital Set-Top Box?</title>
+      <link>/post/forgotten-the-installation-code-for-your-sagem-digitalset-top-box/</link>
+      <pubDate>Sat, 12 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/forgotten-the-installation-code-for-your-sagem-digitalset-top-box/</guid>
+      <description>It&amp;rsquo;s annoying when that or something similar happens — in my case, someone else had changed the code meaning I couldn&amp;rsquo;t retune the box to accept more channels.
+But all is not lost! Simply follow this quick guide. This is from a Sagem ITC 62 — it may or may not be the same process for other models:
+ Press Menu on your remote control. Select Installation. You&amp;rsquo;ll be presented with a screen where you have to enter an Installation Code.</description>
+    </item>
+    
+    <item>
+      <title>Hey there, Handsome.</title>
+      <link>/post/hey-there-handsome/</link>
+      <pubDate>Thu, 13 Aug 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/hey-there-handsome/</guid>
+      <description>Are those wings sticking out of your body or are you just happy to see me?
+Here&amp;rsquo;s a picture of a beast Dragonfly waving to all the passers-by in my Nan&amp;rsquo;s back garden. You can tell it isn&amp;rsquo;t a Damselfly because this one can&amp;rsquo;t fold it wings back along its body – they have to stick out sideways. It&amp;rsquo;s also huge.
+Thus what I said.
+Maybe I&amp;rsquo;m going a bit far.</description>
+    </item>
+    
+    <item>
+      <title>Angel of Ocean</title>
+      <link>/post/angel-of-ocean/</link>
+      <pubDate>Tue, 28 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/angel-of-ocean/</guid>
+      <description>Alright, the title is a bit of a misnomer; this seagull was captured just above the waters of the River Thames.
+Now I know what I said before about not liking taking nature photos so much, but these are the kinds of photos I like.
+They&amp;rsquo;re dynamic; they capture scenes that we are unable to see with the naked eye. These really fast exposure shots can quite often look really good in my opinion and, if you&amp;rsquo;re lucky, you can immortalise an instant forever.</description>
+    </item>
+    
+    <item>
+      <title>Quickly Open an Elevated Command Prompt in Vista</title>
+      <link>/post/quickly-open-an-elevated-command-prompt-in-vista/</link>
+      <pubDate>Sun, 26 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/quickly-open-an-elevated-command-prompt-in-vista/</guid>
+      <description>Just a quick little thing I noticed, although everyone else probably knows it by now.
+To launch an elevated command prompt (i.e. a prompt with admin privileges, required to do various things if UAC is enabled on Vista), simply open the Start Menu (Windows key), type &amp;ldquo;cmd&amp;rdquo; without quotes, and press Control+Shift+Return.
+This will bring up a UAC prompt asking you to elevate the process. Select Continue (Alt+C). Done!
+This does work for some other applications.</description>
+    </item>
+    
+    <item>
+      <title>I&#39;ll Modify You in to Next Week.</title>
+      <link>/post/ill-modify-you-in-to-next-week/</link>
+      <pubDate>Fri, 24 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/ill-modify-you-in-to-next-week/</guid>
+      <description>A couple of days ago I came across this interesting quirk, and I had to do a double-take before I realised what had happened.
+Basically, I recently got a NAS and decided that I wanted my router to save its bandwidth usage statistics on it. That way whenever I perform an upgrade to the firmware on the router I won&amp;rsquo;t erase all the stats. This part is easy, as the firmware has the functionality for this.</description>
+    </item>
+    
+    <item>
+      <title>Eternal Serenata</title>
+      <link>/post/eternal-serenata/</link>
+      <pubDate>Thu, 23 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/eternal-serenata/</guid>
+      <description>Like the first photo I uploaded to this site, Boldly Growing, this was taken at Mottisfont Abbey National Trust garden. However instead of out in the gorgeous gardens, I was inside a rather ‘cosy&amp;rsquo; (read: cramped) used-book shop located on the site.
+I happened to spy this rather odd looking insect having a rest from its fatigue (read: injury), and also that it was resting on the front of a set of scores that were being sold.</description>
+    </item>
+    
+    <item>
+      <title>Fixing Slugs in WordPress</title>
+      <link>/post/fixing-slugs-in-wordpress/</link>
+      <pubDate>Wed, 22 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/fixing-slugs-in-wordpress/</guid>
+      <description>Having trouble selecting the slug you want in WordPress? If you&amp;rsquo;re like I was just a moment ago, you&amp;rsquo;ll try changing the slug on one of your categories to something different that you prefer, only to have WordPress change it back to whatever it was previously. What gives?
+Turns out the solution might be simpler than you think — check your Post Tags for a tag with the same slug!</description>
+    </item>
+    
+    <item>
+      <title>Lazy Days</title>
+      <link>/post/lazy-days/</link>
+      <pubDate>Mon, 20 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/lazy-days/</guid>
+      <description>Here&amp;rsquo;s a picture I took a little while back of my aunt&amp;rsquo;s dog, George. He&amp;rsquo;s a lively bugger (my aunt&amp;rsquo;s finger getting broken is proof), but this photo captures the moment where I actually managed to get up close to him without him trying to take my head off.
+And I was lying down.
+Good one.</description>
+    </item>
+    
+    <item>
+      <title>Dirty Sexy Photography</title>
+      <link>/post/dirty-sexy-photography/</link>
+      <pubDate>Thu, 16 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/dirty-sexy-photography/</guid>
+      <description>Did you know I&amp;rsquo;m really not into this &amp;ldquo;nature&amp;rdquo; stuff very much? It&amp;rsquo;s just that there&amp;rsquo;s so much of it around I can&amp;rsquo;t really avoid it…
+Take this for example. Captured near the coast in North Devon, this rather saucy number demonstrates that creatures really will do it anywhere, even on camera.
+What impressed me most is that they could fly whilst back to back like this! Crazy.</description>
+    </item>
+    
+    <item>
+      <title>Changing GPRS, MMS and Access Point Settings on Android</title>
+      <link>/post/changing-gprs-mms-and-access-point-settings-on-android/</link>
+      <pubDate>Fri, 10 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/changing-gprs-mms-and-access-point-settings-on-android/</guid>
+      <description>I feel kind of silly for falling foul of this, but I guess it&amp;rsquo;s just a case of going against what you&amp;rsquo;re used to.
+I was looking for a way to check on my MMS settings on Android. On just about every other phone I&amp;rsquo;ve used it&amp;rsquo;s been a submenu of the messaging application, so that&amp;rsquo;s where I went — except I couldn&amp;rsquo;t find anything pertaining to access point settings! I mean, if one phone does it one way, all phones do it that way, right?</description>
+    </item>
+    
+    <item>
+      <title>Buzz Lightyear, Away!</title>
+      <link>/post/buzz-lightyear-away/</link>
+      <pubDate>Wed, 01 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/buzz-lightyear-away/</guid>
+      <description>I have a weird attraction to this photo… It&amp;rsquo;s probably because instead of the bee bee-ing posed on the plant as you would normally see in a photo such as this, it&amp;rsquo;s heading straight past me!
+If that bee were better bee-haved I might have gotten a picture of it on the plant. Wait, I have taken pictures of bees on plants! I bee-lieve I&amp;rsquo;ll upload one sometime.
+I&amp;rsquo;ll stop now.</description>
+    </item>
+    
+    <item>
+      <title>Stella Artois</title>
+      <link>/post/stella-artois/</link>
+      <pubDate>Mon, 29 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/stella-artois/</guid>
+      <description>That&amp;rsquo;s the name of the cat.
+Seriously!
+She&amp;rsquo;s the cat of one of our neighbours, but sometimes she comes over to pose and play. Quite the model, huh?
+She always looks grumpy to me, though…</description>
+    </item>
+    
+    <item>
+      <title>Reset iTunes Dimensions to Fit Resolution</title>
+      <link>/post/reset-itunes-dimensions-to-fit-resolution/</link>
+      <pubDate>Thu, 25 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/reset-itunes-dimensions-to-fit-resolution/</guid>
+      <description>Here&amp;rsquo;s a handy little feature that I find useful. If you ever play around with the size or location of the iTunes window and want to make it fit the screen better, simply follow the instructions:
+ If you&amp;rsquo;re on Windows: hold Shift and either double-click the title bar or single-click the maximise button (The title bar is the small bar at the top that says &amp;ldquo;iTunes&amp;rdquo; in the middle.) If you&amp;rsquo;re on Mac OS: hold Option and click the Zoom (+) button  This&amp;rsquo;ll reset the size and position to its default for your screen resolution.</description>
+    </item>
+    
+    <item>
+      <title>Phoenix Wright — Ace Attorney: Trials and Tribulations Soundtrack Download</title>
+      <link>/post/phoenix-wright-ace-attorney-trials-and-tribulations-soundtrack-download/</link>
+      <pubDate>Sat, 20 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/phoenix-wright-ace-attorney-trials-and-tribulations-soundtrack-download/</guid>
+      <description>That was a mouthful of a title.
+Over time I&amp;rsquo;ve played and thoroughly enjoyed the Ace Attorney series of games, from Phoenix Wright to Apollo Justice. But for those of you familiar to the series, you&amp;rsquo;ll notice that this is the soundtrack for the third game in the series. So why have I posted this one?
+You see, this soundtrack posting has a small story behind it. A while back a perfectionist of a soundtrack ripper called TheRedPriest ripped the soundtrack and uploaded it to his website.</description>
+    </item>
+    
+    <item>
+      <title>Boldly Growing</title>
+      <link>/post/boldly-growing/</link>
+      <pubDate>Thu, 18 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/boldly-growing/</guid>
+      <description>Here&amp;rsquo;s a rather funky photo I took at Mottisfont Abbey National Trust garden. I love the shape of this flower — I don&amp;rsquo;t think I&amp;rsquo;d seen anything quite like it until that day. Doesn&amp;rsquo;t it look like some kind of space-faring organism? I&amp;rsquo;ve probably seen something that looks like it in Star Trek…
+It also seems to remind me of an enemy from Metroid… Although since I can&amp;rsquo;t remember the enemy or the real name of this plant, I&amp;rsquo;m just going to call it a Blooper for now.</description>
+    </item>
+    
+    <item>
+      <title>Fix Windows Sidebar Gadget File Association in Vista</title>
+      <link>/post/fix-windows-sidebar-gadget-file-association-in-vista/</link>
+      <pubDate>Wed, 17 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/fix-windows-sidebar-gadget-file-association-in-vista/</guid>
+      <description>Have you ever somehow managed to break the Gadget file association in Windows Vista? I have somehow, and that means that you can no longer install gadgets. Double-clicking a .gadget file does nothing, and the Sidebar offers no option to install gadgets itself!
+If you try to re-associate the files with Windows Sidebar by telling to Open With… and navigating to the Sidebar executable, you&amp;rsquo;ll have found that that doesn&amp;rsquo;t help — all it does is bring the Sidebar to focus, but doesn&amp;rsquo;t install the gadget.</description>
+    </item>
+    
+    <item>
+      <title>Fix Superuser Permissions Hanging on Android</title>
+      <link>/post/fix-superuser-permissions-hanging-on-android/</link>
+      <pubDate>Sun, 14 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/fix-superuser-permissions-hanging-on-android/</guid>
+      <description>Update 2010-03-04: Added another potential solution courtesy of Blazt in the comments. Thanks!
+So, you have a phone with root permissions? Finding whenever a program requests root permissions the Superuser Permissions program hangs (usually with a black screen or even a force close) at the &amp;ldquo;SU request&amp;rdquo; screen?
+Fortunately there are a couple of things you can try, which I&amp;rsquo;ll detail for you.
+First, make sure USB Debugging is enabled. To do that:</description>
+    </item>
+    
+    <item>
+      <title>Unlock Android Device Using PUK Code</title>
+      <link>/post/unlock-android-device-using-puk-code/</link>
+      <pubDate>Fri, 12 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/unlock-android-device-using-puk-code/</guid>
+      <description>If you&amp;rsquo;ve ever got your PIN code wrong too many times and got your SIM locked, you were probably as surprised as I was when Android gives you no option to unlock the phone! Fortunately there&amp;rsquo;s an answer.
+To unlock your Android-based device go to the Emergency Call screen and enter in the following (replace the angled brackets with the appropriate info):
+**05*«PUK Code»*«Your new pin»*«Confirm your new pin»# So for example:</description>
+    </item>
+    
+    <item>
+      <title>Advance Wars 2 Soundtrack Download</title>
+      <link>/post/advance-wars-2-soundtrack-download/</link>
+      <pubDate>Wed, 10 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/advance-wars-2-soundtrack-download/</guid>
+      <description>Andy, a Commanding Officer from Advance Wars 2  Ah, Advance Wars 2. What is it about you I thought was so amazing? The lovable, single-minded cast? The deep turn-based strategy? The little battle animations of infantry flying off the screen?
+Well, okay, all of those things are very good reasons to love the game, but there&amp;rsquo;s another one that sticks out for me too.
+The soundtrack!
+Once I completed the normal campaign and could buy the Sound Room, that was it.</description>
+    </item>
+    
+    <item>
+      <title>First Posts</title>
+      <link>/post/first-posts/</link>
+      <pubDate>Mon, 08 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/first-posts/</guid>
+      <description>Hello, and welcome to the first post of my blog!
+You&amp;rsquo;ve probably found yourself here looking for soundtracks or computer tips or something, in which case go crazy clicking around! This is the first post, so it can&amp;rsquo;t really have that much interesting stuff in it.
+Wait. You mean you&amp;rsquo;re reading this post because you&amp;rsquo;re interested in what I have to say?
+Okay! If that&amp;rsquo;s the case, then let me talk to you about, well, first posts.</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/about/</guid>
+      <description>… The Author This website is crafted by me, Alex Palmer (a.k.a. XanderX), a vaguely qualified Computer Scientist with a passion for perfection. A real pain, really.
+This blog, as it effectively is, is personal: “personal” as in made by me concerning topics that interest me, not “personal” as in daily log or life’s rants personal. I’ve never been in to that sort of stuff. Although that said it doesn&amp;rsquo;t mean there won&amp;rsquo;t be the odd rant.</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/contact/</guid>
+      <description>I enjoy hearing what people have to say about the stuff I write here, so feel free to drop me a line at any of the links in the footer!</description>
+    </item>
+    
+    <item>
+      <title>Privacy Policy</title>
+      <link>/privacy-policy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/privacy-policy/</guid>
+      <description>I take user privacy seriously. I support organisations like the EFF and Mozilla as they work to protect the liberties of people online. It would be hypocritical of me to not uphold these values myself.
+Below you can find a summary of all the user data I am aware of handling. If you would like to dig deeper, keep reading to find further details of each app and service.</description>
+    </item>
+    
+  </channel>
+</rss>

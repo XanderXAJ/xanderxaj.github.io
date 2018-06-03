@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Download on Forged Defiance</title>
+    <link>/categories/download/</link>
+    <description>Recent content in Download on Forged Defiance</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sat, 01 Jun 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/download/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Searchlight 1.6</title>
+      <link>/post/searchlight-1-6-2/</link>
+      <pubDate>Sat, 01 Jun 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/post/searchlight-1-6-2/</guid>
+      <description>I&amp;rsquo;ve released another update to Searchlight!
+This one contains some experimental code for devices that use the CyanogenMod SysFS interface to toggle their light. Naturally, given it&amp;rsquo;s experimental, it might not work. :-) That&amp;rsquo;s because I don&amp;rsquo;t have any devices that actually make use of it.
+Get in touch via Google Play or the contact page if you have problems, or just want to give me a good word!
+As always, you can download the update via Google Play or directly.</description>
+    </item>
+    
+    <item>
+      <title>Searchlight 1.5</title>
+      <link>/post/searchlight-1-5/</link>
+      <pubDate>Sun, 12 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/post/searchlight-1-5/</guid>
+      <description>Looks like I forgot to write about this when I released it in February, but Searchlight 1.5 is out!
+The big thing this update adds is a widget that can be added to your launcher or to your lock screen on 4.2+ devices. That means you can toggle the light without unlocking the device!
+As always you can download it from Google Play and directly from this site.
+Also, for the sake of completeness, since I never got around to writing about version 1.</description>
+    </item>
+    
+    <item>
+      <title>Searchlight 1.1 released</title>
+      <link>/post/searchlight-1-1-released/</link>
+      <pubDate>Fri, 26 Aug 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/post/searchlight-1-1-released/</guid>
+      <description>Searchlight, my application for lighting up your world (or at least a few metres in front of you) using your Android device&amp;rsquo;s LED has been updated to 1.1.
+This update brings better behaviour on HTC Sense devices, where the screen is kept on (as this is necessary to keep the device&amp;rsquo;s light switched on). In addition, when the screen is switched off (manually) and switched on again, it can switch on the light again; previously it didn&amp;rsquo;t switch the light back on, yet still ran the service.</description>
+    </item>
+    
+    <item>
+      <title>Searchlight: An Android LED torch powered by the Search button</title>
+      <link>/post/searchlight-an-android-led-torch-powered-by-the-search-button/</link>
+      <pubDate>Mon, 04 Jul 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/post/searchlight-an-android-led-torch-powered-by-the-search-button/</guid>
+      <description>In case there aren&amp;rsquo;t enough of them out there, I&amp;rsquo;ve decided to chip in my own effort on the Android LED torch scene.
+In a sort of sequel to my first Android app Torchure, I have just released Searchlight on to the Android Market.
+The unique thing about this flashlight is that it&amp;rsquo;s activated by long-pressing the Search button. Each time you do this, the LED will toggle on or off.</description>
+    </item>
+    
+    <item>
+      <title>My Personal Ninite Installer</title>
+      <link>/post/my-personal-ninite-installer/</link>
+      <pubDate>Tue, 04 May 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/my-personal-ninite-installer/</guid>
+      <description>This is basically for my own future reference, but the last few Windows installs I&amp;rsquo;ve done I&amp;rsquo;ve used Ninite to install most of my favourite software — easily and quickly!
+If you&amp;rsquo;ve yet to discover it, check it out! Or if you&amp;rsquo;d rather just install software other people recommend wihout thinking, you can install my particular favourite software loadout.
+Update 15:42 UTC+0100: Just a couple of things that I should mention about the Ninite installer:</description>
+    </item>
+    
+    <item>
+      <title>Phoenix Wright — Ace Attorney: Trials and Tribulations Soundtrack Download</title>
+      <link>/post/phoenix-wright-ace-attorney-trials-and-tribulations-soundtrack-download/</link>
+      <pubDate>Sat, 20 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/phoenix-wright-ace-attorney-trials-and-tribulations-soundtrack-download/</guid>
+      <description>That was a mouthful of a title.
+Over time I&amp;rsquo;ve played and thoroughly enjoyed the Ace Attorney series of games, from Phoenix Wright to Apollo Justice. But for those of you familiar to the series, you&amp;rsquo;ll notice that this is the soundtrack for the third game in the series. So why have I posted this one?
+You see, this soundtrack posting has a small story behind it. A while back a perfectionist of a soundtrack ripper called TheRedPriest ripped the soundtrack and uploaded it to his website.</description>
+    </item>
+    
+    <item>
+      <title>Fix Windows Sidebar Gadget File Association in Vista</title>
+      <link>/post/fix-windows-sidebar-gadget-file-association-in-vista/</link>
+      <pubDate>Wed, 17 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/fix-windows-sidebar-gadget-file-association-in-vista/</guid>
+      <description>Have you ever somehow managed to break the Gadget file association in Windows Vista? I have somehow, and that means that you can no longer install gadgets. Double-clicking a .gadget file does nothing, and the Sidebar offers no option to install gadgets itself!
+If you try to re-associate the files with Windows Sidebar by telling to Open With… and navigating to the Sidebar executable, you&amp;rsquo;ll have found that that doesn&amp;rsquo;t help — all it does is bring the Sidebar to focus, but doesn&amp;rsquo;t install the gadget.</description>
+    </item>
+    
+    <item>
+      <title>Advance Wars 2 Soundtrack Download</title>
+      <link>/post/advance-wars-2-soundtrack-download/</link>
+      <pubDate>Wed, 10 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/advance-wars-2-soundtrack-download/</guid>
+      <description>Andy, a Commanding Officer from Advance Wars 2  Ah, Advance Wars 2. What is it about you I thought was so amazing? The lovable, single-minded cast? The deep turn-based strategy? The little battle animations of infantry flying off the screen?
+Well, okay, all of those things are very good reasons to love the game, but there&amp;rsquo;s another one that sticks out for me too.
+The soundtrack!
+Once I completed the normal campaign and could buy the Sound Room, that was it.</description>
+    </item>
+    
+  </channel>
+</rss>

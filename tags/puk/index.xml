@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Puk on Forged Defiance</title>
+    <link>/tags/puk/</link>
+    <description>Recent content in Puk on Forged Defiance</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Fri, 12 Jun 2009 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/puk/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Unlock Android Device Using PUK Code</title>
+      <link>/post/unlock-android-device-using-puk-code/</link>
+      <pubDate>Fri, 12 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/unlock-android-device-using-puk-code/</guid>
+      <description>If you&amp;rsquo;ve ever got your PIN code wrong too many times and got your SIM locked, you were probably as surprised as I was when Android gives you no option to unlock the phone! Fortunately there&amp;rsquo;s an answer.
+To unlock your Android-based device go to the Emergency Call screen and enter in the following (replace the angled brackets with the appropriate info):
+**05*«PUK Code»*«Your new pin»*«Confirm your new pin»# So for example:</description>
+    </item>
+    
+  </channel>
+</rss>

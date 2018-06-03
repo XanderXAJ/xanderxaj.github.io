@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Help on Forged Defiance</title>
+    <link>/categories/help/</link>
+    <description>Recent content in Help on Forged Defiance</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Fri, 09 Oct 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/help/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Getting battery life back on an Acer Aspire 5820TG running Windows 10</title>
+      <link>/post/getting-battery-life-back-on-an-acer-aspire-5820tg-running-windows-10/</link>
+      <pubDate>Fri, 09 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/getting-battery-life-back-on-an-acer-aspire-5820tg-running-windows-10/</guid>
+      <description>Details upfront: My workaround is to completely disable the AMD GPU via a modded BIOS and let Windows Update install a valid driver for the Intel card. If this concerns you, then don&amp;rsquo;t follow the instructions on this page!
+==Disclaimer: I can&amp;rsquo;t be held responsible should things go wrong etc. etc. I can only describe what worked for me.==
+I&amp;rsquo;ll be careful. Instructions please! I first made sure that I had uninstalled all of the graphics drivers.</description>
+    </item>
+    
+    <item>
+      <title>Troubleshooting keyboard shortcuts in Sublime Text</title>
+      <link>/post/troubleshooting-keyboard-shortcuts-in-sublime-text/</link>
+      <pubDate>Thu, 08 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/troubleshooting-keyboard-shortcuts-in-sublime-text/</guid>
+      <description>I recently installed a couple of new plugins to Sublime Text, and then Ctrl+Shift+R, the shortcut for searching through all symbols in a project, stopped working!
+You can get Sublime Text to display what&amp;rsquo;s actually going on when you press the shortcut &amp;mdash; that information may give you a hint as to what plugin or configuration has changed your value.
+Is the shortcut reaching Sublime? The following commands are run in the Sublime Text Console; you can access on Linux and Windows by pressing Ctrl+`.</description>
+    </item>
+    
+  </channel>
+</rss>

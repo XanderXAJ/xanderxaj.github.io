@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Computers on Forged Defiance</title>
+    <link>/categories/computers/</link>
+    <description>Recent content in Computers on Forged Defiance</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sun, 19 Apr 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/computers/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Larger tab close buttons in Firefox</title>
+      <link>/post/larger-tab-close-buttons-in-firefox/</link>
+      <pubDate>Sun, 19 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/larger-tab-close-buttons-in-firefox/</guid>
+      <description>I&amp;rsquo;m using a Windows 8 tablet (the Linx 10 if you&amp;rsquo;re curious) and found that the close buttons in Firefox were a bit small and difficult to press.
+I&amp;rsquo;ve fixed this by adding the following to my userChrome.css file:
+{% highlight css %} .tab-close-button { border-radius: 20%; background: rgba(0,0,0,0.1) !important; width: 32px !important; height: 32px !important; } {% endhighlight %}</description>
+    </item>
+    
+    <item>
+      <title>A fix for VirtualBox causing Windows host to think it&#39;s on a public network</title>
+      <link>/post/a-fix-for-virtualbox-causing-host-windows-to-think-its-on-a-public-network/</link>
+      <pubDate>Sat, 06 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/post/a-fix-for-virtualbox-causing-host-windows-to-think-its-on-a-public-network/</guid>
+      <description>Have a look at Brokenwire.NET&amp;rsquo;s article on the subject.
+I&amp;rsquo;ll briefly mirror the instructions here:
+ Open regedit. Search (Ctrl+F) for VirtualBox Host-Only Ethernet Adapter. Keep searching until you&amp;rsquo;re inside HKLM\SYSTEM\CurrentControlSet\Control\Class\{4D36E972-E325-11CE-BFC1-08002BE10318} &amp;mdash; you&amp;rsquo;ll probably be highlighting the DriverDesc key. Add/modify a DWORD value, called NdisDeviceType, and give it a value of 1. Restart the machine.  </description>
+    </item>
+    
+    <item>
+      <title>Adding your most recent Twitter tweet to your Pidgin status</title>
+      <link>/post/adding-your-most-recent-twitter-tweet-to-your-pidgin-status/</link>
+      <pubDate>Tue, 10 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/adding-your-most-recent-twitter-tweet-to-your-pidgin-status/</guid>
+      <description>This guide is intended to be a more up-to-date mirror of the guide you can find at Tech Jawa. All credit to them for the original instructions! Basically nothing changes, but I just like to be comprehensive.
+ Download the TwitterStatus plugin. It&amp;rsquo;ll be a file ending in .pl. Move this file to your Pidgin plugins folder. If any folders don&amp;rsquo;t exist, create them:  Linux: ~/.purple/plugins/ Windows Vista/7: C:\Users&amp;lt;Username&amp;gt;\AppData\Roaming.purple\plugins  Install Perl:  Linux: It&amp;rsquo;s probably already installed.</description>
+    </item>
+    
+    <item>
+      <title>Forgotten the Installation Code for your Sagem Digital Set-Top Box?</title>
+      <link>/post/forgotten-the-installation-code-for-your-sagem-digitalset-top-box/</link>
+      <pubDate>Sat, 12 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/forgotten-the-installation-code-for-your-sagem-digitalset-top-box/</guid>
+      <description>It&amp;rsquo;s annoying when that or something similar happens — in my case, someone else had changed the code meaning I couldn&amp;rsquo;t retune the box to accept more channels.
+But all is not lost! Simply follow this quick guide. This is from a Sagem ITC 62 — it may or may not be the same process for other models:
+ Press Menu on your remote control. Select Installation. You&amp;rsquo;ll be presented with a screen where you have to enter an Installation Code.</description>
+    </item>
+    
+    <item>
+      <title>I&#39;ll Modify You in to Next Week.</title>
+      <link>/post/ill-modify-you-in-to-next-week/</link>
+      <pubDate>Fri, 24 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/ill-modify-you-in-to-next-week/</guid>
+      <description>A couple of days ago I came across this interesting quirk, and I had to do a double-take before I realised what had happened.
+Basically, I recently got a NAS and decided that I wanted my router to save its bandwidth usage statistics on it. That way whenever I perform an upgrade to the firmware on the router I won&amp;rsquo;t erase all the stats. This part is easy, as the firmware has the functionality for this.</description>
+    </item>
+    
+  </channel>
+</rss>

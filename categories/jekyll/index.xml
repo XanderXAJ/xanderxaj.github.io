@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jekyll on Forged Defiance</title>
+    <link>/categories/jekyll/</link>
+    <description>Recent content in Jekyll on Forged Defiance</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sun, 08 Nov 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/jekyll/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Deploying Jekyll website on git commit</title>
+      <link>/post/deploying-jekyll-website-on-git-commit/</link>
+      <pubDate>Sun, 08 Nov 2015 00:00:00 +0000</pubDate>
+      
+      <guid>/post/deploying-jekyll-website-on-git-commit/</guid>
+      <description>One reason for [migrating to static site generation][migrate-to-jekyll] is that the site becomes more straightforward to keep in version control systems such as git. And I do like version control; I naturally ran git init before I ran jekyll new!
+In my workflow, once I have made and committed changes locally, I push the changes remotely. But now I need to build and deploy the new version of the site. What if I could get that to happen automatically?</description>
+    </item>
+    
+  </channel>
+</rss>

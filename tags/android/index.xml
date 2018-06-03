@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Android on Forged Defiance</title>
+    <link>/tags/android/</link>
+    <description>Recent content in Android on Forged Defiance</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Mon, 21 Sep 2009 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Use Ogg Vorbis for Lag-free Ringtones on Android</title>
+      <link>/post/use-ogg-vorbis-for-lag-free-ringtones-on-android/</link>
+      <pubDate>Mon, 21 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/use-ogg-vorbis-for-lag-free-ringtones-on-android/</guid>
+      <description>Update 2010-06-21: If you want to use custom ringtones in the first place, install Rings Extended from the Android Market, then go to Home  Settings  Sound &amp; display  Phone ringtone. When it asks which application you want to use, select Rings Extended, and check the checkbox so that it doesn&#39;t ask you again.  This will work anywhere any application asks for you to pick a ringtone, assuming it asks via a standard means!</description>
+    </item>
+    
+    <item>
+      <title>Fix Superuser Permissions Hanging on Android</title>
+      <link>/post/fix-superuser-permissions-hanging-on-android/</link>
+      <pubDate>Sun, 14 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/fix-superuser-permissions-hanging-on-android/</guid>
+      <description>Update 2010-03-04: Added another potential solution courtesy of Blazt in the comments. Thanks!
+So, you have a phone with root permissions? Finding whenever a program requests root permissions the Superuser Permissions program hangs (usually with a black screen or even a force close) at the &amp;ldquo;SU request&amp;rdquo; screen?
+Fortunately there are a couple of things you can try, which I&amp;rsquo;ll detail for you.
+First, make sure USB Debugging is enabled. To do that:</description>
+    </item>
+    
+    <item>
+      <title>Unlock Android Device Using PUK Code</title>
+      <link>/post/unlock-android-device-using-puk-code/</link>
+      <pubDate>Fri, 12 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/unlock-android-device-using-puk-code/</guid>
+      <description>If you&amp;rsquo;ve ever got your PIN code wrong too many times and got your SIM locked, you were probably as surprised as I was when Android gives you no option to unlock the phone! Fortunately there&amp;rsquo;s an answer.
+To unlock your Android-based device go to the Emergency Call screen and enter in the following (replace the angled brackets with the appropriate info):
+**05*«PUK Code»*«Your new pin»*«Confirm your new pin»# So for example:</description>
+    </item>
+    
+  </channel>
+</rss>

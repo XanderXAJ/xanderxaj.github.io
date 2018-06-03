@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Music on Forged Defiance</title>
+    <link>/categories/music/</link>
+    <description>Recent content in Music on Forged Defiance</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Wed, 25 Aug 2010 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/music/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Making Ringtones Loop on Android</title>
+      <link>/post/making-ringtones-loop-on-android/</link>
+      <pubDate>Wed, 25 Aug 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/making-ringtones-loop-on-android/</guid>
+      <description>Update 2012-01-06: ICS appears to have a bug where the end of the file is chopped off, so ringtones do not loop properly. If I find or hear a solution I&amp;rsquo;ll update again!
+Update 2010-11-09: Added clarification on why I suggest having a short (sub-10 second) ringtone. You want it to loop, right? =P
+Following on from my previous articles on ringtones, I&amp;rsquo;ve finally worked out how to make ringtones loop seamlessly in Android.</description>
+    </item>
+    
+    <item>
+      <title>Ogg Vorbis Encoder for Windows</title>
+      <link>/post/ogg-vorbis-encoder-for-windows/</link>
+      <pubDate>Sun, 08 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/ogg-vorbis-encoder-for-windows/</guid>
+      <description>I not so long ago made a post about using Ogg Vorbis for Ringtones on Android, as it considerably reduces the lag between getting a phone call and the phone actually playing the ringtone. The same goes for music on the device–it just starts playing quicker.
+Anyway, just now I realised that I didn&amp;rsquo;t link to any encoders for it. So if anyone wondered what I used to accomplish the task, they&amp;rsquo;d be stuck!</description>
+    </item>
+    
+    <item>
+      <title>Use Ogg Vorbis for Lag-free Ringtones on Android</title>
+      <link>/post/use-ogg-vorbis-for-lag-free-ringtones-on-android/</link>
+      <pubDate>Mon, 21 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/use-ogg-vorbis-for-lag-free-ringtones-on-android/</guid>
+      <description>Update 2010-06-21: If you want to use custom ringtones in the first place, install Rings Extended from the Android Market, then go to Home  Settings  Sound &amp; display  Phone ringtone. When it asks which application you want to use, select Rings Extended, and check the checkbox so that it doesn&#39;t ask you again.  This will work anywhere any application asks for you to pick a ringtone, assuming it asks via a standard means!</description>
+    </item>
+    
+    <item>
+      <title>Strip ID3v1 Tags from MP3s in Linux</title>
+      <link>/post/strip-id3v1-tags-from-mp3s-in-linux/</link>
+      <pubDate>Wed, 16 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/strip-id3v1-tags-from-mp3s-in-linux/</guid>
+      <description>For kicks I decided to remove all the ID3v1 tags from my music files today. They were just getting in the way and served no useful purpose — since I had perfectly fine ID3v2 tags — so they just had to go.
+I cooked up a little command to help out here! But first, we need to make sure you have the command that we&amp;rsquo;re going to need here, id3v2. Install it from the official repositories using your distribution&amp;rsquo;s package manager.</description>
+    </item>
+    
+    <item>
+      <title>Phoenix Wright — Ace Attorney: Trials and Tribulations Soundtrack Download</title>
+      <link>/post/phoenix-wright-ace-attorney-trials-and-tribulations-soundtrack-download/</link>
+      <pubDate>Sat, 20 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/phoenix-wright-ace-attorney-trials-and-tribulations-soundtrack-download/</guid>
+      <description>That was a mouthful of a title.
+Over time I&amp;rsquo;ve played and thoroughly enjoyed the Ace Attorney series of games, from Phoenix Wright to Apollo Justice. But for those of you familiar to the series, you&amp;rsquo;ll notice that this is the soundtrack for the third game in the series. So why have I posted this one?
+You see, this soundtrack posting has a small story behind it. A while back a perfectionist of a soundtrack ripper called TheRedPriest ripped the soundtrack and uploaded it to his website.</description>
+    </item>
+    
+    <item>
+      <title>Advance Wars 2 Soundtrack Download</title>
+      <link>/post/advance-wars-2-soundtrack-download/</link>
+      <pubDate>Wed, 10 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/advance-wars-2-soundtrack-download/</guid>
+      <description>Andy, a Commanding Officer from Advance Wars 2  Ah, Advance Wars 2. What is it about you I thought was so amazing? The lovable, single-minded cast? The deep turn-based strategy? The little battle animations of infantry flying off the screen?
+Well, okay, all of those things are very good reasons to love the game, but there&amp;rsquo;s another one that sticks out for me too.
+The soundtrack!
+Once I completed the normal campaign and could buy the Sound Room, that was it.</description>
+    </item>
+    
+  </channel>
+</rss>

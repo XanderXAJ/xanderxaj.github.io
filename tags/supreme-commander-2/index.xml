@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Supreme Commander 2 on Forged Defiance</title>
+    <link>/tags/supreme-commander-2/</link>
+    <description>Recent content in Supreme Commander 2 on Forged Defiance</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Mon, 22 Mar 2010 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/supreme-commander-2/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Supreme Commander 2 Hidden Objectives List</title>
+      <link>/post/supreme-commander-2-hidden-objectives-list/</link>
+      <pubDate>Mon, 22 Mar 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/supreme-commander-2-hidden-objectives-list/</guid>
+      <description>Update 2010-03-26: Missed &amp;ldquo;Master of Pawns&amp;rdquo; hidden objective off of Cybran mission 6. Added it.
+Trying to find and complete all the secret missions in SupCom 2? Here&amp;rsquo;s a quick and dirty list of them all!
+This information is copied from the map files within the SupCom 2 directory.
+Feel free to copy and paste — a link back to this page would be appreciated!
+The List UEF  1 – Prime Target  Survivor  Survive the initial wave of Cybran attackers without losing any units.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on Forged Defiance</title>
+    <link>/categories/linux/</link>
+    <description>Recent content in Linux on Forged Defiance</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Tue, 16 Feb 2010 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Gnome Power Manager Hides Do Nothing</title>
+      <link>/post/gnome-power-manager-hides-do-nothing/</link>
+      <pubDate>Tue, 16 Feb 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/gnome-power-manager-hides-do-nothing/</guid>
+      <description>Found this rather handy post that tells you what to do in newer versions of Gnome Power Manager, which for some reason hide the Do Nothing options as default.
+Personally I find it irritating as the battery readout in all the distros of Linux I&amp;rsquo;ve used on my Eee report the battery at 0% over half an hour before the battery is actually dead. No amount of conditioning or software modification seems to fix it, so I&amp;rsquo;m living with it.</description>
+    </item>
+    
+    <item>
+      <title>Take Control of Your Settings: Configuring Synaptics Touchpads and Making GNOME Respect Them</title>
+      <link>/post/take-control-of-your-settings-configuring-synaptics-touchpads-and-making-gnome-respect-them/</link>
+      <pubDate>Mon, 18 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/take-control-of-your-settings-configuring-synaptics-touchpads-and-making-gnome-respect-them/</guid>
+      <description>Update 2010-05-28: If you&amp;rsquo;re using Fedora 13, then the configuration for synaptics touchpads is done through what is practically the old xorg.conf method. (This is as udev now handles devices instead of HAL.) Check out the Fedora Wiki for more information.
+The Problem Today I&amp;rsquo;ve been trying to configure the touchpad on my Eee PC 901 to my liking. It&amp;rsquo;s a Synaptics touchpad, and supports tracking multiple fingers, and I wanted to take more advantage of that.</description>
+    </item>
+    
+    <item>
+      <title>Adding your most recent Twitter tweet to your Pidgin status</title>
+      <link>/post/adding-your-most-recent-twitter-tweet-to-your-pidgin-status/</link>
+      <pubDate>Tue, 10 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/adding-your-most-recent-twitter-tweet-to-your-pidgin-status/</guid>
+      <description>This guide is intended to be a more up-to-date mirror of the guide you can find at Tech Jawa. All credit to them for the original instructions! Basically nothing changes, but I just like to be comprehensive.
+ Download the TwitterStatus plugin. It&amp;rsquo;ll be a file ending in .pl. Move this file to your Pidgin plugins folder. If any folders don&amp;rsquo;t exist, create them:  Linux: ~/.purple/plugins/ Windows Vista/7: C:\Users&amp;lt;Username&amp;gt;\AppData\Roaming.purple\plugins  Install Perl:  Linux: It&amp;rsquo;s probably already installed.</description>
+    </item>
+    
+    <item>
+      <title>Strip ID3v1 Tags from MP3s in Linux</title>
+      <link>/post/strip-id3v1-tags-from-mp3s-in-linux/</link>
+      <pubDate>Wed, 16 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/strip-id3v1-tags-from-mp3s-in-linux/</guid>
+      <description>For kicks I decided to remove all the ID3v1 tags from my music files today. They were just getting in the way and served no useful purpose — since I had perfectly fine ID3v2 tags — so they just had to go.
+I cooked up a little command to help out here! But first, we need to make sure you have the command that we&amp;rsquo;re going to need here, id3v2. Install it from the official repositories using your distribution&amp;rsquo;s package manager.</description>
+    </item>
+    
+  </channel>
+</rss>

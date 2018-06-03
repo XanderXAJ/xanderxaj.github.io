@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Games on Forged Defiance</title>
+    <link>/categories/games/</link>
+    <description>Recent content in Games on Forged Defiance</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sun, 02 Jun 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/games/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fixing Gran Turismo 5&#39;s slow loading times</title>
+      <link>/post/fixing-gran-turismo-5s-slow-loading-times/</link>
+      <pubDate>Sun, 02 Jun 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/post/fixing-gran-turismo-5s-slow-loading-times/</guid>
+      <description>Just this morning Gran Turismo 5 just out of nowhere started loading really slowly.
+I fixed this by signing out of PSN. It&amp;rsquo;s not ideal if you want to play online, but it&amp;rsquo;s worked for me.
+It should be noted that the problem can been seen from the XMB before you even launch the game – just after it displays the message that you&amp;rsquo;ve &amp;ldquo;signed in&amp;rdquo;, watch the clock and see how long it spins; this is the console synchronizing the time with PSN.</description>
+    </item>
+    
+    <item>
+      <title>Supreme Commander 2 Hidden Objectives List</title>
+      <link>/post/supreme-commander-2-hidden-objectives-list/</link>
+      <pubDate>Mon, 22 Mar 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/supreme-commander-2-hidden-objectives-list/</guid>
+      <description>Update 2010-03-26: Missed &amp;ldquo;Master of Pawns&amp;rdquo; hidden objective off of Cybran mission 6. Added it.
+Trying to find and complete all the secret missions in SupCom 2? Here&amp;rsquo;s a quick and dirty list of them all!
+This information is copied from the map files within the SupCom 2 directory.
+Feel free to copy and paste — a link back to this page would be appreciated!
+The List UEF  1 – Prime Target  Survivor  Survive the initial wave of Cybran attackers without losing any units.</description>
+    </item>
+    
+    <item>
+      <title>Phoenix Wright — Ace Attorney: Trials and Tribulations Soundtrack Download</title>
+      <link>/post/phoenix-wright-ace-attorney-trials-and-tribulations-soundtrack-download/</link>
+      <pubDate>Sat, 20 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/phoenix-wright-ace-attorney-trials-and-tribulations-soundtrack-download/</guid>
+      <description>That was a mouthful of a title.
+Over time I&amp;rsquo;ve played and thoroughly enjoyed the Ace Attorney series of games, from Phoenix Wright to Apollo Justice. But for those of you familiar to the series, you&amp;rsquo;ll notice that this is the soundtrack for the third game in the series. So why have I posted this one?
+You see, this soundtrack posting has a small story behind it. A while back a perfectionist of a soundtrack ripper called TheRedPriest ripped the soundtrack and uploaded it to his website.</description>
+    </item>
+    
+    <item>
+      <title>Advance Wars 2 Soundtrack Download</title>
+      <link>/post/advance-wars-2-soundtrack-download/</link>
+      <pubDate>Wed, 10 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/advance-wars-2-soundtrack-download/</guid>
+      <description>Andy, a Commanding Officer from Advance Wars 2  Ah, Advance Wars 2. What is it about you I thought was so amazing? The lovable, single-minded cast? The deep turn-based strategy? The little battle animations of infantry flying off the screen?
+Well, okay, all of those things are very good reasons to love the game, but there&amp;rsquo;s another one that sticks out for me too.
+The soundtrack!
+Once I completed the normal campaign and could buy the Sound Room, that was it.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Torchure on Forged Defiance</title>
+    <link>/categories/torchure/</link>
+    <description>Recent content in Torchure on Forged Defiance</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Wed, 21 Jul 2010 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/torchure/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Torchure 1.1.1 Released</title>
+      <link>/post/torchure-1-1-1-released/</link>
+      <pubDate>Wed, 21 Jul 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/torchure-1-1-1-released/</guid>
+      <description>I&amp;rsquo;ve uploaded a minor bugfix release for Torchure to the Android Market, which fixes the buggy systems preference not taking effect.
+Don&amp;rsquo;t remind me of the irony…</description>
+    </item>
+    
+    <item>
+      <title>Torchure 1.1 Released</title>
+      <link>/post/torchure-1-1-released/</link>
+      <pubDate>Sun, 18 Jul 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/torchure-1-1-released/</guid>
+      <description>My first Android Market update! Hope this goes well.
+This update includes:
+ A new colour! You can change the screen to red, to help preserve night vision. This makes the torch less effective, mind.  To switch colour, either swipe sideways on the screen or use the new menu option!  New preferences have been added to let you choose what colour you want on starting Torchure: white, red, or whatever you last used.</description>
+    </item>
+    
+    <item>
+      <title>Torchure for Android</title>
+      <link>/post/torchure-for-android/</link>
+      <pubDate>Wed, 14 Jul 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/torchure-for-android/</guid>
+      <description>Ever found yourself in need of a torch, but only had your phone handy? Look no further!
+Torchure (for Android) is a pretty simple application. It turns the screen white and, as default, whacks up the backlight to maximum. I did say simple, didn&amp;rsquo;t I?
+However, it also lets you change that backlight brightness (useful if, say, you&amp;rsquo;ve been to a particularly wild party and you need to step over some people without waking/blinding them) and lock it so you don&amp;rsquo;t go accidentally changing it.</description>
+    </item>
+    
+  </channel>
+</rss>

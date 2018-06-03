@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Migrating from Wordpress to Jekyll</title>
+  <meta property="og:title" content="Migrating from Wordpress to Jekyll" />
+  <meta name="twitter:title" content="Migrating from Wordpress to Jekyll" />
+  <meta name="description" content="I&rsquo;ve recently moved from the rather dynamic Wordpress to the rather static Jekyll. Can you tell?
+I&rsquo;ve come to like the idea of simply serving a bunch of static files instead of dynamically building them when required. Static files are simple, cheap to host and serve, introduce no further security problems beyond the web server and configuration, and easy enough for me, as a developer, to edit.
+I&rsquo;ve still got plenty of hurdles to work through &mdash; in particular how to host all my pictures &mdash; but this can all be worked out over time one way or another (including reverting back to Wordpress!">
+  <meta property="og:description" content="I&rsquo;ve recently moved from the rather dynamic Wordpress to the rather static Jekyll. Can you tell?
+I&rsquo;ve come to like the idea of simply serving a bunch of static files instead of dynamically building them when required. Static files are simple, cheap to host and serve, introduce no further security problems beyond the web server and configuration, and easy enough for me, as a developer, to edit.
+I&rsquo;ve still got plenty of hurdles to work through &mdash; in particular how to host all my pictures &mdash; but this can all be worked out over time one way or another (including reverting back to Wordpress!">
+  <meta name="twitter:description" content="I&rsquo;ve recently moved from the rather dynamic Wordpress to the rather static Jekyll. Can you tell?
+I&rsquo;ve come to like the idea of simply serving a bunch of static files instead of dynamically …">
+  <meta name="author" content="Alex Palmer"/>
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@XanderXAJ" />
+  <meta name="twitter:creator" content="@XanderXAJ" />
+  <meta property="og:url" content="/post/migrating-from-wordpress-to-jekyll/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Forged Defiance" />
+
+  <meta name="generator" content="Hugo 0.41" />
+  <link rel="canonical" href="/post/migrating-from-wordpress-to-jekyll/" />
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Forged Defiance">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="/css/syntax.css" /><link rel="stylesheet" href="/css/codeblock.css" />
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Forged Defiance</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="About" href="/about">About</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Contact" href="/contact">Contact</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Privacy Policy" href="/privacy-policy">Privacy Policy</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>Migrating from Wordpress to Jekyll</h1>
+                
+                
+                  <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on October 4, 2015
+  
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>I&rsquo;ve recently moved from the rather dynamic Wordpress to the rather static Jekyll.  Can you tell?</p>
+
+<p>I&rsquo;ve come to like the idea of simply serving a bunch of static files instead of dynamically building them when required.  Static files are simple, cheap to host and serve, introduce no further security problems beyond the web server and configuration, and easy enough for me, as a developer, to edit.</p>
+
+<p>I&rsquo;ve still got plenty of hurdles to work through &mdash; in particular how to host all my pictures &mdash; but this can all be worked out over time one way or another (including reverting back to Wordpress!).</p>
+
+<p>I just wanted to scrawl a few notes about my discoveries &mdash; and what better way to do it than within the blog itself!</p>
+
+<ul>
+<li><p>If you run <code>jekyll serve</code> inside of a VM (like Virtualbox) or container (like Docker), if you want to hit the site outside of the VM then make sure to specify <code>--host=0.0.0.0</code> so the server binds to the outside network interface instead of the loopback interface.</p></li>
+
+<li><p>I exported the Wordpress data by using the <a href="https://github.com/benbalter/wordpress-to-jekyll-exporter">jekyll-export plugin</a>.  The <a href="http://import.jekyllrb.com/docs/wordpress/">script recommended by Jekyll&rsquo;s own import website</a> produced a bunch of HTML which did not play well with Jekyll.</p></li>
+
+<li><p>One thing I wanted to do afterwards is convert many of the HTML entities to simpler equivalents, like <code>’</code> to <code>'</code> and <code>“</code> and <code>”</code> to <code>&quot;</code>.  I did this to make my files easily readable and editable, in the spirit of Markdown.  A <a href="http://serverfault.com/questions/440805/how-can-i-easily-convert-html-special-entities-from-a-standard-input-stream-in-l">quick way to do this</a> is to run the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> post in _posts/*; <span style="color:#66d9ef">do</span> cat <span style="color:#e6db74">&#34;</span>$post<span style="color:#e6db74">&#34;</span> | perl -n -mHTML::Entities -e <span style="color:#e6db74">&#39;use open ( &#34;:encoding(UTF-8)&#34;, &#34;:std&#34; ); print HTML::Entities::decode_entities($_) ;&#39;</span> &gt; $post.new <span style="color:#f92672">&amp;&amp;</span> mv $post.new $post; <span style="color:#66d9ef">done</span></code></pre></div>
+<p>You&rsquo;ll also need to convert any pages that were brought across too.</p>
+
+<p>The <code>use open ( &quot;:encoding(UTF-8)&quot;, &quot;:std&quot; );</code> part is of as it instructs perl that <a href="http://blog.thewebsitepeople.org/2012/06/perl-default-to-utf-8-encoding/">all input and output streams are UTF-8</a>.</p></li>
+
+<li><p>You see that code block nested inside the list above?  That <a href="https://github.com/jekyll/jekyll/issues/588">cannot be done with Jekyll and Markdown</a>.  This is because the <code>{% raw %}{% highlight %}{% endraw %}</code> code Jekyll uses is substituted before the markdown is parsed.  If you want highlighting, this means you need to use the <code>~~~</code> fenced code blocks.</p>
+
+<p>You could try <a href="https://github.com/mvdbos/kramdown-with-pygments">adding pygments support to Kramdown</a>.  Alternatively, you can switch to a renderer, like <a href="https://github.com/vmg/redcarpet">redcarpet</a>, that does support it.  This may well come and bite me in the future.</p></li>
+</ul>
+
+<p>After all of these changes, my markup (or should I say markdown?) started to look respectable &mdash; although there&rsquo;s a long way to go!</p>
+
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="/post/larger-tab-close-buttons-in-firefox/" data-toggle="tooltip" data-placement="top" title="Larger tab close buttons in Firefox">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="/post/troubleshooting-keyboard-shortcuts-in-sublime-text/" data-toggle="tooltip" data-placement="top" title="Troubleshooting keyboard shortcuts in Sublime Text">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="https://github.com/XanderXAJ" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/XanderXAJ" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://stackoverflow.com/users/5893392/alex-palmer" title="StackOverflow">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/channel/UCIqfeTPDnN9doZzKlVXpqww" title="Youtube">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://xanderxaj.bandcamp.com/" title="Bandcamp">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-bandcamp fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="https://xanderx.com">Alex Palmer</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;
+          2018
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="/">Forged Defiance</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.41</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="/js/main.js"></script><script> renderMathInElement(document.body); </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script>
+<script src="/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+  </body>
+</html>
+

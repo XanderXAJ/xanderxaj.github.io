@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Android on Forged Defiance</title>
+    <link>/categories/android/</link>
+    <description>Recent content in Android on Forged Defiance</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sat, 01 Jun 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/android/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Searchlight 1.6</title>
+      <link>/post/searchlight-1-6-2/</link>
+      <pubDate>Sat, 01 Jun 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/post/searchlight-1-6-2/</guid>
+      <description>I&amp;rsquo;ve released another update to Searchlight!
+This one contains some experimental code for devices that use the CyanogenMod SysFS interface to toggle their light. Naturally, given it&amp;rsquo;s experimental, it might not work. :-) That&amp;rsquo;s because I don&amp;rsquo;t have any devices that actually make use of it.
+Get in touch via Google Play or the contact page if you have problems, or just want to give me a good word!
+As always, you can download the update via Google Play or directly.</description>
+    </item>
+    
+    <item>
+      <title>Searchlight 1.5</title>
+      <link>/post/searchlight-1-5/</link>
+      <pubDate>Sun, 12 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/post/searchlight-1-5/</guid>
+      <description>Looks like I forgot to write about this when I released it in February, but Searchlight 1.5 is out!
+The big thing this update adds is a widget that can be added to your launcher or to your lock screen on 4.2+ devices. That means you can toggle the light without unlocking the device!
+As always you can download it from Google Play and directly from this site.
+Also, for the sake of completeness, since I never got around to writing about version 1.</description>
+    </item>
+    
+    <item>
+      <title>Searchlight 1.3 is out!</title>
+      <link>/post/searchlight-1-3-is-out/</link>
+      <pubDate>Tue, 28 Aug 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/post/searchlight-1-3-is-out/</guid>
+      <description>It&amp;rsquo;s been 8 months since the previous release (and I know I skipped even mentioning the previous release here!), but it&amp;rsquo;s worth it as I&amp;rsquo;ve tackled a rather serious bug that would cause the wakelock to be held even after the torch has been switched off.
+If you didn&amp;rsquo;t get a word of what I just said, it means that Searchlight will no longer use battery power unnecessarily. Yay!
+Download it direct or from Google Play.</description>
+    </item>
+    
+    <item>
+      <title>Searchlight 1.1 released</title>
+      <link>/post/searchlight-1-1-released/</link>
+      <pubDate>Fri, 26 Aug 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/post/searchlight-1-1-released/</guid>
+      <description>Searchlight, my application for lighting up your world (or at least a few metres in front of you) using your Android device&amp;rsquo;s LED has been updated to 1.1.
+This update brings better behaviour on HTC Sense devices, where the screen is kept on (as this is necessary to keep the device&amp;rsquo;s light switched on). In addition, when the screen is switched off (manually) and switched on again, it can switch on the light again; previously it didn&amp;rsquo;t switch the light back on, yet still ran the service.</description>
+    </item>
+    
+    <item>
+      <title>Searchlight: An Android LED torch powered by the Search button</title>
+      <link>/post/searchlight-an-android-led-torch-powered-by-the-search-button/</link>
+      <pubDate>Mon, 04 Jul 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/post/searchlight-an-android-led-torch-powered-by-the-search-button/</guid>
+      <description>In case there aren&amp;rsquo;t enough of them out there, I&amp;rsquo;ve decided to chip in my own effort on the Android LED torch scene.
+In a sort of sequel to my first Android app Torchure, I have just released Searchlight on to the Android Market.
+The unique thing about this flashlight is that it&amp;rsquo;s activated by long-pressing the Search button. Each time you do this, the LED will toggle on or off.</description>
+    </item>
+    
+    <item>
+      <title>Making Ringtones Loop on Android</title>
+      <link>/post/making-ringtones-loop-on-android/</link>
+      <pubDate>Wed, 25 Aug 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/making-ringtones-loop-on-android/</guid>
+      <description>Update 2012-01-06: ICS appears to have a bug where the end of the file is chopped off, so ringtones do not loop properly. If I find or hear a solution I&amp;rsquo;ll update again!
+Update 2010-11-09: Added clarification on why I suggest having a short (sub-10 second) ringtone. You want it to loop, right? =P
+Following on from my previous articles on ringtones, I&amp;rsquo;ve finally worked out how to make ringtones loop seamlessly in Android.</description>
+    </item>
+    
+    <item>
+      <title>Torchure 1.1.1 Released</title>
+      <link>/post/torchure-1-1-1-released/</link>
+      <pubDate>Wed, 21 Jul 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/torchure-1-1-1-released/</guid>
+      <description>I&amp;rsquo;ve uploaded a minor bugfix release for Torchure to the Android Market, which fixes the buggy systems preference not taking effect.
+Don&amp;rsquo;t remind me of the irony…</description>
+    </item>
+    
+    <item>
+      <title>Torchure 1.1 Released</title>
+      <link>/post/torchure-1-1-released/</link>
+      <pubDate>Sun, 18 Jul 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/torchure-1-1-released/</guid>
+      <description>My first Android Market update! Hope this goes well.
+This update includes:
+ A new colour! You can change the screen to red, to help preserve night vision. This makes the torch less effective, mind.  To switch colour, either swipe sideways on the screen or use the new menu option!  New preferences have been added to let you choose what colour you want on starting Torchure: white, red, or whatever you last used.</description>
+    </item>
+    
+    <item>
+      <title>Torchure for Android</title>
+      <link>/post/torchure-for-android/</link>
+      <pubDate>Wed, 14 Jul 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/torchure-for-android/</guid>
+      <description>Ever found yourself in need of a torch, but only had your phone handy? Look no further!
+Torchure (for Android) is a pretty simple application. It turns the screen white and, as default, whacks up the backlight to maximum. I did say simple, didn&amp;rsquo;t I?
+However, it also lets you change that backlight brightness (useful if, say, you&amp;rsquo;ve been to a particularly wild party and you need to step over some people without waking/blinding them) and lock it so you don&amp;rsquo;t go accidentally changing it.</description>
+    </item>
+    
+    <item>
+      <title>Ogg Vorbis Encoder for Windows</title>
+      <link>/post/ogg-vorbis-encoder-for-windows/</link>
+      <pubDate>Sun, 08 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/ogg-vorbis-encoder-for-windows/</guid>
+      <description>I not so long ago made a post about using Ogg Vorbis for Ringtones on Android, as it considerably reduces the lag between getting a phone call and the phone actually playing the ringtone. The same goes for music on the device–it just starts playing quicker.
+Anyway, just now I realised that I didn&amp;rsquo;t link to any encoders for it. So if anyone wondered what I used to accomplish the task, they&amp;rsquo;d be stuck!</description>
+    </item>
+    
+    <item>
+      <title>Use Ogg Vorbis for Lag-free Ringtones on Android</title>
+      <link>/post/use-ogg-vorbis-for-lag-free-ringtones-on-android/</link>
+      <pubDate>Mon, 21 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/use-ogg-vorbis-for-lag-free-ringtones-on-android/</guid>
+      <description>Update 2010-06-21: If you want to use custom ringtones in the first place, install Rings Extended from the Android Market, then go to Home  Settings  Sound &amp; display  Phone ringtone. When it asks which application you want to use, select Rings Extended, and check the checkbox so that it doesn&#39;t ask you again.  This will work anywhere any application asks for you to pick a ringtone, assuming it asks via a standard means!</description>
+    </item>
+    
+    <item>
+      <title>Changing GPRS, MMS and Access Point Settings on Android</title>
+      <link>/post/changing-gprs-mms-and-access-point-settings-on-android/</link>
+      <pubDate>Fri, 10 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/changing-gprs-mms-and-access-point-settings-on-android/</guid>
+      <description>I feel kind of silly for falling foul of this, but I guess it&amp;rsquo;s just a case of going against what you&amp;rsquo;re used to.
+I was looking for a way to check on my MMS settings on Android. On just about every other phone I&amp;rsquo;ve used it&amp;rsquo;s been a submenu of the messaging application, so that&amp;rsquo;s where I went — except I couldn&amp;rsquo;t find anything pertaining to access point settings! I mean, if one phone does it one way, all phones do it that way, right?</description>
+    </item>
+    
+    <item>
+      <title>Fix Superuser Permissions Hanging on Android</title>
+      <link>/post/fix-superuser-permissions-hanging-on-android/</link>
+      <pubDate>Sun, 14 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/fix-superuser-permissions-hanging-on-android/</guid>
+      <description>Update 2010-03-04: Added another potential solution courtesy of Blazt in the comments. Thanks!
+So, you have a phone with root permissions? Finding whenever a program requests root permissions the Superuser Permissions program hangs (usually with a black screen or even a force close) at the &amp;ldquo;SU request&amp;rdquo; screen?
+Fortunately there are a couple of things you can try, which I&amp;rsquo;ll detail for you.
+First, make sure USB Debugging is enabled. To do that:</description>
+    </item>
+    
+    <item>
+      <title>Unlock Android Device Using PUK Code</title>
+      <link>/post/unlock-android-device-using-puk-code/</link>
+      <pubDate>Fri, 12 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/unlock-android-device-using-puk-code/</guid>
+      <description>If you&amp;rsquo;ve ever got your PIN code wrong too many times and got your SIM locked, you were probably as surprised as I was when Android gives you no option to unlock the phone! Fortunately there&amp;rsquo;s an answer.
+To unlock your Android-based device go to the Emergency Call screen and enter in the following (replace the angled brackets with the appropriate info):
+**05*«PUK Code»*«Your new pin»*«Confirm your new pin»# So for example:</description>
+    </item>
+    
+  </channel>
+</rss>

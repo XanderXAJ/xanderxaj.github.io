@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software on Forged Defiance</title>
+    <link>/categories/software/</link>
+    <description>Recent content in Software on Forged Defiance</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sun, 18 Jul 2010 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/software/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Torchure 1.1 Released</title>
+      <link>/post/torchure-1-1-released/</link>
+      <pubDate>Sun, 18 Jul 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/torchure-1-1-released/</guid>
+      <description>My first Android Market update! Hope this goes well.
+This update includes:
+ A new colour! You can change the screen to red, to help preserve night vision. This makes the torch less effective, mind.  To switch colour, either swipe sideways on the screen or use the new menu option!  New preferences have been added to let you choose what colour you want on starting Torchure: white, red, or whatever you last used.</description>
+    </item>
+    
+    <item>
+      <title>Torchure for Android</title>
+      <link>/post/torchure-for-android/</link>
+      <pubDate>Wed, 14 Jul 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/torchure-for-android/</guid>
+      <description>Ever found yourself in need of a torch, but only had your phone handy? Look no further!
+Torchure (for Android) is a pretty simple application. It turns the screen white and, as default, whacks up the backlight to maximum. I did say simple, didn&amp;rsquo;t I?
+However, it also lets you change that backlight brightness (useful if, say, you&amp;rsquo;ve been to a particularly wild party and you need to step over some people without waking/blinding them) and lock it so you don&amp;rsquo;t go accidentally changing it.</description>
+    </item>
+    
+    <item>
+      <title>My Personal Ninite Installer</title>
+      <link>/post/my-personal-ninite-installer/</link>
+      <pubDate>Tue, 04 May 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/my-personal-ninite-installer/</guid>
+      <description>This is basically for my own future reference, but the last few Windows installs I&amp;rsquo;ve done I&amp;rsquo;ve used Ninite to install most of my favourite software — easily and quickly!
+If you&amp;rsquo;ve yet to discover it, check it out! Or if you&amp;rsquo;d rather just install software other people recommend wihout thinking, you can install my particular favourite software loadout.
+Update 15:42 UTC+0100: Just a couple of things that I should mention about the Ninite installer:</description>
+    </item>
+    
+    <item>
+      <title>Introducing BitButcher — An Open-Source NDS ROM Trimmer</title>
+      <link>/post/introducing-bitbutcher-an-open-source-nds-rom-trimmer/</link>
+      <pubDate>Wed, 27 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/introducing-bitbutcher-an-open-source-nds-rom-trimmer/</guid>
+      <description>I&amp;rsquo;ve always wanted to make a software headline like that. Eee!
+Welcome to BitButcher, a small program designed to do one thing and one thing well: trim Nintendo DS ROMs.
+I got a bit fed up of the ones already out there, most because they were either closed-source or they had bad GUI design combined with clashing backgrounds. Search as I may, I couldn&amp;rsquo;t find anything that fit my demands.</description>
+    </item>
+    
+    <item>
+      <title>Take Control of Your Settings: Configuring Synaptics Touchpads and Making GNOME Respect Them</title>
+      <link>/post/take-control-of-your-settings-configuring-synaptics-touchpads-and-making-gnome-respect-them/</link>
+      <pubDate>Mon, 18 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/take-control-of-your-settings-configuring-synaptics-touchpads-and-making-gnome-respect-them/</guid>
+      <description>Update 2010-05-28: If you&amp;rsquo;re using Fedora 13, then the configuration for synaptics touchpads is done through what is practically the old xorg.conf method. (This is as udev now handles devices instead of HAL.) Check out the Fedora Wiki for more information.
+The Problem Today I&amp;rsquo;ve been trying to configure the touchpad on my Eee PC 901 to my liking. It&amp;rsquo;s a Synaptics touchpad, and supports tracking multiple fingers, and I wanted to take more advantage of that.</description>
+    </item>
+    
+    <item>
+      <title>Stop Exact Audio Copy Crashing on Windows 7</title>
+      <link>/post/stop-exact-audio-copy-crashing-on-windows-7/</link>
+      <pubDate>Fri, 18 Dec 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/stop-exact-audio-copy-crashing-on-windows-7/</guid>
+      <description>When I tried to rip a disc using Exact Audio Copy on Windows 7 x64, I found it kept crashing as soon as the rip tried to start. Bummer.
+Remembering the previous times I&amp;rsquo;ve used EAC, when you click a button to start a rip, it asks you where you want to save the ripped files.
+Turns out if you set EAC to save into a predetermined location instead of asking, EAC manages to rip perfectly fine!</description>
+    </item>
+    
+    <item>
+      <title>Adding your most recent Twitter tweet to your Pidgin status</title>
+      <link>/post/adding-your-most-recent-twitter-tweet-to-your-pidgin-status/</link>
+      <pubDate>Tue, 10 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/adding-your-most-recent-twitter-tweet-to-your-pidgin-status/</guid>
+      <description>This guide is intended to be a more up-to-date mirror of the guide you can find at Tech Jawa. All credit to them for the original instructions! Basically nothing changes, but I just like to be comprehensive.
+ Download the TwitterStatus plugin. It&amp;rsquo;ll be a file ending in .pl. Move this file to your Pidgin plugins folder. If any folders don&amp;rsquo;t exist, create them:  Linux: ~/.purple/plugins/ Windows Vista/7: C:\Users&amp;lt;Username&amp;gt;\AppData\Roaming.purple\plugins  Install Perl:  Linux: It&amp;rsquo;s probably already installed.</description>
+    </item>
+    
+    <item>
+      <title>Ogg Vorbis Encoder for Windows</title>
+      <link>/post/ogg-vorbis-encoder-for-windows/</link>
+      <pubDate>Sun, 08 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/ogg-vorbis-encoder-for-windows/</guid>
+      <description>I not so long ago made a post about using Ogg Vorbis for Ringtones on Android, as it considerably reduces the lag between getting a phone call and the phone actually playing the ringtone. The same goes for music on the device–it just starts playing quicker.
+Anyway, just now I realised that I didn&amp;rsquo;t link to any encoders for it. So if anyone wondered what I used to accomplish the task, they&amp;rsquo;d be stuck!</description>
+    </item>
+    
+    <item>
+      <title>I&#39;ll Modify You in to Next Week.</title>
+      <link>/post/ill-modify-you-in-to-next-week/</link>
+      <pubDate>Fri, 24 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/ill-modify-you-in-to-next-week/</guid>
+      <description>A couple of days ago I came across this interesting quirk, and I had to do a double-take before I realised what had happened.
+Basically, I recently got a NAS and decided that I wanted my router to save its bandwidth usage statistics on it. That way whenever I perform an upgrade to the firmware on the router I won&amp;rsquo;t erase all the stats. This part is easy, as the firmware has the functionality for this.</description>
+    </item>
+    
+    <item>
+      <title>Reset iTunes Dimensions to Fit Resolution</title>
+      <link>/post/reset-itunes-dimensions-to-fit-resolution/</link>
+      <pubDate>Thu, 25 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/reset-itunes-dimensions-to-fit-resolution/</guid>
+      <description>Here&amp;rsquo;s a handy little feature that I find useful. If you ever play around with the size or location of the iTunes window and want to make it fit the screen better, simply follow the instructions:
+ If you&amp;rsquo;re on Windows: hold Shift and either double-click the title bar or single-click the maximise button (The title bar is the small bar at the top that says &amp;ldquo;iTunes&amp;rdquo; in the middle.) If you&amp;rsquo;re on Mac OS: hold Option and click the Zoom (+) button  This&amp;rsquo;ll reset the size and position to its default for your screen resolution.</description>
+    </item>
+    
+  </channel>
+</rss>

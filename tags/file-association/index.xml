@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>File Association on Forged Defiance</title>
+    <link>/tags/file-association/</link>
+    <description>Recent content in File Association on Forged Defiance</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Wed, 17 Jun 2009 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/file-association/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fix Windows Sidebar Gadget File Association in Vista</title>
+      <link>/post/fix-windows-sidebar-gadget-file-association-in-vista/</link>
+      <pubDate>Wed, 17 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/fix-windows-sidebar-gadget-file-association-in-vista/</guid>
+      <description>Have you ever somehow managed to break the Gadget file association in Windows Vista? I have somehow, and that means that you can no longer install gadgets. Double-clicking a .gadget file does nothing, and the Sidebar offers no option to install gadgets itself!
+If you try to re-associate the files with Windows Sidebar by telling to Open With… and navigating to the Sidebar executable, you&amp;rsquo;ll have found that that doesn&amp;rsquo;t help — all it does is bring the Sidebar to focus, but doesn&amp;rsquo;t install the gadget.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Superuser on Forged Defiance</title>
+    <link>/tags/superuser/</link>
+    <description>Recent content in Superuser on Forged Defiance</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sun, 14 Jun 2009 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/superuser/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fix Superuser Permissions Hanging on Android</title>
+      <link>/post/fix-superuser-permissions-hanging-on-android/</link>
+      <pubDate>Sun, 14 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/fix-superuser-permissions-hanging-on-android/</guid>
+      <description>Update 2010-03-04: Added another potential solution courtesy of Blazt in the comments. Thanks!
+So, you have a phone with root permissions? Finding whenever a program requests root permissions the Superuser Permissions program hangs (usually with a black screen or even a force close) at the &amp;ldquo;SU request&amp;rdquo; screen?
+Fortunately there are a couple of things you can try, which I&amp;rsquo;ll detail for you.
+First, make sure USB Debugging is enabled. To do that:</description>
+    </item>
+    
+  </channel>
+</rss>
