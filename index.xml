@@ -6,10 +6,21 @@
     <description>Recent content on Forged Defiance</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Sun, 03 Jun 2018 09:24:41 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 23 Jun 2018 20:23:48 +0100</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Run Apache Directory Studio With Java 10</title>
+      <link>/post/run-apache-directory-studio-with-java-10/</link>
+      <pubDate>Sat, 23 Jun 2018 20:23:48 +0100</pubDate>
+      
+      <guid>/post/run-apache-directory-studio-with-java-10/</guid>
+      <description>Add --add-modules=ALL-SYSTEM to the end of ApacheDirectoryStudio.ini.
+You can find this file:
+ On Linux: in the installation folder On Mac OS X: /Applications/ApacheDirectoryStudio.app/Contents/ApacheDirectoryStudio.ini On Windows: in the installation folder  Source: http://directory.apache.org/studio/faqs.html</description>
+    </item>
     
     <item>
       <title>Re-use Commit Message in Git</title>
