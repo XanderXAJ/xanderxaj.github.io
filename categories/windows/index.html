@@ -256,10 +256,31 @@
               </p>
               <div class="post-entry">
                 
-                  When I tried to rip a disc using Exact Audio Copy on Windows 7 x64, I found it kept crashing as soon as the rip tried to start. Bummer.
-Remembering the previous times I&rsquo;ve used EAC, when you click a button to start a rip, it asks you where you want to save the ripped files.
-Turns out if you set EAC to save into a predetermined location instead of asking, EAC manages to rip perfectly fine!
-                  <a href="/post/stop-exact-audio-copy-crashing-on-windows-7/" class="post-read-more">[Read More]</a>
+                  <p>When I tried to rip a disc using Exact Audio Copy on Windows 7 x64, I found it kept crashing as soon as the rip tried to start.  Bummer.</p>
+
+<p>Remembering the previous times I&rsquo;ve used <acronym title="Exact Audio Copy">EAC</acronym>, when you click a button to start a rip, it asks you where you want to save the ripped files.</p>
+
+<p>Turns out if you set <acronym title="Exact Audio Copy">EAC</acronym> to save into a predetermined location instead of asking, <acronym title="Exact Audio Copy">EAC</acronym> manages to rip perfectly fine!</p>
+
+<p>So, here&rsquo;s a step-by-step guide to stop it crashing:</p>
+
+<ol>
+<li>Open <strong>Exact Audio Copy</strong>.</li>
+<li>Go to <strong>File &gt; <acronym title="Exact Audio Copy">EAC</acronym> Options</strong>.</li>
+<li>Click the <strong>Directories tab</strong>.</li>
+
+<li><p>Instead of &ldquo;Ask every time&rdquo;, choose <strong>Use this Directory</strong>, and pick a directory of your choosing.</p>
+
+<ul>
+<li>I personally use:
+<pre>C:\Users&lt;Username&gt;\Music\Extracted</pre></li>
+</ul></li>
+
+<li><p>Click <strong>OK</strong>.</p></li>
+</ol>
+
+<p>That&rsquo;s it!  Good luck.</p>
+
                 
               </div>
 
@@ -288,9 +309,14 @@ Turns out if you set EAC to save into a predetermined location instead of asking
               </p>
               <div class="post-entry">
                 
-                  If you&rsquo;re fortunate enough to be using Windows 7, then no doubt you&rsquo;ve noticed the new taskbar. Well, here&rsquo;s a couple of golden nuggets of info for you:
-Did you know that all the icons you line up on the taskbar automatically get keyboard shortcuts? If you want to launch one of them, just press the Windows key and the number of the program&rsquo;s position along the list. So to launch the first program, press Win+1; to launch the second, press Win+2; this continues all the way up to Win+0, which opens the tenth program.
-                  <a href="/post/the-windows-7-taskbar-keyboard-goodness/" class="post-read-more">[Read More]</a>
+                  <p>If you&rsquo;re fortunate enough to be using Windows 7, then no doubt you&rsquo;ve noticed the new taskbar.  Well, here&rsquo;s a couple of golden nuggets of info for you:</p>
+
+<p>Did you know that all the icons you line up on the taskbar automatically get keyboard shortcuts?  If you want to <strong>launch one of them</strong>, just <strong>press the Windows key and the number of the program&rsquo;s position along the list</strong>.  So to launch the first program, press Win+1; to launch the second, press Win+2; this continues all the way up to Win+0, which opens the tenth program.  Cool, huh?  This is the same behaviour as the Quick Launch Bar in Windows Vista (which I used extensively).</p>
+
+<p>Even better, if you want to open one of those programs <strong>with admin permissions</strong> (for example, using Notepad to edit the hosts file), you can press <strong>Win+Ctrl+Shift+<Number></strong>, accept any <acronym title="User Account Control">UAC</acronym> prompt, and <em>voilà</em>!  Program a la admin.</p>
+
+<p>I love keyboard shortcuts.</p>
+
                 
               </div>
 
@@ -319,10 +345,20 @@ Did you know that all the icons you line up on the taskbar automatically get key
               </p>
               <div class="post-entry">
                 
-                  Backups in Windows 7 have been greatly improved, what with the fact you can restore from them (without needing to take a separate backup) and that they backup to networks better.
-However, there has been one change which caught me out, thanks to a subtle and ambiguous rewording of the backups dialog.
-When backups are taken, as default only user folders that were created by Windows are backed up. For reference that&rsquo;s Appdata, Contacts, Desktop, Downloads, Favorites, Links, Music, Pictures, Saved Games, Searches and Videos.
-                  <a href="/post/a-word-of-warning-check-your-windows-7-backup-settings/" class="post-read-more">[Read More]</a>
+                  <p>Backups in Windows 7 have been greatly improved, what with the fact you can restore from them (without needing to take a separate backup) and that they backup to networks better.</p>
+
+<p>However, there has been one change which caught me out, thanks to a subtle and ambiguous rewording of the backups dialog.</p>
+
+<p>When backups are taken, <strong>as default <em>only</em> user folders that were created by Windows are backed up</strong>.  For reference that&rsquo;s Appdata, Contacts, Desktop, Downloads, Favorites, Links, Music, Pictures, Saved Games, Searches and Videos.</p>
+
+<p>This is different from the default behaviour of backups in Windows Vista, which backed up everything in C:\Users&lt;Your Username&gt;</p>
+
+<p>If you make any folders of your own at the root of your user folder, they will <strong><em>NOT</em></strong> be backed up.  If you want to back those up, I recommend you go through the backup wizard again and say that you want to configure what gets backed up yourself.  Select more locations, and navigate through the filesystem until you check C:\Users&lt;Your Username&gt;.</p>
+
+<p>I lost a few files when I reinstalled 7 for unrelated reasons, and lost the contents of my Code and Programs folders.  I&rsquo;m lucky that I had only been using the <acronym title="Operating System">OS</acronym> for a couple of weeks–had I been using it longer I could have lost a lot more.  At least it&rsquo;s given me an excuse to code!</p>
+
+<p>Just a friendly warning for fellow Windows 7 users who are as fussy about file organisation as I am.</p>
+
                 
               </div>
 
@@ -351,9 +387,42 @@ When backups are taken, as default only user folders that were created by Window
               </p>
               <div class="post-entry">
                 
-                  This guide is intended to be a more up-to-date mirror of the guide you can find at Tech Jawa. All credit to them for the original instructions! Basically nothing changes, but I just like to be comprehensive.
- Download the TwitterStatus plugin. It&rsquo;ll be a file ending in .pl. Move this file to your Pidgin plugins folder. If any folders don&rsquo;t exist, create them:  Linux: ~/.purple/plugins/ Windows Vista/7: C:\Users&lt;Username&gt;\AppData\Roaming.purple\plugins  Install Perl:  Linux: It&rsquo;s probably already installed.
-                  <a href="/post/adding-your-most-recent-twitter-tweet-to-your-pidgin-status/" class="post-read-more">[Read More]</a>
+                  <p style="text-align: justify;">
+  This guide is intended to be a more up-to-date mirror of the guide you can find at <a href="http://www.techjawa.com/2008/08/15/twitterpidgin-aimim-status-sync-guide/">Tech Jawa</a>.  All credit to them for the original instructions!
+</p>
+
+<p>Basically nothing changes, but I just like to be comprehensive.</p>
+
+<ol>
+<li><a href="http://code.google.com/p/pidgin-twitterstatus/">Download the TwitterStatus plugin</a>.  It&rsquo;ll be a file ending in <em>.pl</em>.</li>
+<li>Move this file to your Pidgin plugins folder.  If any folders don&rsquo;t exist, create them:
+
+<ul>
+<li><strong>Linux:</strong> ~/.purple/plugins/</li>
+<li><strong>Windows Vista/7:</strong> C:\Users&lt;Username&gt;\AppData\Roaming.purple\plugins</li>
+</ul></li>
+<li>Install Perl:
+
+<ul>
+<li><strong>Linux:</strong> It&rsquo;s probably already installed.</li>
+<li><strong>Windows:</strong> Use the <a href="http://strawberryperl.com/">most recent Strawberry <acronym title="Practical Extraction and Report Language">Perl</acronym> installation:</a></li>
+</ul></li>
+<li>Install  the XML::XPath module into perl:
+
+<ol>
+<li>Open a command line.</li>
+<li>Run <code>perl -MCPAN -e shell</code>.</li>
+<li>Type <code>install XML::XPath</code> and then hit Return.  Wait for the install to finish.</li>
+<li>Type <code>quit</code> and hit Return, then close your command line</li>
+</ol></li>
+<li>Start (or restart) Pidgin.</li>
+<li>From the contact list, go to <strong>Help &gt; About</strong>.  At the very bottom of the textbox that appears it should say <strong>&ldquo;Perl: Enabled&rdquo;</strong>.  If it does not, repeat steps 3 and 4.</li>
+<li>From the contact list, go to <strong>Tools &gt; Plug-ins</strong>.  Find Twitter Status on the list, <strong>check the checkbox</strong> next to it, and then click <strong>Configure Plug-in.</strong></li>
+<li>In the configuration window that appears, <strong>type in your username in the top textbox</strong> (labelled Username, surprise surprise).  Configure anything else you want to your liking.</li>
+</ol>
+
+<p>That&rsquo;s it!  You do not need to set this up again, it is a one-off set up for the computer.  Of course, you will need to go through this procedure again if you have multiple computers you use Pidgin on, or if you format and reinstall your <acronym title="Operating System">OS</acronym>.</p>
+
                 
               </div>
 
@@ -382,9 +451,18 @@ When backups are taken, as default only user folders that were created by Window
               </p>
               <div class="post-entry">
                 
-                  I not so long ago made a post about using Ogg Vorbis for Ringtones on Android, as it considerably reduces the lag between getting a phone call and the phone actually playing the ringtone. The same goes for music on the device–it just starts playing quicker.
-Anyway, just now I realised that I didn&rsquo;t link to any encoders for it. So if anyone wondered what I used to accomplish the task, they&rsquo;d be stuck!
-                  <a href="/post/ogg-vorbis-encoder-for-windows/" class="post-read-more">[Read More]</a>
+                  <p>I not so long ago made a post about <a href="http://xanderx.com/2009/09/21/use-ogg-vorbis-for-lag-free-ringtones-on-android/">using Ogg Vorbis for Ringtones on Android</a>, as it considerably reduces the lag between getting a phone call and the phone actually playing the ringtone.  The same goes for music on the device–it just starts playing quicker.</p>
+
+<p>Anyway, just now I realised that I didn&rsquo;t link to any encoders for it.  So if anyone wondered what I used to accomplish the task, they&rsquo;d be stuck!</p>
+
+<p>So here&rsquo;s a quick update to fill in in the gaps:</p>
+
+<p>If you&rsquo;re wanting to just convert some files you already have into Ogg Vorbis, I&rsquo;d recommend <a href="http://www.rarewares.org/ogg-oggdropxpd.php">oggdropXPd</a>.  Open the program, right-click on the &ldquo;dropbox&rdquo; that appears to configure it, then when it&rsquo;s all done, drag and drop the files you want to convert onto the dropbox, and wait!  It works fine under Windows Vista (32-bit) and Windows 7 (64-bit).</p>
+
+<p>If you&rsquo;re wanting to both edit a music track into a short ringtone and convert to Ogg Vorbis, <a href="http://audacity.sourceforge.net/">Audacity</a> did the job for me.  It&rsquo;s open-source and supports a number of file types (including MP3 if you download a separate plug-in), so hopefully it&rsquo;ll work for you too.  Again, it works fine in Windows Vista (32-bit) and Windows 7 (64-bit).</p>
+
+<p>The settings I used for the Ogg Vorbis files on my G1 where 128kbps CBR.  You don&rsquo;t need much quality because the phone&rsquo;s speaker isn&rsquo;t exactly an orchestra, and I used Constant Bitrate under the assumption it would take less CPU to decode. If you know otherwise, please let me know!</p>
+
                 
               </div>
 
@@ -413,11 +491,16 @@ Anyway, just now I realised that I didn&rsquo;t link to any encoders for it. So
               </p>
               <div class="post-entry">
                 
-                  Just a quick little thing I noticed, although everyone else probably knows it by now.
-To launch an elevated command prompt (i.e. a prompt with admin privileges, required to do various things if UAC is enabled on Vista), simply open the Start Menu (Windows key), type &ldquo;cmd&rdquo; without quotes, and press Control+Shift+Return.
-This will bring up a UAC prompt asking you to elevate the process. Select Continue (Alt+C). Done!
-This does work for some other applications.
-                  <a href="/post/quickly-open-an-elevated-command-prompt-in-vista/" class="post-read-more">[Read More]</a>
+                  <p>Just a quick little thing I noticed, although everyone else probably knows it by now.</p>
+
+<p>To launch an elevated command prompt (i.e. a prompt with admin privileges, required to do various things if <acronym title="User Account Control">UAC</acronym> is enabled on Vista), simply <strong>open the Start Menu (Windows key)</strong>, <strong>type &ldquo;cmd&rdquo;</strong> without quotes, and <strong>press Control+Shift+Return</strong>.</p>
+
+<p>This will bring up a <acronym title="User Account Control">UAC</acronym> prompt asking you to elevate the process.  <strong>Select Continue (Alt+C).</strong> Done!</p>
+
+<p>This does work for <em>some</em> other applications.  But in my experience it&rsquo;s hit and miss!  Strange.</p>
+
+<p>This technique may also work in Windows 7, but I haven&rsquo;t been able to test it myself.</p>
+
                 
               </div>
 
@@ -446,9 +529,50 @@ This does work for some other applications.
               </p>
               <div class="post-entry">
                 
-                  A couple of days ago I came across this interesting quirk, and I had to do a double-take before I realised what had happened.
-Basically, I recently got a NAS and decided that I wanted my router to save its bandwidth usage statistics on it. That way whenever I perform an upgrade to the firmware on the router I won&rsquo;t erase all the stats. This part is easy, as the firmware has the functionality for this.
-                  <a href="/post/ill-modify-you-in-to-next-week/" class="post-read-more">[Read More]</a>
+                  <p>A couple of days ago I came across this interesting quirk, and I had to do a double-take before I realised what had happened.</p>
+
+<p>Basically, I recently <a href="http://www.promise.com/product/product_detail.asp?product_id=211">got a NAS</a> and decided that I wanted my router to save its bandwidth usage statistics on it.  That way whenever I perform an upgrade to the firmware on the router I won&rsquo;t erase all the stats.  This part is easy, as the firmware has the functionality for this.  (The firmware I keep mentioning is the <a href="http://www.polarcloud.com/tomato">Tomato firmware</a>.  I highly recommend it if you happen to have a compatible Linux router!)</p>
+
+<p>Now, after I set it all up, I went on to the network shares to see if the statistics were being saved properly.  What I saw I didn&rsquo;t exactly expect:</p>
+
+<div id="attachment_177" style="width: 650px" class="wp-caption aligncenter">
+  <a href="https://i0.wp.com/xanderx.com/wp-content/uploads/2009/07/DOpus-Last-Modified.png"><img class="size-large wp-image-177  " title="DOpus Last Modified" src="https://i2.wp.com/xanderx.com/wp-content/uploads/2009/07/DOpus-Last-Modified-640x487.png?fit=640%2C487" alt="A screenshot of my local network share...  And some interesting modified times" data-recalc-dims="1" /></a>
+  
+  <p class="wp-caption-text">
+    A screenshot from Directory Opus of my local network share... And some interesting modified times
+  </p>
+</div>
+
+<p>Now, nothing may look wrong at first glance. But take another look at the screenshot, particularly the column titled &ldquo;Modified&rdquo;.</p>
+
+<p>Got it yet? You have? That&rsquo;s great! You haven&rsquo;t? You&rsquo;re probably just not as finnicky as I am, don&rsquo;t worry.</p>
+
+<p>Anyway, enough suspense: the thing that caught me out was that the modified time for the statistics file was &ldquo;<em>tomorrow</em>&rdquo;.</p>
+
+<p>&ldquo;So what?&rdquo; I hear you cry!  &ldquo;You probably just had the NAS set to the wrong timezone.&rdquo;</p>
+
+<p>Alright, I&rsquo;ll give you that — I had set it to the wrong timezone.  However, that isn&rsquo;t the strangest thing!</p>
+
+<p>The strange part is the fact that Windows has provisions for files that have creation/modify/access times in the future.</p>
+
+<p>When you have a file that you have modifed today, it says &ldquo;Today&rdquo;.  Nice.  If you then leave the file for 24 hours, Windows will say the file was modified &ldquo;Yesterday&rdquo;.  Again, a nice touch.</p>
+
+<p>But now Windows, in its all-powerful, all-knowing ways, can tell me when a file <em>will</em> be modified, before it&rsquo;s even happened!</p>
+
+<p>At least, that&rsquo;s the impression it gives me when I think of a developer including &ldquo;tomorrow&rdquo; on the list of English relative dates.</p>
+
+<p>And before you complain that I wasn&rsquo;t using Windows Explorer but rather a replacement called <a href="http://www.gpsoft.com.au/">Directory Opus</a>, here&rsquo;s a screen from Explorer demonstrating the same behaviour, but slightly more hidden:</p>
+
+<div id="attachment_179" style="width: 650px" class="wp-caption aligncenter">
+  <a href="https://i2.wp.com/xanderx.com/wp-content/uploads/2009/07/Explorer-Last-Modified.png"><img class="size-large wp-image-179" title="Explorer Last Modified" src="https://i0.wp.com/xanderx.com/wp-content/uploads/2009/07/Explorer-Last-Modified-640x487.png?fit=640%2C487" alt="A screenshot from Windows Explorer of my local network share...  With the same interesting modified times" data-recalc-dims="1" /></a>
+  
+  <p class="wp-caption-text">
+    A screenshot from Windows Explorer of my local network share... With the same interesting modified times
+  </p>
+</div>
+
+<p>So there you have it: Some crazy behaviour and me thoroughly confused.  With DOpus and Explorer both &ldquo;predicting&rdquo; the future for me, I&rsquo;m beginning to wonder just how much control I have over these computers…</p>
+
                 
               </div>
 
@@ -477,9 +601,18 @@ Basically, I recently got a NAS and decided that I wanted my router to save its 
               </p>
               <div class="post-entry">
                 
-                  Have you ever somehow managed to break the Gadget file association in Windows Vista? I have somehow, and that means that you can no longer install gadgets. Double-clicking a .gadget file does nothing, and the Sidebar offers no option to install gadgets itself!
-If you try to re-associate the files with Windows Sidebar by telling to Open With… and navigating to the Sidebar executable, you&rsquo;ll have found that that doesn&rsquo;t help — all it does is bring the Sidebar to focus, but doesn&rsquo;t install the gadget.
-                  <a href="/post/fix-windows-sidebar-gadget-file-association-in-vista/" class="post-read-more">[Read More]</a>
+                  <p>Have you ever somehow managed to break the Gadget file association in Windows Vista?  I have <em>somehow</em>, and that means that you can no longer install gadgets.  Double-clicking a .gadget file does nothing, and the Sidebar offers no option to install gadgets itself!</p>
+
+<p>If you try to re-associate the files with Windows Sidebar by telling to Open With… and navigating to the Sidebar executable, you&rsquo;ll have found that that doesn&rsquo;t help — all it does is bring the Sidebar to focus, but doesn&rsquo;t install the gadget.</p>
+
+<p>Fortunately, help is at hand: all you need to do is **download the following archive **and apply the registry entries by <strong>double-clicking the .reg file inside the archive</strong>, and saying <strong>Yes</strong> at the prompt.</p>
+
+<p><a href="http://download.xanderx.com/software/windows/fix/repairGadgetFileAssociation.zip">Download Gadget Association registry entries.</a></p>
+
+<p>All I did was export the corresponding keys from the registry on a Vista machine with a working Sidebar — nothing else!</p>
+
+<p>Hope this helps others like it has me.</p>
+
                 
               </div>
 

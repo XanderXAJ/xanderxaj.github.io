@@ -11,11 +11,15 @@
   <meta name="description" content="You may have already used the git credential cache to cache your remote credentials for some time, via something like:
 git config --global credential.helper &#39;cache --timeout=3600&#39;  However this will not work on Windows, as cache communicates over a Unix socket.
 Fortunately, support for Windows&rsquo;s built-in credential manager has been added to the Windows git distribution (along with msysgit). To leverage it, use the wincred helper:
-git config --global credential.helper wincred  If, like me, you like to use your dotfiles across many platforms, you may not want to put this in your global .">
+git config --global credential.helper wincred  If, like me, you like to use your dotfiles across many platforms, you may not want to put this in your global .gitconfig. Instead, you can include an environment-specific config file globally and make a new file with the credential helper configuration inside:
+git config --global include.path .gitconfig_env git config --file ~/.gitconfig_env credential.helper wincred  If you want to remove, modify or otherwise manage your Windows credentials, use the Credential Manager. This can be found in Control Panel &gt; Credential Manager.
+PRO TIP: In Windows 8 and above, you can quickly get to the Control Panel by pressing Win&#43;X, P.">
   <meta property="og:description" content="You may have already used the git credential cache to cache your remote credentials for some time, via something like:
 git config --global credential.helper &#39;cache --timeout=3600&#39;  However this will not work on Windows, as cache communicates over a Unix socket.
 Fortunately, support for Windows&rsquo;s built-in credential manager has been added to the Windows git distribution (along with msysgit). To leverage it, use the wincred helper:
-git config --global credential.helper wincred  If, like me, you like to use your dotfiles across many platforms, you may not want to put this in your global .">
+git config --global credential.helper wincred  If, like me, you like to use your dotfiles across many platforms, you may not want to put this in your global .gitconfig. Instead, you can include an environment-specific config file globally and make a new file with the credential helper configuration inside:
+git config --global include.path .gitconfig_env git config --file ~/.gitconfig_env credential.helper wincred  If you want to remove, modify or otherwise manage your Windows credentials, use the Credential Manager. This can be found in Control Panel &gt; Credential Manager.
+PRO TIP: In Windows 8 and above, you can quickly get to the Control Panel by pressing Win&#43;X, P.">
   <meta name="twitter:description" content="You may have already used the git credential cache to cache your remote credentials for some time, via something like:
 git config --global credential.helper &#39;cache --timeout=3600&#39;  However this will …">
   <meta name="author" content="Alex Palmer"/>

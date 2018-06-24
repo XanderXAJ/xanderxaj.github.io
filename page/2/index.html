@@ -188,10 +188,14 @@
 
               <div class="post-entry">
                 
-                  I&rsquo;ve been fiddling with a Brother P-Touch D600, which is able to connect to a computer through USB. Since I&rsquo;ve realised that it appears to Windows as a standard printer, I&rsquo;ve been trying to see if any applications can print to the device. They can!
-Notepad works (albeit not in the most useful fashion). But I had a bit of trouble with GIMP.
-I found that, for some reason, even after setting the correct image/DPI settings and running through page setup, GIMP still seems to think it is printing via A4.
-                  <a href="/post/printing-brother-labels-through-gimp/" class="post-read-more">[Read More]</a>
+                  <p>I&rsquo;ve been fiddling with a Brother P-Touch D600, which is able to connect to a computer through USB.  Since I&rsquo;ve realised that it appears to Windows as a standard printer, I&rsquo;ve been trying to see if any applications can print to the device.  They can!</p>
+
+<p>Notepad works (albeit not in the most useful fashion).  But I had a bit of trouble with GIMP.</p>
+
+<p>I found that, for some reason, even after setting the correct image/DPI settings and running through page setup, GIMP still seems to think it is printing via A4.  I&rsquo;m unclear where the problem comes from, but it can be worked around when you go to print.</p>
+
+<p>After selecting Print, select the Image Settings tab, and ensure the image is aligned to the top-left corner.  You&rsquo;ll need to factor in a margin.  On my 24mm labels, I set a top and left margin of 3mm or so.</p>
+
                 
               </div>
 
@@ -217,9 +221,26 @@ I found that, for some reason, even after setting the correct image/DPI settings
 
               <div class="post-entry">
                 
-                  Qualcomm seem to make up-to-date wireless and wireless+bluetooth drivers available to Killer Networking first. Forunately you are able to download and install them yourself.
- Go to the Killer Networking driver page. Download the Standard drivers (no Killer Features). If your wireless adapter has Bluetooth, download the Bluetooth drivers as well.  My QCA61x4 device has Bluetooth, so I downloaded the Bluetooth driver for the K1525/1535.  Install the driver(s) in the usual manual way: Device Manager &gt; your wireless adapter &gt; Driver &gt; Update driver&hellip; &gt; Browse &gt; Let me pick &gt; Have disk&hellip; &gt; Browse to driver.
-                  <a href="/post/how-to-update-qualcomm-atheros-qca61x4-drivers/" class="post-read-more">[Read More]</a>
+                  <p>Qualcomm seem to make up-to-date wireless and wireless+bluetooth drivers available to Killer Networking first.  Forunately you are able to download and install them yourself.</p>
+
+<ol>
+<li>Go to the <a href="http://www.killernetworking.com/support/driver-downloads">Killer Networking driver page</a>.</li>
+<li>Download the Standard drivers (no Killer Features).</li>
+<li>If your wireless adapter has Bluetooth, download the Bluetooth drivers as well.
+
+<ul>
+<li>My QCA61x4 device has Bluetooth, so I downloaded the Bluetooth driver for the K1525/1535.</li>
+</ul></li>
+<li>Install the driver(s) in the usual manual way: <em>Device Manager &gt; your wireless adapter &gt; Driver &gt; Update driver&hellip; &gt; Browse &gt; Let me pick &gt; Have disk&hellip; &gt; Browse to driver</em>.
+
+<ul>
+<li>In my case, the <code>k11acw10</code> directory worked for the wireless adapter.</li>
+<li>If Windows complains there is no valid driver, try another directory.</li>
+</ul></li>
+</ol>
+
+<p>Bonus chatter: The driver needed updating as it was causing BSODs.  A very helpful post by Glenn Meuth <a href="http://answers.microsoft.com/en-us/windows/forum/windows_10-performance/my-computer-has-popped-up-with-the-error/673c4134-6f39-47fe-b455-1f884a76eb3a?auth=1">on this forum thread</a> helped me identify the unreliable driver via analysing the BSOD&rsquo;s memory dump.</p>
+
                 
               </div>
 
@@ -245,9 +266,10 @@ I found that, for some reason, even after setting the correct image/DPI settings
 
               <div class="post-entry">
                 
-                  If I&rsquo;m making informal CD mixtapes (mixdiscs?), use Foobar2000 (or other software) to convert the tracks to WAV, and then use ImgBurn to create a CUE file (Tools &gt; Create CUE file&hellip;), drag and drop the tracks in to the new window, and customise the disc before burning it.
-EAC can also be used for this (and is likely the better choice for making clones of audio CDs), but seems to be a little unreliable on my laptop.
-                  <a href="/post/making-cd-mixtapes/" class="post-read-more">[Read More]</a>
+                  <p>If I&rsquo;m making informal CD mixtapes (mixdiscs?), use Foobar2000 (or other software) to convert the tracks to WAV, and then use <a href="http://www.imgburn.com/index.php?act=download">ImgBurn</a> to create a CUE file (Tools &gt; Create CUE file&hellip;), drag and drop the tracks in to the new window, and customise the disc before burning it.</p>
+
+<p>EAC can also be used for this (and is likely the better choice for making clones of audio CDs), but seems to be a little unreliable on my laptop.  And I don&rsquo;t like to waste CDs, especially when I only have 2 or 3 of them!</p>
+
                 
               </div>
 
@@ -273,11 +295,28 @@ EAC can also be used for this (and is likely the better choice for making clones
 
               <div class="post-entry">
                 
-                  You may have already used the git credential cache to cache your remote credentials for some time, via something like:
-git config --global credential.helper 'cache --timeout=3600'  However this will not work on Windows, as cache communicates over a Unix socket.
-Fortunately, support for Windows&rsquo;s built-in credential manager has been added to the Windows git distribution (along with msysgit). To leverage it, use the wincred helper:
-git config --global credential.helper wincred  If, like me, you like to use your dotfiles across many platforms, you may not want to put this in your global .
-                  <a href="/post/caching-git-credentials-on-windows/" class="post-read-more">[Read More]</a>
+                  <p>You may have already used the <a href="https://help.github.com/articles/caching-your-github-password-in-git/">git credential cache</a> to cache your remote credentials for some time, via something like:</p>
+
+<pre><code>git config --global credential.helper 'cache --timeout=3600'
+</code></pre>
+
+<p>However this will not work on Windows, as <a href="http://blog.sdbarker.com/git-credential-caching-on-windows/"><code>cache</code> communicates over a Unix socket</a>.</p>
+
+<p>Fortunately, <a href="http://www.codewrecks.com/blog/index.php/2015/06/23/git-for-windows-getting-invalid-username-or-password-with-wincred/">support for Windows&rsquo;s built-in credential manager</a> has been added to the Windows git distribution (along with msysgit).  To leverage it, use the <code>wincred</code> helper:</p>
+
+<pre><code>git config --global credential.helper wincred
+</code></pre>
+
+<p>If, like me, you like to use your dotfiles across many platforms, you may not want to put this in your global <code>.gitconfig</code>.  Instead, you can include an environment-specific config file globally and make a new file with the credential helper configuration inside:</p>
+
+<pre><code>git config --global include.path .gitconfig_env
+git config --file ~/.gitconfig_env credential.helper wincred
+</code></pre>
+
+<p>If you want to remove, modify or otherwise manage your Windows credentials, use the Credential Manager.  This can be found in Control Panel &gt; Credential Manager.</p>
+
+<p>PRO TIP: In Windows 8 and above, you can quickly get to the Control Panel by pressing Win+X, P.</p>
+
                 
               </div>
 
@@ -303,10 +342,38 @@ git config --global credential.helper wincred  If, like me, you like to use your
 
               <div class="post-entry">
                 
-                  When using the stock or Merlin firmware on various Asus routers (I have an RT-N66U), you can use dynamic DNS to get a web domain to point to your router&rsquo;s IP address.
-To use dynamic DNS, do the following:
- Go to your router&rsquo;s administration console (sometimes available at http://router.asus.com) and head to WAN &gt; DDNS. There is also a link on the Network Map page. Enable the DDNS client, set Server to Custom and set the hostname to the web domain you will be updating (e.
-                  <a href="/post/dynamic-dns-ddns-on-asus-routers/" class="post-read-more">[Read More]</a>
+                  <p>When using the stock or Merlin firmware on various Asus routers (I have an RT-N66U), you can use dynamic DNS to get a web domain to point to your router&rsquo;s IP address.</p>
+
+<p>To use dynamic DNS, do the following:</p>
+
+<ol>
+<li>Go to your router&rsquo;s administration console (sometimes available at <a href="http://router.asus.com">http://router.asus.com</a>) and head to <em>WAN &gt; DDNS</em>.  There is also a link on the <em>Network Map</em> page.</li>
+<li><em>Enable the DDNS client</em>, set <em>Server</em> to <em>Custom</em> and set the hostname to the web domain you will be updating (e.g. example.com).</li>
+<li>Connect to the router.  I tend to enable SSH (and disable Telnet) via <em>Administration &gt; System</em>.</li>
+
+<li><p>Create the script that will update your DDNS at <em><code>/jffs/scripts/ddns-start</code></em>.  My favoured tactic here is to run:</p>
+
+<pre><code>cat &gt; /jffs/scripts/ddns-start
+</code></pre>
+
+<p>Then paste the code, ensure the cursor is on a blank line (press Enter if not), then press Ctrl+D.</p></li>
+
+<li><p>Finally, ensure the script is executable:</p>
+
+<pre><code>chmod +x /jffs/scripts/ddns-start
+</code></pre></li>
+</ol>
+
+<p>In my case, I&rsquo;m updating an address using the <a href="http://afraid.org">http://afraid.org</a> service.  I get my private key from <a href="http://freedns.afraid.org/dynamic/">the dynamic section of the Afraid.org site</a>, and I use a <a href="https://github.com/RMerl/asuswrt-merlin/wiki/Custom-DDNS">script taken almost verbatim from the Merlin wiki</a>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
+</span><span style="color:#75715e"></span>
+curl <span style="color:#e6db74">&#34;https://freedns.afraid.org/dynamic/update.php?&lt;PRIVATE_KEY_HERE&gt;&#34;</span>
+
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $? -eq <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+    /sbin/ddns_custom_updated <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">else</span>
+    /sbin/ddns_custom_updated <span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">fi</span></code></pre></div>
                 
               </div>
 
@@ -364,10 +431,25 @@ To use dynamic DNS, do the following:
 
               <div class="post-entry">
                 
-                  I&rsquo;ve been setting up Kodi on my Sony Bravia Android TV &mdash; you can install it from the Google Play Store.
-Here are a few notes to help set things up how I like them:
- My favourite skin so far is Arctic: Zephyr as it doesn&rsquo;t have lots of gaudy images, runs fast, and displays long titles reasonably well (good for both music and long video names). I&rsquo;ve added some useful functions to the Sony remote control; install the Keymap Editor add-on and then make the following adjustments:  Information (i+) button: Global &gt; Navigation &gt; Context Menu Red button : Global &gt; Window &gt; Open Home Green button: Global &gt; Window &gt; Open Favourites Yellow button: Global &gt; Window &gt; Open Fullscreen Video (allows you to return to a video if you go in to a menu) Blue button: Nothing yet!
-                  <a href="/post/kodi-with-sony-bravia-tvs/" class="post-read-more">[Read More]</a>
+                  <p>I&rsquo;ve been setting up Kodi on my Sony Bravia Android TV &mdash; you can install it from the Google Play Store.</p>
+
+<p>Here are a few notes to help set things up how I like them:</p>
+
+<ul>
+<li>My favourite skin so far is <strong>Arctic: Zephyr</strong> as it doesn&rsquo;t have lots of gaudy images, runs fast, and displays long titles reasonably well (good for both music and long video names).</li>
+<li>I&rsquo;ve added some useful functions to the Sony remote control; install the <strong>Keymap Editor</strong> add-on and then make the following adjustments:
+
+<ul>
+<li><strong>Information (i+) button</strong>: Global &gt; Navigation &gt; Context Menu</li>
+<li><strong>Red button</strong> : Global &gt; Window &gt; Open Home</li>
+<li><strong>Green button</strong>: Global &gt; Window &gt; Open Favourites</li>
+<li><strong>Yellow button</strong>: Global &gt; Window &gt; Open Fullscreen Video <em>(allows you to return to a video if you go in to a menu)</em></li>
+<li><strong>Blue button</strong>: <em>Nothing yet!</em></li>
+</ul></li>
+</ul>
+
+<p><em>Update 2017-05-14:</em> The new Estuary skin that comes as default in Kodi 17 is exactly to my tastes so I use that now.</p>
+
                 
               </div>
 
@@ -393,9 +475,113 @@ Here are a few notes to help set things up how I like them:
 
               <div class="post-entry">
                 
-                  I&rsquo;ve recently talked about [how I&rsquo;ve changed my website to be created with Jekyll][migrate-to-jekyll]. One of the big reasons was to simplify how the site is built and run.
-Well, if it&rsquo;s so simple now, then I should be able to modify it on the go within Windows, right? I&rsquo;ve recently been using an openSUSE VM to modify the site, but figured I could do one better and operate (mostly) natively.
-                  <a href="/post/building-and-testing-a-jekyll-website-on-windows-with-docker/" class="post-read-more">[Read More]</a>
+                  
+
+<p>I&rsquo;ve recently talked about [how I&rsquo;ve changed my website to be created with Jekyll][migrate-to-jekyll].  One of the big reasons was to simplify how the site is built and run.</p>
+
+<p>Well, if it&rsquo;s so simple now, then I should be able to modify it on the go within Windows, right?  I&rsquo;ve recently been using an openSUSE VM to modify the site, but figured I could do one better and operate (mostly) natively.  This article describes my solution.</p>
+
+<p>It is assumed that you already have a Jekyll site to work with.</p>
+
+<p>Much of this will also work for anyone using the Linux or Mac OS X versions of Docker Toolbox, but I&rsquo;m approaching with a view to running this on Windows.</p>
+
+<p>[migrate-to-jekyll]: {% post_url 2015-10-04-migrating-from-wordpress-to-jekyll %}</p>
+
+<h1 id="install-docker-toolbox">Install Docker Toolbox</h1>
+
+<p><a href="https://www.docker.com/docker-toolbox">Install Docker Toolbox</a>.  If you&rsquo;re not familiar with Docker or Docker Toolbox, I highly recommend you <a href="http://docs.docker.com/windows/started/">go through their tutorials</a>.</p>
+
+<p>One note: If you already have VirtualBox installed or prefer to install it yourself, uncheck the VirtualBox option in the installer.</p>
+
+<h1 id="create-a-docker-machine">Create a Docker Machine</h1>
+
+<p>Docker Toolbox creates a couple of shortcuts for you.  If you run <em>Docker Quickstart Terminal</em>, a machine called <code>default</code> will be automatically created for you.</p>
+
+<p>Alternatively, you can create one with your own name from the command line:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">  docker-machine create --driver virtualbox dev</code></pre></div>
+<p>As you&rsquo;ll see later on, I decided to go the route of managing this myself with my build script.</p>
+
+<h1 id="create-dockerfile">Create Dockerfile</h1>
+
+<p>To run Jekyll in Docker, you need to build a Docker image!</p>
+
+<p>It struck me as simplest to build my own:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile">  FROM debian:latest<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  # Install jekyll dependencies<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  RUN apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get -y install <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  	gcc <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  	make <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  	nodejs <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  	python <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  	ruby <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  	ruby-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  	<span style="color:#f92672">&amp;&amp;</span> gem install bundler<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  # Install site dependencies<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  WORKDIR /site<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  COPY Gemfile Gemfile.lock /site/<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  RUN bundle install<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  # Copy site files<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  COPY . /site/<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  CMD <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;bundle&#34;</span>, <span style="color:#e6db74">&#34;exec&#34;</span>, <span style="color:#e6db74">&#34;jekyll&#34;</span>, <span style="color:#e6db74">&#34;serve&#34;</span>, <span style="color:#e6db74">&#34;--port=4000&#34;</span>, <span style="color:#e6db74">&#34;--host=0.0.0.0&#34;</span><span style="color:#f92672">]</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  EXPOSE <span style="color:#ae81ff">4000</span></code></pre></div>
+<p>I chose port 4000 as it isn&rsquo;t either 8000 or 8080, which can be commonly used by other applications.</p>
+
+<p>You&rsquo;ll note that <code>Gemfile</code> and <code>Gemfile.lock</code> are copied first.  Docker creates a layer out of each instruction (e.g. <code>RUN</code>, <code>COPY</code>) in the <code>Dockerfile</code>, and caches them.  This means a layer only needs to be rebuilt if it or one of its parents has changed.  These copied files are used to install your website&rsquo;s dependencies, and since this is generally quite a slow operation compared to actually building the site, I opt to get the install done first and utilise Docker&rsquo;s layer cache.</p>
+
+<h1 id="create-dockerignore-and-why-it-s-needed">Create .dockerignore (and why it&rsquo;s needed)</h1>
+
+<p>Docker builds work by archiving and sending the <em>entire</em> contents of the current working directly to the Docker daemon &mdash; the build does not happen on your local machine, but entirely on the remote machine.</p>
+
+<p>This means that if you have many temp, cache or large files that are not needed for the build, they will needlessly slow the build down.  to counter this, a <code>.dockerfile</code> can be created to tell the local Docker client which files the remote Docker daemon will not need.</p>
+
+<p><code>.dockerignore</code> works very similar to <code>.gitignore</code>.  I&rsquo;ll make a very simple one that ignores <code>_site</code>, just in case a build has happened locally:</p>
+
+<pre><code>  _site
+</code></pre>
+
+<h1 id="create-powershell-build-script">Create PowerShell build script</h1>
+
+<p>I created a build script, <code>build.ps1</code>, at the root of my website.  In this build script I create a Docker machine (if it doesn&rsquo;t exist) or start it (if it does), configure Docker to communicate with it, print out instructions on how to see the website, and finally build and serve it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">  <span style="color:#75715e"># Site building script for Powershell and Docker Toolbox</span>
+  <span style="color:#75715e"># Set the name of the machine</span>
+  set machine dev
+
+  <span style="color:#75715e"># Set up and/or start the machine -- note that create also starts the machine</span>
+  docker-machine create --driver virtualbox $machine
+  docker-machine start $machine
+
+  <span style="color:#75715e"># Set up Docker&#39;s env vars so it can connect</span>
+  docker-machine env --shell=powershell $machine | Invoke-Expression
+
+  <span style="color:#75715e"># We now need a means to connect to the website once it runs.  there are two methods:</span>
+  <span style="color:#75715e"># Method 1: Enable forwarding the port -- with thanks to http://stackoverflow.com/a/32175164</span>
+  <span style="color:#75715e">#   Only problem with this method is that it needs VBoxManage to be a part of the PATH -- this is a manual change.</span>
+  <span style="color:#75715e">#   Example address: http://localhost:4000/</span>
+  <span style="color:#75715e">#VBoxManage modifyvm $machine --natpf1 &#34;jekyll,tcp,127.0.0.1,4000,,4000&#34;</span>
+  <span style="color:#75715e"># Method 2: Connect to the docker machine&#39;s IP directly without port forwarding</span>
+  <span style="color:#75715e">#   Example address: http://192.168.99.100:4000/</span>
+  docker-machine ip $machine | set ip
+  echo <span style="color:#e6db74">&#34;Building website; will be available in a few moments. Press Ctrl+C when done.&#34;</span>
+  echo <span style="color:#e6db74">&#34;Connect to: http://${ip}:4000&#34;</span>
+
+  <span style="color:#75715e"># Build and serve the website</span>
+  (docker build -t blog .) <span style="color:#f92672">-and</span> (docker run -it --rm --publish=4000<span style="color:#960050;background-color:#1e0010">:</span>4000 blog)</code></pre></div>
+<p>Note: The very last command, with the <code>-and</code> in the middle, will absorb all <code>stdout</code>, meaning that things will look very quiet.  Rest assured that if the script doe <em>not</em> end, then things are working fine.</p>
+
+<p>If you update the site and want to see what the changes look like, or are simply finished, press <code>Ctrl+C</code> and then re-run the build script as desired.</p>
+
+<h1 id="profit">Profit</h1>
+
+<p>While not certainly not as easy to modify as when I&rsquo;m on a Linux machine, this is certainly a big improvement on local testing than trying to run a Wordpress stack on Windows!  I&rsquo;ve also learnt a lot about <code>docker-machine</code>.</p>
+
+<p>It may or may not be possible to mount the Windows website directory on to the docker machine in order to allow rebuilds on file modification, but I suspect that may turn out to be difficult, complicated or fragile, and the method described above works for me.  If I change my mind, I&rsquo;ll inevitably describe what I do!</p>
+
+<p>Hopefully this guide helps you out, as well as future me!</p>
+
                 
               </div>
 
@@ -421,9 +607,97 @@ Well, if it&rsquo;s so simple now, then I should be able to modify it on the go 
 
               <div class="post-entry">
                 
-                  One reason for [migrating to static site generation][migrate-to-jekyll] is that the site becomes more straightforward to keep in version control systems such as git. And I do like version control; I naturally ran git init before I ran jekyll new!
-In my workflow, once I have made and committed changes locally, I push the changes remotely. But now I need to build and deploy the new version of the site. What if I could get that to happen automatically?
-                  <a href="/post/deploying-jekyll-website-on-git-commit/" class="post-read-more">[Read More]</a>
+                  <p>One reason for [migrating to static site generation][migrate-to-jekyll] is that the site becomes more straightforward to keep in version control systems such as git.  And I do like version control; I naturally ran <code>git init</code> before I ran <code>jekyll new</code>!</p>
+
+<p>In my workflow, once I have made and committed changes locally, I push the changes remotely.  But now I need to build and deploy the new version of the site.  What if I could get that to happen automatically?</p>
+
+<p>To do this, I set up my web server to accept git commands; this is a topic unto itself which I might write about some time.</p>
+
+<p>I then create a bare repo:</p>
+
+<pre><code>  git init --bare blog.git
+</code></pre>
+
+<p>After setting permissions as appropriate, I can now push my git repo to the web server:</p>
+
+<pre><code>  git remote add origin https://user@your.website.tld/git/blog.git
+  git push -u origin master
+</code></pre>
+
+<p>I then modified <a href="http://jekyllrb.com/docs/deployment-methods/#git-post-receive-hook">an example git-hook</a> I found on the Jekyll website to be more robust and meet my needs.  There are a few things to take note of here:</p>
+
+<ul>
+<li>I switched from using the <code>git-receive</code> hook as per Jekyll&rsquo;s recommendation to <code>post-receive</code>.  This is because the level of info <code>git-receive</code>, ahem, receives seems a bit overkill &mdash; <code>post-update</code> provides the names of the modified branches, and that&rsquo;s all we need.</li>
+<li><code>DEPLOY_REF_REGEX</code> is a regex that matches git-refs, such as branches.  The value in my script means that it&rsquo;ll only deploy the website when changes are pushed to <code>master</code>.  This means you are free to experiment on non-<code>master</code> branches.  I haven&rsquo;t gone so far as to deploy different branches different places!</li>
+<li><code>GIT_REPO</code> is the path to your site&rsquo;s git repo.  Ensure it can be read by the webserver.</li>
+<li><code>PUBLIC_WWW</code> is where the website needs to be deployed to be visible on the web.  Ensure it is writable by the webserver.</li>
+</ul>
+
+<p>To use this hook, create a file called <code>post-update</code> in your <em>remote bare repo&rsquo;s</em> <code>hooks</code> directory.  Ensure it is executable by your webserver!</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  <span style="color:#75715e">#!/bin/bash
+</span><span style="color:#75715e"></span>  <span style="color:#75715e"># Builds and deploys blog when new commits are pushed to the specified branches (default master).
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">#
+</span><span style="color:#75715e"></span>  <span style="color:#75715e"># Despite the Jekyll site recommending to use the post-receive hook, we do not
+</span><span style="color:#75715e"></span>  <span style="color:#75715e"># need the level of information that post-receive gets.  post-update receives
+</span><span style="color:#75715e"></span>  <span style="color:#75715e"># each ref that was updated as an argument, and so is sufficient for this
+</span><span style="color:#75715e"></span>  <span style="color:#75715e"># script&#39;s needs.
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">#
+</span><span style="color:#75715e"></span>  <span style="color:#75715e"># The script also adds the commit ID of the deployed commit to the site, so you are able
+</span><span style="color:#75715e"></span>  <span style="color:#75715e"># to tell exactly what is live by visiting /deployed_commit.
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">#
+</span><span style="color:#75715e"></span>  <span style="color:#75715e"># Originally taken from: http://jekyllrb.com/docs/deployment-methods/#git-post-receive-hook
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">#
+</span><span style="color:#75715e"></span>
+  DEPLOY_REF_REGEX<span style="color:#f92672">=</span>refs/heads/master
+
+  GIT_REPO<span style="color:#f92672">=</span>/shared/code/git/blog.git
+  PUBLIC_WWW<span style="color:#f92672">=</span>/var/www/blog
+
+  DEPLOY<span style="color:#f92672">=</span>
+  <span style="color:#66d9ef">for</span> ref in <span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">&#34;</span>; <span style="color:#66d9ef">do</span>
+  	<span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> $ref <span style="color:#f92672">=</span>~ $DEPLOY_REF_REGEX <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
+  		DEPLOY<span style="color:#f92672">=</span>true
+  		break
+  	<span style="color:#66d9ef">fi</span>
+  <span style="color:#66d9ef">done</span>
+
+  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $DEPLOY <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+  	TMP_GIT_CLONE<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>mktemp -d<span style="color:#66d9ef">)</span>
+  	git clone <span style="color:#e6db74">&#34;</span>$GIT_REPO<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;</span>$TMP_GIT_CLONE<span style="color:#e6db74">&#34;</span>
+  	echo <span style="color:#66d9ef">$(</span>GIT_DIR<span style="color:#f92672">=</span>.git git -C <span style="color:#e6db74">&#34;</span>$TMP_GIT_CLONE<span style="color:#e6db74">&#34;</span> rev-parse HEAD<span style="color:#66d9ef">)</span> &gt; <span style="color:#e6db74">&#34;</span>$TMP_GIT_CLONE<span style="color:#e6db74">/deployed_commit&#34;</span>
+  	jekyll build -s <span style="color:#e6db74">&#34;</span>$TMP_GIT_CLONE<span style="color:#e6db74">&#34;</span> -d <span style="color:#e6db74">&#34;</span>$PUBLIC_WWW<span style="color:#e6db74">&#34;</span>
+  	rm -Rf <span style="color:#e6db74">&#34;</span>$TMP_GIT_CLONE<span style="color:#e6db74">&#34;</span>
+  <span style="color:#66d9ef">else</span>
+  	echo <span style="color:#e6db74">&#34;Updated refs did not match; not deploying.&#34;</span>
+  <span style="color:#66d9ef">fi</span>
+
+  exit</code></pre></div>
+<p>You&rsquo;ll get output like the following:</p>
+
+<pre><code>  $ git push
+  Counting objects: 4, done.
+  Delta compression using up to 4 threads.
+  Compressing objects: 100% (4/4), done.
+  Writing objects: 100% (4/4), 3.15 KiB | 0 bytes/s, done.
+  Total 4 (delta 2), reused 0 (delta 0)
+  remote: Cloning into '/tmp/tmp.TkcxSnfVnb'...
+  remote: done.
+  remote: Configuration file: /tmp/tmp.TkcxSnfVnb/_config.yml
+  remote:             Source: /tmp/tmp.TkcxSnfVnb
+  remote:        Destination: /var/www/blog
+  remote:       Generating...
+  remote:                     done.
+  remote:  Auto-regeneration: disabled. Use --watch to enable.
+  To https://user@your.website.tld/git/blog.git
+     df05e56..ce42b80  master -&gt; master
+</code></pre>
+
+<p>If the deploy succeeds, then website should be available on the internet and you are done!  If the deploy fails, the push will be cancelled and you&rsquo;ll need to investigate why that might be.  I would first check the permissions on all of the directories mentioned above.</p>
+
+<p>Finally, as a little bonus, the script creates a <code>deployed_commit</code> file which contains the commit SHA of the commit the build was based on; useful if something goes wrong or you just want to check what you last deployed.  You can even check my site&rsquo;s deployed commit (update: now defunct)!</p>
+
+<p>[migrate-to-jekyll]: {% post_url 2015-10-04-migrating-from-wordpress-to-jekyll %}</p>
+
                 
               </div>
 
@@ -449,10 +723,35 @@ In my workflow, once I have made and committed changes locally, I push the chang
 
               <div class="post-entry">
                 
-                  Some notes to remind future me why Promises are pretty neat.
-What do they give me?  They let you regain error handling for asynchronous operations. They let you avoid nested callbacks (and the pyramid indentation that comes with them).  Can I use them? They were initially formalised in the Promises/A+ specification, and have been officially adopted in to JavaScript with ES6.
-They&rsquo;ve been supported in all major browsers (except IE) for a while now.
-                  <a href="/post/javascript-promises-notes/" class="post-read-more">[Read More]</a>
+                  
+
+<p>Some notes to remind future me why Promises are pretty neat.</p>
+
+<h1 id="what-do-they-give-me">What do they give me?</h1>
+
+<ul>
+<li>They let you regain error handling for asynchronous operations.</li>
+<li>They let you avoid nested callbacks (and the pyramid indentation that comes with them).</li>
+</ul>
+
+<h1 id="can-i-use-them">Can I use them?</h1>
+
+<p>They were initially formalised in the <a href="https://promisesaplus.com/">Promises/A+ specification</a>, and have been <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-promise-objects">officially adopted in to JavaScript with ES6</a>.</p>
+
+<p>They&rsquo;ve been supported in <a href="http://caniuse.com/#feat=promises">all major browsers (except IE) for a while now</a>.  <a href="https://github.com/jakearchibald/es6-promise">A polyfill exists</a> for browsers that do not support them.</p>
+
+<h1 id="any-important-details">Any important details?</h1>
+
+<ul>
+<li>Promises <em>can</em> start executing the instant they have been instantiated.  However, this does not strictly mean that they will be.</li>
+<li>If you call <code>.then(success_function, failure_function)</code> on a Promise, the appropriate <code>function</code> will not be called until <a href="https://github.com/domenic/promises-unwrapping/blob/master/docs/states-and-fates.md">a Promise has <em>settled</em></a> &mdash; either fulfilled or rejected.</li>
+<li>Calling <code>.catch()</code> is equivalent to calling <code>.then(null, function)</code>.</li>
+</ul>
+
+<h1 id="i-need-help-visualising-them">I need help visualising them</h1>
+
+<p>Try <a href="http://bevacqua.github.io/promisees/">Promisees</a> &mdash; it&rsquo;ll visualise and animate the promise-y code you give it.  You can also slow down the animation and record animated GIFs!</p>
+
                 
               </div>
 

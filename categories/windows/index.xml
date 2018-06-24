@@ -41,7 +41,11 @@ I&amp;rsquo;ll briefly mirror the instructions here:
       <guid>/post/stop-exact-audio-copy-crashing-on-windows-7/</guid>
       <description>When I tried to rip a disc using Exact Audio Copy on Windows 7 x64, I found it kept crashing as soon as the rip tried to start. Bummer.
 Remembering the previous times I&amp;rsquo;ve used EAC, when you click a button to start a rip, it asks you where you want to save the ripped files.
-Turns out if you set EAC to save into a predetermined location instead of asking, EAC manages to rip perfectly fine!</description>
+Turns out if you set EAC to save into a predetermined location instead of asking, EAC manages to rip perfectly fine!
+So, here&amp;rsquo;s a step-by-step guide to stop it crashing:
+ Open Exact Audio Copy. Go to File &amp;gt; EAC Options. Click the Directories tab. Instead of &amp;ldquo;Ask every time&amp;rdquo;, choose Use this Directory, and pick a directory of your choosing.
+ I personally use: C:\Users&amp;lt;Username&amp;gt;\Music\Extracted  Click OK.
+  That&amp;rsquo;s it! Good luck.</description>
     </item>
     
     <item>
@@ -51,7 +55,9 @@ Turns out if you set EAC to save into a predetermined location instead of asking
       
       <guid>/post/the-windows-7-taskbar-keyboard-goodness/</guid>
       <description>If you&amp;rsquo;re fortunate enough to be using Windows 7, then no doubt you&amp;rsquo;ve noticed the new taskbar. Well, here&amp;rsquo;s a couple of golden nuggets of info for you:
-Did you know that all the icons you line up on the taskbar automatically get keyboard shortcuts? If you want to launch one of them, just press the Windows key and the number of the program&amp;rsquo;s position along the list. So to launch the first program, press Win+1; to launch the second, press Win+2; this continues all the way up to Win+0, which opens the tenth program.</description>
+Did you know that all the icons you line up on the taskbar automatically get keyboard shortcuts? If you want to launch one of them, just press the Windows key and the number of the program&amp;rsquo;s position along the list. So to launch the first program, press Win+1; to launch the second, press Win+2; this continues all the way up to Win+0, which opens the tenth program. Cool, huh? This is the same behaviour as the Quick Launch Bar in Windows Vista (which I used extensively).
+Even better, if you want to open one of those programs with admin permissions (for example, using Notepad to edit the hosts file), you can press Win+Ctrl+Shift+, accept any UAC prompt, and voilà! Program a la admin.
+I love keyboard shortcuts.</description>
     </item>
     
     <item>
@@ -62,7 +68,11 @@ Did you know that all the icons you line up on the taskbar automatically get key
       <guid>/post/a-word-of-warning-check-your-windows-7-backup-settings/</guid>
       <description>Backups in Windows 7 have been greatly improved, what with the fact you can restore from them (without needing to take a separate backup) and that they backup to networks better.
 However, there has been one change which caught me out, thanks to a subtle and ambiguous rewording of the backups dialog.
-When backups are taken, as default only user folders that were created by Windows are backed up. For reference that&amp;rsquo;s Appdata, Contacts, Desktop, Downloads, Favorites, Links, Music, Pictures, Saved Games, Searches and Videos.</description>
+When backups are taken, as default only user folders that were created by Windows are backed up. For reference that&amp;rsquo;s Appdata, Contacts, Desktop, Downloads, Favorites, Links, Music, Pictures, Saved Games, Searches and Videos.
+This is different from the default behaviour of backups in Windows Vista, which backed up everything in C:\Users&amp;lt;Your Username&amp;gt;
+If you make any folders of your own at the root of your user folder, they will NOT be backed up. If you want to back those up, I recommend you go through the backup wizard again and say that you want to configure what gets backed up yourself. Select more locations, and navigate through the filesystem until you check C:\Users&amp;lt;Your Username&amp;gt;.
+I lost a few files when I reinstalled 7 for unrelated reasons, and lost the contents of my Code and Programs folders. I&amp;rsquo;m lucky that I had only been using the OS for a couple of weeks–had I been using it longer I could have lost a lot more. At least it&amp;rsquo;s given me an excuse to code!
+Just a friendly warning for fellow Windows 7 users who are as fussy about file organisation as I am.</description>
     </item>
     
     <item>
@@ -72,7 +82,7 @@ When backups are taken, as default only user folders that were created by Window
       
       <guid>/post/adding-your-most-recent-twitter-tweet-to-your-pidgin-status/</guid>
       <description>This guide is intended to be a more up-to-date mirror of the guide you can find at Tech Jawa. All credit to them for the original instructions! Basically nothing changes, but I just like to be comprehensive.
- Download the TwitterStatus plugin. It&amp;rsquo;ll be a file ending in .pl. Move this file to your Pidgin plugins folder. If any folders don&amp;rsquo;t exist, create them:  Linux: ~/.purple/plugins/ Windows Vista/7: C:\Users&amp;lt;Username&amp;gt;\AppData\Roaming.purple\plugins  Install Perl:  Linux: It&amp;rsquo;s probably already installed.</description>
+ Download the TwitterStatus plugin. It&amp;rsquo;ll be a file ending in .pl. Move this file to your Pidgin plugins folder. If any folders don&amp;rsquo;t exist, create them:  Linux: ~/.purple/plugins/ Windows Vista/7: C:\Users&amp;lt;Username&amp;gt;\AppData\Roaming.purple\plugins  Install Perl:  Linux: It&amp;rsquo;s probably already installed. Windows: Use the most recent Strawberry Perl installation:  Install the XML::XPath module into perl:  Open a command line. Run perl -MCPAN -e shell. Type install XML::XPath and then hit Return. Wait for the install to finish. Type quit and hit Return, then close your command line  Start (or restart) Pidgin. From the contact list, go to Help &amp;gt; About. At the very bottom of the textbox that appears it should say &amp;ldquo;Perl: Enabled&amp;rdquo;. If it does not, repeat steps 3 and 4. From the contact list, go to Tools &amp;gt; Plug-ins. Find Twitter Status on the list, check the checkbox next to it, and then click Configure Plug-in. In the configuration window that appears, type in your username in the top textbox (labelled Username, surprise surprise). Configure anything else you want to your liking.  That&amp;rsquo;s it! You do not need to set this up again, it is a one-off set up for the computer. Of course, you will need to go through this procedure again if you have multiple computers you use Pidgin on, or if you format and reinstall your OS.</description>
     </item>
     
     <item>
@@ -82,7 +92,11 @@ When backups are taken, as default only user folders that were created by Window
       
       <guid>/post/ogg-vorbis-encoder-for-windows/</guid>
       <description>I not so long ago made a post about using Ogg Vorbis for Ringtones on Android, as it considerably reduces the lag between getting a phone call and the phone actually playing the ringtone. The same goes for music on the device–it just starts playing quicker.
-Anyway, just now I realised that I didn&amp;rsquo;t link to any encoders for it. So if anyone wondered what I used to accomplish the task, they&amp;rsquo;d be stuck!</description>
+Anyway, just now I realised that I didn&amp;rsquo;t link to any encoders for it. So if anyone wondered what I used to accomplish the task, they&amp;rsquo;d be stuck!
+So here&amp;rsquo;s a quick update to fill in in the gaps:
+If you&amp;rsquo;re wanting to just convert some files you already have into Ogg Vorbis, I&amp;rsquo;d recommend oggdropXPd. Open the program, right-click on the &amp;ldquo;dropbox&amp;rdquo; that appears to configure it, then when it&amp;rsquo;s all done, drag and drop the files you want to convert onto the dropbox, and wait! It works fine under Windows Vista (32-bit) and Windows 7 (64-bit).
+If you&amp;rsquo;re wanting to both edit a music track into a short ringtone and convert to Ogg Vorbis, Audacity did the job for me. It&amp;rsquo;s open-source and supports a number of file types (including MP3 if you download a separate plug-in), so hopefully it&amp;rsquo;ll work for you too. Again, it works fine in Windows Vista (32-bit) and Windows 7 (64-bit).
+The settings I used for the Ogg Vorbis files on my G1 where 128kbps CBR. You don&amp;rsquo;t need much quality because the phone&amp;rsquo;s speaker isn&amp;rsquo;t exactly an orchestra, and I used Constant Bitrate under the assumption it would take less CPU to decode. If you know otherwise, please let me know!</description>
     </item>
     
     <item>
@@ -94,7 +108,8 @@ Anyway, just now I realised that I didn&amp;rsquo;t link to any encoders for it.
       <description>Just a quick little thing I noticed, although everyone else probably knows it by now.
 To launch an elevated command prompt (i.e. a prompt with admin privileges, required to do various things if UAC is enabled on Vista), simply open the Start Menu (Windows key), type &amp;ldquo;cmd&amp;rdquo; without quotes, and press Control+Shift+Return.
 This will bring up a UAC prompt asking you to elevate the process. Select Continue (Alt+C). Done!
-This does work for some other applications.</description>
+This does work for some other applications. But in my experience it&amp;rsquo;s hit and miss! Strange.
+This technique may also work in Windows 7, but I haven&amp;rsquo;t been able to test it myself.</description>
     </item>
     
     <item>
@@ -104,7 +119,19 @@ This does work for some other applications.</description>
       
       <guid>/post/ill-modify-you-in-to-next-week/</guid>
       <description>A couple of days ago I came across this interesting quirk, and I had to do a double-take before I realised what had happened.
-Basically, I recently got a NAS and decided that I wanted my router to save its bandwidth usage statistics on it. That way whenever I perform an upgrade to the firmware on the router I won&amp;rsquo;t erase all the stats. This part is easy, as the firmware has the functionality for this.</description>
+Basically, I recently got a NAS and decided that I wanted my router to save its bandwidth usage statistics on it. That way whenever I perform an upgrade to the firmware on the router I won&amp;rsquo;t erase all the stats. This part is easy, as the firmware has the functionality for this. (The firmware I keep mentioning is the Tomato firmware. I highly recommend it if you happen to have a compatible Linux router!)
+Now, after I set it all up, I went on to the network shares to see if the statistics were being saved properly. What I saw I didn&amp;rsquo;t exactly expect:
+ A screenshot from Directory Opus of my local network share... And some interesting modified times  Now, nothing may look wrong at first glance. But take another look at the screenshot, particularly the column titled &amp;ldquo;Modified&amp;rdquo;.
+Got it yet? You have? That&amp;rsquo;s great! You haven&amp;rsquo;t? You&amp;rsquo;re probably just not as finnicky as I am, don&amp;rsquo;t worry.
+Anyway, enough suspense: the thing that caught me out was that the modified time for the statistics file was &amp;ldquo;tomorrow&amp;rdquo;.
+&amp;ldquo;So what?&amp;rdquo; I hear you cry! &amp;ldquo;You probably just had the NAS set to the wrong timezone.&amp;rdquo;
+Alright, I&amp;rsquo;ll give you that — I had set it to the wrong timezone. However, that isn&amp;rsquo;t the strangest thing!
+The strange part is the fact that Windows has provisions for files that have creation/modify/access times in the future.
+When you have a file that you have modifed today, it says &amp;ldquo;Today&amp;rdquo;. Nice. If you then leave the file for 24 hours, Windows will say the file was modified &amp;ldquo;Yesterday&amp;rdquo;. Again, a nice touch.
+But now Windows, in its all-powerful, all-knowing ways, can tell me when a file will be modified, before it&amp;rsquo;s even happened!
+At least, that&amp;rsquo;s the impression it gives me when I think of a developer including &amp;ldquo;tomorrow&amp;rdquo; on the list of English relative dates.
+And before you complain that I wasn&amp;rsquo;t using Windows Explorer but rather a replacement called Directory Opus, here&amp;rsquo;s a screen from Explorer demonstrating the same behaviour, but slightly more hidden:
+ A screenshot from Windows Explorer of my local network share... With the same interesting modified times  So there you have it: Some crazy behaviour and me thoroughly confused. With DOpus and Explorer both &amp;ldquo;predicting&amp;rdquo; the future for me, I&amp;rsquo;m beginning to wonder just how much control I have over these computers…</description>
     </item>
     
     <item>
@@ -114,7 +141,11 @@ Basically, I recently got a NAS and decided that I wanted my router to save its 
       
       <guid>/post/fix-windows-sidebar-gadget-file-association-in-vista/</guid>
       <description>Have you ever somehow managed to break the Gadget file association in Windows Vista? I have somehow, and that means that you can no longer install gadgets. Double-clicking a .gadget file does nothing, and the Sidebar offers no option to install gadgets itself!
-If you try to re-associate the files with Windows Sidebar by telling to Open With… and navigating to the Sidebar executable, you&amp;rsquo;ll have found that that doesn&amp;rsquo;t help — all it does is bring the Sidebar to focus, but doesn&amp;rsquo;t install the gadget.</description>
+If you try to re-associate the files with Windows Sidebar by telling to Open With… and navigating to the Sidebar executable, you&amp;rsquo;ll have found that that doesn&amp;rsquo;t help — all it does is bring the Sidebar to focus, but doesn&amp;rsquo;t install the gadget.
+Fortunately, help is at hand: all you need to do is **download the following archive **and apply the registry entries by double-clicking the .reg file inside the archive, and saying Yes at the prompt.
+Download Gadget Association registry entries.
+All I did was export the corresponding keys from the registry on a Vista machine with a working Sidebar — nothing else!
+Hope this helps others like it has me.</description>
     </item>
     
   </channel>

@@ -175,10 +175,35 @@
               </p>
               <div class="post-entry">
                 
-                  Some notes to remind future me why Promises are pretty neat.
-What do they give me?  They let you regain error handling for asynchronous operations. They let you avoid nested callbacks (and the pyramid indentation that comes with them).  Can I use them? They were initially formalised in the Promises/A+ specification, and have been officially adopted in to JavaScript with ES6.
-They&rsquo;ve been supported in all major browsers (except IE) for a while now.
-                  <a href="/post/javascript-promises-notes/" class="post-read-more">[Read More]</a>
+                  
+
+<p>Some notes to remind future me why Promises are pretty neat.</p>
+
+<h1 id="what-do-they-give-me">What do they give me?</h1>
+
+<ul>
+<li>They let you regain error handling for asynchronous operations.</li>
+<li>They let you avoid nested callbacks (and the pyramid indentation that comes with them).</li>
+</ul>
+
+<h1 id="can-i-use-them">Can I use them?</h1>
+
+<p>They were initially formalised in the <a href="https://promisesaplus.com/">Promises/A+ specification</a>, and have been <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-promise-objects">officially adopted in to JavaScript with ES6</a>.</p>
+
+<p>They&rsquo;ve been supported in <a href="http://caniuse.com/#feat=promises">all major browsers (except IE) for a while now</a>.  <a href="https://github.com/jakearchibald/es6-promise">A polyfill exists</a> for browsers that do not support them.</p>
+
+<h1 id="any-important-details">Any important details?</h1>
+
+<ul>
+<li>Promises <em>can</em> start executing the instant they have been instantiated.  However, this does not strictly mean that they will be.</li>
+<li>If you call <code>.then(success_function, failure_function)</code> on a Promise, the appropriate <code>function</code> will not be called until <a href="https://github.com/domenic/promises-unwrapping/blob/master/docs/states-and-fates.md">a Promise has <em>settled</em></a> &mdash; either fulfilled or rejected.</li>
+<li>Calling <code>.catch()</code> is equivalent to calling <code>.then(null, function)</code>.</li>
+</ul>
+
+<h1 id="i-need-help-visualising-them">I need help visualising them</h1>
+
+<p>Try <a href="http://bevacqua.github.io/promisees/">Promisees</a> &mdash; it&rsquo;ll visualise and animate the promise-y code you give it.  You can also slow down the animation and record animated GIFs!</p>
+
                 
               </div>
 

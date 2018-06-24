@@ -10,10 +10,18 @@
   <meta name="twitter:title" content="Working around Intel CPU Running at a Maximum of 49%/50%" />
   <meta name="description" content="My laptop had been feeling slower than it had used to, and I was getting more and more certain that it wasn&rsquo;t just me.
 One time I opened Task Manager and noticed that whenever I put load on the machine, it maxed out at 49%. Every time. Cooling wasn&rsquo;t the issue as the laptop fan (which is a dumb fan controlled by hardware, not software) wasn&rsquo;t spinning up much.
-After searching online, I stumbled across a thread that would provide the (really rather insane) workaround: Move the Intel processor driver so Windows does not use it.">
+After searching online, I stumbled across a thread that would provide the (really rather insane) workaround: Move the Intel processor driver so Windows does not use it. Thanks to everyone there for the discussion.
+ Restart in the advanced command prompt mode. (Hold Shift when clicking Restart) Log in to your account. Run the following:
+cd drivers move intelppm.sys intelppm.sys.old exit Select the option to exit and continue to Windows 10.
+  One comment on that thread suggests that this also works for AMD CPUs by moving amdppm.sys instead of intelppm.sys.
+Update 2017-06-23: I previously suggested to add the .bak extension to the driver file. However, Windows recognises this extension, and so it will restore the driver back to its original location at the next restart, meaning the problem will return! I&rsquo;ve changed the instructions to suggest using .old instead, which I don&rsquo;t believe Windows recognises, but is still fairly obvious to users.">
   <meta property="og:description" content="My laptop had been feeling slower than it had used to, and I was getting more and more certain that it wasn&rsquo;t just me.
 One time I opened Task Manager and noticed that whenever I put load on the machine, it maxed out at 49%. Every time. Cooling wasn&rsquo;t the issue as the laptop fan (which is a dumb fan controlled by hardware, not software) wasn&rsquo;t spinning up much.
-After searching online, I stumbled across a thread that would provide the (really rather insane) workaround: Move the Intel processor driver so Windows does not use it.">
+After searching online, I stumbled across a thread that would provide the (really rather insane) workaround: Move the Intel processor driver so Windows does not use it. Thanks to everyone there for the discussion.
+ Restart in the advanced command prompt mode. (Hold Shift when clicking Restart) Log in to your account. Run the following:
+cd drivers move intelppm.sys intelppm.sys.old exit Select the option to exit and continue to Windows 10.
+  One comment on that thread suggests that this also works for AMD CPUs by moving amdppm.sys instead of intelppm.sys.
+Update 2017-06-23: I previously suggested to add the .bak extension to the driver file. However, Windows recognises this extension, and so it will restore the driver back to its original location at the next restart, meaning the problem will return! I&rsquo;ve changed the instructions to suggest using .old instead, which I don&rsquo;t believe Windows recognises, but is still fairly obvious to users.">
   <meta name="twitter:description" content="My laptop had been feeling slower than it had used to, and I was getting more and more certain that it wasn&rsquo;t just me.
 One time I opened Task Manager and noticed that whenever I put load on the …">
   <meta name="author" content="Alex Palmer"/>

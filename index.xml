@@ -31,7 +31,9 @@ You can find this file:
       <description>To re-use a commit&amp;rsquo;s message verbatim, including authorship and timestamp information, use -C &amp;lt;commit&amp;gt;:
 git commit --amend -C @ Pro Tip: @ is a synonym for HEAD, the currently checked-out commit.
 To reset the date as well, use --date now; to reset the author too, use --reset-author:
-git commit --amend -C @ --date now git commit --amend -C @ --reset-author git commit --amend -C @ --date now --reset-author If you want to use an existing commit&amp;rsquo;s message and also want a chance to edit it, use -c &amp;lt;commit&amp;gt;:</description>
+git commit --amend -C @ --date now git commit --amend -C @ --reset-author git commit --amend -C @ --date now --reset-author If you want to use an existing commit&amp;rsquo;s message and also want a chance to edit it, use -c &amp;lt;commit&amp;gt;:
+git commit --amend -c @ -c is compatible with --date and --reset-author too:
+git commit --amend -c @ --date now git commit --amend -c @ --reset-author git commit --amend -c @ --date now --reset-author</description>
     </item>
     
     <item>
@@ -41,7 +43,11 @@ git commit --amend -C @ --date now git commit --amend -C @ --reset-author git co
       
       <guid>/post/uploading-to-google-play-music-without-matching/</guid>
       <description>I&amp;rsquo;ve had some trouble with Google Play Music&amp;rsquo;s scan and match service. It sometimes matches tracks to the wrong versions of them. Sometimes the volume of a track is wildly different from what I have locally (with or without ReplayGain). Unfortunately, there is no way to disable matching in Google&amp;rsquo;s official Music Manager application.
-gmusicapi supports uploading to Google Play Music without their &amp;ldquo;scan and match&amp;rdquo; service. gmusicapi-scripts utilises gmusicapi. Let&amp;rsquo;s use them!</description>
+gmusicapi supports uploading to Google Play Music without their &amp;ldquo;scan and match&amp;rdquo; service. gmusicapi-scripts utilises gmusicapi. Let&amp;rsquo;s use them!
+ Install gmusicapi-scripts:
+# Windows py -3 -m pip install gmusicapi-scripts # Others pip install gmusicapi-scripts Convert tracks (if needed) to 320kbps MP3 and place them in &amp;lt;directory&amp;gt;.
+ If you place non-MP3 files in this directory, gmsync will try to convrt them with FFMPEG or AVConv if they are on the PATH. Look at the docs to see what formats it supports.  Run gmsync. Follow any instructions it provides:
+gmsync up &amp;lt;directory&amp;gt;  gmsync uploads without matching by default. Perfect.</description>
     </item>
     
     <item>
@@ -52,7 +58,11 @@ gmusicapi supports uploading to Google Play Music without their &amp;ldquo;scan 
       <guid>/post/working-around-intel-cpu-running-at-a-maximum-of-49-50/</guid>
       <description>My laptop had been feeling slower than it had used to, and I was getting more and more certain that it wasn&amp;rsquo;t just me.
 One time I opened Task Manager and noticed that whenever I put load on the machine, it maxed out at 49%. Every time. Cooling wasn&amp;rsquo;t the issue as the laptop fan (which is a dumb fan controlled by hardware, not software) wasn&amp;rsquo;t spinning up much.
-After searching online, I stumbled across a thread that would provide the (really rather insane) workaround: Move the Intel processor driver so Windows does not use it.</description>
+After searching online, I stumbled across a thread that would provide the (really rather insane) workaround: Move the Intel processor driver so Windows does not use it. Thanks to everyone there for the discussion.
+ Restart in the advanced command prompt mode. (Hold Shift when clicking Restart) Log in to your account. Run the following:
+cd drivers move intelppm.sys intelppm.sys.old exit Select the option to exit and continue to Windows 10.
+  One comment on that thread suggests that this also works for AMD CPUs by moving amdppm.sys instead of intelppm.sys.
+Update 2017-06-23: I previously suggested to add the .bak extension to the driver file. However, Windows recognises this extension, and so it will restore the driver back to its original location at the next restart, meaning the problem will return! I&amp;rsquo;ve changed the instructions to suggest using .old instead, which I don&amp;rsquo;t believe Windows recognises, but is still fairly obvious to users.</description>
     </item>
     
     <item>
@@ -63,7 +73,26 @@ After searching online, I stumbled across a thread that would provide the (reall
       <guid>/post/tips-for-ripping-blu-ray-audio/</guid>
       <description>I recently ripped my first Blu-Ray audio discs. Here are a few tips I&amp;rsquo;ve discovered along the way:
 tl;dr Backup the disc using MakeMKV and extract the audio using the updated version of the command under Putting it all together.
-Ripping the discs MakeMKV can be used to rip and, if necessary, decrypt Blu-Ray audio discs. While it is in beta, it can be evaluated by using the current beta key.</description>
+Ripping the discs MakeMKV can be used to rip and, if necessary, decrypt Blu-Ray audio discs. While it is in beta, it can be evaluated by using the current beta key.
+I use the complete Blu-Ray backup feature so I have the raw stream files to work with.
+Extracting the audio from the video files ffmpeg can be used to extract the audio track(s) from the video streams on the Blu-Ray.
+First interrogate one of your streams using ffprobe to see how the different tracks are laid out:
+ffprobe -hide_banner BDMV/STREAM/00002.m2ts  I use -hide_banner to reduce the amount of text printed to the terminal. If you have troubles and decide to ask others for help, be sure to omit -hide_banner as the information it emits can be useful when debugging!
+Here is the output I got:
+Input #0, mpegts, from &#39;BDMV/STREAM/00002.m2ts&#39;: Duration: 00:01:47.07, start: 4200.000000, bitrate: 7133 kb/s Program 1 Stream #0:0[0x1011]: Video: h264 (High) (HDMV / 0x564D4448), yuv420p(progressive), 1920x1080 [SAR 1:1 DAR 16:9], 23.98 fps, 23.98 tbr, 90k tbn, 47.95 tbc Stream #0:1[0x1100]: Audio: pcm_bluray (HDMV / 0x564D4448), 48000 Hz, stereo, s16, 1536 kb/s  In my case I only have one audio stream to worry about at address 0:1. Note it is labelled s16 which means that it is a signed 16-bit depth audio stream. These details will be important in a moment.
+Next comes the extraction:
+Update 2017-09-10: I now think it is much more straightforward to trust FFMPEG to do the right thing:
+for i in BDMV/STREAM/*.m2ts; do ffmpeg -hide_banner -i &amp;#34;$i&amp;#34; -map 0:1 &amp;#34;$(basename &amp;#34;${i%.*}&amp;#34;).flac&amp;#34;; done Note that I do not set the audio codec, and merely set the file extension to .flac as that is the format that I want.
+For reference, this is original command I used:
+for i in BDMV/STREAM/*.m2ts; do ffmpeg -hide_banner -i &amp;#34;$i&amp;#34; -map 0:1 -acodec pcm_s16le &amp;#34;$(basename &amp;#34;${i%.*}&amp;#34;).wav&amp;#34;; done The -map 0:1 refers to our address from earlier. The s16 part of -acodec pcm_s16le matches the description of the stream ffprobe gave us. We cannot use -acodec copy as ffmpeg cannot encode pcm_bluray.
+Make sure to use .wav at the end of the filename, as ffmpeg considers it important. I was originally trying to use .pcm, but all I got was this error message:
+[NULL @ 000000000283dc20] Unable to find a suitable output format for &#39;00002.pcm&#39;  If you have multiple streams, re-run this command, changing -map, -acodec and the output filename (to not overwrite your previous extractions!) as appropriate.
+Removing initial silence After I had extracted the audio, I noticed that every track had about 1.0-1.6 seconds of silence at the beginning. I had no interest in keeping this, so I used ffmpeg with the silenceremove filter:
+mkdir no-silence for i in *.wav; do ffmpeg -i &amp;#34;$i&amp;#34; -af silenceremove=start_periods=1:detection=peak &amp;#34;no-silence/$(basename &amp;#34;$i&amp;#34;)&amp;#34;; done start_periods=1 means remove one block of silence from the beginning of the track, a.k.a. the silence before any audio begins. I use detection=peak because I know I&amp;rsquo;m working with audio with digital silence; if you&amp;rsquo;re working with audio that was originally recorded from analogue, omit this option.
+Putting it all together Incidentally, this filter could have been added to the original extraction command, if I knew that I wanted it at the time. :)
+Update 2017-09-10: As above, I now think it is much more straightforward to trust FFMPEG to do the right thing:
+for i in BDMV/STREAM/*.m2ts; do ffmpeg -hide_banner -i &amp;#34;$i&amp;#34; -map 0:1 -af silenceremove=start_periods=1:detection=peak &amp;#34;$(basename &amp;#34;${i%.*}&amp;#34;).flac&amp;#34;; done For reference, this is original command I used:
+for i in BDMV/STREAM/*.m2ts; do ffmpeg -hide_banner -i &amp;#34;$i&amp;#34; -map 0:1 -acodec pcm_s16le -af silenceremove=start_periods=1:detection=peak &amp;#34;$(basename &amp;#34;${i%.*}&amp;#34;).wav&amp;#34;; done Update 2017-05-14: Changed ${i/.*} to ${i%.*} to remove file extensions, as the new way will only remove everything following the last . in the filename, not the first. Thanks to my good friend Mark Holland-Avery for the suggestion!</description>
     </item>
     
     <item>
@@ -94,7 +123,17 @@ Fortunately for me, it is possible to configure the Option key to act as a Meta 
       
       <guid>/post/react-unexpected-token/</guid>
       <description>I&amp;rsquo;ve been fiddling around with React recently and made some pages with some normal-looking URLs, despite being a single-page application. This was done using React Router and configuring it to use the History API with browserHistory. Here is one of those URLS:
-http://localhost:3000/course/react-flux-building-applications  When the page was refreshed (either manually or by the hot loader), or when I visited that page manually, I got this odd error in the console:</description>
+http://localhost:3000/course/react-flux-building-applications  When the page was refreshed (either manually or by the hot loader), or when I visited that page manually, I got this odd error in the console:
+Unexpected token &amp;lt;  When I inspected the contents of bundle.js, which is what I had configured webpack to bundle all of my JS in to, I noticed it wasn&amp;rsquo;t JS at all; it was the HTML for my index page!
+&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;en&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;Pluralsight Admin&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;#34;app&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;script src=&amp;#34;bundle.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; After a few moments of wondering, I realised what had happened. It was pretty dumb. Can you see it?
+What happened is that bundle.js was being loaded from:
+http://localhost:3000/course/bundle.js  And not:
+http://localhost:3000/bundle.js  Since the URL was not recognised, webpack or React Router (I&amp;rsquo;m unsure exactly which) merely served index.html instead of a 404 error.
+This meant that HTML was served for a JS request!
+The simple fix is to change:
+&amp;lt;script src=&amp;#34;bundle.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; To:
+&amp;lt;script src=&amp;#34;/bundle.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; That way the requests always go to http://localhost:3000/bundle.js.
+This may need to be solved slightly better if I don&amp;rsquo;t want to host the application at the root of a domain, but it&amp;rsquo;ll work for now while I experiment!</description>
     </item>
     
     <item>
@@ -104,7 +143,7 @@ http://localhost:3000/course/react-flux-building-applications  When the page was
       
       <guid>/post/working-around-chroma-subsampling-over-hdmi-on-nvidia-cards/</guid>
       <description>If you have chroma subsampling issues when connecting a display via HDMI on an Nvidia card, despite all the settings appearing as if there shouldn&amp;rsquo;t be any, try creating a new custom profile at a fractionally higher refresh rate and using that new profile.
- Go in to the Nvidia Control Panel. Go to Display &amp;gt; Change resolution Select Customise&amp;hellip; Check &amp;ldquo;Enable resolutions not exposed by the display&amp;rdquo; Select Create Custom Resolution&amp;hellip; Select the correct horizontal pixels, vertical pixels, colour depth and scan type.</description>
+ Go in to the Nvidia Control Panel. Go to Display &amp;gt; Change resolution Select Customise&amp;hellip; Check &amp;ldquo;Enable resolutions not exposed by the display&amp;rdquo; Select Create Custom Resolution&amp;hellip; Select the correct horizontal pixels, vertical pixels, colour depth and scan type. Then enter the desired Refresh rate, and add 1 to it.  The Nvidia Control Panel does not allow you to create duplicates of profiles that exist by default. So changing the refresh rate ensures that the new profile is not a duplicate, and means you do not need to change resolution.  Test the profile, save it, exit the customise window. Select your new resolution off the list, and click Apply.  With any luck, your new profile will not have any chroma subsampling, leaving your colours (particularly reds) looking good, especially on menus.</description>
     </item>
     
     <item>
@@ -125,7 +164,8 @@ https://16b97286d5888280c8536397f6f64628f8db87a0.googledrive.com/host/0B2Sn62Hab
       <guid>/post/printing-brother-labels-through-gimp/</guid>
       <description>I&amp;rsquo;ve been fiddling with a Brother P-Touch D600, which is able to connect to a computer through USB. Since I&amp;rsquo;ve realised that it appears to Windows as a standard printer, I&amp;rsquo;ve been trying to see if any applications can print to the device. They can!
 Notepad works (albeit not in the most useful fashion). But I had a bit of trouble with GIMP.
-I found that, for some reason, even after setting the correct image/DPI settings and running through page setup, GIMP still seems to think it is printing via A4.</description>
+I found that, for some reason, even after setting the correct image/DPI settings and running through page setup, GIMP still seems to think it is printing via A4. I&amp;rsquo;m unclear where the problem comes from, but it can be worked around when you go to print.
+After selecting Print, select the Image Settings tab, and ensure the image is aligned to the top-left corner. You&amp;rsquo;ll need to factor in a margin. On my 24mm labels, I set a top and left margin of 3mm or so.</description>
     </item>
     
     <item>
@@ -135,7 +175,7 @@ I found that, for some reason, even after setting the correct image/DPI settings
       
       <guid>/post/how-to-update-qualcomm-atheros-qca61x4-drivers/</guid>
       <description>Qualcomm seem to make up-to-date wireless and wireless+bluetooth drivers available to Killer Networking first. Forunately you are able to download and install them yourself.
- Go to the Killer Networking driver page. Download the Standard drivers (no Killer Features). If your wireless adapter has Bluetooth, download the Bluetooth drivers as well.  My QCA61x4 device has Bluetooth, so I downloaded the Bluetooth driver for the K1525/1535.  Install the driver(s) in the usual manual way: Device Manager &amp;gt; your wireless adapter &amp;gt; Driver &amp;gt; Update driver&amp;hellip; &amp;gt; Browse &amp;gt; Let me pick &amp;gt; Have disk&amp;hellip; &amp;gt; Browse to driver.</description>
+ Go to the Killer Networking driver page. Download the Standard drivers (no Killer Features). If your wireless adapter has Bluetooth, download the Bluetooth drivers as well.  My QCA61x4 device has Bluetooth, so I downloaded the Bluetooth driver for the K1525/1535.  Install the driver(s) in the usual manual way: Device Manager &amp;gt; your wireless adapter &amp;gt; Driver &amp;gt; Update driver&amp;hellip; &amp;gt; Browse &amp;gt; Let me pick &amp;gt; Have disk&amp;hellip; &amp;gt; Browse to driver.  In my case, the k11acw10 directory worked for the wireless adapter. If Windows complains there is no valid driver, try another directory.   Bonus chatter: The driver needed updating as it was causing BSODs. A very helpful post by Glenn Meuth on this forum thread helped me identify the unreliable driver via analysing the BSOD&amp;rsquo;s memory dump.</description>
     </item>
     
     <item>
@@ -145,7 +185,7 @@ I found that, for some reason, even after setting the correct image/DPI settings
       
       <guid>/post/making-cd-mixtapes/</guid>
       <description>If I&amp;rsquo;m making informal CD mixtapes (mixdiscs?), use Foobar2000 (or other software) to convert the tracks to WAV, and then use ImgBurn to create a CUE file (Tools &amp;gt; Create CUE file&amp;hellip;), drag and drop the tracks in to the new window, and customise the disc before burning it.
-EAC can also be used for this (and is likely the better choice for making clones of audio CDs), but seems to be a little unreliable on my laptop.</description>
+EAC can also be used for this (and is likely the better choice for making clones of audio CDs), but seems to be a little unreliable on my laptop. And I don&amp;rsquo;t like to waste CDs, especially when I only have 2 or 3 of them!</description>
     </item>
     
     <item>
@@ -157,7 +197,9 @@ EAC can also be used for this (and is likely the better choice for making clones
       <description>You may have already used the git credential cache to cache your remote credentials for some time, via something like:
 git config --global credential.helper &#39;cache --timeout=3600&#39;  However this will not work on Windows, as cache communicates over a Unix socket.
 Fortunately, support for Windows&amp;rsquo;s built-in credential manager has been added to the Windows git distribution (along with msysgit). To leverage it, use the wincred helper:
-git config --global credential.helper wincred  If, like me, you like to use your dotfiles across many platforms, you may not want to put this in your global .</description>
+git config --global credential.helper wincred  If, like me, you like to use your dotfiles across many platforms, you may not want to put this in your global .gitconfig. Instead, you can include an environment-specific config file globally and make a new file with the credential helper configuration inside:
+git config --global include.path .gitconfig_env git config --file ~/.gitconfig_env credential.helper wincred  If you want to remove, modify or otherwise manage your Windows credentials, use the Credential Manager. This can be found in Control Panel &amp;gt; Credential Manager.
+PRO TIP: In Windows 8 and above, you can quickly get to the Control Panel by pressing Win+X, P.</description>
     </item>
     
     <item>
@@ -168,7 +210,11 @@ git config --global credential.helper wincred  If, like me, you like to use your
       <guid>/post/dynamic-dns-ddns-on-asus-routers/</guid>
       <description>When using the stock or Merlin firmware on various Asus routers (I have an RT-N66U), you can use dynamic DNS to get a web domain to point to your router&amp;rsquo;s IP address.
 To use dynamic DNS, do the following:
- Go to your router&amp;rsquo;s administration console (sometimes available at http://router.asus.com) and head to WAN &amp;gt; DDNS. There is also a link on the Network Map page. Enable the DDNS client, set Server to Custom and set the hostname to the web domain you will be updating (e.</description>
+ Go to your router&amp;rsquo;s administration console (sometimes available at http://router.asus.com) and head to WAN &amp;gt; DDNS. There is also a link on the Network Map page. Enable the DDNS client, set Server to Custom and set the hostname to the web domain you will be updating (e.g. example.com). Connect to the router. I tend to enable SSH (and disable Telnet) via Administration &amp;gt; System. Create the script that will update your DDNS at /jffs/scripts/ddns-start. My favoured tactic here is to run:
+cat &amp;gt; /jffs/scripts/ddns-start  Then paste the code, ensure the cursor is on a blank line (press Enter if not), then press Ctrl+D.
+ Finally, ensure the script is executable:
+chmod +x /jffs/scripts/ddns-start   In my case, I&amp;rsquo;m updating an address using the http://afraid.org service. I get my private key from the dynamic section of the Afraid.org site, and I use a script taken almost verbatim from the Merlin wiki:
+#!/bin/sh  curl &amp;#34;https://freedns.afraid.org/dynamic/update.php?&amp;lt;PRIVATE_KEY_HERE&amp;gt;&amp;#34; if [ $? -eq 0 ]; then /sbin/ddns_custom_updated 1 else /sbin/ddns_custom_updated 0 fi</description>
     </item>
     
     <item>
@@ -190,7 +236,7 @@ adb connect &amp;lt;IP address/hostname&amp;gt;  </description>
       <guid>/post/kodi-with-sony-bravia-tvs/</guid>
       <description>I&amp;rsquo;ve been setting up Kodi on my Sony Bravia Android TV &amp;mdash; you can install it from the Google Play Store.
 Here are a few notes to help set things up how I like them:
- My favourite skin so far is Arctic: Zephyr as it doesn&amp;rsquo;t have lots of gaudy images, runs fast, and displays long titles reasonably well (good for both music and long video names). I&amp;rsquo;ve added some useful functions to the Sony remote control; install the Keymap Editor add-on and then make the following adjustments:  Information (i+) button: Global &amp;gt; Navigation &amp;gt; Context Menu Red button : Global &amp;gt; Window &amp;gt; Open Home Green button: Global &amp;gt; Window &amp;gt; Open Favourites Yellow button: Global &amp;gt; Window &amp;gt; Open Fullscreen Video (allows you to return to a video if you go in to a menu) Blue button: Nothing yet!</description>
+ My favourite skin so far is Arctic: Zephyr as it doesn&amp;rsquo;t have lots of gaudy images, runs fast, and displays long titles reasonably well (good for both music and long video names). I&amp;rsquo;ve added some useful functions to the Sony remote control; install the Keymap Editor add-on and then make the following adjustments:  Information (i+) button: Global &amp;gt; Navigation &amp;gt; Context Menu Red button : Global &amp;gt; Window &amp;gt; Open Home Green button: Global &amp;gt; Window &amp;gt; Open Favourites Yellow button: Global &amp;gt; Window &amp;gt; Open Fullscreen Video (allows you to return to a video if you go in to a menu) Blue button: Nothing yet!   Update 2017-05-14: The new Estuary skin that comes as default in Kodi 17 is exactly to my tastes so I use that now.</description>
     </item>
     
     <item>
@@ -200,7 +246,28 @@ Here are a few notes to help set things up how I like them:
       
       <guid>/post/building-and-testing-a-jekyll-website-on-windows-with-docker/</guid>
       <description>I&amp;rsquo;ve recently talked about [how I&amp;rsquo;ve changed my website to be created with Jekyll][migrate-to-jekyll]. One of the big reasons was to simplify how the site is built and run.
-Well, if it&amp;rsquo;s so simple now, then I should be able to modify it on the go within Windows, right? I&amp;rsquo;ve recently been using an openSUSE VM to modify the site, but figured I could do one better and operate (mostly) natively.</description>
+Well, if it&amp;rsquo;s so simple now, then I should be able to modify it on the go within Windows, right? I&amp;rsquo;ve recently been using an openSUSE VM to modify the site, but figured I could do one better and operate (mostly) natively. This article describes my solution.
+It is assumed that you already have a Jekyll site to work with.
+Much of this will also work for anyone using the Linux or Mac OS X versions of Docker Toolbox, but I&amp;rsquo;m approaching with a view to running this on Windows.
+[migrate-to-jekyll]: {% post_url 2015-10-04-migrating-from-wordpress-to-jekyll %}
+Install Docker Toolbox Install Docker Toolbox. If you&amp;rsquo;re not familiar with Docker or Docker Toolbox, I highly recommend you go through their tutorials.
+One note: If you already have VirtualBox installed or prefer to install it yourself, uncheck the VirtualBox option in the installer.
+Create a Docker Machine Docker Toolbox creates a couple of shortcuts for you. If you run Docker Quickstart Terminal, a machine called default will be automatically created for you.
+Alternatively, you can create one with your own name from the command line:
+docker-machine create --driver virtualbox dev As you&amp;rsquo;ll see later on, I decided to go the route of managing this myself with my build script.
+Create Dockerfile To run Jekyll in Docker, you need to build a Docker image!
+It struck me as simplest to build my own:
+FROM debian:latest # Install jekyll dependencies RUN apt-get update &amp;amp;&amp;amp; apt-get -y install \  gcc \  make \  nodejs \  python \  ruby \  ruby-dev \  &amp;amp;&amp;amp; gem install bundler # Install site dependencies WORKDIR /site COPY Gemfile Gemfile.lock /site/ RUN bundle install # Copy site files COPY . /site/ CMD [&amp;#34;bundle&amp;#34;, &amp;#34;exec&amp;#34;, &amp;#34;jekyll&amp;#34;, &amp;#34;serve&amp;#34;, &amp;#34;--port=4000&amp;#34;, &amp;#34;--host=0.0.0.0&amp;#34;] EXPOSE 4000 I chose port 4000 as it isn&amp;rsquo;t either 8000 or 8080, which can be commonly used by other applications.
+You&amp;rsquo;ll note that Gemfile and Gemfile.lock are copied first. Docker creates a layer out of each instruction (e.g. RUN, COPY) in the Dockerfile, and caches them. This means a layer only needs to be rebuilt if it or one of its parents has changed. These copied files are used to install your website&amp;rsquo;s dependencies, and since this is generally quite a slow operation compared to actually building the site, I opt to get the install done first and utilise Docker&amp;rsquo;s layer cache.
+Create .dockerignore (and why it&amp;rsquo;s needed) Docker builds work by archiving and sending the entire contents of the current working directly to the Docker daemon &amp;mdash; the build does not happen on your local machine, but entirely on the remote machine.
+This means that if you have many temp, cache or large files that are not needed for the build, they will needlessly slow the build down. to counter this, a .dockerfile can be created to tell the local Docker client which files the remote Docker daemon will not need.
+.dockerignore works very similar to .gitignore. I&amp;rsquo;ll make a very simple one that ignores _site, just in case a build has happened locally:
+ _site  Create PowerShell build script I created a build script, build.ps1, at the root of my website. In this build script I create a Docker machine (if it doesn&amp;rsquo;t exist) or start it (if it does), configure Docker to communicate with it, print out instructions on how to see the website, and finally build and serve it:
+# Site building script for Powershell and Docker Toolbox # Set the name of the machine set machine dev # Set up and/or start the machine -- note that create also starts the machine docker-machine create --driver virtualbox $machine docker-machine start $machine # Set up Docker&amp;#39;s env vars so it can connect docker-machine env --shell=powershell $machine | Invoke-Expression # We now need a means to connect to the website once it runs. there are two methods: # Method 1: Enable forwarding the port -- with thanks to http://stackoverflow.com/a/32175164 # Only problem with this method is that it needs VBoxManage to be a part of the PATH -- this is a manual change. # Example address: http://localhost:4000/ #VBoxManage modifyvm $machine --natpf1 &amp;#34;jekyll,tcp,127.0.0.1,4000,,4000&amp;#34; # Method 2: Connect to the docker machine&amp;#39;s IP directly without port forwarding # Example address: http://192.168.99.100:4000/ docker-machine ip $machine | set ip echo &amp;#34;Building website; will be available in a few moments. Press Ctrl+C when done.&amp;#34; echo &amp;#34;Connect to: http://${ip}:4000&amp;#34; # Build and serve the website (docker build -t blog .) -and (docker run -it --rm --publish=4000:4000 blog) Note: The very last command, with the -and in the middle, will absorb all stdout, meaning that things will look very quiet. Rest assured that if the script doe not end, then things are working fine.
+If you update the site and want to see what the changes look like, or are simply finished, press Ctrl+C and then re-run the build script as desired.
+Profit While not certainly not as easy to modify as when I&amp;rsquo;m on a Linux machine, this is certainly a big improvement on local testing than trying to run a Wordpress stack on Windows! I&amp;rsquo;ve also learnt a lot about docker-machine.
+It may or may not be possible to mount the Windows website directory on to the docker machine in order to allow rebuilds on file modification, but I suspect that may turn out to be difficult, complicated or fragile, and the method described above works for me. If I change my mind, I&amp;rsquo;ll inevitably describe what I do!
+Hopefully this guide helps you out, as well as future me!</description>
     </item>
     
     <item>
@@ -210,7 +277,16 @@ Well, if it&amp;rsquo;s so simple now, then I should be able to modify it on the
       
       <guid>/post/deploying-jekyll-website-on-git-commit/</guid>
       <description>One reason for [migrating to static site generation][migrate-to-jekyll] is that the site becomes more straightforward to keep in version control systems such as git. And I do like version control; I naturally ran git init before I ran jekyll new!
-In my workflow, once I have made and committed changes locally, I push the changes remotely. But now I need to build and deploy the new version of the site. What if I could get that to happen automatically?</description>
+In my workflow, once I have made and committed changes locally, I push the changes remotely. But now I need to build and deploy the new version of the site. What if I could get that to happen automatically?
+To do this, I set up my web server to accept git commands; this is a topic unto itself which I might write about some time.
+I then create a bare repo:
+ git init --bare blog.git  After setting permissions as appropriate, I can now push my git repo to the web server:
+ git remote add origin https://user@your.website.tld/git/blog.git git push -u origin master  I then modified an example git-hook I found on the Jekyll website to be more robust and meet my needs. There are a few things to take note of here:
+ I switched from using the git-receive hook as per Jekyll&amp;rsquo;s recommendation to post-receive. This is because the level of info git-receive, ahem, receives seems a bit overkill &amp;mdash; post-update provides the names of the modified branches, and that&amp;rsquo;s all we need. DEPLOY_REF_REGEX is a regex that matches git-refs, such as branches. The value in my script means that it&amp;rsquo;ll only deploy the website when changes are pushed to master. This means you are free to experiment on non-master branches. I haven&amp;rsquo;t gone so far as to deploy different branches different places! GIT_REPO is the path to your site&amp;rsquo;s git repo. Ensure it can be read by the webserver. PUBLIC_WWW is where the website needs to be deployed to be visible on the web. Ensure it is writable by the webserver.  To use this hook, create a file called post-update in your remote bare repo&amp;rsquo;s hooks directory. Ensure it is executable by your webserver!
+#!/bin/bash  # Builds and deploys blog when new commits are pushed to the specified branches (default master).  #  # Despite the Jekyll site recommending to use the post-receive hook, we do not  # need the level of information that post-receive gets. post-update receives  # each ref that was updated as an argument, and so is sufficient for this  # script&amp;#39;s needs.  #  # The script also adds the commit ID of the deployed commit to the site, so you are able  # to tell exactly what is live by visiting /deployed_commit.  #  # Originally taken from: http://jekyllrb.com/docs/deployment-methods/#git-post-receive-hook  #  DEPLOY_REF_REGEX=refs/heads/master GIT_REPO=/shared/code/git/blog.git PUBLIC_WWW=/var/www/blog DEPLOY= for ref in &amp;#34;$@&amp;#34;; do if [[ $ref =~ $DEPLOY_REF_REGEX ]]; then DEPLOY=true break fi done if [ $DEPLOY ]; then TMP_GIT_CLONE=$(mktemp -d) git clone &amp;#34;$GIT_REPO&amp;#34; &amp;#34;$TMP_GIT_CLONE&amp;#34; echo $(GIT_DIR=.git git -C &amp;#34;$TMP_GIT_CLONE&amp;#34; rev-parse HEAD) &amp;gt; &amp;#34;$TMP_GIT_CLONE/deployed_commit&amp;#34; jekyll build -s &amp;#34;$TMP_GIT_CLONE&amp;#34; -d &amp;#34;$PUBLIC_WWW&amp;#34; rm -Rf &amp;#34;$TMP_GIT_CLONE&amp;#34; else echo &amp;#34;Updated refs did not match; not deploying.&amp;#34; fi exit You&amp;rsquo;ll get output like the following:
+ $ git push Counting objects: 4, done. Delta compression using up to 4 threads. Compressing objects: 100% (4/4), done. Writing objects: 100% (4/4), 3.15 KiB | 0 bytes/s, done. Total 4 (delta 2), reused 0 (delta 0) remote: Cloning into &#39;/tmp/tmp.TkcxSnfVnb&#39;... remote: done. remote: Configuration file: /tmp/tmp.TkcxSnfVnb/_config.yml remote: Source: /tmp/tmp.TkcxSnfVnb remote: Destination: /var/www/blog remote: Generating... remote: done. remote: Auto-regeneration: disabled. Use --watch to enable. To https://user@your.website.tld/git/blog.git df05e56..ce42b80 master -&amp;gt; master  If the deploy succeeds, then website should be available on the internet and you are done! If the deploy fails, the push will be cancelled and you&amp;rsquo;ll need to investigate why that might be. I would first check the permissions on all of the directories mentioned above.
+Finally, as a little bonus, the script creates a deployed_commit file which contains the commit SHA of the commit the build was based on; useful if something goes wrong or you just want to check what you last deployed. You can even check my site&amp;rsquo;s deployed commit (update: now defunct)!
+[migrate-to-jekyll]: {% post_url 2015-10-04-migrating-from-wordpress-to-jekyll %}</description>
     </item>
     
     <item>
@@ -221,7 +297,8 @@ In my workflow, once I have made and committed changes locally, I push the chang
       <guid>/post/javascript-promises-notes/</guid>
       <description>Some notes to remind future me why Promises are pretty neat.
 What do they give me?  They let you regain error handling for asynchronous operations. They let you avoid nested callbacks (and the pyramid indentation that comes with them).  Can I use them? They were initially formalised in the Promises/A+ specification, and have been officially adopted in to JavaScript with ES6.
-They&amp;rsquo;ve been supported in all major browsers (except IE) for a while now.</description>
+They&amp;rsquo;ve been supported in all major browsers (except IE) for a while now. A polyfill exists for browsers that do not support them.
+Any important details?  Promises can start executing the instant they have been instantiated. However, this does not strictly mean that they will be. If you call .then(success_function, failure_function) on a Promise, the appropriate function will not be called until a Promise has settled &amp;mdash; either fulfilled or rejected. Calling .catch() is equivalent to calling .then(null, function).  I need help visualising them Try Promisees &amp;mdash; it&amp;rsquo;ll visualise and animate the promise-y code you give it. You can also slow down the animation and record animated GIFs!</description>
     </item>
     
     <item>
@@ -233,7 +310,8 @@ They&amp;rsquo;ve been supported in all major browsers (except IE) for a while n
       <description>If you have both python2 and python3 installed on openSUSE, you might find when you use pip to install packages that they install for python3, not python2!
 This seems to be because the pip command that is run comes directly from the python3 install.
 To fix it, install the python-pip SUSE package, then use it as default:
-zypper install -n python-pip update-alternatives --config pip  When prompted for which pip to use, ensure you select the python2 version.</description>
+zypper install -n python-pip update-alternatives --config pip  When prompted for which pip to use, ensure you select the python2 version.
+Now when you use pip, you&amp;rsquo;re modifying python2. To modify python3, run pip3.</description>
     </item>
     
     <item>
@@ -255,7 +333,23 @@ Incidentally, you can set any option for individual syntaxes in this manner.</de
       <guid>/post/getting-battery-life-back-on-an-acer-aspire-5820tg-running-windows-10/</guid>
       <description>Details upfront: My workaround is to completely disable the AMD GPU via a modded BIOS and let Windows Update install a valid driver for the Intel card. If this concerns you, then don&amp;rsquo;t follow the instructions on this page!
 ==Disclaimer: I can&amp;rsquo;t be held responsible should things go wrong etc. etc. I can only describe what worked for me.==
-I&amp;rsquo;ll be careful. Instructions please! I first made sure that I had uninstalled all of the graphics drivers.</description>
+I&amp;rsquo;ll be careful. Instructions please! I first made sure that I had uninstalled all of the graphics drivers. I would do this by uninstalling the drivers (either via Device Manager or Programs &amp;amp; Features), rebooting in to Safe Mode (hold Shift while clicking Restart in the Start Menu, then find the Advanced Boot Options command) and using something like Driver Fusion to eradicate the AMD and Intel drivers.
+I installed the modded BIOS available on Notebook Review&amp;rsquo;s forum. That same page also has some useful instructions should things go wrong!
+I then rebooted in to the BIOS and set the graphics mode to the newly-added Integrated. Note that if you shut down Windows 10 it will still seem to flag to the BIOS that it is hibernating (likely one of the many ways Microsoft have sped up boot times), which means you can&amp;rsquo;t access the BIOS; I&amp;rsquo;ve found that restarting always gives me the option.
+I then reboot to Windows, check Device Manager to see that only one graphics device shows up (on the Acer 5820TG, if the AMD GPU is enabled you&amp;rsquo;ll see 2 devices), then go to Start &amp;gt; Settings &amp;gt; Update &amp;gt; Check for Updates. Windows 10 will, in short order, get to installing the Intel driver (assuming you haven&amp;rsquo;t disabled it!).
+My personal testing suggests that this is about as good as when you would have normally switched to Integrated graphics, which is good. BatteryBar Pro tells me that when the laptop is idle with WiFi on and the screen on the battery discharge rate in the 7,000-8,000mW region, which is excellent for this machine.
+Why remove the AMD card entirely? In Windows 10 Microsoft have made the decision to automatically install the most up-to-date drivers it has for all the hardware connected to your machine.
+It&amp;rsquo;s noble, but the problem here is that the up-to-date driver for the graphics cards in this machine doesn&amp;rsquo;t properly utilise switching. It instead uses both GPUs all the time &amp;mdash; leading to lacklustre battery life. So I would install a much older driver that I know works (and still behaves correctly in Windows 10) instead.
+However, there is no easy way to opt-out of driver updated. The option in System to tell Windows Update to not install drivers is ignored. The only way I know of to stop the updates is to hide them before they&amp;rsquo;re installed by using a troubleshooter explicitly for this purpose; indeed, the functionality to disable updates is no longer built in to Windows. At least you can store the troubleshooter somewhere and keep running it to pretend the functionality is still there.
+But there was a hitch: even once I&amp;rsquo;d hidden the AMD graphics driver update, it was still getting installed sooner or later.
+I also found that so long as I stuck exclusively with the Intel card then everything was OK and Windows could not detect the AMD hardware. But as soon as I switched to the AMD GPU (such as can automatically happen when you connect a power supply), it effectively enabled a kill switch for the graphics driver in Windows as it&amp;rsquo;ll sooner or later install the up-to-date driver against my wishes.
+I figured that it would just be a whole lot simpler to run with the one GPU and bypass the switchable business. The default BIOS lets you choose between Discrete and Switchable configurations, but I wanted an Integrated option. That&amp;rsquo;s where the modded BIOS came in.
+But I don&amp;rsquo;t want to lose my AMD card! I might revisit this at some point, because while figuring all this stuff out I noticed something odd.
+I went the one GPU route because I found that, despite disabling the update, the AMD graphics driver would still install. Except it might not have been the AMD graphics driver that was installing.
+Once I had disabled the AMD GPU and rebooted, I noted that another option appeared in the disable update troubleshooter: the AMD HDMI audio driver.
+I had already noted by this point that despite the fact that something would install and hose the driver, the driver version reported in Device Manager would not always change. This could be quite neatly explained if the HDMI audio driver, which wouldn&amp;rsquo;t change the graphics driver version, had enough stuff in it to stop the graphics driver working.
+Now that I&amp;rsquo;ve disabled both the AMD graphics driver and the AMD HDMI audio driver, perhaps I could re-enable the switchable graphics configuration.
+One last note: assuming that hiding updates works in Windows 10 like it did in previous Windows releases, then hiding an update only hides that version. That means that if either driver were to get updated in future, you&amp;rsquo;ll probably have to go through the entire rigmarole again (hide update, uninstall, reinstall) to get a working driver again.</description>
     </item>
     
     <item>
@@ -266,7 +360,17 @@ I&amp;rsquo;ll be careful. Instructions please! I first made sure that I had uni
       <guid>/post/troubleshooting-keyboard-shortcuts-in-sublime-text/</guid>
       <description>I recently installed a couple of new plugins to Sublime Text, and then Ctrl+Shift+R, the shortcut for searching through all symbols in a project, stopped working!
 You can get Sublime Text to display what&amp;rsquo;s actually going on when you press the shortcut &amp;mdash; that information may give you a hint as to what plugin or configuration has changed your value.
-Is the shortcut reaching Sublime? The following commands are run in the Sublime Text Console; you can access on Linux and Windows by pressing Ctrl+`.</description>
+Is the shortcut reaching Sublime? The following commands are run in the Sublime Text Console; you can access on Linux and Windows by pressing Ctrl+`.
+You can check the shortcut is actually managing to get to Sublime in the first place:
+sublime.log_input(True)  You&amp;rsquo;ll notice that the console will now display the keys that you press &amp;mdash; try pressing a keyboard shortcut too!
+key evt: shift+control+r  If the console is showing your keystrokes correctly, then Sublime is receiving them loud and clear and the problem lies elsewhere.
+What is Sublime doing when the shortcut is invoked? By running the following in the Sublime console, you&amp;rsquo;ll see what commands Sublime is running as you press keyboard shortcuts:
+sublime.log_commands(True)  You&amp;rsquo;ll now note the command names appearing inside of the console. I got the following:
+key evt: shift+control+r command: run_emmet_action {&amp;quot;action&amp;quot;: &amp;quot;reflect_css_value&amp;quot;}  In my case, it turned out that Emmet had taken over the shortcut! I got my shortcut back by copying the default Ctrl+Shift+R shortcut definition from Preferences &amp;gt; Keybindings - Default and pasting it in to the user file at Preferences &amp;gt; Keybindings - User.
+[ { &amp;quot;keys&amp;quot;: [&amp;quot;ctrl+shift+r&amp;quot;], &amp;quot;command&amp;quot;: &amp;quot;goto_symbol_in_project&amp;quot; } ]  I feel there should be a better way to do this, but this works as Sublime is now. Now I try the shortcut again:
+key evt: shift+control+r command: goto_symbol_in_project  Much better.
+Emmet has its own special shortcut handling Those of you familiar with Emmet might know that it has its own built-in mechanism to disable keyboard shortcuts of your choice. And in this case, that&amp;rsquo;s exactly what could be used.
+&amp;quot;disabled_keymap_actions&amp;quot;: &amp;quot;reflect_css_value&amp;quot;  The nice thing about the keybindings override is that the instructions described above should work for any addon package as the User package is sourced last &amp;mdash; meaning that the User package overrides all.</description>
     </item>
     
     <item>
@@ -277,7 +381,16 @@ Is the shortcut reaching Sublime? The following commands are run in the Sublime 
       <guid>/post/migrating-from-wordpress-to-jekyll/</guid>
       <description>I&amp;rsquo;ve recently moved from the rather dynamic Wordpress to the rather static Jekyll. Can you tell?
 I&amp;rsquo;ve come to like the idea of simply serving a bunch of static files instead of dynamically building them when required. Static files are simple, cheap to host and serve, introduce no further security problems beyond the web server and configuration, and easy enough for me, as a developer, to edit.
-I&amp;rsquo;ve still got plenty of hurdles to work through &amp;mdash; in particular how to host all my pictures &amp;mdash; but this can all be worked out over time one way or another (including reverting back to Wordpress!</description>
+I&amp;rsquo;ve still got plenty of hurdles to work through &amp;mdash; in particular how to host all my pictures &amp;mdash; but this can all be worked out over time one way or another (including reverting back to Wordpress!).
+I just wanted to scrawl a few notes about my discoveries &amp;mdash; and what better way to do it than within the blog itself!
+ If you run jekyll serve inside of a VM (like Virtualbox) or container (like Docker), if you want to hit the site outside of the VM then make sure to specify --host=0.0.0.0 so the server binds to the outside network interface instead of the loopback interface.
+ I exported the Wordpress data by using the jekyll-export plugin. The script recommended by Jekyll&amp;rsquo;s own import website produced a bunch of HTML which did not play well with Jekyll.
+ One thing I wanted to do afterwards is convert many of the HTML entities to simpler equivalents, like ’ to &#39; and “ and ” to &amp;quot;. I did this to make my files easily readable and editable, in the spirit of Markdown. A quick way to do this is to run the following:
+for post in _posts/*; do cat &amp;#34;$post&amp;#34; | perl -n -mHTML::Entities -e &amp;#39;use open ( &amp;#34;:encoding(UTF-8)&amp;#34;, &amp;#34;:std&amp;#34; ); print HTML::Entities::decode_entities($_) ;&amp;#39; &amp;gt; $post.new &amp;amp;&amp;amp; mv $post.new $post; done You&amp;rsquo;ll also need to convert any pages that were brought across too.
+The use open ( &amp;quot;:encoding(UTF-8)&amp;quot;, &amp;quot;:std&amp;quot; ); part is of as it instructs perl that all input and output streams are UTF-8.
+ You see that code block nested inside the list above? That cannot be done with Jekyll and Markdown. This is because the {% raw %}{% highlight %}{% endraw %} code Jekyll uses is substituted before the markdown is parsed. If you want highlighting, this means you need to use the ~~~ fenced code blocks.
+You could try adding pygments support to Kramdown. Alternatively, you can switch to a renderer, like redcarpet, that does support it. This may well come and bite me in the future.
+  After all of these changes, my markup (or should I say markdown?) started to look respectable &amp;mdash; although there&amp;rsquo;s a long way to go!</description>
     </item>
     
     <item>
@@ -310,7 +423,12 @@ I&amp;rsquo;ll briefly mirror the instructions here:
       <guid>/post/fixing-gran-turismo-5s-slow-loading-times/</guid>
       <description>Just this morning Gran Turismo 5 just out of nowhere started loading really slowly.
 I fixed this by signing out of PSN. It&amp;rsquo;s not ideal if you want to play online, but it&amp;rsquo;s worked for me.
-It should be noted that the problem can been seen from the XMB before you even launch the game – just after it displays the message that you&amp;rsquo;ve &amp;ldquo;signed in&amp;rdquo;, watch the clock and see how long it spins; this is the console synchronizing the time with PSN.</description>
+It should be noted that the problem can been seen from the XMB before you even launch the game – just after it displays the message that you&amp;rsquo;ve &amp;ldquo;signed in&amp;rdquo;, watch the clock and see how long it spins; this is the console synchronizing the time with PSN. If this takes more than a couple of seconds, there might be a problem.
+In addition, check your friends list. If it seems significantly shorter, and each friend is only very slowly appearing one at once, you can count on having troubles launching GT5.
+Finally, note that when you launch GT5 without being connected, the points where the game hangs are the points it asks you if you want to connect to PSN.
+I can only assume that this is a PSN issue because I can confirm on my Tomato router that my connection is entirely utilised. Of course, that doesn&amp;rsquo;t guarantee the problem isn&amp;rsquo;t my end…
+If your loading problem isn&amp;rsquo;t thanks to PSN or a slow internet connection, then it might be that it isn&amp;rsquo;t installed, the HDD is dying, the disc is scratched, the Blu-ray is dying… All the usual suspects really.
+Good luck!</description>
     </item>
     
     <item>
@@ -334,7 +452,7 @@ As always, you can download the update via Google Play or directly.</description
       <description>Looks like I forgot to write about this when I released it in February, but Searchlight 1.5 is out!
 The big thing this update adds is a widget that can be added to your launcher or to your lock screen on 4.2+ devices. That means you can toggle the light without unlocking the device!
 As always you can download it from Google Play and directly from this site.
-Also, for the sake of completeness, since I never got around to writing about version 1.</description>
+Also, for the sake of completeness, since I never got around to writing about version 1.4, here&amp;rsquo;s the download for 1.4.</description>
     </item>
     
     <item>
@@ -356,7 +474,7 @@ Download it direct or from Google Play.</description>
       <guid>/post/im-helping-with-a-monster-hunter-portable-3rd-english-fan-translation/</guid>
       <description>Recently I&amp;rsquo;ve been helping out Team Maverick One translate Monster Hunter Portable 3rd to English! It&amp;rsquo;s a fan translation with the aim of making the game playable in regions it was never officially released.
 I&amp;rsquo;ve been correcting machine-translated English and writing lots of useful scripts to help everyone out. ^^
-So if you&amp;rsquo;re wondering what I&amp;rsquo;ve been up to lately, that&amp;rsquo;s probably it! Check it out if you have a PSP and are in to Monster Hunter.</description>
+So if you&amp;rsquo;re wondering what I&amp;rsquo;ve been up to lately, that&amp;rsquo;s probably it! Check it out if you have a PSP and are in to Monster Hunter. =3</description>
     </item>
     
     <item>
@@ -366,7 +484,8 @@ So if you&amp;rsquo;re wondering what I&amp;rsquo;ve been up to lately, that&amp
       
       <guid>/post/searchlight-1-1-released/</guid>
       <description>Searchlight, my application for lighting up your world (or at least a few metres in front of you) using your Android device&amp;rsquo;s LED has been updated to 1.1.
-This update brings better behaviour on HTC Sense devices, where the screen is kept on (as this is necessary to keep the device&amp;rsquo;s light switched on). In addition, when the screen is switched off (manually) and switched on again, it can switch on the light again; previously it didn&amp;rsquo;t switch the light back on, yet still ran the service.</description>
+This update brings better behaviour on HTC Sense devices, where the screen is kept on (as this is necessary to keep the device&amp;rsquo;s light switched on). In addition, when the screen is switched off (manually) and switched on again, it can switch on the light again; previously it didn&amp;rsquo;t switch the light back on, yet still ran the service. Oops.
+Get the update through the Android Market, or download the APK right here.</description>
     </item>
     
     <item>
@@ -377,7 +496,13 @@ This update brings better behaviour on HTC Sense devices, where the screen is ke
       <guid>/post/searchlight-an-android-led-torch-powered-by-the-search-button/</guid>
       <description>In case there aren&amp;rsquo;t enough of them out there, I&amp;rsquo;ve decided to chip in my own effort on the Android LED torch scene.
 In a sort of sequel to my first Android app Torchure, I have just released Searchlight on to the Android Market.
-The unique thing about this flashlight is that it&amp;rsquo;s activated by long-pressing the Search button. Each time you do this, the LED will toggle on or off.</description>
+The unique thing about this flashlight is that it&amp;rsquo;s activated by long-pressing the Search button. Each time you do this, the LED will toggle on or off. This means that (nearly) regardless of what app you&amp;rsquo;re in, you can toggle the LED.
+You can even switch off the screen to save your battery for the LED. Just note that on most devices the Search button will be disabled while the screen is off, so you&amp;rsquo;ll probably have to switch on the screen, unlock it, then hold the Search button.
+When you long-press the Search button for the first time, you&amp;rsquo;ll probably get a selection of different apps for you to choose from. Just select Searchlight off the list to toggle the LED. Check the &amp;ldquo;Use by default for this action&amp;rdquo; checkbox to make sure that dialog doesn&amp;rsquo;t appear in future.
+If you want that Search selection to appear again, go to Settings &amp;gt; Applications &amp;gt; Manage applications &amp;gt; Searchlight &amp;gt; &amp;ldquo;Clear defaults&amp;rdquo; button. Then hold Search again and make a new selection. It will also reappear when the list of actions changes, for example you install or uninstall an app that has global search functionality.
+There are a couple of caveats.
+ It&amp;rsquo;ll only work on devices that implement the standard camera flash interface introduced by Froyo. If it doesn&amp;rsquo;t work on yours, contact me and I&amp;rsquo;ll see if I can add support for your device or system software. Don&amp;rsquo;t run Searchlight at the same time as another app using the camera, such as Camera, Barcode Scanner or Shopper. Things will go badly, trust me.  It&amp;rsquo;s available on the Android Market for any Android device with a camera and flash running 2.2 (Froyo) and above. This first version is only a smidge over 11KB and requires no outrageous permissions (just camera for obvious reasons, and wake lock to keep the LED on when the screen is off).
+Alternatively, if you prefer not to use the Market, you can download it here.</description>
     </item>
     
     <item>
@@ -398,7 +523,10 @@ I&amp;rsquo;ve increased the contrast and played around with saturation a bit. C
       
       <guid>/post/finding-froggy/</guid>
       <description>This is for all the people who wasted their lives on Sonic Adventure trying to find Big the Cat&amp;rsquo;s best friend, Froggy. Here he is.
-For the curious this is yet another of the amphibians to get themselves stuck in Huntersdale&amp;rsquo;s basement. But instead of the legions of toads, we have a frog this time! It was a fair bit larger than the toads, although the bubble wrap in the background of this photo gives you the sense that he wasn&amp;rsquo;t that large after all — and just how small the toads are!</description>
+For the curious this is yet another of the amphibians to get themselves stuck in Huntersdale&amp;rsquo;s basement. But instead of the legions of toads, we have a frog this time! It was a fair bit larger than the toads, although the bubble wrap in the background of this photo gives you the sense that he wasn&amp;rsquo;t that large after all — and just how small the toads are!
+I&amp;rsquo;ve decided to be a little bit creative for once, opting to make the image duotone, and fiddling with noise, contrast and vignetting a bit. No cropping, mind.
+For the duotone part, I first made the photo black and white, then applied a slight yellow tint to the highlights and a slight blue/grey tint to the shadows. I really like how those two colours blend together.
+Hope you enjoy!</description>
     </item>
     
     <item>
@@ -429,7 +557,13 @@ I&amp;rsquo;ve been trying out a few post-processing techniques, so there have b
       <guid>/post/making-ringtones-loop-on-android/</guid>
       <description>Update 2012-01-06: ICS appears to have a bug where the end of the file is chopped off, so ringtones do not loop properly. If I find or hear a solution I&amp;rsquo;ll update again!
 Update 2010-11-09: Added clarification on why I suggest having a short (sub-10 second) ringtone. You want it to loop, right? =P
-Following on from my previous articles on ringtones, I&amp;rsquo;ve finally worked out how to make ringtones loop seamlessly in Android.</description>
+Following on from my previous articles on ringtones, I&amp;rsquo;ve finally worked out how to make ringtones loop seamlessly in Android.
+My problem before was that, despite the fact I made an OGG that should loop properly, when played back on Android, it didn&amp;rsquo;t. Turns out, there&amp;rsquo;s a little piece of metadata you need to add to the tags in the ringtone to make it loop properly.
+Using your favourite tag editor (I used foobar2000 on Windows), add a tag/field called &amp;ldquo;ANDROID_LOOP&amp;rdquo;, and set it to &amp;ldquo;true&amp;rdquo;.
+Please note that the file itself will also need to loop properly for things to work out. That means that if you&amp;rsquo;re basing your ringtone on a longer piece of music, it needs to be trimmed down to 10 or fewer seconds and trimmed in such a way that the audio sounds like it goes on forever when played from beginning to end repeatedly.
+The file doesn&amp;rsquo;t have to be less than 10 seconds, but I figure you&amp;rsquo;re reading this because you want to make a file that loops! Most carriers will stop ringing your phone after 15 to 30 seconds and pass the call to voicemail. This depends on the carrier, your preferences (if you can change how long voicemail waits at all), and whether or not you have voicemail enabled!
+Also, you need to use a format that doesn&amp;rsquo;t add silence to the end of the track. OGG (which I recommend), FLAC and AAC should all work fine. I do not know if Android reads LAME&amp;rsquo;s metadata with allows MP3s encoded by it to loop. MP3s encoded with other encoders will probably add silence and as such will not loop perfectly.
+Have fun with this!</description>
     </item>
     
     <item>
@@ -440,7 +574,14 @@ Following on from my previous articles on ringtones, I&amp;rsquo;ve finally work
       <guid>/post/team-orders-in-f1-theyre-here-to-stay-get-over-it/</guid>
       <description>Just wanted to quickly chime in on the whole Ferrari one-two fiasco.
 I basically agree with what David Coulthard kept saying on the BBC&amp;rsquo;s extended coverage–no matter what fans or press may shout, you can&amp;rsquo;t take the teams out of Formula 1.
-They spend millions of pounds on research, design, manufacture, promotion and, of course, the drivers: so is it so bad when sometimes the drivers have to follow &amp;ldquo;team orders&amp;rdquo; to make their team happy?</description>
+They spend millions of pounds on research, design, manufacture, promotion and, of course, the drivers: so is it so bad when sometimes the drivers have to follow &amp;ldquo;team orders&amp;rdquo; to make their team happy? It is their job to work to their team&amp;rsquo;s satisfaction after all.
+Further, the now famous again rule 39.1, stating that any orders that affect the outcome of the race are prohibited, seems almost impossible to police.
+Look at what&amp;rsquo;s happened so far: Alonso is saying that Massa happened to be slow and passed him. Massa claims that it was his decision, not the team&amp;rsquo;s. Smeadley (Massa&amp;rsquo;s race engineer), who apologised during the race to his driver after being passed by his team mate, suggests he did so because things hadn&amp;rsquo;t gone Massa&amp;rsquo;s way, rather than the conclusion many jumped to: that he had given a team order he wasn&amp;rsquo;t happy with.
+Whilst the way it has all been handled seems to make the situation a painfully obvious case of team orders, there&amp;rsquo;s very little the stewards can actually do. Like it was suggested in the extended coverage, they can&amp;rsquo;t just reject what they get told because they &amp;ldquo;don&amp;rsquo;t believe it&amp;rdquo;. The evidence has to be more concrete than that.
+Even Massa blatantly slowing down to let Alonso through doesn&amp;rsquo;t prove there were team orders–Massa said he made that decision, after all.
+Although I do find something a bit unsettling about the whole scenario–not that this one has happened, but that it could happen a whole lot more in the future.
+A sport where the results are largely governed by politics would probably be a heck of a lot less interesting than one where every point is fought for tooth and nail.
+I hope things stay unknown. The last few seasons have been great to watch, since the performance gap between teams–the top teams at least–is so small!</description>
     </item>
     
     <item>
@@ -461,7 +602,7 @@ Don&amp;rsquo;t remind me of the irony…</description>
       <guid>/post/torchure-1-1-released/</guid>
       <description>My first Android Market update! Hope this goes well.
 This update includes:
- A new colour! You can change the screen to red, to help preserve night vision. This makes the torch less effective, mind.  To switch colour, either swipe sideways on the screen or use the new menu option!  New preferences have been added to let you choose what colour you want on starting Torchure: white, red, or whatever you last used.</description>
+ A new colour! You can change the screen to red, to help preserve night vision. This makes the torch less effective, mind.  To switch colour, either swipe sideways on the screen or use the new menu option!  New preferences have been added to let you choose what colour you want on starting Torchure: white, red, or whatever you last used. The Lock Brightness preference has been fixed, and now actually works. (Locking via pressing the trackball or the menu option worked fine) Added a new Hints &amp;amp; Tips screen, to highlight the little things I can&amp;rsquo;t fit anywhere else!  </description>
     </item>
     
     <item>
@@ -472,7 +613,11 @@ This update includes:
       <guid>/post/torchure-for-android/</guid>
       <description>Ever found yourself in need of a torch, but only had your phone handy? Look no further!
 Torchure (for Android) is a pretty simple application. It turns the screen white and, as default, whacks up the backlight to maximum. I did say simple, didn&amp;rsquo;t I?
-However, it also lets you change that backlight brightness (useful if, say, you&amp;rsquo;ve been to a particularly wild party and you need to step over some people without waking/blinding them) and lock it so you don&amp;rsquo;t go accidentally changing it.</description>
+However, it also lets you change that backlight brightness (useful if, say, you&amp;rsquo;ve been to a particularly wild party and you need to step over some people without waking/blinding them) and lock it so you don&amp;rsquo;t go accidentally changing it. Torchure is designed to work for you, not make you work for it!
+It marks my first release on to the Android Market, and it requires no permissions whatsoever — it is a torch, after all.
+Even though Google is telling me this link will not work, go check out Torchure on the market now!
+And if you&amp;rsquo;re not using an Android handset, AndroidZoom has you covered until Google release their updated Market.
+NB: The link does work (on Android 2.2). Guess they forgot to update the documentation.</description>
     </item>
     
     <item>
@@ -485,7 +630,8 @@ However, it also lets you change that backlight brightness (useful if, say, you&
 This is less a super-amazing photo I&amp;rsquo;m proud of, and more just here for the duckling factor.
 Can you argue with that? Really?
 Anyway, here&amp;rsquo;s a photo of some ducklings (naw) climbing over a sleeper on the River Thames trying to get back to their mother. You&amp;rsquo;ll be glad to know that they all made it!
-That reminds me, I should get around to completing No More Heroes…</description>
+That reminds me, I should get around to completing No More Heroes…
+For once, the photo has been edited with increased contrast, saturation, and a big crop! Fancy that.</description>
     </item>
     
     <item>
@@ -496,7 +642,7 @@ That reminds me, I should get around to completing No More Heroes…</descriptio
       <guid>/post/beetlespider/</guid>
       <description>Nature&amp;rsquo;s accumulated too many costs recently, so it&amp;rsquo;s consolidating many of its species in an attempt to rein in expenditure. First up is this BeetleSpider, with the legs and spinnerets of a spider, plus the body of a beetle!
 … Otherwise known as a Walnut Orb Spider, commonly found outdoors in the UK. Not that I can remember seeing one!
-As always, unedited except for a resize for your internet viewing pleasure.</description>
+As always, unedited except for a resize for your internet viewing pleasure. I probably should have changed the white balance, but you can call me Crazy.</description>
     </item>
     
     <item>
@@ -507,7 +653,9 @@ As always, unedited except for a resize for your internet viewing pleasure.</des
       <guid>/post/my-personal-ninite-installer/</guid>
       <description>This is basically for my own future reference, but the last few Windows installs I&amp;rsquo;ve done I&amp;rsquo;ve used Ninite to install most of my favourite software — easily and quickly!
 If you&amp;rsquo;ve yet to discover it, check it out! Or if you&amp;rsquo;d rather just install software other people recommend wihout thinking, you can install my particular favourite software loadout.
-Update 15:42 UTC+0100: Just a couple of things that I should mention about the Ninite installer:</description>
+Update 15:42 UTC+0100: Just a couple of things that I should mention about the Ninite installer:
+ All programs install with a desktop shortcut, which I don&amp;rsquo;t use.  They&amp;rsquo;re very easy to delete, mind.  Skype is set to start on Windows start up.  This is easy to change on Skype&amp;rsquo;s log in screen, or using Autoruns below.  Steam is also set to start on Windows start up.  Change this by logging in and disabling it in the Interface tab of the Steam &amp;gt; Settings window, or using Autoruns below.  Java constantly runs its update scheduler (jusched.exe).  Use Autoruns for this one.   The latter three can be easily fixed by downloading Autoruns and deleting their start up entries from the list. Just don&amp;rsquo;t go too crazy in Autoruns, as you could cause Windows to stop booting etc. etc.
+Update 2010-07-30: My new personal Ninite installer, to reflect new software being added to Ninite!</description>
     </item>
     
     <item>
@@ -516,11 +664,11 @@ Update 15:42 UTC+0100: Just a couple of things that I should mention about the N
       <pubDate>Mon, 22 Mar 2010 00:00:00 +0000</pubDate>
       
       <guid>/post/supreme-commander-2-hidden-objectives-list/</guid>
-      <description>Update 2010-03-26: Missed &amp;ldquo;Master of Pawns&amp;rdquo; hidden objective off of Cybran mission 6. Added it.
+      <description> Update 2010-03-26: Missed &amp;ldquo;Master of Pawns&amp;rdquo; hidden objective off of Cybran mission 6. Added it.
 Trying to find and complete all the secret missions in SupCom 2? Here&amp;rsquo;s a quick and dirty list of them all!
 This information is copied from the map files within the SupCom 2 directory.
 Feel free to copy and paste — a link back to this page would be appreciated!
-The List UEF  1 – Prime Target  Survivor  Survive the initial wave of Cybran attackers without losing any units.</description>
+The List UEF  1 – Prime Target  Survivor  Survive the initial wave of Cybran attackers without losing any units.   2 – Off Base  Economic Opportunist  Build at least two Mass Extractors in enemy territory.   3 – Strike While Cold  Master of the Seas  Build an Atlantis II Experimental Aircraft Carrier.   4 – Titans of Industry  Brutal Conqueror  Defeat Coleman without the aid of the Fatboys.   5 – Factions or Family Plan  Experimenter  Build at least four Experimental units   6 – End of an Alliance  Nuke King  Launch your first nuke.  None Shall Pass!  Prevent any enemy King Kriptors from crossing the main fortress bridge.    Illuminate  1 – Delta Force  Blockhead  Prevent the blockade from taking more than 25% damage.   2 – Lethal Weapons  Master Tactician  Complete the operation by constructing fewer than 30 mobile units.   3 – Back on the Chain Gang  Not the Bees!  You have successfully taken over the enemy air defenses.  Pro Anti-Air  You have successfully taken over the prison&amp;rsquo;s defensive structures.  Agent Provocateur  Capture all of the Security Stations.   4 – Steamed  Experimental Fanatic  Build at least eight Experimental units.   5 – Cliff Diving  Supremest Commander  Reach the highest level of veterancy with your ACU.   6 – Prime Time  Bot Lord  Complete the operation with an army made up entirely of Assault Bots.  A Czar is Born  Build your first Darkenoid.    Cybran  1 – Fact Finder  Survival Expert  Survive Gauge&amp;rsquo;s onslaught after the download completes.   2 – The Trouble With Technology  Master Thief  Capture a Rogue Engineer.  Great Escapist  Complete the operation without a unit being captured by the enemy.   3 – The Great Leap Forward  Cache and Carry  Collect all of the Technology Caches.   4 – Gatekeeper  Sultan of Soul  Build at least four Soul Ripper Experimentals.   5 – Surface Tension  Master of the Deep  Build a Kraken Experimental Submarine.   6 – The Final Countdown  Research Savant  Complete all available research.  Master of Pawns  Win the operation without the aid of any Experimentals.    </description>
     </item>
     
     <item>
@@ -530,7 +678,14 @@ The List UEF  1 – Prime Target  Survivor  Survive the initial wave of Cybran a
       
       <guid>/post/gnome-power-manager-hides-do-nothing/</guid>
       <description>Found this rather handy post that tells you what to do in newer versions of Gnome Power Manager, which for some reason hide the Do Nothing options as default.
-Personally I find it irritating as the battery readout in all the distros of Linux I&amp;rsquo;ve used on my Eee report the battery at 0% over half an hour before the battery is actually dead. No amount of conditioning or software modification seems to fix it, so I&amp;rsquo;m living with it.</description>
+Personally I find it irritating as the battery readout in all the distros of Linux I&amp;rsquo;ve used on my Eee report the battery at 0% over half an hour before the battery is actually dead. No amount of conditioning or software modification seems to fix it, so I&amp;rsquo;m living with it.
+However, with the newer versions of Gnome Power Manager, Do Nothing is hidden! So my machine would go to sleep, despite the fact I know there&amp;rsquo;s at least 30 more minutes of battery life going to waste. So annoying!
+To fix it (albeit temporarily), you need to edit the gconf values for the settings you&amp;rsquo;re interested in to &amp;ldquo;nothing&amp;rdquo;.
+The easiest way to do this is to use an application like gconf-editor and edit the values through that:
+ Run gconf-editor.  If you don&amp;rsquo;t have it installed, go to your favourite package manager and install it through that.  Using the column on the left side, navigate to apps &amp;gt; gnome-power-manager. In my case, I wanted to change the critical battery behaviour to Do Nothing. So I navigated in to actions and set the value of critical_battery to nothing.  If you want to change, say, the behaviour of a power button press, navigate to **buttons **instead of actions. Repeat this step for each value you want to change.  Close gconf-editor.  That&amp;rsquo;s it! One thing you need to keep in mind is that if you later change the setting away from Do Nothing to something else, the Do Nothing option will disappear.
+Hope this works for you as it has me.
+(I&amp;rsquo;m typing this post with 0% battery left! What I crazy daredevil I am.)
+Update 19:58: Forgot to mention that Do Nothing will disappear if deselected. Fixed.</description>
     </item>
     
     <item>
@@ -541,7 +696,15 @@ Personally I find it irritating as the battery readout in all the distros of Lin
       <guid>/post/introducing-bitbutcher-an-open-source-nds-rom-trimmer/</guid>
       <description>I&amp;rsquo;ve always wanted to make a software headline like that. Eee!
 Welcome to BitButcher, a small program designed to do one thing and one thing well: trim Nintendo DS ROMs.
-I got a bit fed up of the ones already out there, most because they were either closed-source or they had bad GUI design combined with clashing backgrounds. Search as I may, I couldn&amp;rsquo;t find anything that fit my demands.</description>
+I got a bit fed up of the ones already out there, most because they were either closed-source or they had bad GUI design combined with clashing backgrounds. Search as I may, I couldn&amp;rsquo;t find anything that fit my demands.
+So I did what any self-respecting programmer would do — code my own!
+This program is rather simple, but it&amp;rsquo;s designed to be just that. Oh, and fast. Very fast.
+Trimming the excess fat off of DS ROMs isn&amp;rsquo;t exactly a hardest task in the world, but I figured that people would still be interested in what I have made. As such, I have made the code entirely open-source under GPLv3.
+It&amp;rsquo;s coded in Java, meaning I get cross-platform support for free! It is however command-line only, so don&amp;rsquo;t expect any amazing GUI.
+If you want to get hold of the program, or would like to help contribute to a better trimmer, then just head over to GitHub:
+http://github.com/XanderXAJ/BitButcher
+Any help improving the program would be welcome and awesome. In addition, you can also report any issues you have at GitHub, on the Issues tab.
+That&amp;rsquo;s it for this time — hope you manage to shave off some bytes!</description>
     </item>
     
     <item>
@@ -550,8 +713,44 @@ I got a bit fed up of the ones already out there, most because they were either 
       <pubDate>Mon, 18 Jan 2010 00:00:00 +0000</pubDate>
       
       <guid>/post/take-control-of-your-settings-configuring-synaptics-touchpads-and-making-gnome-respect-them/</guid>
-      <description>Update 2010-05-28: If you&amp;rsquo;re using Fedora 13, then the configuration for synaptics touchpads is done through what is practically the old xorg.conf method. (This is as udev now handles devices instead of HAL.) Check out the Fedora Wiki for more information.
-The Problem Today I&amp;rsquo;ve been trying to configure the touchpad on my Eee PC 901 to my liking. It&amp;rsquo;s a Synaptics touchpad, and supports tracking multiple fingers, and I wanted to take more advantage of that.</description>
+      <description> Update 2010-05-28: If you&amp;rsquo;re using Fedora 13, then the configuration for synaptics touchpads is done through what is practically the old xorg.conf method. (This is as udev now handles devices instead of HAL.) Check out the Fedora Wiki for more information.
+The Problem Today I&amp;rsquo;ve been trying to configure the touchpad on my Eee PC 901 to my liking. It&amp;rsquo;s a Synaptics touchpad, and supports tracking multiple fingers, and I wanted to take more advantage of that.
+GNOME does have support for configuring multiple finger gestures out of the box, with gnome-mouse-properties (or System » Preferences » Mouse) and then selecting the Touchpad tab. This is all good and works fine — if you&amp;rsquo;re satisfied with what GNOME gives you.
+Unfortunately I wasn&amp;rsquo;t. When you enable clicking on the touchpad, GNOME sets one finger taps to left-click, two to right, and three to middle. I tend to use middle-click more often than right-click, thanks to browsing the web and liking making new tabs, plus I already have a dedicated right-click button.
+So I set off to change it. After reading material courteousy of Arch Linux&amp;rsquo;s wiki, I found (and remembered from attempting the same thing ages ago) that configuration is done through the HAL using fdi policies, which are just specifically formatted XML files. (The old xorg.conf way is deprecated and isn&amp;rsquo;t as flexible, not that it matters for configuring the trackpad.)
+It sounds scary and involves more typing, but in the end it&amp;rsquo;s just as simple a process as it used to be, even if it involves jumping through an extra hoop or two.
+Configuration First you have to create a file with the fdi extension in /etc/hal/fdi/policy/. I&amp;rsquo;ve named my file 99-synaptics.fdi, following example from /usr/share/hal/fdi/policy/10osvendor/, but you can name yours whatever you like.
+sudo gedit /etc/hal/fdi/policy/99-synaptics.fdi  Note: You need root permissions to be able to create and edit this file. If you run Ubuntu (or are in the /etc/sudoers file), this can be accomplished using the sudo command as shown above. You can use whatever editor you like, too. vi, emacs, nano, *kate*…
+Once the file is created, it&amp;rsquo;s time to get messy! The fdi file contains a match rule, which tells HAL which device you want to configure, and then a series of merge rules which apply your desired configuration into the HAL. The easiest way to show this is by example, so here&amp;rsquo;s my prospective configuration:
+&amp;lt;br /&amp;gt; &amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;deviceinfo version=&amp;quot;0.2&amp;quot;&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;device&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;match key=&amp;quot;info.product&amp;quot; contains=&amp;quot;Elantech Touchpad&amp;quot;&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;merge type=&amp;quot;string&amp;quot; key=&amp;quot;input.x11_driver&amp;quot;&amp;gt;synaptics&amp;lt;/merge&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;merge type=&amp;quot;string&amp;quot; key=&amp;quot;input.x11_options.VertTwoFingerScroll&amp;quot;&amp;gt;true&amp;lt;/merge&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;merge type=&amp;quot;string&amp;quot; key=&amp;quot;input.x11_options.HorizTwoFingerScroll&amp;quot;&amp;gt;true&amp;lt;/merge&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;merge type=&amp;quot;string&amp;quot; key=&amp;quot;input.x11_options.TapButton1&amp;quot;&amp;gt;1&amp;lt;/merge&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;merge type=&amp;quot;string&amp;quot; key=&amp;quot;input.x11_options.TapButton2&amp;quot;&amp;gt;2&amp;lt;/merge&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;merge type=&amp;quot;string&amp;quot; key=&amp;quot;input.x11_options.TapButton3&amp;quot;&amp;gt;3&amp;lt;/merge&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;merge type=&amp;quot;string&amp;quot; key=&amp;quot;input.x11_options.ClickFinger1&amp;quot;&amp;gt;1&amp;lt;/merge&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;merge type=&amp;quot;string&amp;quot; key=&amp;quot;input.x11_options.ClickFinger2&amp;quot;&amp;gt;3&amp;lt;/merge&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;merge type=&amp;quot;string&amp;quot; key=&amp;quot;input.x11_options.ClickFinger3&amp;quot;&amp;gt;2&amp;lt;/merge&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;/match&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;/device&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;/deviceinfo&amp;gt;&amp;lt;br /&amp;gt; 
+Starting from the top, here&amp;rsquo;s a quick description of each part:
+ The &amp;lt;?xml part is the XML declaration required in any valid XML file. Nothing interesting here. The  and &amp;lt;device&amp;gt; are just boilerplate code that tell the HAL to expect rules relating to devices. Again, nothing interesting here. Now things start getting good! The  line describes how to find the device you want to configure:  Simply put, the HAL searches for the contains string inside the key field. Whatever matches that search it&amp;rsquo;ll apply the merge rules to. There are other ways to match aside from contains, but this is all you need to know to get things working.  The  lines are the meat of the file, describing each and every configuration change you want to make.  You&amp;rsquo;re probably thinking this is all good and well, but how did I come up with this stuff in the first place? Well, the answer lies in the HAL itself.
+The lshal command lists all the devices the HAL can detect (that&amp;rsquo;s &amp;ldquo;ls hal&amp;rdquo;, get it?). You might want to pipe the contents to less, to be able to scroll and search through the large amount of text that&amp;rsquo;s returned:
+lshal | less  In less, type /synaptics to search for the string &amp;ldquo;synaptics&amp;rdquo;. less should automatically scroll to the point we&amp;rsquo;re interested in; your touchpad. If it cannot be found, you either don&amp;rsquo;t have a Synaptics touchpad or the synaptics driver isn&amp;rsquo;t being loaded. Try **searching for Touchpad **or similar words, but anything more than that is beyond the scope of this article.
+Once you have found the device on your list, you&amp;rsquo;ll be able to see a list of keys and their values. You want to pick one of these fields that will not change between boots to place as the match rule inside your fdi file. I chose info.product, but you can choose something else like input.product if it strikes your fancy. Either way, fill in the &amp;lt;match&amp;gt; line with the key that you chose and the string that&amp;rsquo;ll match it. Ideally this search will only match your touchpad and nothing else.
+Next is the fun part — configuration. To do this simply open up the man page for synaptics:
+man synaptics  This&amp;rsquo;ll give a detailed list of everything that can be changed within the synaptics driver. For each value that you want to change, find its name on the manpage, and add a new merge rule with the appropriate key. Note that every key in the fdi begins with &amp;ldquo;input.x11_options.&amp;rdquo; followed by the synaptics key you want to change. (The exception to this in my file is the first merge rule, which just makes sure that the synaptics driver has been loaded for my touchpad.)
+If you want to test an option before making it permanent, use the synclient key=value command, filling in key and value with the option you want to change.
+Once you&amp;rsquo;ve added all the merge rules you like, close all the tags and save the file. Now just restart the HAL (or your computer) and your settings will be applied. Almost.
+GNOME Respect Now that you have your configuration all set up, you need to stop GNOME from changing your carefully crafted settings to ones of its choosing.
+To do this, simply run the following command:
+gconftool-2 --type bool --set /apps/gnome_settings_daemon/plugins/mouse/active false  If you get cold feet and want to enable GNOME&amp;rsquo;s control over mouse and trackpad settings, run this command:
+gconftool-2 --type bool --set /apps/gnome_settings_daemon/plugins/mouse/active true  That&amp;rsquo;s really it. Thanks to jan for finding this value.
+I&amp;rsquo;ve written this to be as generalised as possible, so it should work for many different distros so long as they are using the latest HAL/Xorg/kernel. I&amp;rsquo;m running Fedora 11 and have added my name to the /etc/sudoers file, allowing me to run sudo.
+If you have any questions or just want to say thanks, feel free to leave a comment or contact me!
+
+synaptics
+true
+true
+1
+2
+3
+1
+3
+2
+
+
+  </description>
     </item>
     
     <item>
@@ -562,7 +761,11 @@ The Problem Today I&amp;rsquo;ve been trying to configure the touchpad on my Eee
       <guid>/post/stop-exact-audio-copy-crashing-on-windows-7/</guid>
       <description>When I tried to rip a disc using Exact Audio Copy on Windows 7 x64, I found it kept crashing as soon as the rip tried to start. Bummer.
 Remembering the previous times I&amp;rsquo;ve used EAC, when you click a button to start a rip, it asks you where you want to save the ripped files.
-Turns out if you set EAC to save into a predetermined location instead of asking, EAC manages to rip perfectly fine!</description>
+Turns out if you set EAC to save into a predetermined location instead of asking, EAC manages to rip perfectly fine!
+So, here&amp;rsquo;s a step-by-step guide to stop it crashing:
+ Open Exact Audio Copy. Go to File &amp;gt; EAC Options. Click the Directories tab. Instead of &amp;ldquo;Ask every time&amp;rdquo;, choose Use this Directory, and pick a directory of your choosing.
+ I personally use: C:\Users&amp;lt;Username&amp;gt;\Music\Extracted  Click OK.
+  That&amp;rsquo;s it! Good luck.</description>
     </item>
     
     <item>
@@ -574,7 +777,9 @@ Turns out if you set EAC to save into a predetermined location instead of asking
       <description>Update 2009-11-23: Corrected Mac keyboard keys. I don&amp;rsquo;t own a Mac myself, but a friend of mine tells me that iTunes defies the normal behaviour of many other Apple applications. Probably because it&amp;rsquo;s ancient and desperately needs an update.
 Made a smart playlist to find songs you want to delete, then found that the delete function no longer works?
 Just hold Shift. Or Option.
-Pressing Shift+Delete on Windows or Option+Delete on Mac will give you a prompt to delete songs just like any other delete operation performed in the library.</description>
+Pressing Shift+Delete on Windows or Option+Delete on Mac will give you a prompt to delete songs just like any other delete operation performed in the library.
+Holding Shift on Windows or Option on Mac and right-clicking on one or more songs will show &amp;ldquo;Delete&amp;rdquo; in the context menu.
+As an aside, this shortcut also allows you to delete songs from static playlists as well.</description>
     </item>
     
     <item>
@@ -584,7 +789,25 @@ Pressing Shift+Delete on Windows or Option+Delete on Mac will give you a prompt 
       
       <guid>/post/pinch-to-zoom-nah-im-fine-thanks/</guid>
       <description>What is this generation&amp;rsquo;s obsession with pinch to zoom? It&amp;rsquo;s so often touted as &amp;ldquo;natural&amp;rdquo;, &amp;ldquo;intuitive&amp;rdquo;, and &amp;ldquo;cool&amp;rdquo; that it&amp;rsquo;s beginning to make me go insane! Yes, it might be cool, but have the people who say these things even thought implications of both what they say and the use of such an interface?
-Intuitive First, let&amp;rsquo;s get the bit out of the way that always grates me. Pinch to zoom isn&amp;rsquo;t &amp;ldquo;natural&amp;rdquo; or &amp;ldquo;intuitive&amp;rdquo;, contrary to what people say.</description>
+Intuitive First, let&amp;rsquo;s get the bit out of the way that always grates me. Pinch to zoom isn&amp;rsquo;t &amp;ldquo;natural&amp;rdquo; or &amp;ldquo;intuitive&amp;rdquo;, contrary to what people say. Do people even know what it means? Let&amp;rsquo;s have a quick look at the Chambers UK dictionary, since it&amp;rsquo;s what I have to hand:
+ intuitive adj having, showing or based on intuition.
+**intuition **noun 1 the power of understanding or realizing something without conscious rational thought or analysis.
+ Cast your mind back to when you first experienced pinch-to-zoom. Had you already heard about it from all the marketing and fanboyism? Did you work it out for yourself? Did you struggle?
+I didn&amp;rsquo;t struggle, at least to find it, because I knew about it from the web and friends well before I ever used the gesture myself. But I was always asking myself *why*–why is it like this? I mean, I don&amp;rsquo;t know about you, but I&amp;rsquo;ve never bought a map or a picture printed on latex before, and I don&amp;rsquo;t think it would be a terribly good idea if someone were to do it. Stretching a map just to be able to see to a larger scale sounds like too much work and ridiculously impractical.
+At this point you&amp;rsquo;re probably thinking I&amp;rsquo;m taking it too seriously. Damn right I&amp;rsquo;m taking it seriously–these are the interfaces that people all over the world use millions of times a day. Shouldn&amp;rsquo;t something so prolific be polished to perfection?
+A more &amp;ldquo;intuitive&amp;rdquo; interface would either be one that we can relate to in real life–such as a magnifying glass–or something that we are already used to–buttons, for example. The latter is a bad example of intuition however, as the only reason most people can use buttons without any conscious rational thought now is because they have made the conscious ration thought a long time ago. And as an added bonus, what do most zoom buttons look like? That&amp;rsquo;s right: magnifying glasses.
+Accessibility I realise that I am a very fortunate person to be fully able to use my body and interact with the devices in my life easily such as computers or mobile phones. But if I were ever do gain disabilities–specifically motor disabilities–then I want to damn well make sure that I&amp;rsquo;ll still be able to use my beloved electronics!
+You can probably see where this is going. Pinch to zoom requires a surprising amount of motor- and hand-to-eye coordination. And this is coming from a very seasoned gamer!
+Break down pinch to zoom into its most basic motions for zooming in:
+ Locate two physical inputs on either side of the point of interest you want to zoom in on.  By &amp;ldquo;two physical inputs&amp;rdquo; I mean most commonly a thumb and an index finger or two thumbs.  Move each input away from the point of interest. If you want to keep the subject in the centre of the screen you need to make sure you move each input an equal distance. Remove both inputs from the screen without moving them across the screen.  Likewise, do the same for zooming out:
+ Locate two physical inputs far away from the centre of the screen. This is typically in the corners to maximise the distance that can be travelled by the inputs. Pull the inputs closer together, typically until they touch. Remove the inputs from the screen without moving them across the screen.  Now you might take this for granted, but this is actually quite a difficult operation. After all, you need to line up your two chosen inputs in relation to the object on the screen that you want to zoom in or our with. If anyone attempting to do this has any long-standing physical problems, they&amp;rsquo;ll probably find it hard and annoying.
+And that&amp;rsquo;s before we even consider someone who only has the ability to work with one hand at once–i.e. they have very limited finger motion, but are able to use their arms otherwise okay. They hold the phone in one hand, and then things become very awkward as soon as they decide they want to zoom. Taps? Easy. Swipes? Not too bad. Pinching? Ah.
+Usability Heck, it can be difficult for fully able people to use the pinch to zoom gesture properly.
+To use the iPhone as an example (though all other phones with pinch to zoom fall foul of this), you&amp;rsquo;ve gone on a walk on a hot summer&amp;rsquo;s day. Needless to say the warmth is taking its toll on you, but you&amp;rsquo;re smart and have come prepared with a drink in hand. You forget exactly which path it is you&amp;rsquo;re taking to get to your destination, so you pull out your iPhone in your other hand, fire up the Maps app and do a quick search. There seem to be a lot of junctions ahead… So you decide to zoom in to see which–ah.
+If you&amp;rsquo;ve ever tried to pinch a phone&amp;rsquo;s screen whilst hold it in the same hand, you know it&amp;rsquo;s a challenge to try and hold a device as big as the iPhone *and *lay two fingers on it and move those fingers precisely. Even the fact that I am trained in the Monster Hunter &amp;ldquo;claw&amp;rdquo;–named for the PSP game&amp;rsquo;s awkward controls featuring movement on the analogue stick and camera adjustment on the D-pad– didn&amp;rsquo;t help me at all. Trying to use it with one hand is just plain awful. And that&amp;rsquo;s a big shame, as being able to use a phone one-handed is a big feature for me.
+The problem is only exacerbated by circumstances such as driving. With Android 2.0 recently being announced to have full in-car GPS support, including a special mode which makes buttons larger and a voice speak directions, it&amp;rsquo;s becoming even more likely that devices with pinch to zoom being used in the car. Now granted that having buttons to zoom won&amp;rsquo;t work great unless they&amp;rsquo;re quite large. Pinching to zoom however is even worse in that it needs two fingers, both of them to be on and stay on the screen until you&amp;rsquo;ve hit the zoom level you want. Now this is going to take concentration and attention. Probably quite a lot of it. And driving with your attention off the road isn&amp;rsquo;t exactly the best idea in the world. Not the worst, but not the best.
+One other thing I haven&amp;rsquo;t mentioned is multi-touch gestures being implemented on devices that aren&amp;rsquo;t phones, such as laptops. I&amp;rsquo;ve been using 3-finger gestures on my Asus Eee PC 901 for over a year now (yes, there is space for three fingers on the trackpad–just), and there were new MacBooks released earlier this year with support for 4 points of contact! That&amp;rsquo;s pretty cool, and I am very much keen on the idea of being able to do lots of different gestures with multiple fingers. However, when you start to implement many that are similar to each other, people are bound to activate one when they meant to do another. It&amp;rsquo;s just a shame sometimes that the people who make these devices know better than you, so much so that they don&amp;rsquo;t let you adjust anything to your preferences.
+So just remember when you next think about pinch to zoom about what I said earlier: it is a gesture that people all over the world use millions of times a day–so long as you have good motor proficiency, hand-to-eye co-ordination, and two hands free.</description>
     </item>
     
     <item>
@@ -605,7 +828,9 @@ Where there&amp;rsquo;s bread, there&amp;rsquo;s dread.</description>
       
       <guid>/post/the-windows-7-taskbar-keyboard-goodness/</guid>
       <description>If you&amp;rsquo;re fortunate enough to be using Windows 7, then no doubt you&amp;rsquo;ve noticed the new taskbar. Well, here&amp;rsquo;s a couple of golden nuggets of info for you:
-Did you know that all the icons you line up on the taskbar automatically get keyboard shortcuts? If you want to launch one of them, just press the Windows key and the number of the program&amp;rsquo;s position along the list. So to launch the first program, press Win+1; to launch the second, press Win+2; this continues all the way up to Win+0, which opens the tenth program.</description>
+Did you know that all the icons you line up on the taskbar automatically get keyboard shortcuts? If you want to launch one of them, just press the Windows key and the number of the program&amp;rsquo;s position along the list. So to launch the first program, press Win+1; to launch the second, press Win+2; this continues all the way up to Win+0, which opens the tenth program. Cool, huh? This is the same behaviour as the Quick Launch Bar in Windows Vista (which I used extensively).
+Even better, if you want to open one of those programs with admin permissions (for example, using Notepad to edit the hosts file), you can press Win+Ctrl+Shift+, accept any UAC prompt, and voilà! Program a la admin.
+I love keyboard shortcuts.</description>
     </item>
     
     <item>
@@ -616,7 +841,11 @@ Did you know that all the icons you line up on the taskbar automatically get key
       <guid>/post/a-word-of-warning-check-your-windows-7-backup-settings/</guid>
       <description>Backups in Windows 7 have been greatly improved, what with the fact you can restore from them (without needing to take a separate backup) and that they backup to networks better.
 However, there has been one change which caught me out, thanks to a subtle and ambiguous rewording of the backups dialog.
-When backups are taken, as default only user folders that were created by Windows are backed up. For reference that&amp;rsquo;s Appdata, Contacts, Desktop, Downloads, Favorites, Links, Music, Pictures, Saved Games, Searches and Videos.</description>
+When backups are taken, as default only user folders that were created by Windows are backed up. For reference that&amp;rsquo;s Appdata, Contacts, Desktop, Downloads, Favorites, Links, Music, Pictures, Saved Games, Searches and Videos.
+This is different from the default behaviour of backups in Windows Vista, which backed up everything in C:\Users&amp;lt;Your Username&amp;gt;
+If you make any folders of your own at the root of your user folder, they will NOT be backed up. If you want to back those up, I recommend you go through the backup wizard again and say that you want to configure what gets backed up yourself. Select more locations, and navigate through the filesystem until you check C:\Users&amp;lt;Your Username&amp;gt;.
+I lost a few files when I reinstalled 7 for unrelated reasons, and lost the contents of my Code and Programs folders. I&amp;rsquo;m lucky that I had only been using the OS for a couple of weeks–had I been using it longer I could have lost a lot more. At least it&amp;rsquo;s given me an excuse to code!
+Just a friendly warning for fellow Windows 7 users who are as fussy about file organisation as I am.</description>
     </item>
     
     <item>
@@ -626,7 +855,7 @@ When backups are taken, as default only user folders that were created by Window
       
       <guid>/post/adding-your-most-recent-twitter-tweet-to-your-pidgin-status/</guid>
       <description>This guide is intended to be a more up-to-date mirror of the guide you can find at Tech Jawa. All credit to them for the original instructions! Basically nothing changes, but I just like to be comprehensive.
- Download the TwitterStatus plugin. It&amp;rsquo;ll be a file ending in .pl. Move this file to your Pidgin plugins folder. If any folders don&amp;rsquo;t exist, create them:  Linux: ~/.purple/plugins/ Windows Vista/7: C:\Users&amp;lt;Username&amp;gt;\AppData\Roaming.purple\plugins  Install Perl:  Linux: It&amp;rsquo;s probably already installed.</description>
+ Download the TwitterStatus plugin. It&amp;rsquo;ll be a file ending in .pl. Move this file to your Pidgin plugins folder. If any folders don&amp;rsquo;t exist, create them:  Linux: ~/.purple/plugins/ Windows Vista/7: C:\Users&amp;lt;Username&amp;gt;\AppData\Roaming.purple\plugins  Install Perl:  Linux: It&amp;rsquo;s probably already installed. Windows: Use the most recent Strawberry Perl installation:  Install the XML::XPath module into perl:  Open a command line. Run perl -MCPAN -e shell. Type install XML::XPath and then hit Return. Wait for the install to finish. Type quit and hit Return, then close your command line  Start (or restart) Pidgin. From the contact list, go to Help &amp;gt; About. At the very bottom of the textbox that appears it should say &amp;ldquo;Perl: Enabled&amp;rdquo;. If it does not, repeat steps 3 and 4. From the contact list, go to Tools &amp;gt; Plug-ins. Find Twitter Status on the list, check the checkbox next to it, and then click Configure Plug-in. In the configuration window that appears, type in your username in the top textbox (labelled Username, surprise surprise). Configure anything else you want to your liking.  That&amp;rsquo;s it! You do not need to set this up again, it is a one-off set up for the computer. Of course, you will need to go through this procedure again if you have multiple computers you use Pidgin on, or if you format and reinstall your OS.</description>
     </item>
     
     <item>
@@ -636,7 +865,11 @@ When backups are taken, as default only user folders that were created by Window
       
       <guid>/post/ogg-vorbis-encoder-for-windows/</guid>
       <description>I not so long ago made a post about using Ogg Vorbis for Ringtones on Android, as it considerably reduces the lag between getting a phone call and the phone actually playing the ringtone. The same goes for music on the device–it just starts playing quicker.
-Anyway, just now I realised that I didn&amp;rsquo;t link to any encoders for it. So if anyone wondered what I used to accomplish the task, they&amp;rsquo;d be stuck!</description>
+Anyway, just now I realised that I didn&amp;rsquo;t link to any encoders for it. So if anyone wondered what I used to accomplish the task, they&amp;rsquo;d be stuck!
+So here&amp;rsquo;s a quick update to fill in in the gaps:
+If you&amp;rsquo;re wanting to just convert some files you already have into Ogg Vorbis, I&amp;rsquo;d recommend oggdropXPd. Open the program, right-click on the &amp;ldquo;dropbox&amp;rdquo; that appears to configure it, then when it&amp;rsquo;s all done, drag and drop the files you want to convert onto the dropbox, and wait! It works fine under Windows Vista (32-bit) and Windows 7 (64-bit).
+If you&amp;rsquo;re wanting to both edit a music track into a short ringtone and convert to Ogg Vorbis, Audacity did the job for me. It&amp;rsquo;s open-source and supports a number of file types (including MP3 if you download a separate plug-in), so hopefully it&amp;rsquo;ll work for you too. Again, it works fine in Windows Vista (32-bit) and Windows 7 (64-bit).
+The settings I used for the Ogg Vorbis files on my G1 where 128kbps CBR. You don&amp;rsquo;t need much quality because the phone&amp;rsquo;s speaker isn&amp;rsquo;t exactly an orchestra, and I used Constant Bitrate under the assumption it would take less CPU to decode. If you know otherwise, please let me know!</description>
     </item>
     
     <item>
@@ -645,7 +878,15 @@ Anyway, just now I realised that I didn&amp;rsquo;t link to any encoders for it.
       <pubDate>Mon, 21 Sep 2009 00:00:00 +0000</pubDate>
       
       <guid>/post/use-ogg-vorbis-for-lag-free-ringtones-on-android/</guid>
-      <description>Update 2010-06-21: If you want to use custom ringtones in the first place, install Rings Extended from the Android Market, then go to Home  Settings  Sound &amp; display  Phone ringtone. When it asks which application you want to use, select Rings Extended, and check the checkbox so that it doesn&#39;t ask you again.  This will work anywhere any application asks for you to pick a ringtone, assuming it asks via a standard means!</description>
+      <description>Update 2010-06-21: If you want to use custom ringtones in the first place, install Rings Extended from the Android Market, then go to Home  Settings  Sound &amp; display  Phone ringtone. When it asks which application you want to use, select Rings Extended, and check the checkbox so that it doesn&#39;t ask you again.  This will work anywhere any application asks for you to pick a ringtone, assuming it asks via a standard means!  I&#39;ve also written another article detailing how to convert your music in to Ogg Vorbis files.  Why, do I hear you cry?
+Simple really, here&amp;rsquo;s the story: when I first transferred various files to my phone for use as ringtones (one each for calls, texts, e-mails…) I used MP3s. Thanks to the Rings Extended application in the marketplace I had no trouble in using them.
+But one thing struck me as odd whenever I got a call (or text etc.); lag. If I were to get a call right now, the phone would vibrate, the screen would turn black, and then a couple of seconds later the contact details show and my ringtone starts playing. Not ideal.
+So I decided to try something. I set one of the standard ringtones that came with the phone as the current ringtone, and tried again. This time the phone started vibrating and played the tone at the same time.
+After that I had to figure out what format they used, since I had no idea where the files could be and what format they were. I reasoned that Ogg Vorbis would be the format they&amp;rsquo;d use — an open-source OS with open-source ringtones. Makes sense, right?
+So I tried it: I converted those same ringtones I started out with to 128kbps CBR Vorbis files. 128kbps because I thought that a higher bitrate would lag the phone out (plus you wouldn&amp;rsquo;t hear a quality difference from the speaker anyway), and CBR because I thought it would be easier for the decoder to work with, though I have no evidence to back this up.
+Voilà! Suddenly my ringtones loaded a lot quicker, and no longer did I get vibrations with no accompanying ringtone (unless it was set to vibrate only!).
+I haven&amp;rsquo;t tested other settings on the Vorbis encoder (different bitrates, VBR etc.), nor have I tested other formats aside from MP3 and Ogg.
+Hope this is of help to someone that actually cares about this stuff.</description>
     </item>
     
     <item>
@@ -655,7 +896,11 @@ Anyway, just now I realised that I didn&amp;rsquo;t link to any encoders for it.
       
       <guid>/post/strip-id3v1-tags-from-mp3s-in-linux/</guid>
       <description>For kicks I decided to remove all the ID3v1 tags from my music files today. They were just getting in the way and served no useful purpose — since I had perfectly fine ID3v2 tags — so they just had to go.
-I cooked up a little command to help out here! But first, we need to make sure you have the command that we&amp;rsquo;re going to need here, id3v2. Install it from the official repositories using your distribution&amp;rsquo;s package manager.</description>
+I cooked up a little command to help out here! But first, we need to make sure you have the command that we&amp;rsquo;re going to need here, id3v2. Install it from the official repositories using your distribution&amp;rsquo;s package manager. For example, on Ubuntu:
+sudo apt-get install id3v2 This command is used to view and manipulate ID3 tags inside of music files. One argument in particular is of use to us, -s, which strips ID3v1 tags out of the specified file(s).
+With that in mind the task is just getting a list of the files that you want to remove ID3v1 tags from. I&amp;rsquo;ve managed to solve that and fit it all in one line — don&amp;rsquo;t forget to replace the path with the correct one:
+find /path/to/music -name \*.mp3 -type f -print0 | xargs -0 id3v2 -s That&amp;rsquo;s it! After testing I ran it on my whole music library and it appears to have survived just fine. Just be patient (and careful) if you&amp;rsquo;re stripping tags out of hundreds or thousands of files.
+Let me know how it works out for you, and any improvements you may have!</description>
     </item>
     
     <item>
@@ -666,7 +911,11 @@ I cooked up a little command to help out here! But first, we need to make sure 
       <guid>/post/forgotten-the-installation-code-for-your-sagem-digitalset-top-box/</guid>
       <description>It&amp;rsquo;s annoying when that or something similar happens — in my case, someone else had changed the code meaning I couldn&amp;rsquo;t retune the box to accept more channels.
 But all is not lost! Simply follow this quick guide. This is from a Sagem ITC 62 — it may or may not be the same process for other models:
- Press Menu on your remote control. Select Installation. You&amp;rsquo;ll be presented with a screen where you have to enter an Installation Code.</description>
+ Press Menu on your remote control. Select Installation. You&amp;rsquo;ll be presented with a screen where you have to enter an Installation Code. Press these buttons one after the other on your remote: Menu, Menu, Red button, Menu. You should be taken to a new screen displaying User Settings and Box Settings. Select User Settings.  Now what you do at this point is up to you. You have two choices:
+Disable the Installation Code This means that you don&amp;rsquo;t have to enter or remember an installation code in future, but it might be vulnerable to inquisitive children. If this isn&amp;rsquo;t an issue for you (or you don&amp;rsquo;t care!), follow these steps:
+ Select Locking. Switch Box Locked and Channels Locked to No.  Change the Installation Code If you still want an installation code for whatever reason, follow these steps:
+ Select Change Installation Code. Enter any four digit code you like, and press OK. Re-enter the same code again. Press OK.  That&amp;rsquo;s it! Let me know how it goes for you.
+Credit to Steven Checkley for his amazing hackery.</description>
     </item>
     
     <item>
@@ -689,7 +938,9 @@ Maybe I&amp;rsquo;m going a bit far.</description>
       <guid>/post/angel-of-ocean/</guid>
       <description>Alright, the title is a bit of a misnomer; this seagull was captured just above the waters of the River Thames.
 Now I know what I said before about not liking taking nature photos so much, but these are the kinds of photos I like.
-They&amp;rsquo;re dynamic; they capture scenes that we are unable to see with the naked eye. These really fast exposure shots can quite often look really good in my opinion and, if you&amp;rsquo;re lucky, you can immortalise an instant forever.</description>
+They&amp;rsquo;re dynamic; they capture scenes that we are unable to see with the naked eye. These really fast exposure shots can quite often look really good in my opinion and, if you&amp;rsquo;re lucky, you can immortalise an instant forever.
+I probably also enjoy taking these kinds of photos because of the difficulty involved. In general the more difficult it is to get a shot, the more fun I have!
+Is it the same with you?</description>
     </item>
     
     <item>
@@ -701,7 +952,8 @@ They&amp;rsquo;re dynamic; they capture scenes that we are unable to see with th
       <description>Just a quick little thing I noticed, although everyone else probably knows it by now.
 To launch an elevated command prompt (i.e. a prompt with admin privileges, required to do various things if UAC is enabled on Vista), simply open the Start Menu (Windows key), type &amp;ldquo;cmd&amp;rdquo; without quotes, and press Control+Shift+Return.
 This will bring up a UAC prompt asking you to elevate the process. Select Continue (Alt+C). Done!
-This does work for some other applications.</description>
+This does work for some other applications. But in my experience it&amp;rsquo;s hit and miss! Strange.
+This technique may also work in Windows 7, but I haven&amp;rsquo;t been able to test it myself.</description>
     </item>
     
     <item>
@@ -711,7 +963,19 @@ This does work for some other applications.</description>
       
       <guid>/post/ill-modify-you-in-to-next-week/</guid>
       <description>A couple of days ago I came across this interesting quirk, and I had to do a double-take before I realised what had happened.
-Basically, I recently got a NAS and decided that I wanted my router to save its bandwidth usage statistics on it. That way whenever I perform an upgrade to the firmware on the router I won&amp;rsquo;t erase all the stats. This part is easy, as the firmware has the functionality for this.</description>
+Basically, I recently got a NAS and decided that I wanted my router to save its bandwidth usage statistics on it. That way whenever I perform an upgrade to the firmware on the router I won&amp;rsquo;t erase all the stats. This part is easy, as the firmware has the functionality for this. (The firmware I keep mentioning is the Tomato firmware. I highly recommend it if you happen to have a compatible Linux router!)
+Now, after I set it all up, I went on to the network shares to see if the statistics were being saved properly. What I saw I didn&amp;rsquo;t exactly expect:
+ A screenshot from Directory Opus of my local network share... And some interesting modified times  Now, nothing may look wrong at first glance. But take another look at the screenshot, particularly the column titled &amp;ldquo;Modified&amp;rdquo;.
+Got it yet? You have? That&amp;rsquo;s great! You haven&amp;rsquo;t? You&amp;rsquo;re probably just not as finnicky as I am, don&amp;rsquo;t worry.
+Anyway, enough suspense: the thing that caught me out was that the modified time for the statistics file was &amp;ldquo;tomorrow&amp;rdquo;.
+&amp;ldquo;So what?&amp;rdquo; I hear you cry! &amp;ldquo;You probably just had the NAS set to the wrong timezone.&amp;rdquo;
+Alright, I&amp;rsquo;ll give you that — I had set it to the wrong timezone. However, that isn&amp;rsquo;t the strangest thing!
+The strange part is the fact that Windows has provisions for files that have creation/modify/access times in the future.
+When you have a file that you have modifed today, it says &amp;ldquo;Today&amp;rdquo;. Nice. If you then leave the file for 24 hours, Windows will say the file was modified &amp;ldquo;Yesterday&amp;rdquo;. Again, a nice touch.
+But now Windows, in its all-powerful, all-knowing ways, can tell me when a file will be modified, before it&amp;rsquo;s even happened!
+At least, that&amp;rsquo;s the impression it gives me when I think of a developer including &amp;ldquo;tomorrow&amp;rdquo; on the list of English relative dates.
+And before you complain that I wasn&amp;rsquo;t using Windows Explorer but rather a replacement called Directory Opus, here&amp;rsquo;s a screen from Explorer demonstrating the same behaviour, but slightly more hidden:
+ A screenshot from Windows Explorer of my local network share... With the same interesting modified times  So there you have it: Some crazy behaviour and me thoroughly confused. With DOpus and Explorer both &amp;ldquo;predicting&amp;rdquo; the future for me, I&amp;rsquo;m beginning to wonder just how much control I have over these computers…</description>
     </item>
     
     <item>
@@ -721,7 +985,10 @@ Basically, I recently got a NAS and decided that I wanted my router to save its 
       
       <guid>/post/eternal-serenata/</guid>
       <description>Like the first photo I uploaded to this site, Boldly Growing, this was taken at Mottisfont Abbey National Trust garden. However instead of out in the gorgeous gardens, I was inside a rather ‘cosy&amp;rsquo; (read: cramped) used-book shop located on the site.
-I happened to spy this rather odd looking insect having a rest from its fatigue (read: injury), and also that it was resting on the front of a set of scores that were being sold.</description>
+I happened to spy this rather odd looking insect having a rest from its fatigue (read: injury), and also that it was resting on the front of a set of scores that were being sold.
+So I tried to make it look as artistic (read: stock) as possible.
+What do you think?
+Also the scores are copyrighted 1900. Nice.</description>
     </item>
     
     <item>
@@ -731,7 +998,9 @@ I happened to spy this rather odd looking insect having a rest from its fatigue 
       
       <guid>/post/fixing-slugs-in-wordpress/</guid>
       <description>Having trouble selecting the slug you want in WordPress? If you&amp;rsquo;re like I was just a moment ago, you&amp;rsquo;ll try changing the slug on one of your categories to something different that you prefer, only to have WordPress change it back to whatever it was previously. What gives?
-Turns out the solution might be simpler than you think — check your Post Tags for a tag with the same slug!</description>
+Turns out the solution might be simpler than you think — check your Post Tags for a tag with the same slug!
+Slugs are shared between tags and categories, so if you use a particular slug with a tag, you cannot use the same one with a category, and vice versa.
+Keep that in mind the next time you get all OCD about slugs!</description>
     </item>
     
     <item>
@@ -763,7 +1032,10 @@ What impressed me most is that they could fly whilst back to back like this! Cr
       
       <guid>/post/changing-gprs-mms-and-access-point-settings-on-android/</guid>
       <description>I feel kind of silly for falling foul of this, but I guess it&amp;rsquo;s just a case of going against what you&amp;rsquo;re used to.
-I was looking for a way to check on my MMS settings on Android. On just about every other phone I&amp;rsquo;ve used it&amp;rsquo;s been a submenu of the messaging application, so that&amp;rsquo;s where I went — except I couldn&amp;rsquo;t find anything pertaining to access point settings! I mean, if one phone does it one way, all phones do it that way, right?</description>
+I was looking for a way to check on my MMS settings on Android. On just about every other phone I&amp;rsquo;ve used it&amp;rsquo;s been a submenu of the messaging application, so that&amp;rsquo;s where I went — except I couldn&amp;rsquo;t find anything pertaining to access point settings! I mean, if one phone does it one way, all phones do it that way, right? Right?
+Wrong. Turns out Android hides the settings in — guess what — its Settings menus! That&amp;rsquo;s good, because it&amp;rsquo;s centralised. It makes sense when you think about it. Honest.
+Anyway, to find these elusive settings, just follow these instructions:
+ Go to the Home screen. Press Menu. Select Settings. Select Wireless controls. Select Mobile network settings. Select Access Point Names. Finally, select an access point to edit, or press Menu to create a new APN or reset to the defaults that shipped with the phone.  Have fun with changing access point settings! Mmm.</description>
     </item>
     
     <item>
@@ -796,7 +1068,8 @@ She always looks grumpy to me, though…</description>
       
       <guid>/post/reset-itunes-dimensions-to-fit-resolution/</guid>
       <description>Here&amp;rsquo;s a handy little feature that I find useful. If you ever play around with the size or location of the iTunes window and want to make it fit the screen better, simply follow the instructions:
- If you&amp;rsquo;re on Windows: hold Shift and either double-click the title bar or single-click the maximise button (The title bar is the small bar at the top that says &amp;ldquo;iTunes&amp;rdquo; in the middle.) If you&amp;rsquo;re on Mac OS: hold Option and click the Zoom (+) button  This&amp;rsquo;ll reset the size and position to its default for your screen resolution.</description>
+ If you&amp;rsquo;re on Windows: hold Shift and either double-click the title bar or single-click the maximise button (The title bar is the small bar at the top that says &amp;ldquo;iTunes&amp;rdquo; in the middle.) If you&amp;rsquo;re on Mac OS: hold Option and click the Zoom (+) button  This&amp;rsquo;ll reset the size and position to its default for your screen resolution. Assuming you haven&amp;rsquo;t changed screen resolution since installing it, it&amp;rsquo;ll look just as it did when you first installed it — nearly filling the entire screen, but not quite. It&amp;rsquo;s also a very useful shortcut if you ever change your screen resolution.
+Doing the operation a second time will move the iTunes window back to where it was before you started reading this article and messing with it. Simple!</description>
     </item>
     
     <item>
@@ -807,7 +1080,12 @@ She always looks grumpy to me, though…</description>
       <guid>/post/phoenix-wright-ace-attorney-trials-and-tribulations-soundtrack-download/</guid>
       <description>That was a mouthful of a title.
 Over time I&amp;rsquo;ve played and thoroughly enjoyed the Ace Attorney series of games, from Phoenix Wright to Apollo Justice. But for those of you familiar to the series, you&amp;rsquo;ll notice that this is the soundtrack for the third game in the series. So why have I posted this one?
-You see, this soundtrack posting has a small story behind it. A while back a perfectionist of a soundtrack ripper called TheRedPriest ripped the soundtrack and uploaded it to his website.</description>
+You see, this soundtrack posting has a small story behind it. A while back a perfectionist of a soundtrack ripper called TheRedPriest ripped the soundtrack and uploaded it to his website. He gets wound up by pops and blips in tracks — I can relate to that…
+Anyway, unfortunately like so many good things on the web, the website went offline! Luckily, a member of the forum called GUI uploaded the soundtrack and all was good within the world.
+Since I hate having just one mirror for things that have had so much time and effort put into them, and because I like the soundtrack so much, I decided to host the soundtrack for myself.
+Just to make it clear: I did not rip this soundtrack or have any input in its ripping! I am but a simple mirror, wanting to preserve the great work of a video game soundtrack ripper.
+Hope that everyone enjoys this as much as I do.
+Download the Phoenix Wright — Ace Attorney: Trials and Tribulations soundtrack.</description>
     </item>
     
     <item>
@@ -817,7 +1095,8 @@ You see, this soundtrack posting has a small story behind it. A while back a pe
       
       <guid>/post/boldly-growing/</guid>
       <description>Here&amp;rsquo;s a rather funky photo I took at Mottisfont Abbey National Trust garden. I love the shape of this flower — I don&amp;rsquo;t think I&amp;rsquo;d seen anything quite like it until that day. Doesn&amp;rsquo;t it look like some kind of space-faring organism? I&amp;rsquo;ve probably seen something that looks like it in Star Trek…
-It also seems to remind me of an enemy from Metroid… Although since I can&amp;rsquo;t remember the enemy or the real name of this plant, I&amp;rsquo;m just going to call it a Blooper for now.</description>
+It also seems to remind me of an enemy from Metroid… Although since I can&amp;rsquo;t remember the enemy or the real name of this plant, I&amp;rsquo;m just going to call it a Blooper for now.
+Edit 2009-06-20: Boldly Growing is totally a better name.</description>
     </item>
     
     <item>
@@ -827,7 +1106,11 @@ It also seems to remind me of an enemy from Metroid… Although since I can&amp
       
       <guid>/post/fix-windows-sidebar-gadget-file-association-in-vista/</guid>
       <description>Have you ever somehow managed to break the Gadget file association in Windows Vista? I have somehow, and that means that you can no longer install gadgets. Double-clicking a .gadget file does nothing, and the Sidebar offers no option to install gadgets itself!
-If you try to re-associate the files with Windows Sidebar by telling to Open With… and navigating to the Sidebar executable, you&amp;rsquo;ll have found that that doesn&amp;rsquo;t help — all it does is bring the Sidebar to focus, but doesn&amp;rsquo;t install the gadget.</description>
+If you try to re-associate the files with Windows Sidebar by telling to Open With… and navigating to the Sidebar executable, you&amp;rsquo;ll have found that that doesn&amp;rsquo;t help — all it does is bring the Sidebar to focus, but doesn&amp;rsquo;t install the gadget.
+Fortunately, help is at hand: all you need to do is **download the following archive **and apply the registry entries by double-clicking the .reg file inside the archive, and saying Yes at the prompt.
+Download Gadget Association registry entries.
+All I did was export the corresponding keys from the registry on a Vista machine with a working Sidebar — nothing else!
+Hope this helps others like it has me.</description>
     </item>
     
     <item>
@@ -839,7 +1122,11 @@ If you try to re-associate the files with Windows Sidebar by telling to Open Wit
       <description>Update 2010-03-04: Added another potential solution courtesy of Blazt in the comments. Thanks!
 So, you have a phone with root permissions? Finding whenever a program requests root permissions the Superuser Permissions program hangs (usually with a black screen or even a force close) at the &amp;ldquo;SU request&amp;rdquo; screen?
 Fortunately there are a couple of things you can try, which I&amp;rsquo;ll detail for you.
-First, make sure USB Debugging is enabled. To do that:</description>
+First, make sure USB Debugging is enabled. To do that:
+ Press the Home button. Press the Menu button. Select Settings &amp;gt; Applications &amp;gt; Development. Make sure that USB Debugging is checked. If not, check it.  If that fixes your problem, you are done! If not, then you can try clearing the Superuser Permissions data. This is just any options you have set within the app and whether or not particular apps are always allowed or blocked — you won&amp;rsquo;t lose any of your other data, and it&amp;rsquo;s easy to allow/deny stuff again.
+To clear the data:
+ Press the Home button. Press the Menu button. Select Settings &amp;gt; Applications &amp;gt; Manage applications. Find Superuser Permissions on the list. Tap it. Tap &amp;ldquo;Clear data&amp;rdquo; and &amp;ldquo;Clear cache&amp;rdquo; if they&amp;rsquo;re enabled.  This should prevent any hangs with Superuser Permissions in the future.
+This works on the HTC Dream (T-Mobile G1) with the 1.5 and 1.6 firmwares, and presumably other Android devices with the Superuser Permissions app.</description>
     </item>
     
     <item>
@@ -850,7 +1137,11 @@ First, make sure USB Debugging is enabled. To do that:</description>
       <guid>/post/unlock-android-device-using-puk-code/</guid>
       <description>If you&amp;rsquo;ve ever got your PIN code wrong too many times and got your SIM locked, you were probably as surprised as I was when Android gives you no option to unlock the phone! Fortunately there&amp;rsquo;s an answer.
 To unlock your Android-based device go to the Emergency Call screen and enter in the following (replace the angled brackets with the appropriate info):
-**05*«PUK Code»*«Your new pin»*«Confirm your new pin»# So for example:</description>
+**05*«PUK Code»*«Your new pin»*«Confirm your new pin»# So for example:
+**05*12345678*9090*9090# As a side effect this should work on any SIM-containing device at a screen where you can enter phone numbers, not just devices running the Android OS. As of writing, Android-based devices are the HTC Dream (T-Mobile G1) and HTC Magic.
+And make sure you keep your PUK code secret — anyone can override your PIN with their own using it!
+Thanks to theWeir for posting that solution.
+http://androidcommunity.com/forums/99706-post6.html  </description>
     </item>
     
     <item>
@@ -862,7 +1153,11 @@ To unlock your Android-based device go to the Emergency Call screen and enter in
       <description>Andy, a Commanding Officer from Advance Wars 2  Ah, Advance Wars 2. What is it about you I thought was so amazing? The lovable, single-minded cast? The deep turn-based strategy? The little battle animations of infantry flying off the screen?
 Well, okay, all of those things are very good reasons to love the game, but there&amp;rsquo;s another one that sticks out for me too.
 The soundtrack!
-Once I completed the normal campaign and could buy the Sound Room, that was it.</description>
+Once I completed the normal campaign and could buy the Sound Room, that was it. Time and again I&amp;rsquo;ve inserted the cart into my GBA purely for the reason of enjoying the music on an infinite loop.
+Yes, I am that way inclined as a person, but there&amp;rsquo;s something about this soundtrack that keeps me coming back. I&amp;rsquo;m not sure if it&amp;rsquo;s the enthusiastic beats or the simple, catchy tunes, but this is one soundtrack I struggle to put down.
+But anyway, enough of me rambling about game soundtracks; judge for yourself! Ripped by yours truly and packaged as 192kbps MP3s, the Advance Wars 2 soundtrack is one you should definitely have in your library if you enjoy the game or the kind of music you get from a GBA.
+Download the Advance Wars 2 Soundtrack.
+Also available from another site I co-run, Black Hole Headquarters.</description>
     </item>
     
     <item>
@@ -874,7 +1169,18 @@ Once I completed the normal campaign and could buy the Sound Room, that was it.<
       <description>Hello, and welcome to the first post of my blog!
 You&amp;rsquo;ve probably found yourself here looking for soundtracks or computer tips or something, in which case go crazy clicking around! This is the first post, so it can&amp;rsquo;t really have that much interesting stuff in it.
 Wait. You mean you&amp;rsquo;re reading this post because you&amp;rsquo;re interested in what I have to say?
-Okay! If that&amp;rsquo;s the case, then let me talk to you about, well, first posts.</description>
+Okay! If that&amp;rsquo;s the case, then let me talk to you about, well, first posts. You see, I&amp;rsquo;ve been reading first posts and about how to write good first posts a lot lately, and if it&amp;rsquo;s one thing that struck me, it&amp;rsquo;s this: there is no single good way.
+To elaborate on that, there is no single good way to introduce a blog; it depends on what effect you&amp;rsquo;re going for.
+If you&amp;rsquo;re a techno-centric blog, then you can either jump straight in with your first article, or introduce the blog with what you&amp;rsquo;re going to write about and feature in the coming posts.
+If you&amp;rsquo;re opening a quasi-professional blog with personal touches, then your introduction to the blogosphere might be a demonstration of your recent work and your writing abilities (be it prose or code). Or maybe it&amp;rsquo;ll be a friendly introduction to yourself, talking about what interests you at the moment. People like to relate to others, especially if they can imagine meeting and getting along with you in pub. Maybe they already do!
+And if you&amp;rsquo;re opening a Livejournal blog for noting down your day-to-day activities and rants… Well, you can do anything.
+I&amp;rsquo;ve seen bloggers talk about themselves and what they do in their first posts. Others talk about their current interests. Some religion. Some rants (they seem particularly popular). Others launch into their usual rhythm so well that you click further into their archive, only to realise that was their first post.
+In any case, the one thing they all have in common is that, except for being a first post, they don&amp;rsquo;t. It&amp;rsquo;s as simple as that.
+In my case, I&amp;rsquo;ve chosen to talk about first posts themselves. It struck me as the right thing to do, because I find it kinda interesting. After all, everyone is different.
+That and, well, it was about time I did something to man up and release this website.
+Writing blog posts is one such activity.
+Yeah.
+PS: Notice how I future-proofed the post? Mhmm.</description>
     </item>
     
     <item>
@@ -884,7 +1190,17 @@ Okay! If that&amp;rsquo;s the case, then let me talk to you about, well, first 
       
       <guid>/about/</guid>
       <description>… The Author This website is crafted by me, Alex Palmer (a.k.a. XanderX), a vaguely qualified Computer Scientist with a passion for perfection. A real pain, really.
-This blog, as it effectively is, is personal: “personal” as in made by me concerning topics that interest me, not “personal” as in daily log or life’s rants personal. I’ve never been in to that sort of stuff. Although that said it doesn&amp;rsquo;t mean there won&amp;rsquo;t be the odd rant.</description>
+This blog, as it effectively is, is personal: “personal” as in made by me concerning topics that interest me, not “personal” as in daily log or life’s rants personal. I’ve never been in to that sort of stuff. Although that said it doesn&amp;rsquo;t mean there won&amp;rsquo;t be the odd rant.
+I’m really in to games, music and photography, plus I have a fondness for talking in great detail about topics most people don’t really care about. Mostly about computers and games (as you’ll no doubt find out!).
+I’m still trying to decide what kind of coding — be it for the web, for the desktop or for mobiles — that I would love to do forever and ever, so I try my best to keep an open mind and a healthy appetite for all of them.
+I hope you enjoy your time here!
+… The Website Firstly, if there are any problems with the site at all, please get in touch! Even if bugs are the bane of any developers life, I’ll always fix something I&amp;rsquo;m responsible for. It&amp;rsquo;s like it&amp;rsquo;s some kind of duty or something.
+I made this place so that I could post about whatever I want, whenever I want, wherever I want! Be it on my desktop, laptop, or phone.
+The schedule of posting is rather haphazard for that very reason, but the feed will keep you updated of when I do post. You can find that on the front page!
+… Building the Website The site is generated using Hugo.
+The site was migrated from Jekyll. I describe initially migrating to Jekyll in greater detail in this post.
+If there are any bugs you can see — be it in how it looks in a particular browser, error codes you see, or anything else that could happen — feel free to let me know!
+… Disclaiming responsibility for anything that goes wrong I post lots of advice on this site, and while I try my best to point out any potential risks, I also have to point out that what goes well for me may not necessarily go well for you (and what goes badly for me may not necessarily go badly for you, although it probably will!). If you follow any of the advice on this site, it is your full responsibility.</description>
     </item>
     
     <item>
@@ -903,7 +1219,11 @@ This blog, as it effectively is, is personal: “personal” as in made by me co
       
       <guid>/privacy-policy/</guid>
       <description>I take user privacy seriously. I support organisations like the EFF and Mozilla as they work to protect the liberties of people online. It would be hypocritical of me to not uphold these values myself.
-Below you can find a summary of all the user data I am aware of handling. If you would like to dig deeper, keep reading to find further details of each app and service.</description>
+Below you can find a summary of all the user data I am aware of handling. If you would like to dig deeper, keep reading to find further details of each app and service.
+Summary  Searchlight  Requires the Camera permission to switch on your device&amp;rsquo;s light. Does not record pictures or video. Is completely unable to transmit information of any nature, as it has no information-transmitting permissions, like Internet or Bluetooth.  Torchure  Handles no personal information.   Searchlight Searchlight uses your device&amp;rsquo;s LED to light up your surroundings. Searchlight is available on Google Play.
+Searchlight does not transmit information of any nature, as it has no information-transmitting permissions, like Internet or Bluetooth.
+Permissions  android.permission.CAMERA  Searchlight uses the camera&amp;rsquo;s flash to light up the LED. No pictures or videos are recorded.  android.permission.WAKE_LOCK  Searchlight uses wake lock to keep the LED enabled when the screen switches off on devices that need it.   Torchure Torchure uses your device&amp;rsquo;s screen to light up your surroundings. Torchure is available on Google Play.
+Torchure handles no personal information.</description>
     </item>
     
   </channel>

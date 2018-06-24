@@ -32,7 +32,7 @@ As always, you can download the update via Google Play or directly.</description
       <description>Looks like I forgot to write about this when I released it in February, but Searchlight 1.5 is out!
 The big thing this update adds is a widget that can be added to your launcher or to your lock screen on 4.2+ devices. That means you can toggle the light without unlocking the device!
 As always you can download it from Google Play and directly from this site.
-Also, for the sake of completeness, since I never got around to writing about version 1.</description>
+Also, for the sake of completeness, since I never got around to writing about version 1.4, here&amp;rsquo;s the download for 1.4.</description>
     </item>
     
     <item>
@@ -53,7 +53,8 @@ Download it direct or from Google Play.</description>
       
       <guid>/post/searchlight-1-1-released/</guid>
       <description>Searchlight, my application for lighting up your world (or at least a few metres in front of you) using your Android device&amp;rsquo;s LED has been updated to 1.1.
-This update brings better behaviour on HTC Sense devices, where the screen is kept on (as this is necessary to keep the device&amp;rsquo;s light switched on). In addition, when the screen is switched off (manually) and switched on again, it can switch on the light again; previously it didn&amp;rsquo;t switch the light back on, yet still ran the service.</description>
+This update brings better behaviour on HTC Sense devices, where the screen is kept on (as this is necessary to keep the device&amp;rsquo;s light switched on). In addition, when the screen is switched off (manually) and switched on again, it can switch on the light again; previously it didn&amp;rsquo;t switch the light back on, yet still ran the service. Oops.
+Get the update through the Android Market, or download the APK right here.</description>
     </item>
     
     <item>
@@ -64,7 +65,13 @@ This update brings better behaviour on HTC Sense devices, where the screen is ke
       <guid>/post/searchlight-an-android-led-torch-powered-by-the-search-button/</guid>
       <description>In case there aren&amp;rsquo;t enough of them out there, I&amp;rsquo;ve decided to chip in my own effort on the Android LED torch scene.
 In a sort of sequel to my first Android app Torchure, I have just released Searchlight on to the Android Market.
-The unique thing about this flashlight is that it&amp;rsquo;s activated by long-pressing the Search button. Each time you do this, the LED will toggle on or off.</description>
+The unique thing about this flashlight is that it&amp;rsquo;s activated by long-pressing the Search button. Each time you do this, the LED will toggle on or off. This means that (nearly) regardless of what app you&amp;rsquo;re in, you can toggle the LED.
+You can even switch off the screen to save your battery for the LED. Just note that on most devices the Search button will be disabled while the screen is off, so you&amp;rsquo;ll probably have to switch on the screen, unlock it, then hold the Search button.
+When you long-press the Search button for the first time, you&amp;rsquo;ll probably get a selection of different apps for you to choose from. Just select Searchlight off the list to toggle the LED. Check the &amp;ldquo;Use by default for this action&amp;rdquo; checkbox to make sure that dialog doesn&amp;rsquo;t appear in future.
+If you want that Search selection to appear again, go to Settings &amp;gt; Applications &amp;gt; Manage applications &amp;gt; Searchlight &amp;gt; &amp;ldquo;Clear defaults&amp;rdquo; button. Then hold Search again and make a new selection. It will also reappear when the list of actions changes, for example you install or uninstall an app that has global search functionality.
+There are a couple of caveats.
+ It&amp;rsquo;ll only work on devices that implement the standard camera flash interface introduced by Froyo. If it doesn&amp;rsquo;t work on yours, contact me and I&amp;rsquo;ll see if I can add support for your device or system software. Don&amp;rsquo;t run Searchlight at the same time as another app using the camera, such as Camera, Barcode Scanner or Shopper. Things will go badly, trust me.  It&amp;rsquo;s available on the Android Market for any Android device with a camera and flash running 2.2 (Froyo) and above. This first version is only a smidge over 11KB and requires no outrageous permissions (just camera for obvious reasons, and wake lock to keep the LED on when the screen is off).
+Alternatively, if you prefer not to use the Market, you can download it here.</description>
     </item>
     
   </channel>

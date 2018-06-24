@@ -9,9 +9,17 @@
   <meta property="og:title" content="Strip ID3v1 Tags from MP3s in Linux" />
   <meta name="twitter:title" content="Strip ID3v1 Tags from MP3s in Linux" />
   <meta name="description" content="For kicks I decided to remove all the ID3v1 tags from my music files today. They were just getting in the way and served no useful purpose — since I had perfectly fine ID3v2 tags — so they just had to go.
-I cooked up a little command to help out here! But first, we need to make sure you have the command that we&rsquo;re going to need here, id3v2. Install it from the official repositories using your distribution&rsquo;s package manager.">
+I cooked up a little command to help out here! But first, we need to make sure you have the command that we&rsquo;re going to need here, id3v2. Install it from the official repositories using your distribution&rsquo;s package manager. For example, on Ubuntu:
+sudo apt-get install id3v2 This command is used to view and manipulate ID3 tags inside of music files. One argument in particular is of use to us, -s, which strips ID3v1 tags out of the specified file(s).
+With that in mind the task is just getting a list of the files that you want to remove ID3v1 tags from. I&rsquo;ve managed to solve that and fit it all in one line — don&rsquo;t forget to replace the path with the correct one:
+find /path/to/music -name \*.mp3 -type f -print0 | xargs -0 id3v2 -s That&rsquo;s it! After testing I ran it on my whole music library and it appears to have survived just fine. Just be patient (and careful) if you&rsquo;re stripping tags out of hundreds or thousands of files.
+Let me know how it works out for you, and any improvements you may have!">
   <meta property="og:description" content="For kicks I decided to remove all the ID3v1 tags from my music files today. They were just getting in the way and served no useful purpose — since I had perfectly fine ID3v2 tags — so they just had to go.
-I cooked up a little command to help out here! But first, we need to make sure you have the command that we&rsquo;re going to need here, id3v2. Install it from the official repositories using your distribution&rsquo;s package manager.">
+I cooked up a little command to help out here! But first, we need to make sure you have the command that we&rsquo;re going to need here, id3v2. Install it from the official repositories using your distribution&rsquo;s package manager. For example, on Ubuntu:
+sudo apt-get install id3v2 This command is used to view and manipulate ID3 tags inside of music files. One argument in particular is of use to us, -s, which strips ID3v1 tags out of the specified file(s).
+With that in mind the task is just getting a list of the files that you want to remove ID3v1 tags from. I&rsquo;ve managed to solve that and fit it all in one line — don&rsquo;t forget to replace the path with the correct one:
+find /path/to/music -name \*.mp3 -type f -print0 | xargs -0 id3v2 -s That&rsquo;s it! After testing I ran it on my whole music library and it appears to have survived just fine. Just be patient (and careful) if you&rsquo;re stripping tags out of hundreds or thousands of files.
+Let me know how it works out for you, and any improvements you may have!">
   <meta name="twitter:description" content="For kicks I decided to remove all the ID3v1 tags from my music files today. They were just getting in the way and served no useful purpose — since I had perfectly fine ID3v2 tags — so they just had to …">
   <meta name="author" content="Alex Palmer"/>
   <meta name="twitter:card" content="summary" />

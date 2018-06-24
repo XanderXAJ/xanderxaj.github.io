@@ -20,7 +20,11 @@
       <description>Update 2010-03-04: Added another potential solution courtesy of Blazt in the comments. Thanks!
 So, you have a phone with root permissions? Finding whenever a program requests root permissions the Superuser Permissions program hangs (usually with a black screen or even a force close) at the &amp;ldquo;SU request&amp;rdquo; screen?
 Fortunately there are a couple of things you can try, which I&amp;rsquo;ll detail for you.
-First, make sure USB Debugging is enabled. To do that:</description>
+First, make sure USB Debugging is enabled. To do that:
+ Press the Home button. Press the Menu button. Select Settings &amp;gt; Applications &amp;gt; Development. Make sure that USB Debugging is checked. If not, check it.  If that fixes your problem, you are done! If not, then you can try clearing the Superuser Permissions data. This is just any options you have set within the app and whether or not particular apps are always allowed or blocked — you won&amp;rsquo;t lose any of your other data, and it&amp;rsquo;s easy to allow/deny stuff again.
+To clear the data:
+ Press the Home button. Press the Menu button. Select Settings &amp;gt; Applications &amp;gt; Manage applications. Find Superuser Permissions on the list. Tap it. Tap &amp;ldquo;Clear data&amp;rdquo; and &amp;ldquo;Clear cache&amp;rdquo; if they&amp;rsquo;re enabled.  This should prevent any hangs with Superuser Permissions in the future.
+This works on the HTC Dream (T-Mobile G1) with the 1.5 and 1.6 firmwares, and presumably other Android devices with the Superuser Permissions app.</description>
     </item>
     
   </channel>

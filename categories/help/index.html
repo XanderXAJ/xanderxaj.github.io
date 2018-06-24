@@ -175,10 +175,52 @@
               </p>
               <div class="post-entry">
                 
-                  Details upfront: My workaround is to completely disable the AMD GPU via a modded BIOS and let Windows Update install a valid driver for the Intel card. If this concerns you, then don&rsquo;t follow the instructions on this page!
-==Disclaimer: I can&rsquo;t be held responsible should things go wrong etc. etc. I can only describe what worked for me.==
-I&rsquo;ll be careful. Instructions please! I first made sure that I had uninstalled all of the graphics drivers.
-                  <a href="/post/getting-battery-life-back-on-an-acer-aspire-5820tg-running-windows-10/" class="post-read-more">[Read More]</a>
+                  
+
+<p>Details upfront: My workaround is to completely disable the AMD GPU via a modded BIOS and let Windows Update install a valid driver for the Intel card.  If this concerns you, then don&rsquo;t follow the instructions on this page!</p>
+
+<p>==Disclaimer: I can&rsquo;t be held responsible should things go wrong etc. etc.  I can only describe what worked for me.==</p>
+
+<h2 id="i-ll-be-careful-instructions-please">I&rsquo;ll be careful. Instructions please!</h2>
+
+<p>I first made sure that I had uninstalled all of the graphics drivers.  I would do this by uninstalling the drivers (either via <em>Device Manager</em> or <em>Programs &amp; Features</em>), rebooting in to Safe Mode (hold <code>Shift</code> while clicking <em>Restart</em> in the <em>Start Menu</em>, then find the Advanced Boot Options command) and using something like <a href="https://treexy.com/products/driver-fusion">Driver Fusion</a> to eradicate the AMD and Intel drivers.</p>
+
+<p>I installed the <a href="http://forum.notebookreview.com/threads/acer-aspire-timelinex-4820tg-5820tg-modded-bios-insyde.568951/">modded BIOS available on Notebook Review&rsquo;s forum</a>.  That same page also has some useful instructions should things go wrong!</p>
+
+<p>I then rebooted in to the BIOS and set the graphics mode to the newly-added <em>Integrated</em>.  Note that if you shut down Windows 10 it will still seem to flag to the BIOS that it is hibernating (likely one of the many ways Microsoft have sped up boot times), which means you can&rsquo;t access the BIOS; I&rsquo;ve found that restarting always gives me the option.</p>
+
+<p>I then reboot to Windows, check <em>Device Manager</em> to see that only one graphics device shows up (on the Acer 5820TG, if the AMD GPU is enabled you&rsquo;ll see 2 devices), then go to <em>Start &gt; Settings &gt; Update &gt; Check for Updates</em>.  Windows 10 will, in short order, get to installing the Intel driver (assuming you haven&rsquo;t disabled it!).</p>
+
+<p>My personal testing suggests that this is about as good as when you would have normally switched to Integrated graphics, which is good.  <a href="https://batterybarpro.com/">BatteryBar Pro</a> tells me that when the laptop is idle with WiFi on and the screen on the battery discharge rate in the 7,000-8,000mW region, which is excellent for this machine.</p>
+
+<h2 id="why-remove-the-amd-card-entirely">Why remove the AMD card entirely?</h2>
+
+<p>In Windows 10 Microsoft have made the decision to automatically install the most up-to-date drivers it has for all the hardware connected to your machine.</p>
+
+<p>It&rsquo;s noble, but the problem here is that the up-to-date driver for the graphics cards in this machine doesn&rsquo;t properly utilise switching.  It instead uses both GPUs all the time &mdash; leading to lacklustre battery life.  So I would install a much older driver that I know works (and still behaves correctly in Windows 10) instead.</p>
+
+<p>However, there is no easy way to opt-out of driver updated.  The option in System to tell Windows Update to not install drivers is ignored.  The only way I know of to stop the updates is to hide them before they&rsquo;re installed by using <a href="https://support.microsoft.com/en-gb/kb/3073930">a troubleshooter explicitly for this purpose</a>; indeed, the functionality to disable updates is no longer built in to Windows.  At least you can store the troubleshooter somewhere and keep running it to pretend the functionality is still there.</p>
+
+<p>But there was a hitch: even once I&rsquo;d hidden the AMD graphics driver update, it was still getting installed sooner or later.</p>
+
+<p>I also found that so long as I stuck exclusively with the Intel card then everything was OK and Windows could not detect the AMD hardware.  But as soon as I switched to the AMD GPU (such as can automatically happen when you connect a power supply), it effectively enabled a kill switch for the graphics driver in Windows as it&rsquo;ll sooner or later install the up-to-date driver against my wishes.</p>
+
+<p>I figured that it would just be a whole lot simpler to run with the one GPU and bypass the switchable business.  The default BIOS lets you choose between <em>Discrete</em> and <em>Switchable</em> configurations, but I wanted an <em>Integrated</em> option.  That&rsquo;s where the modded BIOS came in.</p>
+
+<h2 id="but-i-don-t-want-to-lose-my-amd-card">But I don&rsquo;t want to lose my AMD card!</h2>
+
+<p>I might revisit this at some point, because while figuring all this stuff out I noticed something odd.</p>
+
+<p>I went the one GPU route because I found that, despite disabling the update, the AMD graphics driver would still install.  Except it might <em>not</em> have been the AMD graphics driver that was installing.</p>
+
+<p>Once I had disabled the AMD GPU and rebooted, I noted that another option appeared in the disable update troubleshooter: the AMD HDMI audio driver.</p>
+
+<p>I had already noted by this point that despite the fact that <em>something</em> would install and hose the driver, the driver version reported in Device Manager would not always change.  This could be quite neatly explained if the HDMI audio driver, which wouldn&rsquo;t change the <em>graphics</em> driver version, had enough stuff in it to stop the graphics driver working.</p>
+
+<p>Now that I&rsquo;ve disabled both the AMD graphics driver and the AMD HDMI audio driver, perhaps I could re-enable the switchable graphics configuration.</p>
+
+<p>One last note: assuming that hiding updates works in Windows 10 like it did in previous Windows releases, then hiding an update only hides <em>that version</em>.  That means that if either driver were to get updated in future, you&rsquo;ll probably have to go through the entire rigmarole again (hide update, uninstall, reinstall) to get a working driver again.</p>
+
                 
               </div>
 
@@ -207,10 +249,65 @@ I&rsquo;ll be careful. Instructions please! I first made sure that I had uninsta
               </p>
               <div class="post-entry">
                 
-                  I recently installed a couple of new plugins to Sublime Text, and then Ctrl+Shift+R, the shortcut for searching through all symbols in a project, stopped working!
-You can get Sublime Text to display what&rsquo;s actually going on when you press the shortcut &mdash; that information may give you a hint as to what plugin or configuration has changed your value.
-Is the shortcut reaching Sublime? The following commands are run in the Sublime Text Console; you can access on Linux and Windows by pressing Ctrl+`.
-                  <a href="/post/troubleshooting-keyboard-shortcuts-in-sublime-text/" class="post-read-more">[Read More]</a>
+                  
+
+<p>I recently installed a couple of new plugins to Sublime Text, and then <code>Ctrl+Shift+R</code>, the shortcut for searching through all symbols in a project, stopped working!</p>
+
+<p>You can get Sublime Text to display what&rsquo;s actually going on when you press the shortcut &mdash; that information may give you a hint as to what plugin or configuration has changed your value.</p>
+
+<h2 id="is-the-shortcut-reaching-sublime">Is the shortcut reaching Sublime?</h2>
+
+<p>The following commands are run in the Sublime Text Console; you can access on Linux and Windows by pressing <code>Ctrl+`</code>.</p>
+
+<p>You can check the shortcut is actually managing to get to Sublime in the first place:</p>
+
+<pre><code>sublime.log_input(True)
+</code></pre>
+
+<p>You&rsquo;ll notice that the console will now display the keys that you press &mdash; try pressing a keyboard shortcut too!</p>
+
+<pre><code>key evt: shift+control+r
+</code></pre>
+
+<p>If the console is showing your keystrokes correctly, then Sublime is receiving them loud and clear and the problem lies elsewhere.</p>
+
+<h2 id="what-is-sublime-doing-when-the-shortcut-is-invoked">What is Sublime doing when the shortcut is invoked?</h2>
+
+<p>By running the following in the Sublime console, you&rsquo;ll see what commands Sublime is running as you press keyboard shortcuts:</p>
+
+<pre><code>sublime.log_commands(True)
+</code></pre>
+
+<p>You&rsquo;ll now note the command names appearing inside of the console.  I got the following:</p>
+
+<pre><code>key evt: shift+control+r
+command: run_emmet_action {&quot;action&quot;: &quot;reflect_css_value&quot;}
+</code></pre>
+
+<p>In my case, it turned out that <a href="https://github.com/sergeche/emmet-sublime">Emmet</a> had taken over the shortcut!  I got my shortcut back by copying the default <code>Ctrl+Shift+R</code> shortcut definition from <em>Preferences &gt; Keybindings - Default</em> and pasting it in to the user file at <em>Preferences &gt; Keybindings - User</em>.</p>
+
+<pre><code>[
+    { &quot;keys&quot;: [&quot;ctrl+shift+r&quot;], &quot;command&quot;: &quot;goto_symbol_in_project&quot; }
+]
+</code></pre>
+
+<p>I feel there should be a better way to do this, but this works as Sublime is now.  Now I try the shortcut again:</p>
+
+<pre><code>key evt: shift+control+r
+command: goto_symbol_in_project
+</code></pre>
+
+<p>Much better.</p>
+
+<h2 id="emmet-has-its-own-special-shortcut-handling">Emmet has its own special shortcut handling</h2>
+
+<p>Those of you familiar with Emmet might know that it has <a href="https://github.com/sergeche/emmet-sublime#overriding-keyboard-shortcuts">its own built-in mechanism</a> to disable keyboard shortcuts of your choice.  And in this case, that&rsquo;s exactly what could be used.</p>
+
+<pre><code>&quot;disabled_keymap_actions&quot;: &quot;reflect_css_value&quot;
+</code></pre>
+
+<p>The nice thing about the keybindings override is that the instructions described above should work for any addon package <a href="http://www.sublimetext.com/docs/3/packages.html">as the User package is sourced last</a> &mdash; meaning that the User package overrides all.</p>
+
                 
               </div>
 

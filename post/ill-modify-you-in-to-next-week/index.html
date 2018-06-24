@@ -9,9 +9,33 @@
   <meta property="og:title" content="I&#39;ll Modify You in to Next Week." />
   <meta name="twitter:title" content="I&#39;ll Modify You in to Next Week." />
   <meta name="description" content="A couple of days ago I came across this interesting quirk, and I had to do a double-take before I realised what had happened.
-Basically, I recently got a NAS and decided that I wanted my router to save its bandwidth usage statistics on it. That way whenever I perform an upgrade to the firmware on the router I won&rsquo;t erase all the stats. This part is easy, as the firmware has the functionality for this.">
+Basically, I recently got a NAS and decided that I wanted my router to save its bandwidth usage statistics on it. That way whenever I perform an upgrade to the firmware on the router I won&rsquo;t erase all the stats. This part is easy, as the firmware has the functionality for this. (The firmware I keep mentioning is the Tomato firmware. I highly recommend it if you happen to have a compatible Linux router!)
+Now, after I set it all up, I went on to the network shares to see if the statistics were being saved properly. What I saw I didn&rsquo;t exactly expect:
+ A screenshot from Directory Opus of my local network share... And some interesting modified times  Now, nothing may look wrong at first glance. But take another look at the screenshot, particularly the column titled &ldquo;Modified&rdquo;.
+Got it yet? You have? That&rsquo;s great! You haven&rsquo;t? You&rsquo;re probably just not as finnicky as I am, don&rsquo;t worry.
+Anyway, enough suspense: the thing that caught me out was that the modified time for the statistics file was &ldquo;tomorrow&rdquo;.
+&ldquo;So what?&rdquo; I hear you cry! &ldquo;You probably just had the NAS set to the wrong timezone.&rdquo;
+Alright, I&rsquo;ll give you that — I had set it to the wrong timezone. However, that isn&rsquo;t the strangest thing!
+The strange part is the fact that Windows has provisions for files that have creation/modify/access times in the future.
+When you have a file that you have modifed today, it says &ldquo;Today&rdquo;. Nice. If you then leave the file for 24 hours, Windows will say the file was modified &ldquo;Yesterday&rdquo;. Again, a nice touch.
+But now Windows, in its all-powerful, all-knowing ways, can tell me when a file will be modified, before it&rsquo;s even happened!
+At least, that&rsquo;s the impression it gives me when I think of a developer including &ldquo;tomorrow&rdquo; on the list of English relative dates.
+And before you complain that I wasn&rsquo;t using Windows Explorer but rather a replacement called Directory Opus, here&rsquo;s a screen from Explorer demonstrating the same behaviour, but slightly more hidden:
+ A screenshot from Windows Explorer of my local network share... With the same interesting modified times  So there you have it: Some crazy behaviour and me thoroughly confused. With DOpus and Explorer both &ldquo;predicting&rdquo; the future for me, I&rsquo;m beginning to wonder just how much control I have over these computers…">
   <meta property="og:description" content="A couple of days ago I came across this interesting quirk, and I had to do a double-take before I realised what had happened.
-Basically, I recently got a NAS and decided that I wanted my router to save its bandwidth usage statistics on it. That way whenever I perform an upgrade to the firmware on the router I won&rsquo;t erase all the stats. This part is easy, as the firmware has the functionality for this.">
+Basically, I recently got a NAS and decided that I wanted my router to save its bandwidth usage statistics on it. That way whenever I perform an upgrade to the firmware on the router I won&rsquo;t erase all the stats. This part is easy, as the firmware has the functionality for this. (The firmware I keep mentioning is the Tomato firmware. I highly recommend it if you happen to have a compatible Linux router!)
+Now, after I set it all up, I went on to the network shares to see if the statistics were being saved properly. What I saw I didn&rsquo;t exactly expect:
+ A screenshot from Directory Opus of my local network share... And some interesting modified times  Now, nothing may look wrong at first glance. But take another look at the screenshot, particularly the column titled &ldquo;Modified&rdquo;.
+Got it yet? You have? That&rsquo;s great! You haven&rsquo;t? You&rsquo;re probably just not as finnicky as I am, don&rsquo;t worry.
+Anyway, enough suspense: the thing that caught me out was that the modified time for the statistics file was &ldquo;tomorrow&rdquo;.
+&ldquo;So what?&rdquo; I hear you cry! &ldquo;You probably just had the NAS set to the wrong timezone.&rdquo;
+Alright, I&rsquo;ll give you that — I had set it to the wrong timezone. However, that isn&rsquo;t the strangest thing!
+The strange part is the fact that Windows has provisions for files that have creation/modify/access times in the future.
+When you have a file that you have modifed today, it says &ldquo;Today&rdquo;. Nice. If you then leave the file for 24 hours, Windows will say the file was modified &ldquo;Yesterday&rdquo;. Again, a nice touch.
+But now Windows, in its all-powerful, all-knowing ways, can tell me when a file will be modified, before it&rsquo;s even happened!
+At least, that&rsquo;s the impression it gives me when I think of a developer including &ldquo;tomorrow&rdquo; on the list of English relative dates.
+And before you complain that I wasn&rsquo;t using Windows Explorer but rather a replacement called Directory Opus, here&rsquo;s a screen from Explorer demonstrating the same behaviour, but slightly more hidden:
+ A screenshot from Windows Explorer of my local network share... With the same interesting modified times  So there you have it: Some crazy behaviour and me thoroughly confused. With DOpus and Explorer both &ldquo;predicting&rdquo; the future for me, I&rsquo;m beginning to wonder just how much control I have over these computers…">
   <meta name="twitter:description" content="A couple of days ago I came across this interesting quirk, and I had to do a double-take before I realised what had happened.
 Basically, I recently got a NAS and decided that I wanted my router to …">
   <meta name="author" content="Alex Palmer"/>

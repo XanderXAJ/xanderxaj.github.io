@@ -215,11 +215,20 @@
               </p>
               <div class="post-entry">
                 
-                  To re-use a commit&rsquo;s message verbatim, including authorship and timestamp information, use -C &lt;commit&gt;:
-git commit --amend -C @ Pro Tip: @ is a synonym for HEAD, the currently checked-out commit.
-To reset the date as well, use --date now; to reset the author too, use --reset-author:
-git commit --amend -C @ --date now git commit --amend -C @ --reset-author git commit --amend -C @ --date now --reset-author If you want to use an existing commit&rsquo;s message and also want a chance to edit it, use -c &lt;commit&gt;:
-                  <a href="/post/re-use-commit-message-in-git/" class="post-read-more">[Read More]</a>
+                  <p>To re-use a commit&rsquo;s message verbatim, including authorship and timestamp information, use <code>-C &lt;commit&gt;</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git commit --amend -C @</code></pre></div>
+<p><strong>Pro Tip:</strong> <code>@</code> is a synonym for <code>HEAD</code>, the currently checked-out commit.</p>
+
+<p>To reset the date as well, use <code>--date now</code>; to reset the author too, use <code>--reset-author</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git commit --amend -C @ --date now
+git commit --amend -C @ --reset-author
+git commit --amend -C @ --date now --reset-author</code></pre></div>
+<p>If you want to use an existing commit&rsquo;s message and also want a chance to edit it, use <code>-c &lt;commit&gt;</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git commit --amend -c @</code></pre></div>
+<p><code>-c</code> is compatible with <code>--date</code> and <code>--reset-author</code> too:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git commit --amend -c @ --date now
+git commit --amend -c @ --reset-author
+git commit --amend -c @ --date now --reset-author</code></pre></div>
                 
               </div>
 
@@ -248,9 +257,29 @@ git commit --amend -C @ --date now git commit --amend -C @ --reset-author git co
               </p>
               <div class="post-entry">
                 
-                  I&rsquo;ve had some trouble with Google Play Music&rsquo;s scan and match service. It sometimes matches tracks to the wrong versions of them. Sometimes the volume of a track is wildly different from what I have locally (with or without ReplayGain). Unfortunately, there is no way to disable matching in Google&rsquo;s official Music Manager application.
-gmusicapi supports uploading to Google Play Music without their &ldquo;scan and match&rdquo; service. gmusicapi-scripts utilises gmusicapi. Let&rsquo;s use them!
-                  <a href="/post/uploading-to-google-play-music-without-matching/" class="post-read-more">[Read More]</a>
+                  <p>I&rsquo;ve had some trouble with Google Play Music&rsquo;s scan and match service.  It sometimes matches tracks to the wrong versions of them.  Sometimes the volume of a track is wildly different from what I have locally (with or without ReplayGain).  Unfortunately, there is no way to disable matching in Google&rsquo;s official Music Manager application.</p>
+
+<p><a href="https://github.com/simon-weber/gmusicapi"><code>gmusicapi</code></a> supports uploading to Google Play Music without their &ldquo;scan and match&rdquo; service.  <a href="https://github.com/thebigmunch/gmusicapi-scripts"><code>gmusicapi-scripts</code></a> utilises <code>gmusicapi</code>.  Let&rsquo;s use them!</p>
+
+<ol>
+<li><p>Install <a href="https://thebigmunch.github.io/gmusicapi-scripts">gmusicapi-scripts</a>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Windows
+</span><span style="color:#75715e"></span>py -3 -m pip install gmusicapi-scripts
+<span style="color:#75715e"># Others
+</span><span style="color:#75715e"></span>pip install gmusicapi-scripts</code></pre></div></li>
+
+<li><p>Convert tracks (if needed) to 320kbps MP3 and place them in <code>&lt;directory&gt;</code>.</p>
+
+<ul>
+<li>If you place non-MP3 files in this directory, <code>gmsync</code> will try to convrt them with FFMPEG or AVConv if they are on the <code>PATH</code>.  <a href="https://thebigmunch.github.io/gmusicapi-scripts">Look at the docs</a> to see what formats it supports.</li>
+</ul></li>
+
+<li><p>Run <code>gmsync</code>.  Follow any instructions it provides:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gmsync up &lt;directory&gt;</code></pre></div></li>
+</ol>
+
+<p><code>gmsync</code> uploads without matching by default. Perfect.</p>
+
                 
               </div>
 
@@ -279,10 +308,28 @@ gmusicapi supports uploading to Google Play Music without their &ldquo;scan and 
               </p>
               <div class="post-entry">
                 
-                  My laptop had been feeling slower than it had used to, and I was getting more and more certain that it wasn&rsquo;t just me.
-One time I opened Task Manager and noticed that whenever I put load on the machine, it maxed out at 49%. Every time. Cooling wasn&rsquo;t the issue as the laptop fan (which is a dumb fan controlled by hardware, not software) wasn&rsquo;t spinning up much.
-After searching online, I stumbled across a thread that would provide the (really rather insane) workaround: Move the Intel processor driver so Windows does not use it.
-                  <a href="/post/working-around-intel-cpu-running-at-a-maximum-of-49-50/" class="post-read-more">[Read More]</a>
+                  <p>My laptop had been feeling slower than it had used to, and I was getting more and more certain that it wasn&rsquo;t just me.</p>
+
+<p>One time I opened Task Manager and noticed that whenever I put load on the machine, it maxed out at 49%.  Every time.  Cooling wasn&rsquo;t the issue as the laptop fan (which is a dumb fan controlled by hardware, not software) wasn&rsquo;t spinning up much.</p>
+
+<p>After searching online, <a href="https://answers.microsoft.com/en-us/windows/forum/windows_10-other_settings/windows-10-only-use-half-of-max-cpu-speed/d97b219f-10ee-4a42-a0fc-d517c1b60be8">I stumbled across a thread</a> that would provide the (really rather insane) workaround: Move the Intel processor driver so Windows does not use it.  Thanks to everyone there for the discussion.</p>
+
+<ol>
+<li>Restart in the advanced command prompt mode.  (Hold Shift when clicking Restart)</li>
+<li>Log in to your account.</li>
+
+<li><p>Run the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">cd drivers
+move intelppm.sys intelppm.sys.old
+exit</code></pre></div></li>
+
+<li><p>Select the option to exit and continue to Windows 10.</p></li>
+</ol>
+
+<p>One comment on that thread suggests that this also works for AMD CPUs by moving <code>amdppm.sys</code> instead of <code>intelppm.sys</code>.</p>
+
+<p><strong>Update 2017-06-23</strong>: I previously suggested to add the <code>.bak</code> extension to the driver file.  However, Windows recognises this extension, and so it will restore the driver back to its original location at the next restart, meaning the problem will return!  I&rsquo;ve changed the instructions to suggest using <code>.old</code> instead, which I don&rsquo;t believe Windows recognises, but is still fairly obvious to users.</p>
+
                 
               </div>
 
@@ -311,10 +358,76 @@ After searching online, I stumbled across a thread that would provide the (reall
               </p>
               <div class="post-entry">
                 
-                  I recently ripped my first Blu-Ray audio discs. Here are a few tips I&rsquo;ve discovered along the way:
-tl;dr Backup the disc using MakeMKV and extract the audio using the updated version of the command under Putting it all together.
-Ripping the discs MakeMKV can be used to rip and, if necessary, decrypt Blu-Ray audio discs. While it is in beta, it can be evaluated by using the current beta key.
-                  <a href="/post/tips-for-ripping-blu-ray-audio/" class="post-read-more">[Read More]</a>
+                  
+
+<p>I recently ripped my first Blu-Ray audio discs.  Here are a few tips I&rsquo;ve discovered along the way:</p>
+
+<h2 id="tl-dr">tl;dr</h2>
+
+<p>Backup the disc using <a href="http://www.makemkv.com/download/">MakeMKV</a> and extract the audio using the updated version of the command under <em>Putting it all together</em>.</p>
+
+<h2 id="ripping-the-discs">Ripping the discs</h2>
+
+<p><a href="http://www.makemkv.com/download/">MakeMKV</a> can be used to rip and, if necessary, decrypt Blu-Ray audio discs.  While it is in beta, it can be evaluated by <a href="http://www.makemkv.com/forum2/viewtopic.php?f=5&amp;t=1053">using the current beta key</a>.</p>
+
+<p>I use the complete Blu-Ray backup feature so I have the raw stream files to work with.</p>
+
+<h2 id="extracting-the-audio-from-the-video-files">Extracting the audio from the video files</h2>
+
+<p><a href="http://ffmpeg.org/">ffmpeg</a> can be used to extract the audio track(s) from the video streams on the Blu-Ray.</p>
+
+<p>First interrogate one of your streams using <code>ffprobe</code> to see how the different tracks are laid out:</p>
+
+<pre><code>ffprobe -hide_banner BDMV/STREAM/00002.m2ts
+</code></pre>
+
+<p>I use <code>-hide_banner</code> to reduce the amount of text printed to the terminal.  If you have troubles and decide to ask others for help, be sure to omit <code>-hide_banner</code> as the information it emits can be useful when debugging!</p>
+
+<p>Here is the output I got:</p>
+
+<pre><code>Input #0, mpegts, from 'BDMV/STREAM/00002.m2ts':
+  Duration: 00:01:47.07, start: 4200.000000, bitrate: 7133 kb/s
+  Program 1
+    Stream #0:0[0x1011]: Video: h264 (High) (HDMV / 0x564D4448), yuv420p(progressive), 1920x1080 [SAR 1:1 DAR 16:9], 23.98 fps, 23.98 tbr, 90k tbn, 47.95 tbc
+    Stream #0:1[0x1100]: Audio: pcm_bluray (HDMV / 0x564D4448), 48000 Hz, stereo, s16, 1536 kb/s
+</code></pre>
+
+<p>In my case I only have one audio stream to worry about at address <code>0:1</code>.  Note it is labelled <code>s16</code> which means that it is a signed 16-bit depth audio stream.  These details will be important in a moment.</p>
+
+<p>Next comes the extraction:</p>
+
+<p><em>Update 2017-09-10:</em> I now think it is much more straightforward to trust FFMPEG to do the right thing:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> i in BDMV/STREAM/*.m2ts; <span style="color:#66d9ef">do</span> ffmpeg -hide_banner -i <span style="color:#e6db74">&#34;</span>$i<span style="color:#e6db74">&#34;</span> -map <span style="color:#ae81ff">0</span>:1 <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>basename <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>i%.*<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">.flac&#34;</span>; <span style="color:#66d9ef">done</span></code></pre></div>
+<p>Note that I do not set the audio codec, and merely set the file extension to <code>.flac</code> as that is the format that I want.</p>
+
+<p>For reference, this is original command I used:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> i in BDMV/STREAM/*.m2ts; <span style="color:#66d9ef">do</span> ffmpeg -hide_banner -i <span style="color:#e6db74">&#34;</span>$i<span style="color:#e6db74">&#34;</span> -map <span style="color:#ae81ff">0</span>:1 -acodec pcm_s16le <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>basename <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>i%.*<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">.wav&#34;</span>; <span style="color:#66d9ef">done</span></code></pre></div>
+<p>The <code>-map 0:1</code> refers to our address from earlier.  The <code>s16</code> part of <code>-acodec pcm_s16le</code> matches the description of the stream <code>ffprobe</code> gave us.  We cannot use <code>-acodec copy</code> as <code>ffmpeg</code> cannot encode <code>pcm_bluray</code>.</p>
+
+<p>Make sure to use <code>.wav</code> at the end of the filename, as <code>ffmpeg</code> considers it important.  I was originally trying to use <code>.pcm</code>, but all I got was this error message:</p>
+
+<pre><code>[NULL @ 000000000283dc20] Unable to find a suitable output format for '00002.pcm'
+</code></pre>
+
+<p>If you have multiple streams, re-run this command, changing <code>-map</code>, <code>-acodec</code> and the output filename (to not overwrite your previous extractions!) as appropriate.</p>
+
+<h2 id="removing-initial-silence">Removing initial silence</h2>
+
+<p>After I had extracted the audio, I noticed that every track had about 1.0-1.6 seconds of silence at the beginning.  I had no interest in keeping this, so I used <code>ffmpeg</code> with the <a href="https://ffmpeg.org/ffmpeg-filters.html#silenceremove"><code>silenceremove</code> filter</a>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir no-silence
+<span style="color:#66d9ef">for</span> i in *.wav; <span style="color:#66d9ef">do</span> ffmpeg -i <span style="color:#e6db74">&#34;</span>$i<span style="color:#e6db74">&#34;</span> -af silenceremove<span style="color:#f92672">=</span>start_periods<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>:detection<span style="color:#f92672">=</span>peak <span style="color:#e6db74">&#34;no-silence/</span><span style="color:#66d9ef">$(</span>basename <span style="color:#e6db74">&#34;</span>$i<span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>; <span style="color:#66d9ef">done</span></code></pre></div>
+<p><code>start_periods=1</code> means remove one block of silence from the beginning of the track, a.k.a. the silence before any audio begins.  I use <code>detection=peak</code> because I know I&rsquo;m working with audio with digital silence; if you&rsquo;re working with audio that was originally recorded from analogue, omit this option.</p>
+
+<h2 id="putting-it-all-together">Putting it all together</h2>
+
+<p>Incidentally, this filter could have been added to the original extraction command, if I knew that I wanted it at the time. :)</p>
+
+<p><em>Update 2017-09-10:</em> As above, I now think it is much more straightforward to trust FFMPEG to do the right thing:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> i in BDMV/STREAM/*.m2ts; <span style="color:#66d9ef">do</span> ffmpeg -hide_banner -i <span style="color:#e6db74">&#34;</span>$i<span style="color:#e6db74">&#34;</span> -map <span style="color:#ae81ff">0</span>:1 -af silenceremove<span style="color:#f92672">=</span>start_periods<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>:detection<span style="color:#f92672">=</span>peak <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>basename <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>i%.*<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">.flac&#34;</span>; <span style="color:#66d9ef">done</span></code></pre></div>
+<p>For reference, this is original command I used:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> i in BDMV/STREAM/*.m2ts; <span style="color:#66d9ef">do</span> ffmpeg -hide_banner -i <span style="color:#e6db74">&#34;</span>$i<span style="color:#e6db74">&#34;</span> -map <span style="color:#ae81ff">0</span>:1 -acodec pcm_s16le -af silenceremove<span style="color:#f92672">=</span>start_periods<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>:detection<span style="color:#f92672">=</span>peak <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>basename <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>i%.*<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">.wav&#34;</span>; <span style="color:#66d9ef">done</span></code></pre></div>
+<p><em>Update 2017-05-14:</em> Changed <code>${i/.*}</code> to <code>${i%.*}</code> to remove file extensions, as the new way will only remove everything following the last <code>.</code> in the filename, not the first.  Thanks to my good friend <a href="http://m.holland-avery.com/">Mark Holland-Avery</a> for the suggestion!</p>
+
                 
               </div>
 
@@ -409,9 +522,53 @@ yarn global add &lt;package&gt;</code></pre></div>
               </p>
               <div class="post-entry">
                 
-                  I&rsquo;ve been fiddling around with React recently and made some pages with some normal-looking URLs, despite being a single-page application. This was done using React Router and configuring it to use the History API with browserHistory. Here is one of those URLS:
-http://localhost:3000/course/react-flux-building-applications  When the page was refreshed (either manually or by the hot loader), or when I visited that page manually, I got this odd error in the console:
-                  <a href="/post/react-unexpected-token/" class="post-read-more">[Read More]</a>
+                  <p>I&rsquo;ve been <a href="https://github.com/XanderXAJ/pluralsight-react-redux">fiddling around with React recently</a> and made some pages with some normal-looking URLs, despite being a single-page application.  This was done using React Router and configuring it to use the <a href="https://github.com/ReactTraining/react-router/blob/master/docs/guides/Histories.md">History API with <code>browserHistory</code></a>.  Here is one of those URLS:</p>
+
+<pre><code>http://localhost:3000/course/react-flux-building-applications
+</code></pre>
+
+<p>When the page was refreshed (either manually or by the hot loader), or when I visited that page manually, I got this odd error in the console:</p>
+
+<pre><code>Unexpected token &lt;
+</code></pre>
+
+<p>When I inspected the contents of <code>bundle.js</code>, which is what I had configured <code>webpack</code> to bundle all of my JS in to, I noticed it wasn&rsquo;t JS at all; it was the HTML for my index page!</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+&lt;<span style="color:#f92672">head</span>&gt;
+    &lt;<span style="color:#f92672">title</span>&gt;Pluralsight Admin&lt;/<span style="color:#f92672">title</span>&gt;
+&lt;/<span style="color:#f92672">head</span>&gt;
+&lt;<span style="color:#f92672">body</span>&gt;
+    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;app&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+    &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bundle.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">body</span>&gt;
+&lt;/<span style="color:#f92672">html</span>&gt;</code></pre></div>
+<p>After a few moments of wondering, I realised what had happened.  It was pretty dumb.  Can you see it?</p>
+
+<hr />
+
+<p>What happened is that <code>bundle.js</code> was being loaded from:</p>
+
+<pre><code>http://localhost:3000/course/bundle.js
+</code></pre>
+
+<p>And not:</p>
+
+<pre><code>http://localhost:3000/bundle.js
+</code></pre>
+
+<p>Since the URL was not recognised, webpack or React Router (I&rsquo;m unsure exactly which) merely served <code>index.html</code> instead of a 404 error.</p>
+
+<p>This meant that HTML was served for a JS request!</p>
+
+<p>The simple fix is to change:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bundle.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;</code></pre></div>
+<p>To:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/bundle.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;</code></pre></div>
+<p>That way the requests always go to <code>http://localhost:3000/bundle.js</code>.</p>
+
+<p>This may need to be solved slightly better if I don&rsquo;t want to host the application at the root of a domain, but it&rsquo;ll work for now while I experiment!</p>
+
                 
               </div>
 
@@ -440,9 +597,25 @@ http://localhost:3000/course/react-flux-building-applications  When the page was
               </p>
               <div class="post-entry">
                 
-                  If you have chroma subsampling issues when connecting a display via HDMI on an Nvidia card, despite all the settings appearing as if there shouldn&rsquo;t be any, try creating a new custom profile at a fractionally higher refresh rate and using that new profile.
- Go in to the Nvidia Control Panel. Go to Display &gt; Change resolution Select Customise&hellip; Check &ldquo;Enable resolutions not exposed by the display&rdquo; Select Create Custom Resolution&hellip; Select the correct horizontal pixels, vertical pixels, colour depth and scan type.
-                  <a href="/post/working-around-chroma-subsampling-over-hdmi-on-nvidia-cards/" class="post-read-more">[Read More]</a>
+                  <p>If you have <a href="http://video.stackexchange.com/questions/5533/why-does-the-color-red-always-appear-pixelated-on-tv-and-videos-on-the-pc">chroma subsampling issues</a> when connecting a display via HDMI on an Nvidia card, despite all the settings appearing as if there shouldn&rsquo;t be any, try <a href="https://www.reddit.com/r/pcgaming/comments/2p3xs7/nvidia_users_using_hdmi_output_youre_most_likely/">creating a new custom profile</a> at a fractionally higher refresh rate and using that new profile.</p>
+
+<ol>
+<li>Go in to the Nvidia Control Panel.</li>
+<li>Go to <em>Display &gt; Change resolution</em></li>
+<li>Select <em>Customise&hellip;</em></li>
+<li>Check &ldquo;Enable resolutions not exposed by the display&rdquo;</li>
+<li>Select <em>Create Custom Resolution&hellip;</em></li>
+<li>Select the correct horizontal pixels, vertical pixels, colour depth and scan type.  Then enter the desired Refresh rate, and add 1 to it.
+
+<ul>
+<li>The Nvidia Control Panel does not allow you to create duplicates of profiles that exist by default.  So changing the refresh rate ensures that the new profile is not a duplicate, and means you do not need to change resolution.</li>
+</ul></li>
+<li>Test the profile, save it, exit the customise window.</li>
+<li>Select your new resolution off the list, and click <em>Apply</em>.</li>
+</ol>
+
+<p>With any luck, your new profile will not have any chroma subsampling, leaving your colours (particularly reds) looking good, especially on menus.</p>
+
                 
               </div>
 

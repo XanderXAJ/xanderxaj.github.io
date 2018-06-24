@@ -175,8 +175,38 @@
               </p>
               <div class="post-entry">
                 
-                  Update 2010-06-21: If you want to use custom ringtones in the first place, install Rings Extended from the Android Market, then go to Home  Settings  Sound & display  Phone ringtone. When it asks which application you want to use, select Rings Extended, and check the checkbox so that it doesn't ask you again.  This will work anywhere any application asks for you to pick a ringtone, assuming it asks via a standard means!
-                  <a href="/post/use-ogg-vorbis-for-lag-free-ringtones-on-android/" class="post-read-more">[Read More]</a>
+                  <div class="update">
+  <p>
+    <strong>Update 2010-06-21:</strong> If you want to use custom ringtones in the first place, install Rings Extended from the Android Market, then go to Home > Settings > Sound & display > Phone ringtone.  When it asks which application you want to use, select Rings Extended, and check the checkbox so that it doesn't ask you again.
+  </p>
+  
+  <p>
+    This will work anywhere any application asks for you to pick a ringtone, assuming it asks via a standard means!
+  </p>
+  
+  <p>
+    I've also written <a href="http://xanderx.com/2009/11/08/ogg-vorbis-encoder-for-windows/">another article detailing how to convert your music in to Ogg Vorbis files</a>.
+  </p>
+</div>
+
+<p>Why, do I hear you cry?</p>
+
+<p>Simple really, here&rsquo;s the story: when I first transferred various files to my phone for use as ringtones (one each for calls, texts, e-mails…) I used MP3s.  Thanks to the Rings Extended application in the marketplace I had no trouble in using them.</p>
+
+<p>But one thing struck me as odd whenever I got a call (or text etc.); lag.  If I were to get a call right now, the phone would vibrate, the screen would turn black, and then a couple of seconds later the contact details show and my ringtone starts playing.  Not ideal.</p>
+
+<p>So I decided to try something.  I set one of the standard ringtones that came with the phone as the current ringtone, and tried again.  This time the phone started vibrating and played the tone at the same time.</p>
+
+<p>After that I had to figure out what format they used, since I had no idea where the files could be and what format they were.  I reasoned that Ogg Vorbis would be the format they&rsquo;d use — an open-source <acronym title="Operating System">OS</acronym> with open-source ringtones.  Makes sense, right?</p>
+
+<p>So I tried it: I converted those same ringtones I started out with to 128kbps CBR Vorbis files.  128kbps because I thought that a higher bitrate would lag the phone out (plus you wouldn&rsquo;t hear a quality difference from the speaker anyway), and CBR because I thought it would be easier for the decoder to work with, though I have no evidence to back this up.</p>
+
+<p>Voilà!  Suddenly my ringtones loaded a lot quicker, and no longer did I get vibrations with no accompanying ringtone (unless it was set to vibrate only!).</p>
+
+<p>I haven&rsquo;t tested other settings on the Vorbis encoder (different bitrates, VBR etc.), nor have I tested other formats aside from MP3 and Ogg.</p>
+
+<p>Hope this is of help to someone that actually cares about this stuff.</p>
+
                 
               </div>
 
@@ -217,9 +247,26 @@
               </p>
               <div class="post-entry">
                 
-                  I feel kind of silly for falling foul of this, but I guess it&rsquo;s just a case of going against what you&rsquo;re used to.
-I was looking for a way to check on my MMS settings on Android. On just about every other phone I&rsquo;ve used it&rsquo;s been a submenu of the messaging application, so that&rsquo;s where I went — except I couldn&rsquo;t find anything pertaining to access point settings! I mean, if one phone does it one way, all phones do it that way, right?
-                  <a href="/post/changing-gprs-mms-and-access-point-settings-on-android/" class="post-read-more">[Read More]</a>
+                  <p>I feel kind of silly for falling foul of this, but I guess it&rsquo;s just a case of going against what you&rsquo;re used to.</p>
+
+<p>I was looking for a way to check on my MMS settings on Android.  On just about every other phone I&rsquo;ve used it&rsquo;s been a submenu of the messaging application, so that&rsquo;s where I went — except I couldn&rsquo;t find anything pertaining to access point settings!  I mean, if one phone does it one way, all phones do it that way, right?  Right?</p>
+
+<p>Wrong.  Turns out Android hides the settings in — guess what — its Settings menus!  That&rsquo;s good, because it&rsquo;s centralised.  It makes sense when you think about it.  Honest.</p>
+
+<p>Anyway, to find these elusive settings, just follow these instructions:</p>
+
+<ol>
+<li>Go to the <strong>Home screen</strong>.</li>
+<li>Press <strong>Menu</strong>.</li>
+<li>Select <strong>Settings</strong>.</li>
+<li>Select <strong>Wireless controls</strong>.</li>
+<li>Select <strong>Mobile network settings</strong>.</li>
+<li>Select <strong>Access Point Names</strong>.</li>
+<li>Finally, select an access point to edit, or press Menu to create a new APN or reset to the defaults that shipped with the phone.</li>
+</ol>
+
+<p>Have fun with changing access point settings!  Mmm.</p>
+
                 
               </div>
 
@@ -248,11 +295,37 @@ I was looking for a way to check on my MMS settings on Android. On just about e
               </p>
               <div class="post-entry">
                 
-                  Update 2010-03-04: Added another potential solution courtesy of Blazt in the comments. Thanks!
-So, you have a phone with root permissions? Finding whenever a program requests root permissions the Superuser Permissions program hangs (usually with a black screen or even a force close) at the &ldquo;SU request&rdquo; screen?
-Fortunately there are a couple of things you can try, which I&rsquo;ll detail for you.
-First, make sure USB Debugging is enabled. To do that:
-                  <a href="/post/fix-superuser-permissions-hanging-on-android/" class="post-read-more">[Read More]</a>
+                  <p><strong>Update 2010-03-04:</strong> Added another potential solution courtesy of Blazt in the comments. Thanks!</p>
+
+<p>So, you have a phone with root permissions?  Finding whenever a program requests root permissions the Superuser Permissions program hangs (usually with a black screen or even a force close) at the &ldquo;<acronym title="Superuser">SU</acronym> request&rdquo; screen?</p>
+
+<p>Fortunately there are a couple of things you can try, which I&rsquo;ll detail for you.</p>
+
+<p>First, make sure <strong><acronym title="Universal Serial Bus">USB</acronym> Debugging</strong> is enabled.  To do that:</p>
+
+<ol>
+<li>Press the <strong>Home button</strong>.</li>
+<li>Press the <strong>Menu button</strong>.</li>
+<li>Select <strong>Settings &gt; Applications &gt; Development</strong>.</li>
+<li>Make sure that <strong><acronym title="Universal Serial Bus">USB</acronym> Debugging</strong> is <strong>checked</strong>.  If not, check it.</li>
+</ol>
+
+<p>If that fixes your problem, you are done!  If not, then you can try <strong>clearing the Superuser Permissions data</strong>.  This is just any options you have set within the app and whether or not particular apps are always allowed or blocked — you won&rsquo;t lose any of your other data, and it&rsquo;s easy to allow/deny stuff again.</p>
+
+<p>To clear the data:</p>
+
+<ol>
+<li>Press the <strong>Home button</strong>.</li>
+<li>Press the <strong>Menu button</strong>.</li>
+<li>Select <strong>Settings &gt; Applications &gt; Manage applications</strong>.</li>
+<li>Find <strong>Superuser Permissions</strong> on the list.  Tap it.</li>
+<li>Tap &ldquo;<strong>Clear data&rdquo;</strong> and &ldquo;<strong>Clear cache</strong>&rdquo; if they&rsquo;re enabled.</li>
+</ol>
+
+<p>This should prevent any hangs with Superuser Permissions in the future.</p>
+
+<p>This works on the HTC Dream (T-Mobile G1) with the 1.5 and 1.6 firmwares, and presumably other Android devices with the Superuser Permissions app.</p>
+
                 
               </div>
 
@@ -293,10 +366,26 @@ First, make sure USB Debugging is enabled. To do that:
               </p>
               <div class="post-entry">
                 
-                  If you&rsquo;ve ever got your PIN code wrong too many times and got your SIM locked, you were probably as surprised as I was when Android gives you no option to unlock the phone! Fortunately there&rsquo;s an answer.
-To unlock your Android-based device go to the Emergency Call screen and enter in the following (replace the angled brackets with the appropriate info):
-**05*«PUK Code»*«Your new pin»*«Confirm your new pin»# So for example:
-                  <a href="/post/unlock-android-device-using-puk-code/" class="post-read-more">[Read More]</a>
+                  <p>If you&rsquo;ve ever got your <acronym title="Personal Identification Number">PIN</acronym> code wrong too many times and got your SIM locked, you were probably as surprised as I was when Android gives you no option to unlock the phone! Fortunately there&rsquo;s an answer.</p>
+
+<p>To unlock your Android-based device go to the <strong>Emergency Call</strong> screen and enter in the following (replace the angled brackets with the appropriate info):</p>
+
+<pre>**05*«PUK Code»*«Your new pin»*«Confirm your new pin»#</pre>
+
+<p>So for example:</p>
+
+<pre>**05*12345678*9090*9090#</pre>
+
+<p>As a side effect this should work on any SIM-containing device at a screen where you can enter phone numbers, not just devices running the Android <acronym title="Operating System">OS</acronym>.  As of writing, Android-based devices are the HTC Dream (T-Mobile G1) and HTC Magic.</p>
+
+<p>And make sure you keep your PUK code secret — anyone can override your <acronym title="Personal Identification Number">PIN</acronym> with their own using it!</p>
+
+<p>Thanks to <a href="http://androidcommunity.com/forums/99706-post6.html">theWeir</a> for posting that solution.</p>
+
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px;">
+  http://androidcommunity.com/forums/99706-post6.html
+</div>
+
                 
               </div>
 

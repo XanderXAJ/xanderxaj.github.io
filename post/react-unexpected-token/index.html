@@ -9,9 +9,29 @@
   <meta property="og:title" content="React: Unexpected token &lt;" />
   <meta name="twitter:title" content="React: Unexpected token &lt;" />
   <meta name="description" content="I&rsquo;ve been fiddling around with React recently and made some pages with some normal-looking URLs, despite being a single-page application. This was done using React Router and configuring it to use the History API with browserHistory. Here is one of those URLS:
-http://localhost:3000/course/react-flux-building-applications  When the page was refreshed (either manually or by the hot loader), or when I visited that page manually, I got this odd error in the console:">
+http://localhost:3000/course/react-flux-building-applications  When the page was refreshed (either manually or by the hot loader), or when I visited that page manually, I got this odd error in the console:
+Unexpected token &lt;  When I inspected the contents of bundle.js, which is what I had configured webpack to bundle all of my JS in to, I noticed it wasn&rsquo;t JS at all; it was the HTML for my index page!
+&lt;!DOCTYPE html&gt; &lt;html lang=&#34;en&#34;&gt; &lt;head&gt; &lt;title&gt;Pluralsight Admin&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;div id=&#34;app&#34;&gt;&lt;/div&gt; &lt;script src=&#34;bundle.js&#34;&gt;&lt;/script&gt; &lt;/body&gt; &lt;/html&gt; After a few moments of wondering, I realised what had happened. It was pretty dumb. Can you see it?
+What happened is that bundle.js was being loaded from:
+http://localhost:3000/course/bundle.js  And not:
+http://localhost:3000/bundle.js  Since the URL was not recognised, webpack or React Router (I&rsquo;m unsure exactly which) merely served index.html instead of a 404 error.
+This meant that HTML was served for a JS request!
+The simple fix is to change:
+&lt;script src=&#34;bundle.js&#34;&gt;&lt;/script&gt; To:
+&lt;script src=&#34;/bundle.js&#34;&gt;&lt;/script&gt; That way the requests always go to http://localhost:3000/bundle.js.
+This may need to be solved slightly better if I don&rsquo;t want to host the application at the root of a domain, but it&rsquo;ll work for now while I experiment!">
   <meta property="og:description" content="I&rsquo;ve been fiddling around with React recently and made some pages with some normal-looking URLs, despite being a single-page application. This was done using React Router and configuring it to use the History API with browserHistory. Here is one of those URLS:
-http://localhost:3000/course/react-flux-building-applications  When the page was refreshed (either manually or by the hot loader), or when I visited that page manually, I got this odd error in the console:">
+http://localhost:3000/course/react-flux-building-applications  When the page was refreshed (either manually or by the hot loader), or when I visited that page manually, I got this odd error in the console:
+Unexpected token &lt;  When I inspected the contents of bundle.js, which is what I had configured webpack to bundle all of my JS in to, I noticed it wasn&rsquo;t JS at all; it was the HTML for my index page!
+&lt;!DOCTYPE html&gt; &lt;html lang=&#34;en&#34;&gt; &lt;head&gt; &lt;title&gt;Pluralsight Admin&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;div id=&#34;app&#34;&gt;&lt;/div&gt; &lt;script src=&#34;bundle.js&#34;&gt;&lt;/script&gt; &lt;/body&gt; &lt;/html&gt; After a few moments of wondering, I realised what had happened. It was pretty dumb. Can you see it?
+What happened is that bundle.js was being loaded from:
+http://localhost:3000/course/bundle.js  And not:
+http://localhost:3000/bundle.js  Since the URL was not recognised, webpack or React Router (I&rsquo;m unsure exactly which) merely served index.html instead of a 404 error.
+This meant that HTML was served for a JS request!
+The simple fix is to change:
+&lt;script src=&#34;bundle.js&#34;&gt;&lt;/script&gt; To:
+&lt;script src=&#34;/bundle.js&#34;&gt;&lt;/script&gt; That way the requests always go to http://localhost:3000/bundle.js.
+This may need to be solved slightly better if I don&rsquo;t want to host the application at the root of a domain, but it&rsquo;ll work for now while I experiment!">
   <meta name="twitter:description" content="I&rsquo;ve been fiddling around with React recently and made some pages with some normal-looking URLs, despite being a single-page application. This was done using React Router and configuring it to …">
   <meta name="author" content="Alex Palmer"/>
   <meta name="twitter:card" content="summary" />

@@ -19,7 +19,12 @@
       <guid>/post/fixing-gran-turismo-5s-slow-loading-times/</guid>
       <description>Just this morning Gran Turismo 5 just out of nowhere started loading really slowly.
 I fixed this by signing out of PSN. It&amp;rsquo;s not ideal if you want to play online, but it&amp;rsquo;s worked for me.
-It should be noted that the problem can been seen from the XMB before you even launch the game – just after it displays the message that you&amp;rsquo;ve &amp;ldquo;signed in&amp;rdquo;, watch the clock and see how long it spins; this is the console synchronizing the time with PSN.</description>
+It should be noted that the problem can been seen from the XMB before you even launch the game – just after it displays the message that you&amp;rsquo;ve &amp;ldquo;signed in&amp;rdquo;, watch the clock and see how long it spins; this is the console synchronizing the time with PSN. If this takes more than a couple of seconds, there might be a problem.
+In addition, check your friends list. If it seems significantly shorter, and each friend is only very slowly appearing one at once, you can count on having troubles launching GT5.
+Finally, note that when you launch GT5 without being connected, the points where the game hangs are the points it asks you if you want to connect to PSN.
+I can only assume that this is a PSN issue because I can confirm on my Tomato router that my connection is entirely utilised. Of course, that doesn&amp;rsquo;t guarantee the problem isn&amp;rsquo;t my end…
+If your loading problem isn&amp;rsquo;t thanks to PSN or a slow internet connection, then it might be that it isn&amp;rsquo;t installed, the HDD is dying, the disc is scratched, the Blu-ray is dying… All the usual suspects really.
+Good luck!</description>
     </item>
     
     <item>
@@ -28,11 +33,11 @@ It should be noted that the problem can been seen from the XMB before you even l
       <pubDate>Mon, 22 Mar 2010 00:00:00 +0000</pubDate>
       
       <guid>/post/supreme-commander-2-hidden-objectives-list/</guid>
-      <description>Update 2010-03-26: Missed &amp;ldquo;Master of Pawns&amp;rdquo; hidden objective off of Cybran mission 6. Added it.
+      <description> Update 2010-03-26: Missed &amp;ldquo;Master of Pawns&amp;rdquo; hidden objective off of Cybran mission 6. Added it.
 Trying to find and complete all the secret missions in SupCom 2? Here&amp;rsquo;s a quick and dirty list of them all!
 This information is copied from the map files within the SupCom 2 directory.
 Feel free to copy and paste — a link back to this page would be appreciated!
-The List UEF  1 – Prime Target  Survivor  Survive the initial wave of Cybran attackers without losing any units.</description>
+The List UEF  1 – Prime Target  Survivor  Survive the initial wave of Cybran attackers without losing any units.   2 – Off Base  Economic Opportunist  Build at least two Mass Extractors in enemy territory.   3 – Strike While Cold  Master of the Seas  Build an Atlantis II Experimental Aircraft Carrier.   4 – Titans of Industry  Brutal Conqueror  Defeat Coleman without the aid of the Fatboys.   5 – Factions or Family Plan  Experimenter  Build at least four Experimental units   6 – End of an Alliance  Nuke King  Launch your first nuke.  None Shall Pass!  Prevent any enemy King Kriptors from crossing the main fortress bridge.    Illuminate  1 – Delta Force  Blockhead  Prevent the blockade from taking more than 25% damage.   2 – Lethal Weapons  Master Tactician  Complete the operation by constructing fewer than 30 mobile units.   3 – Back on the Chain Gang  Not the Bees!  You have successfully taken over the enemy air defenses.  Pro Anti-Air  You have successfully taken over the prison&amp;rsquo;s defensive structures.  Agent Provocateur  Capture all of the Security Stations.   4 – Steamed  Experimental Fanatic  Build at least eight Experimental units.   5 – Cliff Diving  Supremest Commander  Reach the highest level of veterancy with your ACU.   6 – Prime Time  Bot Lord  Complete the operation with an army made up entirely of Assault Bots.  A Czar is Born  Build your first Darkenoid.    Cybran  1 – Fact Finder  Survival Expert  Survive Gauge&amp;rsquo;s onslaught after the download completes.   2 – The Trouble With Technology  Master Thief  Capture a Rogue Engineer.  Great Escapist  Complete the operation without a unit being captured by the enemy.   3 – The Great Leap Forward  Cache and Carry  Collect all of the Technology Caches.   4 – Gatekeeper  Sultan of Soul  Build at least four Soul Ripper Experimentals.   5 – Surface Tension  Master of the Deep  Build a Kraken Experimental Submarine.   6 – The Final Countdown  Research Savant  Complete all available research.  Master of Pawns  Win the operation without the aid of any Experimentals.    </description>
     </item>
     
     <item>
@@ -43,7 +48,12 @@ The List UEF  1 – Prime Target  Survivor  Survive the initial wave of Cybran a
       <guid>/post/phoenix-wright-ace-attorney-trials-and-tribulations-soundtrack-download/</guid>
       <description>That was a mouthful of a title.
 Over time I&amp;rsquo;ve played and thoroughly enjoyed the Ace Attorney series of games, from Phoenix Wright to Apollo Justice. But for those of you familiar to the series, you&amp;rsquo;ll notice that this is the soundtrack for the third game in the series. So why have I posted this one?
-You see, this soundtrack posting has a small story behind it. A while back a perfectionist of a soundtrack ripper called TheRedPriest ripped the soundtrack and uploaded it to his website.</description>
+You see, this soundtrack posting has a small story behind it. A while back a perfectionist of a soundtrack ripper called TheRedPriest ripped the soundtrack and uploaded it to his website. He gets wound up by pops and blips in tracks — I can relate to that…
+Anyway, unfortunately like so many good things on the web, the website went offline! Luckily, a member of the forum called GUI uploaded the soundtrack and all was good within the world.
+Since I hate having just one mirror for things that have had so much time and effort put into them, and because I like the soundtrack so much, I decided to host the soundtrack for myself.
+Just to make it clear: I did not rip this soundtrack or have any input in its ripping! I am but a simple mirror, wanting to preserve the great work of a video game soundtrack ripper.
+Hope that everyone enjoys this as much as I do.
+Download the Phoenix Wright — Ace Attorney: Trials and Tribulations soundtrack.</description>
     </item>
     
     <item>
@@ -55,7 +65,11 @@ You see, this soundtrack posting has a small story behind it. A while back a pe
       <description>Andy, a Commanding Officer from Advance Wars 2  Ah, Advance Wars 2. What is it about you I thought was so amazing? The lovable, single-minded cast? The deep turn-based strategy? The little battle animations of infantry flying off the screen?
 Well, okay, all of those things are very good reasons to love the game, but there&amp;rsquo;s another one that sticks out for me too.
 The soundtrack!
-Once I completed the normal campaign and could buy the Sound Room, that was it.</description>
+Once I completed the normal campaign and could buy the Sound Room, that was it. Time and again I&amp;rsquo;ve inserted the cart into my GBA purely for the reason of enjoying the music on an infinite loop.
+Yes, I am that way inclined as a person, but there&amp;rsquo;s something about this soundtrack that keeps me coming back. I&amp;rsquo;m not sure if it&amp;rsquo;s the enthusiastic beats or the simple, catchy tunes, but this is one soundtrack I struggle to put down.
+But anyway, enough of me rambling about game soundtracks; judge for yourself! Ripped by yours truly and packaged as 192kbps MP3s, the Advance Wars 2 soundtrack is one you should definitely have in your library if you enjoy the game or the kind of music you get from a GBA.
+Download the Advance Wars 2 Soundtrack.
+Also available from another site I co-run, Black Hole Headquarters.</description>
     </item>
     
   </channel>

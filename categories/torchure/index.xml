@@ -29,7 +29,7 @@ Don&amp;rsquo;t remind me of the irony…</description>
       <guid>/post/torchure-1-1-released/</guid>
       <description>My first Android Market update! Hope this goes well.
 This update includes:
- A new colour! You can change the screen to red, to help preserve night vision. This makes the torch less effective, mind.  To switch colour, either swipe sideways on the screen or use the new menu option!  New preferences have been added to let you choose what colour you want on starting Torchure: white, red, or whatever you last used.</description>
+ A new colour! You can change the screen to red, to help preserve night vision. This makes the torch less effective, mind.  To switch colour, either swipe sideways on the screen or use the new menu option!  New preferences have been added to let you choose what colour you want on starting Torchure: white, red, or whatever you last used. The Lock Brightness preference has been fixed, and now actually works. (Locking via pressing the trackball or the menu option worked fine) Added a new Hints &amp;amp; Tips screen, to highlight the little things I can&amp;rsquo;t fit anywhere else!  </description>
     </item>
     
     <item>
@@ -40,7 +40,11 @@ This update includes:
       <guid>/post/torchure-for-android/</guid>
       <description>Ever found yourself in need of a torch, but only had your phone handy? Look no further!
 Torchure (for Android) is a pretty simple application. It turns the screen white and, as default, whacks up the backlight to maximum. I did say simple, didn&amp;rsquo;t I?
-However, it also lets you change that backlight brightness (useful if, say, you&amp;rsquo;ve been to a particularly wild party and you need to step over some people without waking/blinding them) and lock it so you don&amp;rsquo;t go accidentally changing it.</description>
+However, it also lets you change that backlight brightness (useful if, say, you&amp;rsquo;ve been to a particularly wild party and you need to step over some people without waking/blinding them) and lock it so you don&amp;rsquo;t go accidentally changing it. Torchure is designed to work for you, not make you work for it!
+It marks my first release on to the Android Market, and it requires no permissions whatsoever — it is a torch, after all.
+Even though Google is telling me this link will not work, go check out Torchure on the market now!
+And if you&amp;rsquo;re not using an Android handset, AndroidZoom has you covered until Google release their updated Market.
+NB: The link does work (on Android 2.2). Guess they forgot to update the documentation.</description>
     </item>
     
   </channel>

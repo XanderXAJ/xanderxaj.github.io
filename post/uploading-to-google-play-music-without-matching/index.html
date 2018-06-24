@@ -9,9 +9,17 @@
   <meta property="og:title" content="Uploading to Google Play Music without matching" />
   <meta name="twitter:title" content="Uploading to Google Play Music without matching" />
   <meta name="description" content="I&rsquo;ve had some trouble with Google Play Music&rsquo;s scan and match service. It sometimes matches tracks to the wrong versions of them. Sometimes the volume of a track is wildly different from what I have locally (with or without ReplayGain). Unfortunately, there is no way to disable matching in Google&rsquo;s official Music Manager application.
-gmusicapi supports uploading to Google Play Music without their &ldquo;scan and match&rdquo; service. gmusicapi-scripts utilises gmusicapi. Let&rsquo;s use them!">
+gmusicapi supports uploading to Google Play Music without their &ldquo;scan and match&rdquo; service. gmusicapi-scripts utilises gmusicapi. Let&rsquo;s use them!
+ Install gmusicapi-scripts:
+# Windows py -3 -m pip install gmusicapi-scripts # Others pip install gmusicapi-scripts Convert tracks (if needed) to 320kbps MP3 and place them in &lt;directory&gt;.
+ If you place non-MP3 files in this directory, gmsync will try to convrt them with FFMPEG or AVConv if they are on the PATH. Look at the docs to see what formats it supports.  Run gmsync. Follow any instructions it provides:
+gmsync up &lt;directory&gt;  gmsync uploads without matching by default. Perfect.">
   <meta property="og:description" content="I&rsquo;ve had some trouble with Google Play Music&rsquo;s scan and match service. It sometimes matches tracks to the wrong versions of them. Sometimes the volume of a track is wildly different from what I have locally (with or without ReplayGain). Unfortunately, there is no way to disable matching in Google&rsquo;s official Music Manager application.
-gmusicapi supports uploading to Google Play Music without their &ldquo;scan and match&rdquo; service. gmusicapi-scripts utilises gmusicapi. Let&rsquo;s use them!">
+gmusicapi supports uploading to Google Play Music without their &ldquo;scan and match&rdquo; service. gmusicapi-scripts utilises gmusicapi. Let&rsquo;s use them!
+ Install gmusicapi-scripts:
+# Windows py -3 -m pip install gmusicapi-scripts # Others pip install gmusicapi-scripts Convert tracks (if needed) to 320kbps MP3 and place them in &lt;directory&gt;.
+ If you place non-MP3 files in this directory, gmsync will try to convrt them with FFMPEG or AVConv if they are on the PATH. Look at the docs to see what formats it supports.  Run gmsync. Follow any instructions it provides:
+gmsync up &lt;directory&gt;  gmsync uploads without matching by default. Perfect.">
   <meta name="twitter:description" content="I&rsquo;ve had some trouble with Google Play Music&rsquo;s scan and match service. It sometimes matches tracks to the wrong versions of them. Sometimes the volume of a track is wildly different from …">
   <meta name="author" content="Alex Palmer"/>
   <meta name="twitter:card" content="summary" />

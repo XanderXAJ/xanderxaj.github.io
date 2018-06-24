@@ -10,10 +10,18 @@
   <meta name="twitter:title" content="Dynamic DNS (DDNS) on Asus routers" />
   <meta name="description" content="When using the stock or Merlin firmware on various Asus routers (I have an RT-N66U), you can use dynamic DNS to get a web domain to point to your router&rsquo;s IP address.
 To use dynamic DNS, do the following:
- Go to your router&rsquo;s administration console (sometimes available at http://router.asus.com) and head to WAN &gt; DDNS. There is also a link on the Network Map page. Enable the DDNS client, set Server to Custom and set the hostname to the web domain you will be updating (e.">
+ Go to your router&rsquo;s administration console (sometimes available at http://router.asus.com) and head to WAN &gt; DDNS. There is also a link on the Network Map page. Enable the DDNS client, set Server to Custom and set the hostname to the web domain you will be updating (e.g. example.com). Connect to the router. I tend to enable SSH (and disable Telnet) via Administration &gt; System. Create the script that will update your DDNS at /jffs/scripts/ddns-start. My favoured tactic here is to run:
+cat &gt; /jffs/scripts/ddns-start  Then paste the code, ensure the cursor is on a blank line (press Enter if not), then press Ctrl&#43;D.
+ Finally, ensure the script is executable:
+chmod &#43;x /jffs/scripts/ddns-start   In my case, I&rsquo;m updating an address using the http://afraid.org service. I get my private key from the dynamic section of the Afraid.org site, and I use a script taken almost verbatim from the Merlin wiki:
+#!/bin/sh  curl &#34;https://freedns.afraid.org/dynamic/update.php?&lt;PRIVATE_KEY_HERE&gt;&#34; if [ $? -eq 0 ]; then /sbin/ddns_custom_updated 1 else /sbin/ddns_custom_updated 0 fi">
   <meta property="og:description" content="When using the stock or Merlin firmware on various Asus routers (I have an RT-N66U), you can use dynamic DNS to get a web domain to point to your router&rsquo;s IP address.
 To use dynamic DNS, do the following:
- Go to your router&rsquo;s administration console (sometimes available at http://router.asus.com) and head to WAN &gt; DDNS. There is also a link on the Network Map page. Enable the DDNS client, set Server to Custom and set the hostname to the web domain you will be updating (e.">
+ Go to your router&rsquo;s administration console (sometimes available at http://router.asus.com) and head to WAN &gt; DDNS. There is also a link on the Network Map page. Enable the DDNS client, set Server to Custom and set the hostname to the web domain you will be updating (e.g. example.com). Connect to the router. I tend to enable SSH (and disable Telnet) via Administration &gt; System. Create the script that will update your DDNS at /jffs/scripts/ddns-start. My favoured tactic here is to run:
+cat &gt; /jffs/scripts/ddns-start  Then paste the code, ensure the cursor is on a blank line (press Enter if not), then press Ctrl&#43;D.
+ Finally, ensure the script is executable:
+chmod &#43;x /jffs/scripts/ddns-start   In my case, I&rsquo;m updating an address using the http://afraid.org service. I get my private key from the dynamic section of the Afraid.org site, and I use a script taken almost verbatim from the Merlin wiki:
+#!/bin/sh  curl &#34;https://freedns.afraid.org/dynamic/update.php?&lt;PRIVATE_KEY_HERE&gt;&#34; if [ $? -eq 0 ]; then /sbin/ddns_custom_updated 1 else /sbin/ddns_custom_updated 0 fi">
   <meta name="twitter:description" content="When using the stock or Merlin firmware on various Asus routers (I have an RT-N66U), you can use dynamic DNS to get a web domain to point to your router&rsquo;s IP address.
 To use dynamic DNS, do the …">
   <meta name="author" content="Alex Palmer"/>

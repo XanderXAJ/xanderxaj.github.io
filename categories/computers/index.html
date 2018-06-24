@@ -256,9 +256,42 @@
               </p>
               <div class="post-entry">
                 
-                  This guide is intended to be a more up-to-date mirror of the guide you can find at Tech Jawa. All credit to them for the original instructions! Basically nothing changes, but I just like to be comprehensive.
- Download the TwitterStatus plugin. It&rsquo;ll be a file ending in .pl. Move this file to your Pidgin plugins folder. If any folders don&rsquo;t exist, create them:  Linux: ~/.purple/plugins/ Windows Vista/7: C:\Users&lt;Username&gt;\AppData\Roaming.purple\plugins  Install Perl:  Linux: It&rsquo;s probably already installed.
-                  <a href="/post/adding-your-most-recent-twitter-tweet-to-your-pidgin-status/" class="post-read-more">[Read More]</a>
+                  <p style="text-align: justify;">
+  This guide is intended to be a more up-to-date mirror of the guide you can find at <a href="http://www.techjawa.com/2008/08/15/twitterpidgin-aimim-status-sync-guide/">Tech Jawa</a>.  All credit to them for the original instructions!
+</p>
+
+<p>Basically nothing changes, but I just like to be comprehensive.</p>
+
+<ol>
+<li><a href="http://code.google.com/p/pidgin-twitterstatus/">Download the TwitterStatus plugin</a>.  It&rsquo;ll be a file ending in <em>.pl</em>.</li>
+<li>Move this file to your Pidgin plugins folder.  If any folders don&rsquo;t exist, create them:
+
+<ul>
+<li><strong>Linux:</strong> ~/.purple/plugins/</li>
+<li><strong>Windows Vista/7:</strong> C:\Users&lt;Username&gt;\AppData\Roaming.purple\plugins</li>
+</ul></li>
+<li>Install Perl:
+
+<ul>
+<li><strong>Linux:</strong> It&rsquo;s probably already installed.</li>
+<li><strong>Windows:</strong> Use the <a href="http://strawberryperl.com/">most recent Strawberry <acronym title="Practical Extraction and Report Language">Perl</acronym> installation:</a></li>
+</ul></li>
+<li>Install  the XML::XPath module into perl:
+
+<ol>
+<li>Open a command line.</li>
+<li>Run <code>perl -MCPAN -e shell</code>.</li>
+<li>Type <code>install XML::XPath</code> and then hit Return.  Wait for the install to finish.</li>
+<li>Type <code>quit</code> and hit Return, then close your command line</li>
+</ol></li>
+<li>Start (or restart) Pidgin.</li>
+<li>From the contact list, go to <strong>Help &gt; About</strong>.  At the very bottom of the textbox that appears it should say <strong>&ldquo;Perl: Enabled&rdquo;</strong>.  If it does not, repeat steps 3 and 4.</li>
+<li>From the contact list, go to <strong>Tools &gt; Plug-ins</strong>.  Find Twitter Status on the list, <strong>check the checkbox</strong> next to it, and then click <strong>Configure Plug-in.</strong></li>
+<li>In the configuration window that appears, <strong>type in your username in the top textbox</strong> (labelled Username, surprise surprise).  Configure anything else you want to your liking.</li>
+</ol>
+
+<p>That&rsquo;s it!  You do not need to set this up again, it is a one-off set up for the computer.  Of course, you will need to go through this procedure again if you have multiple computers you use Pidgin on, or if you format and reinstall your <acronym title="Operating System">OS</acronym>.</p>
+
                 
               </div>
 
@@ -287,10 +320,44 @@
               </p>
               <div class="post-entry">
                 
-                  It&rsquo;s annoying when that or something similar happens — in my case, someone else had changed the code meaning I couldn&rsquo;t retune the box to accept more channels.
-But all is not lost! Simply follow this quick guide. This is from a Sagem ITC 62 — it may or may not be the same process for other models:
- Press Menu on your remote control. Select Installation. You&rsquo;ll be presented with a screen where you have to enter an Installation Code.
-                  <a href="/post/forgotten-the-installation-code-for-your-sagem-digitalset-top-box/" class="post-read-more">[Read More]</a>
+                  
+
+<p>It&rsquo;s annoying when that or something similar happens — in my case, someone else had changed the code meaning I couldn&rsquo;t retune the box to accept more channels.</p>
+
+<p>But all is not lost!  Simply follow this quick guide.  This is from a Sagem ITC 62 — it may or may not be the same process for other models:</p>
+
+<ol>
+<li><strong>Press Menu</strong> on your remote control.</li>
+<li>Select <strong>Installation</strong>.  You&rsquo;ll be presented with a screen <strong>where you have to enter an Installation Code.</strong></li>
+<li>Press these buttons one after the other on your remote: <strong>Menu, Menu, Red button, Menu</strong>.  You should be taken to a new screen displaying <strong>User Settings</strong> and <strong>Box Settings</strong>.</li>
+<li>Select <strong>User Settings</strong>.</li>
+</ol>
+
+<p>Now what you do at this point is up to you.  You have two choices:</p>
+
+<h2 id="disable-the-installation-code">Disable the Installation Code</h2>
+
+<p>This means that you don&rsquo;t have to enter or remember an installation code in future, but it might be vulnerable to inquisitive children.  If this isn&rsquo;t an issue for you (or you don&rsquo;t care!), follow these steps:</p>
+
+<ol>
+<li>Select <strong>Locking</strong>.</li>
+<li>Switch <strong>Box Locked</strong> and <strong>Channels Locked</strong> to <strong>No</strong>.</li>
+</ol>
+
+<h2 id="change-the-installation-code">Change the Installation Code</h2>
+
+<p>If you still want an installation code for whatever reason, follow these steps:</p>
+
+<ol>
+<li>Select <strong>Change Installation Code</strong>.</li>
+<li>Enter any four digit code you like, and press <strong>OK</strong>.</li>
+<li>Re-enter the same code again.  Press <strong>OK</strong>.</li>
+</ol>
+
+<p>That&rsquo;s it!  Let me know how it goes for you.</p>
+
+<p>Credit to <a href="http://www.howtomendit.com/answers.php?id=66597">Steven Checkley</a> for his amazing hackery.</p>
+
                 
               </div>
 
@@ -319,9 +386,50 @@ But all is not lost! Simply follow this quick guide. This is from a Sagem ITC 
               </p>
               <div class="post-entry">
                 
-                  A couple of days ago I came across this interesting quirk, and I had to do a double-take before I realised what had happened.
-Basically, I recently got a NAS and decided that I wanted my router to save its bandwidth usage statistics on it. That way whenever I perform an upgrade to the firmware on the router I won&rsquo;t erase all the stats. This part is easy, as the firmware has the functionality for this.
-                  <a href="/post/ill-modify-you-in-to-next-week/" class="post-read-more">[Read More]</a>
+                  <p>A couple of days ago I came across this interesting quirk, and I had to do a double-take before I realised what had happened.</p>
+
+<p>Basically, I recently <a href="http://www.promise.com/product/product_detail.asp?product_id=211">got a NAS</a> and decided that I wanted my router to save its bandwidth usage statistics on it.  That way whenever I perform an upgrade to the firmware on the router I won&rsquo;t erase all the stats.  This part is easy, as the firmware has the functionality for this.  (The firmware I keep mentioning is the <a href="http://www.polarcloud.com/tomato">Tomato firmware</a>.  I highly recommend it if you happen to have a compatible Linux router!)</p>
+
+<p>Now, after I set it all up, I went on to the network shares to see if the statistics were being saved properly.  What I saw I didn&rsquo;t exactly expect:</p>
+
+<div id="attachment_177" style="width: 650px" class="wp-caption aligncenter">
+  <a href="https://i0.wp.com/xanderx.com/wp-content/uploads/2009/07/DOpus-Last-Modified.png"><img class="size-large wp-image-177  " title="DOpus Last Modified" src="https://i2.wp.com/xanderx.com/wp-content/uploads/2009/07/DOpus-Last-Modified-640x487.png?fit=640%2C487" alt="A screenshot of my local network share...  And some interesting modified times" data-recalc-dims="1" /></a>
+  
+  <p class="wp-caption-text">
+    A screenshot from Directory Opus of my local network share... And some interesting modified times
+  </p>
+</div>
+
+<p>Now, nothing may look wrong at first glance. But take another look at the screenshot, particularly the column titled &ldquo;Modified&rdquo;.</p>
+
+<p>Got it yet? You have? That&rsquo;s great! You haven&rsquo;t? You&rsquo;re probably just not as finnicky as I am, don&rsquo;t worry.</p>
+
+<p>Anyway, enough suspense: the thing that caught me out was that the modified time for the statistics file was &ldquo;<em>tomorrow</em>&rdquo;.</p>
+
+<p>&ldquo;So what?&rdquo; I hear you cry!  &ldquo;You probably just had the NAS set to the wrong timezone.&rdquo;</p>
+
+<p>Alright, I&rsquo;ll give you that — I had set it to the wrong timezone.  However, that isn&rsquo;t the strangest thing!</p>
+
+<p>The strange part is the fact that Windows has provisions for files that have creation/modify/access times in the future.</p>
+
+<p>When you have a file that you have modifed today, it says &ldquo;Today&rdquo;.  Nice.  If you then leave the file for 24 hours, Windows will say the file was modified &ldquo;Yesterday&rdquo;.  Again, a nice touch.</p>
+
+<p>But now Windows, in its all-powerful, all-knowing ways, can tell me when a file <em>will</em> be modified, before it&rsquo;s even happened!</p>
+
+<p>At least, that&rsquo;s the impression it gives me when I think of a developer including &ldquo;tomorrow&rdquo; on the list of English relative dates.</p>
+
+<p>And before you complain that I wasn&rsquo;t using Windows Explorer but rather a replacement called <a href="http://www.gpsoft.com.au/">Directory Opus</a>, here&rsquo;s a screen from Explorer demonstrating the same behaviour, but slightly more hidden:</p>
+
+<div id="attachment_179" style="width: 650px" class="wp-caption aligncenter">
+  <a href="https://i2.wp.com/xanderx.com/wp-content/uploads/2009/07/Explorer-Last-Modified.png"><img class="size-large wp-image-179" title="Explorer Last Modified" src="https://i0.wp.com/xanderx.com/wp-content/uploads/2009/07/Explorer-Last-Modified-640x487.png?fit=640%2C487" alt="A screenshot from Windows Explorer of my local network share...  With the same interesting modified times" data-recalc-dims="1" /></a>
+  
+  <p class="wp-caption-text">
+    A screenshot from Windows Explorer of my local network share... With the same interesting modified times
+  </p>
+</div>
+
+<p>So there you have it: Some crazy behaviour and me thoroughly confused.  With DOpus and Explorer both &ldquo;predicting&rdquo; the future for me, I&rsquo;m beginning to wonder just how much control I have over these computers…</p>
+
                 
               </div>
 

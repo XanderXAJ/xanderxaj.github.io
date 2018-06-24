@@ -175,11 +175,20 @@
               </p>
               <div class="post-entry">
                 
-                  If you have both python2 and python3 installed on openSUSE, you might find when you use pip to install packages that they install for python3, not python2!
-This seems to be because the pip command that is run comes directly from the python3 install.
-To fix it, install the python-pip SUSE package, then use it as default:
-zypper install -n python-pip update-alternatives --config pip  When prompted for which pip to use, ensure you select the python2 version.
-                  <a href="/post/fix-installing-packages-for-python2-in-opensuse/" class="post-read-more">[Read More]</a>
+                  <p>If you have both <code>python2</code> and <code>python3</code> installed on openSUSE, you might find when you use <code>pip</code> to install packages <a href="https://forums.opensuse.org/showthread.php/504571-A-question-regarding-pip-s-default-installation-path">that they install for <code>python3</code></a>, not <code>python2</code>!</p>
+
+<p>This seems to be because the <code>pip</code> command that is run comes directly from the <code>python3</code> install.</p>
+
+<p>To fix it, install the <code>python-pip</code> SUSE package, then use it as default:</p>
+
+<pre><code>zypper install -n python-pip
+update-alternatives --config pip
+</code></pre>
+
+<p>When prompted for which <code>pip</code> to use, ensure you select the <code>python2</code> version.</p>
+
+<p>Now when you use <code>pip</code>, you&rsquo;re modifying <code>python2</code>.  To modify <code>python3</code>, run <code>pip3</code>.</p>
+
                 
               </div>
 
@@ -208,10 +217,22 @@ zypper install -n python-pip update-alternatives --config pip  When prompted for
               </p>
               <div class="post-entry">
                 
-                  Open or create a Markdown document (or another file type you want to enable spell-checking for) Go to Preferences &gt; Settings - More &gt; Syntax Specific - User Add the following code:
-{ &quot;spell_check&quot;: true }   If you&rsquo;ve made any spelling errors or used some funky words, you should notice some of the titular red squiggly lines.
-Incidentally, you can set any option for individual syntaxes in this manner.
-                  <a href="/post/enable-spell-checking-in-sublime-text-for-markdown-or-any-individual-syntax/" class="post-read-more">[Read More]</a>
+                  <ol>
+<li>Open or create a Markdown document (or another file type you want to enable spell-checking for)</li>
+<li>Go to <strong>Preferences &gt; Settings - More &gt; Syntax Specific - User</strong></li>
+
+<li><p>Add the following code:</p>
+
+<pre><code>{
+    &quot;spell_check&quot;: true
+}
+</code></pre></li>
+</ol>
+
+<p>If you&rsquo;ve made any spelling errors or used some funky words, you should notice some of the titular red squiggly lines.</p>
+
+<p>Incidentally, you can set any option for individual syntaxes in this manner.</p>
+
                 
               </div>
 

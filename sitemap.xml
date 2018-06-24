@@ -408,14 +408,14 @@
   </url>
   
   <url>
-    <loc>/tags/android/</loc>
-    <lastmod>2009-09-21T00:00:00+00:00</lastmod>
+    <loc>/categories/android/</loc>
+    <lastmod>2013-06-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/android/</loc>
-    <lastmod>2013-06-01T00:00:00+00:00</lastmod>
+    <loc>/tags/android/</loc>
+    <lastmod>2009-09-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -664,25 +664,25 @@
   </url>
   
   <url>
-    <loc>/tags/windows/</loc>
-    <lastmod>2009-06-17T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/categories/windows/</loc>
     <lastmod>2015-04-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/wordpress/</loc>
-    <lastmod>2009-07-22T00:00:00+00:00</lastmod>
+    <loc>/tags/windows/</loc>
+    <lastmod>2009-06-17T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/categories/wordpress/</loc>
+    <lastmod>2009-07-22T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/wordpress/</loc>
     <lastmod>2009-07-22T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>

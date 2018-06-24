@@ -10,10 +10,22 @@
   <meta name="twitter:title" content="Making Ringtones Loop on Android" />
   <meta name="description" content="Update 2012-01-06: ICS appears to have a bug where the end of the file is chopped off, so ringtones do not loop properly. If I find or hear a solution I&rsquo;ll update again!
 Update 2010-11-09: Added clarification on why I suggest having a short (sub-10 second) ringtone. You want it to loop, right? =P
-Following on from my previous articles on ringtones, I&rsquo;ve finally worked out how to make ringtones loop seamlessly in Android.">
+Following on from my previous articles on ringtones, I&rsquo;ve finally worked out how to make ringtones loop seamlessly in Android.
+My problem before was that, despite the fact I made an OGG that should loop properly, when played back on Android, it didn&rsquo;t. Turns out, there&rsquo;s a little piece of metadata you need to add to the tags in the ringtone to make it loop properly.
+Using your favourite tag editor (I used foobar2000 on Windows), add a tag/field called &ldquo;ANDROID_LOOP&rdquo;, and set it to &ldquo;true&rdquo;.
+Please note that the file itself will also need to loop properly for things to work out. That means that if you&rsquo;re basing your ringtone on a longer piece of music, it needs to be trimmed down to 10 or fewer seconds and trimmed in such a way that the audio sounds like it goes on forever when played from beginning to end repeatedly.
+The file doesn&rsquo;t have to be less than 10 seconds, but I figure you&rsquo;re reading this because you want to make a file that loops! Most carriers will stop ringing your phone after 15 to 30 seconds and pass the call to voicemail. This depends on the carrier, your preferences (if you can change how long voicemail waits at all), and whether or not you have voicemail enabled!
+Also, you need to use a format that doesn&rsquo;t add silence to the end of the track. OGG (which I recommend), FLAC and AAC should all work fine. I do not know if Android reads LAME&rsquo;s metadata with allows MP3s encoded by it to loop. MP3s encoded with other encoders will probably add silence and as such will not loop perfectly.
+Have fun with this!">
   <meta property="og:description" content="Update 2012-01-06: ICS appears to have a bug where the end of the file is chopped off, so ringtones do not loop properly. If I find or hear a solution I&rsquo;ll update again!
 Update 2010-11-09: Added clarification on why I suggest having a short (sub-10 second) ringtone. You want it to loop, right? =P
-Following on from my previous articles on ringtones, I&rsquo;ve finally worked out how to make ringtones loop seamlessly in Android.">
+Following on from my previous articles on ringtones, I&rsquo;ve finally worked out how to make ringtones loop seamlessly in Android.
+My problem before was that, despite the fact I made an OGG that should loop properly, when played back on Android, it didn&rsquo;t. Turns out, there&rsquo;s a little piece of metadata you need to add to the tags in the ringtone to make it loop properly.
+Using your favourite tag editor (I used foobar2000 on Windows), add a tag/field called &ldquo;ANDROID_LOOP&rdquo;, and set it to &ldquo;true&rdquo;.
+Please note that the file itself will also need to loop properly for things to work out. That means that if you&rsquo;re basing your ringtone on a longer piece of music, it needs to be trimmed down to 10 or fewer seconds and trimmed in such a way that the audio sounds like it goes on forever when played from beginning to end repeatedly.
+The file doesn&rsquo;t have to be less than 10 seconds, but I figure you&rsquo;re reading this because you want to make a file that loops! Most carriers will stop ringing your phone after 15 to 30 seconds and pass the call to voicemail. This depends on the carrier, your preferences (if you can change how long voicemail waits at all), and whether or not you have voicemail enabled!
+Also, you need to use a format that doesn&rsquo;t add silence to the end of the track. OGG (which I recommend), FLAC and AAC should all work fine. I do not know if Android reads LAME&rsquo;s metadata with allows MP3s encoded by it to loop. MP3s encoded with other encoders will probably add silence and as such will not loop perfectly.
+Have fun with this!">
   <meta name="twitter:description" content="Update 2012-01-06: ICS appears to have a bug where the end of the file is chopped off, so ringtones do not loop properly. If I find or hear a solution I&rsquo;ll update again!
 Update 2010-11-09: Added …">
   <meta name="author" content="Alex Palmer"/>

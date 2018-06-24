@@ -175,9 +175,22 @@
               </p>
               <div class="post-entry">
                 
-                  For kicks I decided to remove all the ID3v1 tags from my music files today. They were just getting in the way and served no useful purpose — since I had perfectly fine ID3v2 tags — so they just had to go.
-I cooked up a little command to help out here! But first, we need to make sure you have the command that we&rsquo;re going to need here, id3v2. Install it from the official repositories using your distribution&rsquo;s package manager.
-                  <a href="/post/strip-id3v1-tags-from-mp3s-in-linux/" class="post-read-more">[Read More]</a>
+                  <p>For kicks I decided to remove all the ID3v1 tags from my music files today.  They were just getting in the way and served no useful purpose — since I had perfectly fine ID3v2 tags — so they just had to go.</p>
+
+<p>I cooked up a little command to help out here!  But first, we need to make sure you have the command that we&rsquo;re going to need here, id3v2.  Install it from the official repositories using your distribution&rsquo;s package manager.  For example, on Ubuntu:</p>
+
+<pre>sudo apt-get install id3v2</pre>
+
+<p>This command is used to view and manipulate ID3 tags inside of music files.  One argument in particular is of use to us, <code>-s</code>, which strips ID3v1 tags out of the specified file(s).</p>
+
+<p>With that in mind the task is just getting a list of the files that you want to remove ID3v1 tags from.  I&rsquo;ve managed to solve that and fit it all in one line — don&rsquo;t forget to replace the path with the correct one:</p>
+
+<pre>find /path/to/music -name \*.mp3 -type f -print0 | xargs -0 id3v2 -s</pre>
+
+<p>That&rsquo;s it! After testing I ran it on my whole music library and it appears to have survived just fine. Just be patient (and careful) if you&rsquo;re stripping tags out of hundreds or thousands of files.</p>
+
+<p>Let me know how it works out for you, and any improvements you may have!</p>
+
                 
               </div>
 
@@ -206,10 +219,44 @@ I cooked up a little command to help out here! But first, we need to make sure 
               </p>
               <div class="post-entry">
                 
-                  It&rsquo;s annoying when that or something similar happens — in my case, someone else had changed the code meaning I couldn&rsquo;t retune the box to accept more channels.
-But all is not lost! Simply follow this quick guide. This is from a Sagem ITC 62 — it may or may not be the same process for other models:
- Press Menu on your remote control. Select Installation. You&rsquo;ll be presented with a screen where you have to enter an Installation Code.
-                  <a href="/post/forgotten-the-installation-code-for-your-sagem-digitalset-top-box/" class="post-read-more">[Read More]</a>
+                  
+
+<p>It&rsquo;s annoying when that or something similar happens — in my case, someone else had changed the code meaning I couldn&rsquo;t retune the box to accept more channels.</p>
+
+<p>But all is not lost!  Simply follow this quick guide.  This is from a Sagem ITC 62 — it may or may not be the same process for other models:</p>
+
+<ol>
+<li><strong>Press Menu</strong> on your remote control.</li>
+<li>Select <strong>Installation</strong>.  You&rsquo;ll be presented with a screen <strong>where you have to enter an Installation Code.</strong></li>
+<li>Press these buttons one after the other on your remote: <strong>Menu, Menu, Red button, Menu</strong>.  You should be taken to a new screen displaying <strong>User Settings</strong> and <strong>Box Settings</strong>.</li>
+<li>Select <strong>User Settings</strong>.</li>
+</ol>
+
+<p>Now what you do at this point is up to you.  You have two choices:</p>
+
+<h2 id="disable-the-installation-code">Disable the Installation Code</h2>
+
+<p>This means that you don&rsquo;t have to enter or remember an installation code in future, but it might be vulnerable to inquisitive children.  If this isn&rsquo;t an issue for you (or you don&rsquo;t care!), follow these steps:</p>
+
+<ol>
+<li>Select <strong>Locking</strong>.</li>
+<li>Switch <strong>Box Locked</strong> and <strong>Channels Locked</strong> to <strong>No</strong>.</li>
+</ol>
+
+<h2 id="change-the-installation-code">Change the Installation Code</h2>
+
+<p>If you still want an installation code for whatever reason, follow these steps:</p>
+
+<ol>
+<li>Select <strong>Change Installation Code</strong>.</li>
+<li>Enter any four digit code you like, and press <strong>OK</strong>.</li>
+<li>Re-enter the same code again.  Press <strong>OK</strong>.</li>
+</ol>
+
+<p>That&rsquo;s it!  Let me know how it goes for you.</p>
+
+<p>Credit to <a href="http://www.howtomendit.com/answers.php?id=66597">Steven Checkley</a> for his amazing hackery.</p>
+
                 
               </div>
 
@@ -238,11 +285,16 @@ But all is not lost! Simply follow this quick guide. This is from a Sagem ITC 
               </p>
               <div class="post-entry">
                 
-                  Just a quick little thing I noticed, although everyone else probably knows it by now.
-To launch an elevated command prompt (i.e. a prompt with admin privileges, required to do various things if UAC is enabled on Vista), simply open the Start Menu (Windows key), type &ldquo;cmd&rdquo; without quotes, and press Control+Shift+Return.
-This will bring up a UAC prompt asking you to elevate the process. Select Continue (Alt+C). Done!
-This does work for some other applications.
-                  <a href="/post/quickly-open-an-elevated-command-prompt-in-vista/" class="post-read-more">[Read More]</a>
+                  <p>Just a quick little thing I noticed, although everyone else probably knows it by now.</p>
+
+<p>To launch an elevated command prompt (i.e. a prompt with admin privileges, required to do various things if <acronym title="User Account Control">UAC</acronym> is enabled on Vista), simply <strong>open the Start Menu (Windows key)</strong>, <strong>type &ldquo;cmd&rdquo;</strong> without quotes, and <strong>press Control+Shift+Return</strong>.</p>
+
+<p>This will bring up a <acronym title="User Account Control">UAC</acronym> prompt asking you to elevate the process.  <strong>Select Continue (Alt+C).</strong> Done!</p>
+
+<p>This does work for <em>some</em> other applications.  But in my experience it&rsquo;s hit and miss!  Strange.</p>
+
+<p>This technique may also work in Windows 7, but I haven&rsquo;t been able to test it myself.</p>
+
                 
               </div>
 
@@ -271,9 +323,14 @@ This does work for some other applications.
               </p>
               <div class="post-entry">
                 
-                  Having trouble selecting the slug you want in WordPress? If you&rsquo;re like I was just a moment ago, you&rsquo;ll try changing the slug on one of your categories to something different that you prefer, only to have WordPress change it back to whatever it was previously. What gives?
-Turns out the solution might be simpler than you think — check your Post Tags for a tag with the same slug!
-                  <a href="/post/fixing-slugs-in-wordpress/" class="post-read-more">[Read More]</a>
+                  <p>Having trouble selecting the slug you want in WordPress?  If you&rsquo;re like I was just a moment ago, you&rsquo;ll try changing the slug on one of your categories to something different that you prefer, only to have WordPress change it back to whatever it was previously.  What gives?</p>
+
+<p>Turns out the solution might be simpler than you think — check your Post Tags for a tag with the same slug!</p>
+
+<p>Slugs are shared between tags and categories, so <strong>if you use a particular slug with a tag, you cannot use the same one with a category, and vice versa</strong>.</p>
+
+<p>Keep that in mind the next time you get all <acronym title="Obsessive-Compulsive Disorder">OCD</acronym> about slugs!</p>
+
                 
               </div>
 
@@ -310,9 +367,26 @@ Turns out the solution might be simpler than you think — check your Post Tags 
               </p>
               <div class="post-entry">
                 
-                  I feel kind of silly for falling foul of this, but I guess it&rsquo;s just a case of going against what you&rsquo;re used to.
-I was looking for a way to check on my MMS settings on Android. On just about every other phone I&rsquo;ve used it&rsquo;s been a submenu of the messaging application, so that&rsquo;s where I went — except I couldn&rsquo;t find anything pertaining to access point settings! I mean, if one phone does it one way, all phones do it that way, right?
-                  <a href="/post/changing-gprs-mms-and-access-point-settings-on-android/" class="post-read-more">[Read More]</a>
+                  <p>I feel kind of silly for falling foul of this, but I guess it&rsquo;s just a case of going against what you&rsquo;re used to.</p>
+
+<p>I was looking for a way to check on my MMS settings on Android.  On just about every other phone I&rsquo;ve used it&rsquo;s been a submenu of the messaging application, so that&rsquo;s where I went — except I couldn&rsquo;t find anything pertaining to access point settings!  I mean, if one phone does it one way, all phones do it that way, right?  Right?</p>
+
+<p>Wrong.  Turns out Android hides the settings in — guess what — its Settings menus!  That&rsquo;s good, because it&rsquo;s centralised.  It makes sense when you think about it.  Honest.</p>
+
+<p>Anyway, to find these elusive settings, just follow these instructions:</p>
+
+<ol>
+<li>Go to the <strong>Home screen</strong>.</li>
+<li>Press <strong>Menu</strong>.</li>
+<li>Select <strong>Settings</strong>.</li>
+<li>Select <strong>Wireless controls</strong>.</li>
+<li>Select <strong>Mobile network settings</strong>.</li>
+<li>Select <strong>Access Point Names</strong>.</li>
+<li>Finally, select an access point to edit, or press Menu to create a new APN or reset to the defaults that shipped with the phone.</li>
+</ol>
+
+<p>Have fun with changing access point settings!  Mmm.</p>
+
                 
               </div>
 
@@ -341,9 +415,19 @@ I was looking for a way to check on my MMS settings on Android. On just about e
               </p>
               <div class="post-entry">
                 
-                  Here&rsquo;s a handy little feature that I find useful. If you ever play around with the size or location of the iTunes window and want to make it fit the screen better, simply follow the instructions:
- If you&rsquo;re on Windows: hold Shift and either double-click the title bar or single-click the maximise button (The title bar is the small bar at the top that says &ldquo;iTunes&rdquo; in the middle.) If you&rsquo;re on Mac OS: hold Option and click the Zoom (+) button  This&rsquo;ll reset the size and position to its default for your screen resolution.
-                  <a href="/post/reset-itunes-dimensions-to-fit-resolution/" class="post-read-more">[Read More]</a>
+                  <p>Here&rsquo;s a handy little feature that I find useful.  If you ever play around with the size or location of the iTunes window and want to make it fit the screen better, simply follow the instructions:</p>
+
+<dl>
+<dt>If you&rsquo;re on Windows:</dt>
+<dd>hold Shift and either double-click the title bar or single-click the maximise button  (The title bar is the small bar at the top that says &ldquo;iTunes&rdquo; in the middle.)</dd>
+<dt>If you&rsquo;re on Mac OS:</dt>
+<dd>hold Option and click the Zoom (+) button</dd>
+</dl>
+
+<p>This&rsquo;ll reset the size and position to its default for your screen resolution.  Assuming you haven&rsquo;t changed screen resolution since installing it, it&rsquo;ll look just as it did when you first installed it — nearly filling the entire screen, but not quite.  It&rsquo;s also a very useful shortcut if you ever change your screen resolution.</p>
+
+<p>Doing the operation a second time will move the iTunes window back to where it was before you started reading this article and messing with it.  Simple!</p>
+
                 
               </div>
 
@@ -372,9 +456,18 @@ I was looking for a way to check on my MMS settings on Android. On just about e
               </p>
               <div class="post-entry">
                 
-                  Have you ever somehow managed to break the Gadget file association in Windows Vista? I have somehow, and that means that you can no longer install gadgets. Double-clicking a .gadget file does nothing, and the Sidebar offers no option to install gadgets itself!
-If you try to re-associate the files with Windows Sidebar by telling to Open With… and navigating to the Sidebar executable, you&rsquo;ll have found that that doesn&rsquo;t help — all it does is bring the Sidebar to focus, but doesn&rsquo;t install the gadget.
-                  <a href="/post/fix-windows-sidebar-gadget-file-association-in-vista/" class="post-read-more">[Read More]</a>
+                  <p>Have you ever somehow managed to break the Gadget file association in Windows Vista?  I have <em>somehow</em>, and that means that you can no longer install gadgets.  Double-clicking a .gadget file does nothing, and the Sidebar offers no option to install gadgets itself!</p>
+
+<p>If you try to re-associate the files with Windows Sidebar by telling to Open With… and navigating to the Sidebar executable, you&rsquo;ll have found that that doesn&rsquo;t help — all it does is bring the Sidebar to focus, but doesn&rsquo;t install the gadget.</p>
+
+<p>Fortunately, help is at hand: all you need to do is **download the following archive **and apply the registry entries by <strong>double-clicking the .reg file inside the archive</strong>, and saying <strong>Yes</strong> at the prompt.</p>
+
+<p><a href="http://download.xanderx.com/software/windows/fix/repairGadgetFileAssociation.zip">Download Gadget Association registry entries.</a></p>
+
+<p>All I did was export the corresponding keys from the registry on a Vista machine with a working Sidebar — nothing else!</p>
+
+<p>Hope this helps others like it has me.</p>
+
                 
               </div>
 
@@ -417,11 +510,37 @@ If you try to re-associate the files with Windows Sidebar by telling to Open Wit
               </p>
               <div class="post-entry">
                 
-                  Update 2010-03-04: Added another potential solution courtesy of Blazt in the comments. Thanks!
-So, you have a phone with root permissions? Finding whenever a program requests root permissions the Superuser Permissions program hangs (usually with a black screen or even a force close) at the &ldquo;SU request&rdquo; screen?
-Fortunately there are a couple of things you can try, which I&rsquo;ll detail for you.
-First, make sure USB Debugging is enabled. To do that:
-                  <a href="/post/fix-superuser-permissions-hanging-on-android/" class="post-read-more">[Read More]</a>
+                  <p><strong>Update 2010-03-04:</strong> Added another potential solution courtesy of Blazt in the comments. Thanks!</p>
+
+<p>So, you have a phone with root permissions?  Finding whenever a program requests root permissions the Superuser Permissions program hangs (usually with a black screen or even a force close) at the &ldquo;<acronym title="Superuser">SU</acronym> request&rdquo; screen?</p>
+
+<p>Fortunately there are a couple of things you can try, which I&rsquo;ll detail for you.</p>
+
+<p>First, make sure <strong><acronym title="Universal Serial Bus">USB</acronym> Debugging</strong> is enabled.  To do that:</p>
+
+<ol>
+<li>Press the <strong>Home button</strong>.</li>
+<li>Press the <strong>Menu button</strong>.</li>
+<li>Select <strong>Settings &gt; Applications &gt; Development</strong>.</li>
+<li>Make sure that <strong><acronym title="Universal Serial Bus">USB</acronym> Debugging</strong> is <strong>checked</strong>.  If not, check it.</li>
+</ol>
+
+<p>If that fixes your problem, you are done!  If not, then you can try <strong>clearing the Superuser Permissions data</strong>.  This is just any options you have set within the app and whether or not particular apps are always allowed or blocked — you won&rsquo;t lose any of your other data, and it&rsquo;s easy to allow/deny stuff again.</p>
+
+<p>To clear the data:</p>
+
+<ol>
+<li>Press the <strong>Home button</strong>.</li>
+<li>Press the <strong>Menu button</strong>.</li>
+<li>Select <strong>Settings &gt; Applications &gt; Manage applications</strong>.</li>
+<li>Find <strong>Superuser Permissions</strong> on the list.  Tap it.</li>
+<li>Tap &ldquo;<strong>Clear data&rdquo;</strong> and &ldquo;<strong>Clear cache</strong>&rdquo; if they&rsquo;re enabled.</li>
+</ol>
+
+<p>This should prevent any hangs with Superuser Permissions in the future.</p>
+
+<p>This works on the HTC Dream (T-Mobile G1) with the 1.5 and 1.6 firmwares, and presumably other Android devices with the Superuser Permissions app.</p>
+
                 
               </div>
 
@@ -462,10 +581,26 @@ First, make sure USB Debugging is enabled. To do that:
               </p>
               <div class="post-entry">
                 
-                  If you&rsquo;ve ever got your PIN code wrong too many times and got your SIM locked, you were probably as surprised as I was when Android gives you no option to unlock the phone! Fortunately there&rsquo;s an answer.
-To unlock your Android-based device go to the Emergency Call screen and enter in the following (replace the angled brackets with the appropriate info):
-**05*«PUK Code»*«Your new pin»*«Confirm your new pin»# So for example:
-                  <a href="/post/unlock-android-device-using-puk-code/" class="post-read-more">[Read More]</a>
+                  <p>If you&rsquo;ve ever got your <acronym title="Personal Identification Number">PIN</acronym> code wrong too many times and got your SIM locked, you were probably as surprised as I was when Android gives you no option to unlock the phone! Fortunately there&rsquo;s an answer.</p>
+
+<p>To unlock your Android-based device go to the <strong>Emergency Call</strong> screen and enter in the following (replace the angled brackets with the appropriate info):</p>
+
+<pre>**05*«PUK Code»*«Your new pin»*«Confirm your new pin»#</pre>
+
+<p>So for example:</p>
+
+<pre>**05*12345678*9090*9090#</pre>
+
+<p>As a side effect this should work on any SIM-containing device at a screen where you can enter phone numbers, not just devices running the Android <acronym title="Operating System">OS</acronym>.  As of writing, Android-based devices are the HTC Dream (T-Mobile G1) and HTC Magic.</p>
+
+<p>And make sure you keep your PUK code secret — anyone can override your <acronym title="Personal Identification Number">PIN</acronym> with their own using it!</p>
+
+<p>Thanks to <a href="http://androidcommunity.com/forums/99706-post6.html">theWeir</a> for posting that solution.</p>
+
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px;">
+  http://androidcommunity.com/forums/99706-post6.html
+</div>
+
                 
               </div>
 

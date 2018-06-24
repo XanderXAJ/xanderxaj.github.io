@@ -32,7 +32,7 @@ As always, you can download the update via Google Play or directly.</description
       <description>Looks like I forgot to write about this when I released it in February, but Searchlight 1.5 is out!
 The big thing this update adds is a widget that can be added to your launcher or to your lock screen on 4.2+ devices. That means you can toggle the light without unlocking the device!
 As always you can download it from Google Play and directly from this site.
-Also, for the sake of completeness, since I never got around to writing about version 1.</description>
+Also, for the sake of completeness, since I never got around to writing about version 1.4, here&amp;rsquo;s the download for 1.4.</description>
     </item>
     
     <item>
@@ -42,7 +42,8 @@ Also, for the sake of completeness, since I never got around to writing about ve
       
       <guid>/post/searchlight-1-1-released/</guid>
       <description>Searchlight, my application for lighting up your world (or at least a few metres in front of you) using your Android device&amp;rsquo;s LED has been updated to 1.1.
-This update brings better behaviour on HTC Sense devices, where the screen is kept on (as this is necessary to keep the device&amp;rsquo;s light switched on). In addition, when the screen is switched off (manually) and switched on again, it can switch on the light again; previously it didn&amp;rsquo;t switch the light back on, yet still ran the service.</description>
+This update brings better behaviour on HTC Sense devices, where the screen is kept on (as this is necessary to keep the device&amp;rsquo;s light switched on). In addition, when the screen is switched off (manually) and switched on again, it can switch on the light again; previously it didn&amp;rsquo;t switch the light back on, yet still ran the service. Oops.
+Get the update through the Android Market, or download the APK right here.</description>
     </item>
     
     <item>
@@ -53,7 +54,13 @@ This update brings better behaviour on HTC Sense devices, where the screen is ke
       <guid>/post/searchlight-an-android-led-torch-powered-by-the-search-button/</guid>
       <description>In case there aren&amp;rsquo;t enough of them out there, I&amp;rsquo;ve decided to chip in my own effort on the Android LED torch scene.
 In a sort of sequel to my first Android app Torchure, I have just released Searchlight on to the Android Market.
-The unique thing about this flashlight is that it&amp;rsquo;s activated by long-pressing the Search button. Each time you do this, the LED will toggle on or off.</description>
+The unique thing about this flashlight is that it&amp;rsquo;s activated by long-pressing the Search button. Each time you do this, the LED will toggle on or off. This means that (nearly) regardless of what app you&amp;rsquo;re in, you can toggle the LED.
+You can even switch off the screen to save your battery for the LED. Just note that on most devices the Search button will be disabled while the screen is off, so you&amp;rsquo;ll probably have to switch on the screen, unlock it, then hold the Search button.
+When you long-press the Search button for the first time, you&amp;rsquo;ll probably get a selection of different apps for you to choose from. Just select Searchlight off the list to toggle the LED. Check the &amp;ldquo;Use by default for this action&amp;rdquo; checkbox to make sure that dialog doesn&amp;rsquo;t appear in future.
+If you want that Search selection to appear again, go to Settings &amp;gt; Applications &amp;gt; Manage applications &amp;gt; Searchlight &amp;gt; &amp;ldquo;Clear defaults&amp;rdquo; button. Then hold Search again and make a new selection. It will also reappear when the list of actions changes, for example you install or uninstall an app that has global search functionality.
+There are a couple of caveats.
+ It&amp;rsquo;ll only work on devices that implement the standard camera flash interface introduced by Froyo. If it doesn&amp;rsquo;t work on yours, contact me and I&amp;rsquo;ll see if I can add support for your device or system software. Don&amp;rsquo;t run Searchlight at the same time as another app using the camera, such as Camera, Barcode Scanner or Shopper. Things will go badly, trust me.  It&amp;rsquo;s available on the Android Market for any Android device with a camera and flash running 2.2 (Froyo) and above. This first version is only a smidge over 11KB and requires no outrageous permissions (just camera for obvious reasons, and wake lock to keep the LED on when the screen is off).
+Alternatively, if you prefer not to use the Market, you can download it here.</description>
     </item>
     
     <item>
@@ -64,7 +71,9 @@ The unique thing about this flashlight is that it&amp;rsquo;s activated by long-
       <guid>/post/my-personal-ninite-installer/</guid>
       <description>This is basically for my own future reference, but the last few Windows installs I&amp;rsquo;ve done I&amp;rsquo;ve used Ninite to install most of my favourite software — easily and quickly!
 If you&amp;rsquo;ve yet to discover it, check it out! Or if you&amp;rsquo;d rather just install software other people recommend wihout thinking, you can install my particular favourite software loadout.
-Update 15:42 UTC+0100: Just a couple of things that I should mention about the Ninite installer:</description>
+Update 15:42 UTC+0100: Just a couple of things that I should mention about the Ninite installer:
+ All programs install with a desktop shortcut, which I don&amp;rsquo;t use.  They&amp;rsquo;re very easy to delete, mind.  Skype is set to start on Windows start up.  This is easy to change on Skype&amp;rsquo;s log in screen, or using Autoruns below.  Steam is also set to start on Windows start up.  Change this by logging in and disabling it in the Interface tab of the Steam &amp;gt; Settings window, or using Autoruns below.  Java constantly runs its update scheduler (jusched.exe).  Use Autoruns for this one.   The latter three can be easily fixed by downloading Autoruns and deleting their start up entries from the list. Just don&amp;rsquo;t go too crazy in Autoruns, as you could cause Windows to stop booting etc. etc.
+Update 2010-07-30: My new personal Ninite installer, to reflect new software being added to Ninite!</description>
     </item>
     
     <item>
@@ -75,7 +84,12 @@ Update 15:42 UTC+0100: Just a couple of things that I should mention about the N
       <guid>/post/phoenix-wright-ace-attorney-trials-and-tribulations-soundtrack-download/</guid>
       <description>That was a mouthful of a title.
 Over time I&amp;rsquo;ve played and thoroughly enjoyed the Ace Attorney series of games, from Phoenix Wright to Apollo Justice. But for those of you familiar to the series, you&amp;rsquo;ll notice that this is the soundtrack for the third game in the series. So why have I posted this one?
-You see, this soundtrack posting has a small story behind it. A while back a perfectionist of a soundtrack ripper called TheRedPriest ripped the soundtrack and uploaded it to his website.</description>
+You see, this soundtrack posting has a small story behind it. A while back a perfectionist of a soundtrack ripper called TheRedPriest ripped the soundtrack and uploaded it to his website. He gets wound up by pops and blips in tracks — I can relate to that…
+Anyway, unfortunately like so many good things on the web, the website went offline! Luckily, a member of the forum called GUI uploaded the soundtrack and all was good within the world.
+Since I hate having just one mirror for things that have had so much time and effort put into them, and because I like the soundtrack so much, I decided to host the soundtrack for myself.
+Just to make it clear: I did not rip this soundtrack or have any input in its ripping! I am but a simple mirror, wanting to preserve the great work of a video game soundtrack ripper.
+Hope that everyone enjoys this as much as I do.
+Download the Phoenix Wright — Ace Attorney: Trials and Tribulations soundtrack.</description>
     </item>
     
     <item>
@@ -85,7 +99,11 @@ You see, this soundtrack posting has a small story behind it. A while back a pe
       
       <guid>/post/fix-windows-sidebar-gadget-file-association-in-vista/</guid>
       <description>Have you ever somehow managed to break the Gadget file association in Windows Vista? I have somehow, and that means that you can no longer install gadgets. Double-clicking a .gadget file does nothing, and the Sidebar offers no option to install gadgets itself!
-If you try to re-associate the files with Windows Sidebar by telling to Open With… and navigating to the Sidebar executable, you&amp;rsquo;ll have found that that doesn&amp;rsquo;t help — all it does is bring the Sidebar to focus, but doesn&amp;rsquo;t install the gadget.</description>
+If you try to re-associate the files with Windows Sidebar by telling to Open With… and navigating to the Sidebar executable, you&amp;rsquo;ll have found that that doesn&amp;rsquo;t help — all it does is bring the Sidebar to focus, but doesn&amp;rsquo;t install the gadget.
+Fortunately, help is at hand: all you need to do is **download the following archive **and apply the registry entries by double-clicking the .reg file inside the archive, and saying Yes at the prompt.
+Download Gadget Association registry entries.
+All I did was export the corresponding keys from the registry on a Vista machine with a working Sidebar — nothing else!
+Hope this helps others like it has me.</description>
     </item>
     
     <item>
@@ -97,7 +115,11 @@ If you try to re-associate the files with Windows Sidebar by telling to Open Wit
       <description>Andy, a Commanding Officer from Advance Wars 2  Ah, Advance Wars 2. What is it about you I thought was so amazing? The lovable, single-minded cast? The deep turn-based strategy? The little battle animations of infantry flying off the screen?
 Well, okay, all of those things are very good reasons to love the game, but there&amp;rsquo;s another one that sticks out for me too.
 The soundtrack!
-Once I completed the normal campaign and could buy the Sound Room, that was it.</description>
+Once I completed the normal campaign and could buy the Sound Room, that was it. Time and again I&amp;rsquo;ve inserted the cart into my GBA purely for the reason of enjoying the music on an infinite loop.
+Yes, I am that way inclined as a person, but there&amp;rsquo;s something about this soundtrack that keeps me coming back. I&amp;rsquo;m not sure if it&amp;rsquo;s the enthusiastic beats or the simple, catchy tunes, but this is one soundtrack I struggle to put down.
+But anyway, enough of me rambling about game soundtracks; judge for yourself! Ripped by yours truly and packaged as 192kbps MP3s, the Advance Wars 2 soundtrack is one you should definitely have in your library if you enjoy the game or the kind of music you get from a GBA.
+Download the Advance Wars 2 Soundtrack.
+Also available from another site I co-run, Black Hole Headquarters.</description>
     </item>
     
   </channel>

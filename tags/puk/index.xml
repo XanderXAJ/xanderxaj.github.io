@@ -19,7 +19,11 @@
       <guid>/post/unlock-android-device-using-puk-code/</guid>
       <description>If you&amp;rsquo;ve ever got your PIN code wrong too many times and got your SIM locked, you were probably as surprised as I was when Android gives you no option to unlock the phone! Fortunately there&amp;rsquo;s an answer.
 To unlock your Android-based device go to the Emergency Call screen and enter in the following (replace the angled brackets with the appropriate info):
-**05*«PUK Code»*«Your new pin»*«Confirm your new pin»# So for example:</description>
+**05*«PUK Code»*«Your new pin»*«Confirm your new pin»# So for example:
+**05*12345678*9090*9090# As a side effect this should work on any SIM-containing device at a screen where you can enter phone numbers, not just devices running the Android OS. As of writing, Android-based devices are the HTC Dream (T-Mobile G1) and HTC Magic.
+And make sure you keep your PUK code secret — anyone can override your PIN with their own using it!
+Thanks to theWeir for posting that solution.
+http://androidcommunity.com/forums/99706-post6.html  </description>
     </item>
     
   </channel>

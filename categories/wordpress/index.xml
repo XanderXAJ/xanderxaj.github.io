@@ -18,7 +18,9 @@
       
       <guid>/post/fixing-slugs-in-wordpress/</guid>
       <description>Having trouble selecting the slug you want in WordPress? If you&amp;rsquo;re like I was just a moment ago, you&amp;rsquo;ll try changing the slug on one of your categories to something different that you prefer, only to have WordPress change it back to whatever it was previously. What gives?
-Turns out the solution might be simpler than you think — check your Post Tags for a tag with the same slug!</description>
+Turns out the solution might be simpler than you think — check your Post Tags for a tag with the same slug!
+Slugs are shared between tags and categories, so if you use a particular slug with a tag, you cannot use the same one with a category, and vice versa.
+Keep that in mind the next time you get all OCD about slugs!</description>
     </item>
     
   </channel>

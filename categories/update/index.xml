@@ -19,7 +19,16 @@
       <guid>/post/migrating-from-wordpress-to-jekyll/</guid>
       <description>I&amp;rsquo;ve recently moved from the rather dynamic Wordpress to the rather static Jekyll. Can you tell?
 I&amp;rsquo;ve come to like the idea of simply serving a bunch of static files instead of dynamically building them when required. Static files are simple, cheap to host and serve, introduce no further security problems beyond the web server and configuration, and easy enough for me, as a developer, to edit.
-I&amp;rsquo;ve still got plenty of hurdles to work through &amp;mdash; in particular how to host all my pictures &amp;mdash; but this can all be worked out over time one way or another (including reverting back to Wordpress!</description>
+I&amp;rsquo;ve still got plenty of hurdles to work through &amp;mdash; in particular how to host all my pictures &amp;mdash; but this can all be worked out over time one way or another (including reverting back to Wordpress!).
+I just wanted to scrawl a few notes about my discoveries &amp;mdash; and what better way to do it than within the blog itself!
+ If you run jekyll serve inside of a VM (like Virtualbox) or container (like Docker), if you want to hit the site outside of the VM then make sure to specify --host=0.0.0.0 so the server binds to the outside network interface instead of the loopback interface.
+ I exported the Wordpress data by using the jekyll-export plugin. The script recommended by Jekyll&amp;rsquo;s own import website produced a bunch of HTML which did not play well with Jekyll.
+ One thing I wanted to do afterwards is convert many of the HTML entities to simpler equivalents, like ’ to &#39; and “ and ” to &amp;quot;. I did this to make my files easily readable and editable, in the spirit of Markdown. A quick way to do this is to run the following:
+for post in _posts/*; do cat &amp;#34;$post&amp;#34; | perl -n -mHTML::Entities -e &amp;#39;use open ( &amp;#34;:encoding(UTF-8)&amp;#34;, &amp;#34;:std&amp;#34; ); print HTML::Entities::decode_entities($_) ;&amp;#39; &amp;gt; $post.new &amp;amp;&amp;amp; mv $post.new $post; done You&amp;rsquo;ll also need to convert any pages that were brought across too.
+The use open ( &amp;quot;:encoding(UTF-8)&amp;quot;, &amp;quot;:std&amp;quot; ); part is of as it instructs perl that all input and output streams are UTF-8.
+ You see that code block nested inside the list above? That cannot be done with Jekyll and Markdown. This is because the {% raw %}{% highlight %}{% endraw %} code Jekyll uses is substituted before the markdown is parsed. If you want highlighting, this means you need to use the ~~~ fenced code blocks.
+You could try adding pygments support to Kramdown. Alternatively, you can switch to a renderer, like redcarpet, that does support it. This may well come and bite me in the future.
+  After all of these changes, my markup (or should I say markdown?) started to look respectable &amp;mdash; although there&amp;rsquo;s a long way to go!</description>
     </item>
     
   </channel>

@@ -20,7 +20,9 @@
       <description>Update 2009-11-23: Corrected Mac keyboard keys. I don&amp;rsquo;t own a Mac myself, but a friend of mine tells me that iTunes defies the normal behaviour of many other Apple applications. Probably because it&amp;rsquo;s ancient and desperately needs an update.
 Made a smart playlist to find songs you want to delete, then found that the delete function no longer works?
 Just hold Shift. Or Option.
-Pressing Shift+Delete on Windows or Option+Delete on Mac will give you a prompt to delete songs just like any other delete operation performed in the library.</description>
+Pressing Shift+Delete on Windows or Option+Delete on Mac will give you a prompt to delete songs just like any other delete operation performed in the library.
+Holding Shift on Windows or Option on Mac and right-clicking on one or more songs will show &amp;ldquo;Delete&amp;rdquo; in the context menu.
+As an aside, this shortcut also allows you to delete songs from static playlists as well.</description>
     </item>
     
     <item>
@@ -30,7 +32,8 @@ Pressing Shift+Delete on Windows or Option+Delete on Mac will give you a prompt 
       
       <guid>/post/reset-itunes-dimensions-to-fit-resolution/</guid>
       <description>Here&amp;rsquo;s a handy little feature that I find useful. If you ever play around with the size or location of the iTunes window and want to make it fit the screen better, simply follow the instructions:
- If you&amp;rsquo;re on Windows: hold Shift and either double-click the title bar or single-click the maximise button (The title bar is the small bar at the top that says &amp;ldquo;iTunes&amp;rdquo; in the middle.) If you&amp;rsquo;re on Mac OS: hold Option and click the Zoom (+) button  This&amp;rsquo;ll reset the size and position to its default for your screen resolution.</description>
+ If you&amp;rsquo;re on Windows: hold Shift and either double-click the title bar or single-click the maximise button (The title bar is the small bar at the top that says &amp;ldquo;iTunes&amp;rdquo; in the middle.) If you&amp;rsquo;re on Mac OS: hold Option and click the Zoom (+) button  This&amp;rsquo;ll reset the size and position to its default for your screen resolution. Assuming you haven&amp;rsquo;t changed screen resolution since installing it, it&amp;rsquo;ll look just as it did when you first installed it — nearly filling the entire screen, but not quite. It&amp;rsquo;s also a very useful shortcut if you ever change your screen resolution.
+Doing the operation a second time will move the iTunes window back to where it was before you started reading this article and messing with it. Simple!</description>
     </item>
     
   </channel>

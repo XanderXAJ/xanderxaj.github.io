@@ -40,7 +40,7 @@ I&amp;rsquo;ll briefly mirror the instructions here:
       
       <guid>/post/adding-your-most-recent-twitter-tweet-to-your-pidgin-status/</guid>
       <description>This guide is intended to be a more up-to-date mirror of the guide you can find at Tech Jawa. All credit to them for the original instructions! Basically nothing changes, but I just like to be comprehensive.
- Download the TwitterStatus plugin. It&amp;rsquo;ll be a file ending in .pl. Move this file to your Pidgin plugins folder. If any folders don&amp;rsquo;t exist, create them:  Linux: ~/.purple/plugins/ Windows Vista/7: C:\Users&amp;lt;Username&amp;gt;\AppData\Roaming.purple\plugins  Install Perl:  Linux: It&amp;rsquo;s probably already installed.</description>
+ Download the TwitterStatus plugin. It&amp;rsquo;ll be a file ending in .pl. Move this file to your Pidgin plugins folder. If any folders don&amp;rsquo;t exist, create them:  Linux: ~/.purple/plugins/ Windows Vista/7: C:\Users&amp;lt;Username&amp;gt;\AppData\Roaming.purple\plugins  Install Perl:  Linux: It&amp;rsquo;s probably already installed. Windows: Use the most recent Strawberry Perl installation:  Install the XML::XPath module into perl:  Open a command line. Run perl -MCPAN -e shell. Type install XML::XPath and then hit Return. Wait for the install to finish. Type quit and hit Return, then close your command line  Start (or restart) Pidgin. From the contact list, go to Help &amp;gt; About. At the very bottom of the textbox that appears it should say &amp;ldquo;Perl: Enabled&amp;rdquo;. If it does not, repeat steps 3 and 4. From the contact list, go to Tools &amp;gt; Plug-ins. Find Twitter Status on the list, check the checkbox next to it, and then click Configure Plug-in. In the configuration window that appears, type in your username in the top textbox (labelled Username, surprise surprise). Configure anything else you want to your liking.  That&amp;rsquo;s it! You do not need to set this up again, it is a one-off set up for the computer. Of course, you will need to go through this procedure again if you have multiple computers you use Pidgin on, or if you format and reinstall your OS.</description>
     </item>
     
     <item>
@@ -51,7 +51,11 @@ I&amp;rsquo;ll briefly mirror the instructions here:
       <guid>/post/forgotten-the-installation-code-for-your-sagem-digitalset-top-box/</guid>
       <description>It&amp;rsquo;s annoying when that or something similar happens — in my case, someone else had changed the code meaning I couldn&amp;rsquo;t retune the box to accept more channels.
 But all is not lost! Simply follow this quick guide. This is from a Sagem ITC 62 — it may or may not be the same process for other models:
- Press Menu on your remote control. Select Installation. You&amp;rsquo;ll be presented with a screen where you have to enter an Installation Code.</description>
+ Press Menu on your remote control. Select Installation. You&amp;rsquo;ll be presented with a screen where you have to enter an Installation Code. Press these buttons one after the other on your remote: Menu, Menu, Red button, Menu. You should be taken to a new screen displaying User Settings and Box Settings. Select User Settings.  Now what you do at this point is up to you. You have two choices:
+Disable the Installation Code This means that you don&amp;rsquo;t have to enter or remember an installation code in future, but it might be vulnerable to inquisitive children. If this isn&amp;rsquo;t an issue for you (or you don&amp;rsquo;t care!), follow these steps:
+ Select Locking. Switch Box Locked and Channels Locked to No.  Change the Installation Code If you still want an installation code for whatever reason, follow these steps:
+ Select Change Installation Code. Enter any four digit code you like, and press OK. Re-enter the same code again. Press OK.  That&amp;rsquo;s it! Let me know how it goes for you.
+Credit to Steven Checkley for his amazing hackery.</description>
     </item>
     
     <item>
@@ -61,7 +65,19 @@ But all is not lost! Simply follow this quick guide. This is from a Sagem ITC 
       
       <guid>/post/ill-modify-you-in-to-next-week/</guid>
       <description>A couple of days ago I came across this interesting quirk, and I had to do a double-take before I realised what had happened.
-Basically, I recently got a NAS and decided that I wanted my router to save its bandwidth usage statistics on it. That way whenever I perform an upgrade to the firmware on the router I won&amp;rsquo;t erase all the stats. This part is easy, as the firmware has the functionality for this.</description>
+Basically, I recently got a NAS and decided that I wanted my router to save its bandwidth usage statistics on it. That way whenever I perform an upgrade to the firmware on the router I won&amp;rsquo;t erase all the stats. This part is easy, as the firmware has the functionality for this. (The firmware I keep mentioning is the Tomato firmware. I highly recommend it if you happen to have a compatible Linux router!)
+Now, after I set it all up, I went on to the network shares to see if the statistics were being saved properly. What I saw I didn&amp;rsquo;t exactly expect:
+ A screenshot from Directory Opus of my local network share... And some interesting modified times  Now, nothing may look wrong at first glance. But take another look at the screenshot, particularly the column titled &amp;ldquo;Modified&amp;rdquo;.
+Got it yet? You have? That&amp;rsquo;s great! You haven&amp;rsquo;t? You&amp;rsquo;re probably just not as finnicky as I am, don&amp;rsquo;t worry.
+Anyway, enough suspense: the thing that caught me out was that the modified time for the statistics file was &amp;ldquo;tomorrow&amp;rdquo;.
+&amp;ldquo;So what?&amp;rdquo; I hear you cry! &amp;ldquo;You probably just had the NAS set to the wrong timezone.&amp;rdquo;
+Alright, I&amp;rsquo;ll give you that — I had set it to the wrong timezone. However, that isn&amp;rsquo;t the strangest thing!
+The strange part is the fact that Windows has provisions for files that have creation/modify/access times in the future.
+When you have a file that you have modifed today, it says &amp;ldquo;Today&amp;rdquo;. Nice. If you then leave the file for 24 hours, Windows will say the file was modified &amp;ldquo;Yesterday&amp;rdquo;. Again, a nice touch.
+But now Windows, in its all-powerful, all-knowing ways, can tell me when a file will be modified, before it&amp;rsquo;s even happened!
+At least, that&amp;rsquo;s the impression it gives me when I think of a developer including &amp;ldquo;tomorrow&amp;rdquo; on the list of English relative dates.
+And before you complain that I wasn&amp;rsquo;t using Windows Explorer but rather a replacement called Directory Opus, here&amp;rsquo;s a screen from Explorer demonstrating the same behaviour, but slightly more hidden:
+ A screenshot from Windows Explorer of my local network share... With the same interesting modified times  So there you have it: Some crazy behaviour and me thoroughly confused. With DOpus and Explorer both &amp;ldquo;predicting&amp;rdquo; the future for me, I&amp;rsquo;m beginning to wonder just how much control I have over these computers…</description>
     </item>
     
   </channel>

@@ -175,9 +175,40 @@
               </p>
               <div class="post-entry">
                 
-                  Found this rather handy post that tells you what to do in newer versions of Gnome Power Manager, which for some reason hide the Do Nothing options as default.
-Personally I find it irritating as the battery readout in all the distros of Linux I&rsquo;ve used on my Eee report the battery at 0% over half an hour before the battery is actually dead. No amount of conditioning or software modification seems to fix it, so I&rsquo;m living with it.
-                  <a href="/post/gnome-power-manager-hides-do-nothing/" class="post-read-more">[Read More]</a>
+                  <p>Found <a href="http://www.rebelzero.com/fixes/karmic-gnome-power-manager-hides-do-nothing-from-the-gui/223">this rather handy post</a> that tells you what to do in newer versions of Gnome Power Manager, which for some reason hide the Do Nothing options as default.</p>
+
+<p>Personally I find it irritating as the battery readout in all the distros of Linux I&rsquo;ve used on my Eee report the battery at 0% over half an hour before the battery is actually dead.  No amount of conditioning or software modification seems to fix it, so I&rsquo;m living with it.</p>
+
+<p>However, with the newer versions of Gnome Power Manager, Do Nothing is hidden!  So my machine would go to sleep, despite the fact I know there&rsquo;s at least 30 more minutes of battery life going to waste.  So annoying!</p>
+
+<p>To fix it (albeit temporarily), you need to edit the gconf values for the settings you&rsquo;re interested in to &ldquo;nothing&rdquo;.</p>
+
+<p>The easiest way to do this is to use an application like <em>gconf-editor</em> and edit the values through that:</p>
+
+<ol>
+<li>Run <em>gconf-editor</em>.
+
+<ul>
+<li>If you don&rsquo;t have it installed, go to your favourite package manager and install it through that.</li>
+</ul></li>
+<li>Using the column on the left side, navigate to <strong>apps &gt; gnome-power-manager</strong>.</li>
+<li>In my case, I wanted to change the critical battery behaviour to Do Nothing.  So I navigated in to <strong>actions</strong> and set the value of <strong>critical_battery</strong> to <strong>nothing</strong>.
+
+<ul>
+<li>If you want to change, say, the behaviour of a power button press, navigate to **buttons **instead of <strong>actions</strong>.</li>
+<li>Repeat this step for each value you want to change.</li>
+</ul></li>
+<li>Close <em>gconf-editor</em>.</li>
+</ol>
+
+<p>That&rsquo;s it!  One thing you need to keep in mind is that if you later change the setting away from Do Nothing to something else, the Do Nothing option will disappear.</p>
+
+<p>Hope this works for you as it has me.</p>
+
+<p>(I&rsquo;m typing this post with 0% battery left!  What I crazy daredevil I am.)</p>
+
+<p><strong>Update 19:58:</strong> Forgot to mention that Do Nothing will disappear if deselected.  Fixed.</p>
+
                 
               </div>
 
@@ -206,9 +237,111 @@ Personally I find it irritating as the battery readout in all the distros of Lin
               </p>
               <div class="post-entry">
                 
-                  Update 2010-05-28: If you&rsquo;re using Fedora 13, then the configuration for synaptics touchpads is done through what is practically the old xorg.conf method. (This is as udev now handles devices instead of HAL.) Check out the Fedora Wiki for more information.
-The Problem Today I&rsquo;ve been trying to configure the touchpad on my Eee PC 901 to my liking. It&rsquo;s a Synaptics touchpad, and supports tracking multiple fingers, and I wanted to take more advantage of that.
-                  <a href="/post/take-control-of-your-settings-configuring-synaptics-touchpads-and-making-gnome-respect-them/" class="post-read-more">[Read More]</a>
+                  
+
+<p><strong>Update 2010-05-28:</strong> If you&rsquo;re using Fedora 13, then the configuration for synaptics touchpads is done through what is practically the old xorg.conf method. (This is as udev now handles devices instead of HAL.)  <a href="https://fedoraproject.org/wiki/Input_device_configuration">Check out the Fedora Wiki</a> for more information.</p>
+
+<h2 id="the-problem">The Problem</h2>
+
+<p>Today I&rsquo;ve been trying to configure the touchpad on my Eee PC 901 to my liking.  It&rsquo;s a Synaptics touchpad, and supports tracking multiple fingers, and I wanted to take more advantage of that.</p>
+
+<p>GNOME does have support for configuring multiple finger gestures out of the box, with <strong><em>gnome-mouse-properties</em></strong> (or <strong>System » Preferences » Mouse</strong>) and then selecting the <strong>Touchpad tab</strong>.  This is all good and works fine — if you&rsquo;re satisfied with what GNOME gives you.</p>
+
+<p>Unfortunately I wasn&rsquo;t.  When you enable clicking on the touchpad, GNOME sets one finger taps to left-click, two to right, and three to middle.  I tend to use middle-click more often than right-click, thanks to browsing the web and liking making new tabs, plus I already have a dedicated right-click button.</p>
+
+<p>So I set off to change it.  After reading material <a href="http://wiki.archlinux.org/index.php/Touchpad_Synaptics">courteousy of Arch Linux&rsquo;s wiki</a>, I found (and remembered from attempting the same thing ages ago) that configuration is done through the HAL using fdi policies, which are just specifically formatted <acronym title="eXtensible Markup Language">XML</acronym> files.  (The old xorg.conf way is deprecated and isn&rsquo;t as flexible, not that it matters for configuring the trackpad.)</p>
+
+<p>It sounds scary and involves more typing, but in the end it&rsquo;s just as simple a process as it used to be, even if it involves jumping through an extra hoop or two.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>First you have to create a file with the fdi extension in <strong>/etc/hal/fdi/policy/</strong>.  I&rsquo;ve named my file 99-synaptics.fdi, following example from <strong>/usr/share/hal/fdi/policy/10osvendor/</strong>, but you can name yours whatever you like.</p>
+
+<pre>sudo gedit /etc/hal/fdi/policy/99-synaptics.fdi
+</pre>
+
+<p><strong>Note:</strong> You need root permissions to be able to create and edit this file.  If you run Ubuntu (or are in the <em>/etc/sudoers</em> file), this can be accomplished using the <em>sudo</em> command as shown above. You can use whatever editor you like, too. <em>vi</em>, <em>emacs</em>, <em>nano</em>, *kate*…</p>
+
+<p>Once the file is created, it&rsquo;s time to get messy!  The fdi file contains a match rule, which tells HAL which device you want to configure, and then a series of merge rules which apply your desired configuration into the HAL.  The easiest way to show this is by example, so here&rsquo;s my prospective configuration:</p>
+
+<p><code>&lt;br /&gt;
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;br /&gt;
+&lt;deviceinfo version=&quot;0.2&quot;&gt;&lt;br /&gt;
+&lt;device&gt;&lt;br /&gt;
+&lt;match key=&quot;info.product&quot; contains=&quot;Elantech Touchpad&quot;&gt;&lt;br /&gt;
+&lt;merge type=&quot;string&quot; key=&quot;input.x11_driver&quot;&gt;synaptics&lt;/merge&gt;&lt;br /&gt;
+&lt;merge type=&quot;string&quot; key=&quot;input.x11_options.VertTwoFingerScroll&quot;&gt;true&lt;/merge&gt;&lt;br /&gt;
+&lt;merge type=&quot;string&quot; key=&quot;input.x11_options.HorizTwoFingerScroll&quot;&gt;true&lt;/merge&gt;&lt;br /&gt;
+&lt;merge type=&quot;string&quot; key=&quot;input.x11_options.TapButton1&quot;&gt;1&lt;/merge&gt;&lt;br /&gt;
+&lt;merge type=&quot;string&quot; key=&quot;input.x11_options.TapButton2&quot;&gt;2&lt;/merge&gt;&lt;br /&gt;
+&lt;merge type=&quot;string&quot; key=&quot;input.x11_options.TapButton3&quot;&gt;3&lt;/merge&gt;&lt;br /&gt;
+&lt;merge type=&quot;string&quot; key=&quot;input.x11_options.ClickFinger1&quot;&gt;1&lt;/merge&gt;&lt;br /&gt;
+&lt;merge type=&quot;string&quot; key=&quot;input.x11_options.ClickFinger2&quot;&gt;3&lt;/merge&gt;&lt;br /&gt;
+&lt;merge type=&quot;string&quot; key=&quot;input.x11_options.ClickFinger3&quot;&gt;2&lt;/merge&gt;&lt;br /&gt;
+&lt;/match&gt;&lt;br /&gt;
+&lt;/device&gt;&lt;br /&gt;
+&lt;/deviceinfo&gt;&lt;br /&gt;
+</code><br />
+Starting from the top, here&rsquo;s a quick description of each part:</p>
+
+<ul>
+<li>The <strong>&lt;?xml</strong> part is the <acronym title="eXtensible Markup Language">XML</acronym> declaration required in any valid <acronym title="eXtensible Markup Language">XML</acronym> file.  Nothing interesting here.</li>
+<li>The <strong><deviceinfo></strong> and <strong>&lt;device</strong>&gt; are just boilerplate code that tell the HAL to expect rules relating to devices. Again, nothing interesting here.</li>
+<li>Now things start getting good!  The <strong><match></strong> line describes how to find the device you want to configure:
+
+<ul>
+<li>Simply put, the HAL searches for the <strong>contains</strong> string inside the <strong>key</strong> field.  Whatever matches that search it&rsquo;ll apply the merge rules to.</li>
+<li>There are other ways to match aside from <strong>contains</strong>, but this is all you need to know to get things working.</li>
+</ul></li>
+<li>The <strong><merge></strong> lines are the meat of the file, describing each and every configuration change you want to make.</li>
+</ul>
+
+<p>You&rsquo;re probably thinking this is all good and well, but how did I come up with this stuff in the first place?  Well, the answer lies in the HAL itself.</p>
+
+<p>The <strong><em>lshal</em></strong> command lists all the devices the HAL can detect (that&rsquo;s &ldquo;ls hal&rdquo;, get it?).  You might want to pipe the contents to less, to be able to scroll and search through the large amount of text that&rsquo;s returned:</p>
+
+<pre>lshal | less
+</pre>
+
+<p>In <em>less</em>, <strong>type /synaptics</strong> to search for the string &ldquo;synaptics&rdquo;.  <em>less</em> should automatically scroll to the point we&rsquo;re interested in; your touchpad.  If it cannot be found, you either don&rsquo;t have a Synaptics touchpad or the synaptics driver isn&rsquo;t being loaded.  Try **searching for Touchpad **or similar words, but anything more than that is beyond the scope of this article.</p>
+
+<p>Once you have found the device on your list, you&rsquo;ll be able to see a list of keys and their values.  You want to pick one of these fields that will not change between boots to place as the match rule inside your fdi file.  I chose <strong>info.product</strong>, but you can choose something else like <strong>input.product</strong> if it strikes your fancy.  Either way, fill in the &lt;<strong>match&gt;</strong> line with the key that you chose and the string that&rsquo;ll match it.  Ideally this search will <em>only match your touchpad and nothing else.</em></p>
+
+<p>Next is the fun part — configuration. To do this simply open up the man page for synaptics:</p>
+
+<pre>man synaptics
+</pre>
+
+<p>This&rsquo;ll give a detailed list of everything that can be changed within the synaptics driver.  For each value that you want to change, find its name on the manpage, and add a new merge rule with the appropriate key.  Note that every key in the fdi begins with &ldquo;<strong>input.x11_options.</strong>&rdquo; followed by the synaptics key you want to change.  (The exception to this in my file is the first merge rule, which just makes sure that the synaptics driver has been loaded for my touchpad.)</p>
+
+<p>If you want to test an option before making it permanent, use the <strong><em>synclient key=value</em></strong> command, filling in <strong>key</strong> and <strong>value</strong> with the option you want to change.</p>
+
+<p>Once you&rsquo;ve added all the merge rules you like, close all the tags and save the file.  Now just restart the HAL (or your computer) and your settings will be applied.  Almost.</p>
+
+<h2 id="gnome-respect">GNOME Respect</h2>
+
+<p>Now that you have your configuration all set up, you need to stop GNOME from changing your carefully crafted settings to ones of its choosing.</p>
+
+<p>To do this, simply run the following command:</p>
+
+<pre>gconftool-2 --type bool --set /apps/gnome_settings_daemon/plugins/mouse/active false
+</pre>
+
+<p>If you get cold feet and want to enable GNOME&rsquo;s control over mouse and trackpad settings, run this command:</p>
+
+<pre>gconftool-2 --type bool --set /apps/gnome_settings_daemon/plugins/mouse/active true
+</pre>
+
+<p>That&rsquo;s really it.  <a href="http://bbs.archlinux.org/viewtopic.php?pid=642442#p642442">Thanks to jan for finding this value</a>.</p>
+
+<p>I&rsquo;ve written this to be as generalised as possible, so it should work for many different distros so long as they are using the latest HAL/Xorg/kernel.  I&rsquo;m running Fedora 11 and have added my name to the /etc/sudoers file, allowing me to run sudo.</p>
+
+<p>If you have any questions or just want to say thanks, feel free to leave a comment or <a href="http://xanderx.com/contact">contact me</a>!</p>
+
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 286px; width: 1px; height: 1px;">
+  <?xml version="1.0″ encoding="utf-8″?><br /> <deviceinfo version="0.2″><br /> <device><br /> <match key="info.product" contains="Elantech Touchpad"><br /> <merge type="string" key="input.x11_driver">synaptics</merge><br /> <merge type="string" key="input.x11_options.VertTwoFingerScroll">true</merge><br /> <merge type="string" key="input.x11_options.HorizTwoFingerScroll">true</merge><br /> <merge type="string" key="input.x11_options.TapButton1″>1</merge><br /> <merge type="string" key="input.x11_options.TapButton2″>2</merge><br /> <merge type="string" key="input.x11_options.TapButton3″>3</merge><br /> <merge type="string" key="input.x11_options.ClickFinger1″>1</merge><br /> <merge type="string" key="input.x11_options.ClickFinger2″>3</merge><br /> <merge type="string" key="input.x11_options.ClickFinger3″>2</merge><br /> </match><br /> </device><br /> </deviceinfo>
+</div>
+
                 
               </div>
 
@@ -237,9 +370,42 @@ The Problem Today I&rsquo;ve been trying to configure the touchpad on my Eee PC 
               </p>
               <div class="post-entry">
                 
-                  This guide is intended to be a more up-to-date mirror of the guide you can find at Tech Jawa. All credit to them for the original instructions! Basically nothing changes, but I just like to be comprehensive.
- Download the TwitterStatus plugin. It&rsquo;ll be a file ending in .pl. Move this file to your Pidgin plugins folder. If any folders don&rsquo;t exist, create them:  Linux: ~/.purple/plugins/ Windows Vista/7: C:\Users&lt;Username&gt;\AppData\Roaming.purple\plugins  Install Perl:  Linux: It&rsquo;s probably already installed.
-                  <a href="/post/adding-your-most-recent-twitter-tweet-to-your-pidgin-status/" class="post-read-more">[Read More]</a>
+                  <p style="text-align: justify;">
+  This guide is intended to be a more up-to-date mirror of the guide you can find at <a href="http://www.techjawa.com/2008/08/15/twitterpidgin-aimim-status-sync-guide/">Tech Jawa</a>.  All credit to them for the original instructions!
+</p>
+
+<p>Basically nothing changes, but I just like to be comprehensive.</p>
+
+<ol>
+<li><a href="http://code.google.com/p/pidgin-twitterstatus/">Download the TwitterStatus plugin</a>.  It&rsquo;ll be a file ending in <em>.pl</em>.</li>
+<li>Move this file to your Pidgin plugins folder.  If any folders don&rsquo;t exist, create them:
+
+<ul>
+<li><strong>Linux:</strong> ~/.purple/plugins/</li>
+<li><strong>Windows Vista/7:</strong> C:\Users&lt;Username&gt;\AppData\Roaming.purple\plugins</li>
+</ul></li>
+<li>Install Perl:
+
+<ul>
+<li><strong>Linux:</strong> It&rsquo;s probably already installed.</li>
+<li><strong>Windows:</strong> Use the <a href="http://strawberryperl.com/">most recent Strawberry <acronym title="Practical Extraction and Report Language">Perl</acronym> installation:</a></li>
+</ul></li>
+<li>Install  the XML::XPath module into perl:
+
+<ol>
+<li>Open a command line.</li>
+<li>Run <code>perl -MCPAN -e shell</code>.</li>
+<li>Type <code>install XML::XPath</code> and then hit Return.  Wait for the install to finish.</li>
+<li>Type <code>quit</code> and hit Return, then close your command line</li>
+</ol></li>
+<li>Start (or restart) Pidgin.</li>
+<li>From the contact list, go to <strong>Help &gt; About</strong>.  At the very bottom of the textbox that appears it should say <strong>&ldquo;Perl: Enabled&rdquo;</strong>.  If it does not, repeat steps 3 and 4.</li>
+<li>From the contact list, go to <strong>Tools &gt; Plug-ins</strong>.  Find Twitter Status on the list, <strong>check the checkbox</strong> next to it, and then click <strong>Configure Plug-in.</strong></li>
+<li>In the configuration window that appears, <strong>type in your username in the top textbox</strong> (labelled Username, surprise surprise).  Configure anything else you want to your liking.</li>
+</ol>
+
+<p>That&rsquo;s it!  You do not need to set this up again, it is a one-off set up for the computer.  Of course, you will need to go through this procedure again if you have multiple computers you use Pidgin on, or if you format and reinstall your <acronym title="Operating System">OS</acronym>.</p>
+
                 
               </div>
 
@@ -268,9 +434,22 @@ The Problem Today I&rsquo;ve been trying to configure the touchpad on my Eee PC 
               </p>
               <div class="post-entry">
                 
-                  For kicks I decided to remove all the ID3v1 tags from my music files today. They were just getting in the way and served no useful purpose — since I had perfectly fine ID3v2 tags — so they just had to go.
-I cooked up a little command to help out here! But first, we need to make sure you have the command that we&rsquo;re going to need here, id3v2. Install it from the official repositories using your distribution&rsquo;s package manager.
-                  <a href="/post/strip-id3v1-tags-from-mp3s-in-linux/" class="post-read-more">[Read More]</a>
+                  <p>For kicks I decided to remove all the ID3v1 tags from my music files today.  They were just getting in the way and served no useful purpose — since I had perfectly fine ID3v2 tags — so they just had to go.</p>
+
+<p>I cooked up a little command to help out here!  But first, we need to make sure you have the command that we&rsquo;re going to need here, id3v2.  Install it from the official repositories using your distribution&rsquo;s package manager.  For example, on Ubuntu:</p>
+
+<pre>sudo apt-get install id3v2</pre>
+
+<p>This command is used to view and manipulate ID3 tags inside of music files.  One argument in particular is of use to us, <code>-s</code>, which strips ID3v1 tags out of the specified file(s).</p>
+
+<p>With that in mind the task is just getting a list of the files that you want to remove ID3v1 tags from.  I&rsquo;ve managed to solve that and fit it all in one line — don&rsquo;t forget to replace the path with the correct one:</p>
+
+<pre>find /path/to/music -name \*.mp3 -type f -print0 | xargs -0 id3v2 -s</pre>
+
+<p>That&rsquo;s it! After testing I ran it on my whole music library and it appears to have survived just fine. Just be patient (and careful) if you&rsquo;re stripping tags out of hundreds or thousands of files.</p>
+
+<p>Let me know how it works out for you, and any improvements you may have!</p>
+
                 
               </div>
 

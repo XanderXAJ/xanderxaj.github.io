@@ -10,10 +10,30 @@
   <meta name="twitter:title" content="Troubleshooting keyboard shortcuts in Sublime Text" />
   <meta name="description" content="I recently installed a couple of new plugins to Sublime Text, and then Ctrl&#43;Shift&#43;R, the shortcut for searching through all symbols in a project, stopped working!
 You can get Sublime Text to display what&rsquo;s actually going on when you press the shortcut &mdash; that information may give you a hint as to what plugin or configuration has changed your value.
-Is the shortcut reaching Sublime? The following commands are run in the Sublime Text Console; you can access on Linux and Windows by pressing Ctrl&#43;`.">
+Is the shortcut reaching Sublime? The following commands are run in the Sublime Text Console; you can access on Linux and Windows by pressing Ctrl&#43;`.
+You can check the shortcut is actually managing to get to Sublime in the first place:
+sublime.log_input(True)  You&rsquo;ll notice that the console will now display the keys that you press &mdash; try pressing a keyboard shortcut too!
+key evt: shift&#43;control&#43;r  If the console is showing your keystrokes correctly, then Sublime is receiving them loud and clear and the problem lies elsewhere.
+What is Sublime doing when the shortcut is invoked? By running the following in the Sublime console, you&rsquo;ll see what commands Sublime is running as you press keyboard shortcuts:
+sublime.log_commands(True)  You&rsquo;ll now note the command names appearing inside of the console. I got the following:
+key evt: shift&#43;control&#43;r command: run_emmet_action {&quot;action&quot;: &quot;reflect_css_value&quot;}  In my case, it turned out that Emmet had taken over the shortcut! I got my shortcut back by copying the default Ctrl&#43;Shift&#43;R shortcut definition from Preferences &gt; Keybindings - Default and pasting it in to the user file at Preferences &gt; Keybindings - User.
+[ { &quot;keys&quot;: [&quot;ctrl&#43;shift&#43;r&quot;], &quot;command&quot;: &quot;goto_symbol_in_project&quot; } ]  I feel there should be a better way to do this, but this works as Sublime is now. Now I try the shortcut again:
+key evt: shift&#43;control&#43;r command: goto_symbol_in_project  Much better.
+Emmet has its own special shortcut handling Those of you familiar with Emmet might know that it has its own built-in mechanism to disable keyboard shortcuts of your choice. And in this case, that&rsquo;s exactly what could be used.
+&quot;disabled_keymap_actions&quot;: &quot;reflect_css_value&quot;  The nice thing about the keybindings override is that the instructions described above should work for any addon package as the User package is sourced last &mdash; meaning that the User package overrides all.">
   <meta property="og:description" content="I recently installed a couple of new plugins to Sublime Text, and then Ctrl&#43;Shift&#43;R, the shortcut for searching through all symbols in a project, stopped working!
 You can get Sublime Text to display what&rsquo;s actually going on when you press the shortcut &mdash; that information may give you a hint as to what plugin or configuration has changed your value.
-Is the shortcut reaching Sublime? The following commands are run in the Sublime Text Console; you can access on Linux and Windows by pressing Ctrl&#43;`.">
+Is the shortcut reaching Sublime? The following commands are run in the Sublime Text Console; you can access on Linux and Windows by pressing Ctrl&#43;`.
+You can check the shortcut is actually managing to get to Sublime in the first place:
+sublime.log_input(True)  You&rsquo;ll notice that the console will now display the keys that you press &mdash; try pressing a keyboard shortcut too!
+key evt: shift&#43;control&#43;r  If the console is showing your keystrokes correctly, then Sublime is receiving them loud and clear and the problem lies elsewhere.
+What is Sublime doing when the shortcut is invoked? By running the following in the Sublime console, you&rsquo;ll see what commands Sublime is running as you press keyboard shortcuts:
+sublime.log_commands(True)  You&rsquo;ll now note the command names appearing inside of the console. I got the following:
+key evt: shift&#43;control&#43;r command: run_emmet_action {&quot;action&quot;: &quot;reflect_css_value&quot;}  In my case, it turned out that Emmet had taken over the shortcut! I got my shortcut back by copying the default Ctrl&#43;Shift&#43;R shortcut definition from Preferences &gt; Keybindings - Default and pasting it in to the user file at Preferences &gt; Keybindings - User.
+[ { &quot;keys&quot;: [&quot;ctrl&#43;shift&#43;r&quot;], &quot;command&quot;: &quot;goto_symbol_in_project&quot; } ]  I feel there should be a better way to do this, but this works as Sublime is now. Now I try the shortcut again:
+key evt: shift&#43;control&#43;r command: goto_symbol_in_project  Much better.
+Emmet has its own special shortcut handling Those of you familiar with Emmet might know that it has its own built-in mechanism to disable keyboard shortcuts of your choice. And in this case, that&rsquo;s exactly what could be used.
+&quot;disabled_keymap_actions&quot;: &quot;reflect_css_value&quot;  The nice thing about the keybindings override is that the instructions described above should work for any addon package as the User package is sourced last &mdash; meaning that the User package overrides all.">
   <meta name="twitter:description" content="I recently installed a couple of new plugins to Sublime Text, and then Ctrl&#43;Shift&#43;R, the shortcut for searching through all symbols in a project, stopped working!
 You can get Sublime Text to display …">
   <meta name="author" content="Alex Palmer"/>

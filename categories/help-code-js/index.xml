@@ -19,7 +19,8 @@
       <guid>/post/javascript-promises-notes/</guid>
       <description>Some notes to remind future me why Promises are pretty neat.
 What do they give me?  They let you regain error handling for asynchronous operations. They let you avoid nested callbacks (and the pyramid indentation that comes with them).  Can I use them? They were initially formalised in the Promises/A+ specification, and have been officially adopted in to JavaScript with ES6.
-They&amp;rsquo;ve been supported in all major browsers (except IE) for a while now.</description>
+They&amp;rsquo;ve been supported in all major browsers (except IE) for a while now. A polyfill exists for browsers that do not support them.
+Any important details?  Promises can start executing the instant they have been instantiated. However, this does not strictly mean that they will be. If you call .then(success_function, failure_function) on a Promise, the appropriate function will not be called until a Promise has settled &amp;mdash; either fulfilled or rejected. Calling .catch() is equivalent to calling .then(null, function).  I need help visualising them Try Promisees &amp;mdash; it&amp;rsquo;ll visualise and animate the promise-y code you give it. You can also slow down the animation and record animated GIFs!</description>
     </item>
     
   </channel>

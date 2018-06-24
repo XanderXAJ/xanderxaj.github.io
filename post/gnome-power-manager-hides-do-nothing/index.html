@@ -9,9 +9,23 @@
   <meta property="og:title" content="Gnome Power Manager Hides Do Nothing" />
   <meta name="twitter:title" content="Gnome Power Manager Hides Do Nothing" />
   <meta name="description" content="Found this rather handy post that tells you what to do in newer versions of Gnome Power Manager, which for some reason hide the Do Nothing options as default.
-Personally I find it irritating as the battery readout in all the distros of Linux I&rsquo;ve used on my Eee report the battery at 0% over half an hour before the battery is actually dead. No amount of conditioning or software modification seems to fix it, so I&rsquo;m living with it.">
+Personally I find it irritating as the battery readout in all the distros of Linux I&rsquo;ve used on my Eee report the battery at 0% over half an hour before the battery is actually dead. No amount of conditioning or software modification seems to fix it, so I&rsquo;m living with it.
+However, with the newer versions of Gnome Power Manager, Do Nothing is hidden! So my machine would go to sleep, despite the fact I know there&rsquo;s at least 30 more minutes of battery life going to waste. So annoying!
+To fix it (albeit temporarily), you need to edit the gconf values for the settings you&rsquo;re interested in to &ldquo;nothing&rdquo;.
+The easiest way to do this is to use an application like gconf-editor and edit the values through that:
+ Run gconf-editor.  If you don&rsquo;t have it installed, go to your favourite package manager and install it through that.  Using the column on the left side, navigate to apps &gt; gnome-power-manager. In my case, I wanted to change the critical battery behaviour to Do Nothing. So I navigated in to actions and set the value of critical_battery to nothing.  If you want to change, say, the behaviour of a power button press, navigate to **buttons **instead of actions. Repeat this step for each value you want to change.  Close gconf-editor.  That&rsquo;s it! One thing you need to keep in mind is that if you later change the setting away from Do Nothing to something else, the Do Nothing option will disappear.
+Hope this works for you as it has me.
+(I&rsquo;m typing this post with 0% battery left! What I crazy daredevil I am.)
+Update 19:58: Forgot to mention that Do Nothing will disappear if deselected. Fixed.">
   <meta property="og:description" content="Found this rather handy post that tells you what to do in newer versions of Gnome Power Manager, which for some reason hide the Do Nothing options as default.
-Personally I find it irritating as the battery readout in all the distros of Linux I&rsquo;ve used on my Eee report the battery at 0% over half an hour before the battery is actually dead. No amount of conditioning or software modification seems to fix it, so I&rsquo;m living with it.">
+Personally I find it irritating as the battery readout in all the distros of Linux I&rsquo;ve used on my Eee report the battery at 0% over half an hour before the battery is actually dead. No amount of conditioning or software modification seems to fix it, so I&rsquo;m living with it.
+However, with the newer versions of Gnome Power Manager, Do Nothing is hidden! So my machine would go to sleep, despite the fact I know there&rsquo;s at least 30 more minutes of battery life going to waste. So annoying!
+To fix it (albeit temporarily), you need to edit the gconf values for the settings you&rsquo;re interested in to &ldquo;nothing&rdquo;.
+The easiest way to do this is to use an application like gconf-editor and edit the values through that:
+ Run gconf-editor.  If you don&rsquo;t have it installed, go to your favourite package manager and install it through that.  Using the column on the left side, navigate to apps &gt; gnome-power-manager. In my case, I wanted to change the critical battery behaviour to Do Nothing. So I navigated in to actions and set the value of critical_battery to nothing.  If you want to change, say, the behaviour of a power button press, navigate to **buttons **instead of actions. Repeat this step for each value you want to change.  Close gconf-editor.  That&rsquo;s it! One thing you need to keep in mind is that if you later change the setting away from Do Nothing to something else, the Do Nothing option will disappear.
+Hope this works for you as it has me.
+(I&rsquo;m typing this post with 0% battery left! What I crazy daredevil I am.)
+Update 19:58: Forgot to mention that Do Nothing will disappear if deselected. Fixed.">
   <meta name="twitter:description" content="Found this rather handy post that tells you what to do in newer versions of Gnome Power Manager, which for some reason hide the Do Nothing options as default.
 Personally I find it irritating as the …">
   <meta name="author" content="Alex Palmer"/>

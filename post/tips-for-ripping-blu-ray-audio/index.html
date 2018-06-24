@@ -10,10 +10,48 @@
   <meta name="twitter:title" content="Tips for Ripping Blu-Ray Audio" />
   <meta name="description" content="I recently ripped my first Blu-Ray audio discs. Here are a few tips I&rsquo;ve discovered along the way:
 tl;dr Backup the disc using MakeMKV and extract the audio using the updated version of the command under Putting it all together.
-Ripping the discs MakeMKV can be used to rip and, if necessary, decrypt Blu-Ray audio discs. While it is in beta, it can be evaluated by using the current beta key.">
+Ripping the discs MakeMKV can be used to rip and, if necessary, decrypt Blu-Ray audio discs. While it is in beta, it can be evaluated by using the current beta key.
+I use the complete Blu-Ray backup feature so I have the raw stream files to work with.
+Extracting the audio from the video files ffmpeg can be used to extract the audio track(s) from the video streams on the Blu-Ray.
+First interrogate one of your streams using ffprobe to see how the different tracks are laid out:
+ffprobe -hide_banner BDMV/STREAM/00002.m2ts  I use -hide_banner to reduce the amount of text printed to the terminal. If you have troubles and decide to ask others for help, be sure to omit -hide_banner as the information it emits can be useful when debugging!
+Here is the output I got:
+Input #0, mpegts, from &#39;BDMV/STREAM/00002.m2ts&#39;: Duration: 00:01:47.07, start: 4200.000000, bitrate: 7133 kb/s Program 1 Stream #0:0[0x1011]: Video: h264 (High) (HDMV / 0x564D4448), yuv420p(progressive), 1920x1080 [SAR 1:1 DAR 16:9], 23.98 fps, 23.98 tbr, 90k tbn, 47.95 tbc Stream #0:1[0x1100]: Audio: pcm_bluray (HDMV / 0x564D4448), 48000 Hz, stereo, s16, 1536 kb/s  In my case I only have one audio stream to worry about at address 0:1. Note it is labelled s16 which means that it is a signed 16-bit depth audio stream. These details will be important in a moment.
+Next comes the extraction:
+Update 2017-09-10: I now think it is much more straightforward to trust FFMPEG to do the right thing:
+for i in BDMV/STREAM/*.m2ts; do ffmpeg -hide_banner -i &#34;$i&#34; -map 0:1 &#34;$(basename &#34;${i%.*}&#34;).flac&#34;; done Note that I do not set the audio codec, and merely set the file extension to .flac as that is the format that I want.
+For reference, this is original command I used:
+for i in BDMV/STREAM/*.m2ts; do ffmpeg -hide_banner -i &#34;$i&#34; -map 0:1 -acodec pcm_s16le &#34;$(basename &#34;${i%.*}&#34;).wav&#34;; done The -map 0:1 refers to our address from earlier. The s16 part of -acodec pcm_s16le matches the description of the stream ffprobe gave us. We cannot use -acodec copy as ffmpeg cannot encode pcm_bluray.
+Make sure to use .wav at the end of the filename, as ffmpeg considers it important. I was originally trying to use .pcm, but all I got was this error message:
+[NULL @ 000000000283dc20] Unable to find a suitable output format for &#39;00002.pcm&#39;  If you have multiple streams, re-run this command, changing -map, -acodec and the output filename (to not overwrite your previous extractions!) as appropriate.
+Removing initial silence After I had extracted the audio, I noticed that every track had about 1.0-1.6 seconds of silence at the beginning. I had no interest in keeping this, so I used ffmpeg with the silenceremove filter:
+mkdir no-silence for i in *.wav; do ffmpeg -i &#34;$i&#34; -af silenceremove=start_periods=1:detection=peak &#34;no-silence/$(basename &#34;$i&#34;)&#34;; done start_periods=1 means remove one block of silence from the beginning of the track, a.k.a. the silence before any audio begins. I use detection=peak because I know I&rsquo;m working with audio with digital silence; if you&rsquo;re working with audio that was originally recorded from analogue, omit this option.
+Putting it all together Incidentally, this filter could have been added to the original extraction command, if I knew that I wanted it at the time. :)
+Update 2017-09-10: As above, I now think it is much more straightforward to trust FFMPEG to do the right thing:
+for i in BDMV/STREAM/*.m2ts; do ffmpeg -hide_banner -i &#34;$i&#34; -map 0:1 -af silenceremove=start_periods=1:detection=peak &#34;$(basename &#34;${i%.*}&#34;).flac&#34;; done For reference, this is original command I used:
+for i in BDMV/STREAM/*.m2ts; do ffmpeg -hide_banner -i &#34;$i&#34; -map 0:1 -acodec pcm_s16le -af silenceremove=start_periods=1:detection=peak &#34;$(basename &#34;${i%.*}&#34;).wav&#34;; done Update 2017-05-14: Changed ${i/.*} to ${i%.*} to remove file extensions, as the new way will only remove everything following the last . in the filename, not the first. Thanks to my good friend Mark Holland-Avery for the suggestion!">
   <meta property="og:description" content="I recently ripped my first Blu-Ray audio discs. Here are a few tips I&rsquo;ve discovered along the way:
 tl;dr Backup the disc using MakeMKV and extract the audio using the updated version of the command under Putting it all together.
-Ripping the discs MakeMKV can be used to rip and, if necessary, decrypt Blu-Ray audio discs. While it is in beta, it can be evaluated by using the current beta key.">
+Ripping the discs MakeMKV can be used to rip and, if necessary, decrypt Blu-Ray audio discs. While it is in beta, it can be evaluated by using the current beta key.
+I use the complete Blu-Ray backup feature so I have the raw stream files to work with.
+Extracting the audio from the video files ffmpeg can be used to extract the audio track(s) from the video streams on the Blu-Ray.
+First interrogate one of your streams using ffprobe to see how the different tracks are laid out:
+ffprobe -hide_banner BDMV/STREAM/00002.m2ts  I use -hide_banner to reduce the amount of text printed to the terminal. If you have troubles and decide to ask others for help, be sure to omit -hide_banner as the information it emits can be useful when debugging!
+Here is the output I got:
+Input #0, mpegts, from &#39;BDMV/STREAM/00002.m2ts&#39;: Duration: 00:01:47.07, start: 4200.000000, bitrate: 7133 kb/s Program 1 Stream #0:0[0x1011]: Video: h264 (High) (HDMV / 0x564D4448), yuv420p(progressive), 1920x1080 [SAR 1:1 DAR 16:9], 23.98 fps, 23.98 tbr, 90k tbn, 47.95 tbc Stream #0:1[0x1100]: Audio: pcm_bluray (HDMV / 0x564D4448), 48000 Hz, stereo, s16, 1536 kb/s  In my case I only have one audio stream to worry about at address 0:1. Note it is labelled s16 which means that it is a signed 16-bit depth audio stream. These details will be important in a moment.
+Next comes the extraction:
+Update 2017-09-10: I now think it is much more straightforward to trust FFMPEG to do the right thing:
+for i in BDMV/STREAM/*.m2ts; do ffmpeg -hide_banner -i &#34;$i&#34; -map 0:1 &#34;$(basename &#34;${i%.*}&#34;).flac&#34;; done Note that I do not set the audio codec, and merely set the file extension to .flac as that is the format that I want.
+For reference, this is original command I used:
+for i in BDMV/STREAM/*.m2ts; do ffmpeg -hide_banner -i &#34;$i&#34; -map 0:1 -acodec pcm_s16le &#34;$(basename &#34;${i%.*}&#34;).wav&#34;; done The -map 0:1 refers to our address from earlier. The s16 part of -acodec pcm_s16le matches the description of the stream ffprobe gave us. We cannot use -acodec copy as ffmpeg cannot encode pcm_bluray.
+Make sure to use .wav at the end of the filename, as ffmpeg considers it important. I was originally trying to use .pcm, but all I got was this error message:
+[NULL @ 000000000283dc20] Unable to find a suitable output format for &#39;00002.pcm&#39;  If you have multiple streams, re-run this command, changing -map, -acodec and the output filename (to not overwrite your previous extractions!) as appropriate.
+Removing initial silence After I had extracted the audio, I noticed that every track had about 1.0-1.6 seconds of silence at the beginning. I had no interest in keeping this, so I used ffmpeg with the silenceremove filter:
+mkdir no-silence for i in *.wav; do ffmpeg -i &#34;$i&#34; -af silenceremove=start_periods=1:detection=peak &#34;no-silence/$(basename &#34;$i&#34;)&#34;; done start_periods=1 means remove one block of silence from the beginning of the track, a.k.a. the silence before any audio begins. I use detection=peak because I know I&rsquo;m working with audio with digital silence; if you&rsquo;re working with audio that was originally recorded from analogue, omit this option.
+Putting it all together Incidentally, this filter could have been added to the original extraction command, if I knew that I wanted it at the time. :)
+Update 2017-09-10: As above, I now think it is much more straightforward to trust FFMPEG to do the right thing:
+for i in BDMV/STREAM/*.m2ts; do ffmpeg -hide_banner -i &#34;$i&#34; -map 0:1 -af silenceremove=start_periods=1:detection=peak &#34;$(basename &#34;${i%.*}&#34;).flac&#34;; done For reference, this is original command I used:
+for i in BDMV/STREAM/*.m2ts; do ffmpeg -hide_banner -i &#34;$i&#34; -map 0:1 -acodec pcm_s16le -af silenceremove=start_periods=1:detection=peak &#34;$(basename &#34;${i%.*}&#34;).wav&#34;; done Update 2017-05-14: Changed ${i/.*} to ${i%.*} to remove file extensions, as the new way will only remove everything following the last . in the filename, not the first. Thanks to my good friend Mark Holland-Avery for the suggestion!">
   <meta name="twitter:description" content="I recently ripped my first Blu-Ray audio discs. Here are a few tips I&rsquo;ve discovered along the way:
 tl;dr Backup the disc using MakeMKV and extract the audio using the updated version of the …">
   <meta name="author" content="Alex Palmer"/>
