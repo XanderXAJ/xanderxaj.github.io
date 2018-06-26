@@ -155,6 +155,42 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="/post/make-kdesu-use-sudo-aka-stop-asking-for-roots-password/">
+                <h2 class="post-title">Make kdesu use sudo (a.k.a. stop asking for root&#39;s password)</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on June 26, 2018
+  
+  
+  
+</span>
+
+
+              </p>
+              <div class="post-entry">
+                
+                  <p>When I tried to start <code>partitionmanager</code> (KDE Partition Manager) on Fedora 26, it would always ask for the root user&rsquo;s password, despite the fact that the root user was disabled in my setup.</p>
+
+<p>The dialog box that popped up looked like it might be <code>kdesu</code>.  <code>kdesu</code>,. a.k.a. KDE <code>su</code>, is a KDE version of <code>su</code> that allows a process to be run as another user, like root.  When I tried running <code>kdesu</code> separately it asked for root&rsquo;s password again.  So I knew the problem lay within <code>kdesu</code>, not <code>partitionmanager</code>.</p>
+
+<p><a href="https://wiki.archlinux.org/index.php/sudo#kdesu">The ever-helpful Arch wiki contained just the golden nugget I was after</a>: a command that would configure <code>kdesu</code> to use <code>sudo</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kwriteconfig5 --file kdesurc --group super-user-command --key super-user-command sudo</code></pre></div>
+<p>This fixed the problem for me, as <code>sudo</code> requests your password, not root&rsquo;s.  Whether you&rsquo;re allowed to run the command depends on the contents of the system&rsquo;s sudoers file.  Look that file up if you continue to have difficulty.</p>
+
+                
+              </div>
+
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="/post/run-apache-directory-studio-with-java-10/">
                 <h2 class="post-title">Run Apache Directory Studio With Java 10</h2>
 
@@ -615,38 +651,6 @@ yarn global add &lt;package&gt;</code></pre></div>
 </ol>
 
 <p>With any luck, your new profile will not have any chroma subsampling, leaving your colours (particularly reds) looking good, especially on menus.</p>
-
-                
-              </div>
-
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="/post/earth-defense-forces-4-1-manual/">
-                <h2 class="post-title">Earth Defense Force 4.1 manual</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on March 15, 2016
-  
-  
-  
-</span>
-
-
-              </p>
-              <div class="post-entry">
-                
-                  <p><a href="https://16b97286d5888280c8536397f6f64628f8db87a0.googledrive.com/host/0B2Sn62HabglUaVJtR2piVmJFcWs/edf4_1_output.html">Here&rsquo;s a link</a> in case you need to refer to the manual for Earth Defense Force 4.1: The Shadow of New Despair outside of the PS4:</p>
-
-<p><a href="https://16b97286d5888280c8536397f6f64628f8db87a0.googledrive.com/host/0B2Sn62HabglUaVJtR2piVmJFcWs/edf4_1_output.html">https://16b97286d5888280c8536397f6f64628f8db87a0.googledrive.com/host/0B2Sn62HabglUaVJtR2piVmJFcWs/edf4_1_output.html</a></p>
 
                 
               </div>

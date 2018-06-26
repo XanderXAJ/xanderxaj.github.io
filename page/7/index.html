@@ -170,6 +170,47 @@
           
           
             <article class="post-preview">
+              <a href="/post/strip-id3v1-tags-from-mp3s-in-linux/">
+                <h2 class="post-title">Strip ID3v1 Tags from MP3s in Linux</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on September 16, 2009
+  
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <p>For kicks I decided to remove all the ID3v1 tags from my music files today.  They were just getting in the way and served no useful purpose — since I had perfectly fine ID3v2 tags — so they just had to go.</p>
+
+<p>I cooked up a little command to help out here!  But first, we need to make sure you have the command that we&rsquo;re going to need here, id3v2.  Install it from the official repositories using your distribution&rsquo;s package manager.  For example, on Ubuntu:</p>
+
+<pre>sudo apt-get install id3v2</pre>
+
+<p>This command is used to view and manipulate ID3 tags inside of music files.  One argument in particular is of use to us, <code>-s</code>, which strips ID3v1 tags out of the specified file(s).</p>
+
+<p>With that in mind the task is just getting a list of the files that you want to remove ID3v1 tags from.  I&rsquo;ve managed to solve that and fit it all in one line — don&rsquo;t forget to replace the path with the correct one:</p>
+
+<pre>find /path/to/music -name \*.mp3 -type f -print0 | xargs -0 id3v2 -s</pre>
+
+<p>That&rsquo;s it! After testing I ran it on my whole music library and it appears to have survived just fine. Just be patient (and careful) if you&rsquo;re stripping tags out of hundreds or thousands of files.</p>
+
+<p>Let me know how it works out for you, and any improvements you may have!</p>
+
+                
+              </div>
+
+              
+            </article>
+          
+            <article class="post-preview">
               <a href="/post/forgotten-the-installation-code-for-your-sagem-digitalset-top-box/">
                 <h2 class="post-title">Forgotten the Installation Code for your Sagem Digital Set-Top Box?</h2>
                 
@@ -535,51 +576,6 @@
 <p>Take this for example.  Captured near the coast in North Devon, this rather saucy number demonstrates that creatures really will do it anywhere, even on camera.</p>
 
 <p>What impressed me most is that they <em>could fly</em> whilst back to back like this!  Crazy.</p>
-
-                
-              </div>
-
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="/post/changing-gprs-mms-and-access-point-settings-on-android/">
-                <h2 class="post-title">Changing GPRS, MMS and Access Point Settings on Android</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 10, 2009
-  
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <p>I feel kind of silly for falling foul of this, but I guess it&rsquo;s just a case of going against what you&rsquo;re used to.</p>
-
-<p>I was looking for a way to check on my MMS settings on Android.  On just about every other phone I&rsquo;ve used it&rsquo;s been a submenu of the messaging application, so that&rsquo;s where I went — except I couldn&rsquo;t find anything pertaining to access point settings!  I mean, if one phone does it one way, all phones do it that way, right?  Right?</p>
-
-<p>Wrong.  Turns out Android hides the settings in — guess what — its Settings menus!  That&rsquo;s good, because it&rsquo;s centralised.  It makes sense when you think about it.  Honest.</p>
-
-<p>Anyway, to find these elusive settings, just follow these instructions:</p>
-
-<ol>
-<li>Go to the <strong>Home screen</strong>.</li>
-<li>Press <strong>Menu</strong>.</li>
-<li>Select <strong>Settings</strong>.</li>
-<li>Select <strong>Wireless controls</strong>.</li>
-<li>Select <strong>Mobile network settings</strong>.</li>
-<li>Select <strong>Access Point Names</strong>.</li>
-<li>Finally, select an access point to edit, or press Menu to create a new APN or reset to the defaults that shipped with the phone.</li>
-</ol>
-
-<p>Have fun with changing access point settings!  Mmm.</p>
 
                 
               </div>

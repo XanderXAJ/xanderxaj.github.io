@@ -6,10 +6,22 @@
     <description>Recent content in Posts on Forged Defiance</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Sat, 23 Jun 2018 20:23:48 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 26 Jun 2018 20:58:32 +0100</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Make kdesu use sudo (a.k.a. stop asking for root&#39;s password)</title>
+      <link>/post/make-kdesu-use-sudo-aka-stop-asking-for-roots-password/</link>
+      <pubDate>Tue, 26 Jun 2018 20:58:32 +0100</pubDate>
+      
+      <guid>/post/make-kdesu-use-sudo-aka-stop-asking-for-roots-password/</guid>
+      <description>When I tried to start partitionmanager (KDE Partition Manager) on Fedora 26, it would always ask for the root user&amp;rsquo;s password, despite the fact that the root user was disabled in my setup.
+The dialog box that popped up looked like it might be kdesu. kdesu,. a.k.a. KDE su, is a KDE version of su that allows a process to be run as another user, like root. When I tried running kdesu separately it asked for root&amp;rsquo;s password again. So I knew the problem lay within kdesu, not partitionmanager.
+The ever-helpful Arch wiki contained just the golden nugget I was after: a command that would configure kdesu to use sudo:
+kwriteconfig5 --file kdesurc --group super-user-command --key super-user-command sudo This fixed the problem for me, as sudo requests your password, not root&amp;rsquo;s. Whether you&amp;rsquo;re allowed to run the command depends on the contents of the system&amp;rsquo;s sudoers file. Look that file up if you continue to have difficulty.</description>
+    </item>
     
     <item>
       <title>Run Apache Directory Studio With Java 10</title>
