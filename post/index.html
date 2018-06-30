@@ -155,6 +155,50 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="/post/escape-login-loop-in-fedora/">
+                <h2 class="post-title">Escape Login Loop in Fedora</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on June 30, 2018
+  
+  
+  
+</span>
+
+
+              </p>
+              <div class="post-entry">
+                
+                  <p>The problem seems to be caused by an update to SDDM (Simple Desktop Display Manager).</p>
+
+<p>On Fedora it can be downgraded, but first you need an internet connection.  I enabled my wireless internet connection by running:</p>
+
+<pre><code>nmcli connection up &lt;wireless-network&gt;
+</code></pre>
+
+<p>Where <code>&lt;wireless-network&gt;</code> is the SSID of my wireless network.</p>
+
+<p>I then downgraded SDDM:</p>
+
+<pre><code>sudo dnf downgrade sddm
+</code></pre>
+
+<p>Logins should then work after a reboot.</p>
+
+                
+              </div>
+
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="/post/make-kdesu-use-sudo-aka-stop-asking-for-roots-password/">
                 <h2 class="post-title">Make kdesu use sudo (a.k.a. stop asking for root&#39;s password)</h2>
 
@@ -604,53 +648,6 @@ yarn global add &lt;package&gt;</code></pre></div>
 <p>That way the requests always go to <code>http://localhost:3000/bundle.js</code>.</p>
 
 <p>This may need to be solved slightly better if I don&rsquo;t want to host the application at the root of a domain, but it&rsquo;ll work for now while I experiment!</p>
-
-                
-              </div>
-
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="/post/working-around-chroma-subsampling-over-hdmi-on-nvidia-cards/">
-                <h2 class="post-title">Working around Chroma Subsampling over HDMI on Nvidia cards</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on August 27, 2016
-  
-  
-  
-</span>
-
-
-              </p>
-              <div class="post-entry">
-                
-                  <p>If you have <a href="http://video.stackexchange.com/questions/5533/why-does-the-color-red-always-appear-pixelated-on-tv-and-videos-on-the-pc">chroma subsampling issues</a> when connecting a display via HDMI on an Nvidia card, despite all the settings appearing as if there shouldn&rsquo;t be any, try <a href="https://www.reddit.com/r/pcgaming/comments/2p3xs7/nvidia_users_using_hdmi_output_youre_most_likely/">creating a new custom profile</a> at a fractionally higher refresh rate and using that new profile.</p>
-
-<ol>
-<li>Go in to the Nvidia Control Panel.</li>
-<li>Go to <em>Display &gt; Change resolution</em></li>
-<li>Select <em>Customise&hellip;</em></li>
-<li>Check &ldquo;Enable resolutions not exposed by the display&rdquo;</li>
-<li>Select <em>Create Custom Resolution&hellip;</em></li>
-<li>Select the correct horizontal pixels, vertical pixels, colour depth and scan type.  Then enter the desired Refresh rate, and add 1 to it.
-
-<ul>
-<li>The Nvidia Control Panel does not allow you to create duplicates of profiles that exist by default.  So changing the refresh rate ensures that the new profile is not a duplicate, and means you do not need to change resolution.</li>
-</ul></li>
-<li>Test the profile, save it, exit the customise window.</li>
-<li>Select your new resolution off the list, and click <em>Apply</em>.</li>
-</ol>
-
-<p>With any luck, your new profile will not have any chroma subsampling, leaving your colours (particularly reds) looking good, especially on menus.</p>
 
                 
               </div>

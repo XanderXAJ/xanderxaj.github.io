@@ -5,29 +5,31 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>Make kdesu use sudo (a.k.a. stop asking for root&#39;s password)</title>
-  <meta property="og:title" content="Make kdesu use sudo (a.k.a. stop asking for root&#39;s password)" />
-  <meta name="twitter:title" content="Make kdesu use sudo (a.k.a. stop asking for root&#39;s password)" />
-  <meta name="description" content="When I tried to start partitionmanager (KDE Partition Manager) on Fedora 26, it would always ask for the root user&rsquo;s password, despite the fact that the root user was disabled in my setup.
-The dialog box that popped up looked like it might be kdesu. kdesu,. a.k.a. KDE su, is a KDE version of su that allows a process to be run as another user, like root. When I tried running kdesu separately it asked for root&rsquo;s password again. So I knew the problem lay within kdesu, not partitionmanager.
-The ever-helpful Arch wiki contained just the golden nugget I was after: a command that would configure kdesu to use sudo:
-kwriteconfig5 --file kdesurc --group super-user-command --key super-user-command sudo This fixed the problem for me, as sudo requests your password, not root&rsquo;s. Whether you&rsquo;re allowed to run the command depends on the contents of the system&rsquo;s sudoers file. Look that file up if you continue to have difficulty.">
-  <meta property="og:description" content="When I tried to start partitionmanager (KDE Partition Manager) on Fedora 26, it would always ask for the root user&rsquo;s password, despite the fact that the root user was disabled in my setup.
-The dialog box that popped up looked like it might be kdesu. kdesu,. a.k.a. KDE su, is a KDE version of su that allows a process to be run as another user, like root. When I tried running kdesu separately it asked for root&rsquo;s password again. So I knew the problem lay within kdesu, not partitionmanager.
-The ever-helpful Arch wiki contained just the golden nugget I was after: a command that would configure kdesu to use sudo:
-kwriteconfig5 --file kdesurc --group super-user-command --key super-user-command sudo This fixed the problem for me, as sudo requests your password, not root&rsquo;s. Whether you&rsquo;re allowed to run the command depends on the contents of the system&rsquo;s sudoers file. Look that file up if you continue to have difficulty.">
-  <meta name="twitter:description" content="When I tried to start partitionmanager (KDE Partition Manager) on Fedora 26, it would always ask for the root user&rsquo;s password, despite the fact that the root user was disabled in my setup.
-The …">
+  <title>Escape Login Loop in Fedora</title>
+  <meta property="og:title" content="Escape Login Loop in Fedora" />
+  <meta name="twitter:title" content="Escape Login Loop in Fedora" />
+  <meta name="description" content="The problem seems to be caused by an update to SDDM (Simple Desktop Display Manager).
+On Fedora it can be downgraded, but first you need an internet connection. I enabled my wireless internet connection by running:
+nmcli connection up &lt;wireless-network&gt;  Where &lt;wireless-network&gt; is the SSID of my wireless network.
+I then downgraded SDDM:
+sudo dnf downgrade sddm  Logins should then work after a reboot.">
+  <meta property="og:description" content="The problem seems to be caused by an update to SDDM (Simple Desktop Display Manager).
+On Fedora it can be downgraded, but first you need an internet connection. I enabled my wireless internet connection by running:
+nmcli connection up &lt;wireless-network&gt;  Where &lt;wireless-network&gt; is the SSID of my wireless network.
+I then downgraded SDDM:
+sudo dnf downgrade sddm  Logins should then work after a reboot.">
+  <meta name="twitter:description" content="The problem seems to be caused by an update to SDDM (Simple Desktop Display Manager).
+On Fedora it can be downgraded, but first you need an internet connection. I enabled my wireless internet …">
   <meta name="author" content="Alex Palmer"/>
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@XanderXAJ" />
   <meta name="twitter:creator" content="@XanderXAJ" />
-  <meta property="og:url" content="/post/make-kdesu-use-sudo-aka-stop-asking-for-roots-password/" />
+  <meta property="og:url" content="/post/escape-login-loop-in-fedora/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Forged Defiance" />
 
   <meta name="generator" content="Hugo 0.41" />
-  <link rel="canonical" href="/post/make-kdesu-use-sudo-aka-stop-asking-for-roots-password/" />
+  <link rel="canonical" href="/post/escape-login-loop-in-fedora/" />
   <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Forged Defiance">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -159,13 +161,13 @@ The …">
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
-              <h1>Make kdesu use sudo (a.k.a. stop asking for root&#39;s password)</h1>
+              <h1>Escape Login Loop in Fedora</h1>
                 
                 
                   <span class="post-meta">
   
   
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on June 26, 2018
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on June 30, 2018
   
   
   
@@ -186,13 +188,21 @@ The …">
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <p>When I tried to start <code>partitionmanager</code> (KDE Partition Manager) on Fedora 26, it would always ask for the root user&rsquo;s password, despite the fact that the root user was disabled in my setup.</p>
+        <p>The problem seems to be caused by an update to SDDM (Simple Desktop Display Manager).</p>
 
-<p>The dialog box that popped up looked like it might be <code>kdesu</code>.  <code>kdesu</code>,. a.k.a. KDE <code>su</code>, is a KDE version of <code>su</code> that allows a process to be run as another user, like root.  When I tried running <code>kdesu</code> separately it asked for root&rsquo;s password again.  So I knew the problem lay within <code>kdesu</code>, not <code>partitionmanager</code>.</p>
+<p>On Fedora it can be downgraded, but first you need an internet connection.  I enabled my wireless internet connection by running:</p>
 
-<p><a href="https://wiki.archlinux.org/index.php/sudo#kdesu">The ever-helpful Arch wiki contained just the golden nugget I was after</a>: a command that would configure <code>kdesu</code> to use <code>sudo</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kwriteconfig5 --file kdesurc --group super-user-command --key super-user-command sudo</code></pre></div>
-<p>This fixed the problem for me, as <code>sudo</code> requests your password, not root&rsquo;s.  Whether you&rsquo;re allowed to run the command depends on the contents of the system&rsquo;s sudoers file.  Look that file up if you continue to have difficulty.</p>
+<pre><code>nmcli connection up &lt;wireless-network&gt;
+</code></pre>
+
+<p>Where <code>&lt;wireless-network&gt;</code> is the SSID of my wireless network.</p>
+
+<p>I then downgraded SDDM:</p>
+
+<pre><code>sudo dnf downgrade sddm
+</code></pre>
+
+<p>Logins should then work after a reboot.</p>
 
 
         
@@ -204,13 +214,9 @@ The …">
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="/post/run-apache-directory-studio-with-java-10/" data-toggle="tooltip" data-placement="top" title="Run Apache Directory Studio With Java 10">&larr; Previous Post</a>
+              <a href="/post/make-kdesu-use-sudo-aka-stop-asking-for-roots-password/" data-toggle="tooltip" data-placement="top" title="Make kdesu use sudo (a.k.a. stop asking for root&#39;s password)">&larr; Previous Post</a>
             </li>
           
-          
-            <li class="next">
-              <a href="/post/escape-login-loop-in-fedora/" data-toggle="tooltip" data-placement="top" title="Escape Login Loop in Fedora">Next Post &rarr;</a>
-            </li>
           
         </ul>
       

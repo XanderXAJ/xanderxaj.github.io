@@ -155,6 +155,52 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="/post/making-ringtones-loop-on-android/">
+                <h2 class="post-title">Making Ringtones Loop on Android</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on August 25, 2010
+  
+  
+  
+</span>
+
+
+              </p>
+              <div class="post-entry">
+                
+                  <p><strong>Update 2012-01-06:</strong> ICS appears to have a bug where the end of the file is chopped off, so ringtones do not loop properly. If I find or hear a solution I&rsquo;ll update again!</p>
+
+<p><strong>Update 2010-11-09:</strong> Added clarification on why I suggest having a short (sub-10 second) ringtone. You want it to loop, right? =P</p>
+
+<p>Following on from my <a href="http://xanderx.com/2009/09/21/use-ogg-vorbis-for-lag-free-ringtones-on-android/">previous</a> <a href="http://xanderx.com/2009/11/08/ogg-vorbis-encoder-for-windows/">articles</a> on ringtones, I&rsquo;ve finally worked out how to make ringtones loop seamlessly in Android.</p>
+
+<p>My problem before was that, despite the fact I made an OGG that <em>should</em> loop properly, when played back on Android, it didn&rsquo;t.  Turns out, there&rsquo;s a little piece of metadata you need to add to the tags in the ringtone to make it loop properly.</p>
+
+<p>Using your favourite tag editor (I used <a href="http://www.foobar2000.org/">foobar2000 on Windows</a>), <strong>add a tag/field called &ldquo;ANDROID_LOOP&rdquo;</strong>, and <strong>set it to &ldquo;true&rdquo;</strong>.</p>
+
+<p>Please note that the file itself will also need to loop properly for things to work out.  That means that if you&rsquo;re basing your ringtone on a longer piece of music, it needs to be trimmed down to 10 or fewer seconds <em>and</em> trimmed in such a way that the audio sounds like it goes on forever when played from beginning to end repeatedly.</p>
+
+<p>The file doesn&rsquo;t <em>have</em> to be less than 10 seconds, but I figure you&rsquo;re reading this because you want to make a file that loops!  Most carriers will stop ringing your phone after 15 to 30 seconds and pass the call to voicemail.  This depends on the carrier, your preferences (if you can change how long voicemail waits at all), and whether or not you have voicemail enabled!</p>
+
+<p>Also, you need to use a format that doesn&rsquo;t add silence to the end of the track. OGG (<a href="http://xanderx.com/2009/09/21/use-ogg-vorbis-for-lag-free-ringtones-on-android/">which I recommend</a>), FLAC and AAC should all work fine. I do not know if Android reads LAME&rsquo;s metadata with allows MP3s encoded by it to loop. MP3s encoded with other encoders will probably add silence and as such will not loop perfectly.</p>
+
+<p>Have fun with this!</p>
+
+                
+              </div>
+
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="/post/team-orders-in-f1-theyre-here-to-stay-get-over-it/">
                 <h2 class="post-title">Team orders in F1? They&#39;re here to stay–get over it!</h2>
 
@@ -765,56 +811,6 @@
 <p>(I&rsquo;m typing this post with 0% battery left!  What I crazy daredevil I am.)</p>
 
 <p><strong>Update 19:58:</strong> Forgot to mention that Do Nothing will disappear if deselected.  Fixed.</p>
-
-                
-              </div>
-
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="/post/introducing-bitbutcher-an-open-source-nds-rom-trimmer/">
-                <h2 class="post-title">Introducing BitButcher — An Open-Source NDS ROM Trimmer</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on January 27, 2010
-  
-  
-  
-</span>
-
-
-              </p>
-              <div class="post-entry">
-                
-                  <p>I&rsquo;ve always wanted to make a software headline like that.  Eee!</p>
-
-<p>Welcome to BitButcher, a small program designed to do one thing and one thing well: trim Nintendo DS ROMs.</p>
-
-<p>I got a bit fed up of the ones already out there, most because they were either closed-source or they had bad <acronym title="Graphical User Interface">GUI</acronym> design combined with clashing backgrounds.  Search as I may, I couldn&rsquo;t find anything that fit my demands.</p>
-
-<p>So I did what any self-respecting programmer would do — code my own!</p>
-
-<p>This program is rather simple, but it&rsquo;s designed to be just that.  Oh, and fast.  Very fast.</p>
-
-<p>Trimming the excess fat off of DS ROMs isn&rsquo;t exactly a hardest task in the world, but I figured that people would still be interested in what I have made.  As such, I have made the code entirely open-source under GPLv3.</p>
-
-<p>It&rsquo;s coded in Java, meaning I get cross-platform support for free!  It is however command-line only, so don&rsquo;t expect any amazing <acronym title="Graphical User Interface">GUI</acronym>.</p>
-
-<p>If you want to get hold of the program, or would like to help contribute to a better trimmer, then just head over to GitHub:</p>
-
-<p><a href="http://github.com/XanderXAJ/BitButcher">http://github.com/XanderXAJ/BitButcher</a></p>
-
-<p>Any help improving the program would be welcome and awesome.  In addition, you can also report any issues you have at GitHub, on the Issues tab.</p>
-
-<p>That&rsquo;s it for this time — hope you manage to shave off some bytes!</p>
 
                 
               </div>

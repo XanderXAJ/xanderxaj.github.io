@@ -155,6 +155,53 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="/post/working-around-chroma-subsampling-over-hdmi-on-nvidia-cards/">
+                <h2 class="post-title">Working around Chroma Subsampling over HDMI on Nvidia cards</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on August 27, 2016
+  
+  
+  
+</span>
+
+
+              </p>
+              <div class="post-entry">
+                
+                  <p>If you have <a href="http://video.stackexchange.com/questions/5533/why-does-the-color-red-always-appear-pixelated-on-tv-and-videos-on-the-pc">chroma subsampling issues</a> when connecting a display via HDMI on an Nvidia card, despite all the settings appearing as if there shouldn&rsquo;t be any, try <a href="https://www.reddit.com/r/pcgaming/comments/2p3xs7/nvidia_users_using_hdmi_output_youre_most_likely/">creating a new custom profile</a> at a fractionally higher refresh rate and using that new profile.</p>
+
+<ol>
+<li>Go in to the Nvidia Control Panel.</li>
+<li>Go to <em>Display &gt; Change resolution</em></li>
+<li>Select <em>Customise&hellip;</em></li>
+<li>Check &ldquo;Enable resolutions not exposed by the display&rdquo;</li>
+<li>Select <em>Create Custom Resolution&hellip;</em></li>
+<li>Select the correct horizontal pixels, vertical pixels, colour depth and scan type.  Then enter the desired Refresh rate, and add 1 to it.
+
+<ul>
+<li>The Nvidia Control Panel does not allow you to create duplicates of profiles that exist by default.  So changing the refresh rate ensures that the new profile is not a duplicate, and means you do not need to change resolution.</li>
+</ul></li>
+<li>Test the profile, save it, exit the customise window.</li>
+<li>Select your new resolution off the list, and click <em>Apply</em>.</li>
+</ol>
+
+<p>With any luck, your new profile will not have any chroma subsampling, leaving your colours (particularly reds) looking good, especially on menus.</p>
+
+                
+              </div>
+
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="/post/earth-defense-forces-4-1-manual/">
                 <h2 class="post-title">Earth Defense Force 4.1 manual</h2>
 
@@ -621,125 +668,6 @@ curl <span style="color:#e6db74">&#34;https://freedns.afraid.org/dynamic/update.
 <p>It may or may not be possible to mount the Windows website directory on to the docker machine in order to allow rebuilds on file modification, but I suspect that may turn out to be difficult, complicated or fragile, and the method described above works for me.  If I change my mind, I&rsquo;ll inevitably describe what I do!</p>
 
 <p>Hopefully this guide helps you out, as well as future me!</p>
-
-                
-              </div>
-
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="/post/deploying-jekyll-website-on-git-commit/">
-                <h2 class="post-title">Deploying Jekyll website on git commit</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on November 8, 2015
-  
-  
-  
-</span>
-
-
-              </p>
-              <div class="post-entry">
-                
-                  <p>One reason for [migrating to static site generation][migrate-to-jekyll] is that the site becomes more straightforward to keep in version control systems such as git.  And I do like version control; I naturally ran <code>git init</code> before I ran <code>jekyll new</code>!</p>
-
-<p>In my workflow, once I have made and committed changes locally, I push the changes remotely.  But now I need to build and deploy the new version of the site.  What if I could get that to happen automatically?</p>
-
-<p>To do this, I set up my web server to accept git commands; this is a topic unto itself which I might write about some time.</p>
-
-<p>I then create a bare repo:</p>
-
-<pre><code>  git init --bare blog.git
-</code></pre>
-
-<p>After setting permissions as appropriate, I can now push my git repo to the web server:</p>
-
-<pre><code>  git remote add origin https://user@your.website.tld/git/blog.git
-  git push -u origin master
-</code></pre>
-
-<p>I then modified <a href="http://jekyllrb.com/docs/deployment-methods/#git-post-receive-hook">an example git-hook</a> I found on the Jekyll website to be more robust and meet my needs.  There are a few things to take note of here:</p>
-
-<ul>
-<li>I switched from using the <code>git-receive</code> hook as per Jekyll&rsquo;s recommendation to <code>post-receive</code>.  This is because the level of info <code>git-receive</code>, ahem, receives seems a bit overkill &mdash; <code>post-update</code> provides the names of the modified branches, and that&rsquo;s all we need.</li>
-<li><code>DEPLOY_REF_REGEX</code> is a regex that matches git-refs, such as branches.  The value in my script means that it&rsquo;ll only deploy the website when changes are pushed to <code>master</code>.  This means you are free to experiment on non-<code>master</code> branches.  I haven&rsquo;t gone so far as to deploy different branches different places!</li>
-<li><code>GIT_REPO</code> is the path to your site&rsquo;s git repo.  Ensure it can be read by the webserver.</li>
-<li><code>PUBLIC_WWW</code> is where the website needs to be deployed to be visible on the web.  Ensure it is writable by the webserver.</li>
-</ul>
-
-<p>To use this hook, create a file called <code>post-update</code> in your <em>remote bare repo&rsquo;s</em> <code>hooks</code> directory.  Ensure it is executable by your webserver!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  <span style="color:#75715e">#!/bin/bash
-</span><span style="color:#75715e"></span>  <span style="color:#75715e"># Builds and deploys blog when new commits are pushed to the specified branches (default master).
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">#
-</span><span style="color:#75715e"></span>  <span style="color:#75715e"># Despite the Jekyll site recommending to use the post-receive hook, we do not
-</span><span style="color:#75715e"></span>  <span style="color:#75715e"># need the level of information that post-receive gets.  post-update receives
-</span><span style="color:#75715e"></span>  <span style="color:#75715e"># each ref that was updated as an argument, and so is sufficient for this
-</span><span style="color:#75715e"></span>  <span style="color:#75715e"># script&#39;s needs.
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">#
-</span><span style="color:#75715e"></span>  <span style="color:#75715e"># The script also adds the commit ID of the deployed commit to the site, so you are able
-</span><span style="color:#75715e"></span>  <span style="color:#75715e"># to tell exactly what is live by visiting /deployed_commit.
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">#
-</span><span style="color:#75715e"></span>  <span style="color:#75715e"># Originally taken from: http://jekyllrb.com/docs/deployment-methods/#git-post-receive-hook
-</span><span style="color:#75715e"></span>  <span style="color:#75715e">#
-</span><span style="color:#75715e"></span>
-  DEPLOY_REF_REGEX<span style="color:#f92672">=</span>refs/heads/master
-
-  GIT_REPO<span style="color:#f92672">=</span>/shared/code/git/blog.git
-  PUBLIC_WWW<span style="color:#f92672">=</span>/var/www/blog
-
-  DEPLOY<span style="color:#f92672">=</span>
-  <span style="color:#66d9ef">for</span> ref in <span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">&#34;</span>; <span style="color:#66d9ef">do</span>
-  	<span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> $ref <span style="color:#f92672">=</span>~ $DEPLOY_REF_REGEX <span style="color:#f92672">]]</span>; <span style="color:#66d9ef">then</span>
-  		DEPLOY<span style="color:#f92672">=</span>true
-  		break
-  	<span style="color:#66d9ef">fi</span>
-  <span style="color:#66d9ef">done</span>
-
-  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $DEPLOY <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-  	TMP_GIT_CLONE<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>mktemp -d<span style="color:#66d9ef">)</span>
-  	git clone <span style="color:#e6db74">&#34;</span>$GIT_REPO<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;</span>$TMP_GIT_CLONE<span style="color:#e6db74">&#34;</span>
-  	echo <span style="color:#66d9ef">$(</span>GIT_DIR<span style="color:#f92672">=</span>.git git -C <span style="color:#e6db74">&#34;</span>$TMP_GIT_CLONE<span style="color:#e6db74">&#34;</span> rev-parse HEAD<span style="color:#66d9ef">)</span> &gt; <span style="color:#e6db74">&#34;</span>$TMP_GIT_CLONE<span style="color:#e6db74">/deployed_commit&#34;</span>
-  	jekyll build -s <span style="color:#e6db74">&#34;</span>$TMP_GIT_CLONE<span style="color:#e6db74">&#34;</span> -d <span style="color:#e6db74">&#34;</span>$PUBLIC_WWW<span style="color:#e6db74">&#34;</span>
-  	rm -Rf <span style="color:#e6db74">&#34;</span>$TMP_GIT_CLONE<span style="color:#e6db74">&#34;</span>
-  <span style="color:#66d9ef">else</span>
-  	echo <span style="color:#e6db74">&#34;Updated refs did not match; not deploying.&#34;</span>
-  <span style="color:#66d9ef">fi</span>
-
-  exit</code></pre></div>
-<p>You&rsquo;ll get output like the following:</p>
-
-<pre><code>  $ git push
-  Counting objects: 4, done.
-  Delta compression using up to 4 threads.
-  Compressing objects: 100% (4/4), done.
-  Writing objects: 100% (4/4), 3.15 KiB | 0 bytes/s, done.
-  Total 4 (delta 2), reused 0 (delta 0)
-  remote: Cloning into '/tmp/tmp.TkcxSnfVnb'...
-  remote: done.
-  remote: Configuration file: /tmp/tmp.TkcxSnfVnb/_config.yml
-  remote:             Source: /tmp/tmp.TkcxSnfVnb
-  remote:        Destination: /var/www/blog
-  remote:       Generating...
-  remote:                     done.
-  remote:  Auto-regeneration: disabled. Use --watch to enable.
-  To https://user@your.website.tld/git/blog.git
-     df05e56..ce42b80  master -&gt; master
-</code></pre>
-
-<p>If the deploy succeeds, then website should be available on the internet and you are done!  If the deploy fails, the push will be cancelled and you&rsquo;ll need to investigate why that might be.  I would first check the permissions on all of the directories mentioned above.</p>
-
-<p>Finally, as a little bonus, the script creates a <code>deployed_commit</code> file which contains the commit SHA of the commit the build was based on; useful if something goes wrong or you just want to check what you last deployed.  You can even check my site&rsquo;s deployed commit (update: now defunct)!</p>
-
-<p>[migrate-to-jekyll]: {% post_url 2015-10-04-migrating-from-wordpress-to-jekyll %}</p>
 
                 
               </div>

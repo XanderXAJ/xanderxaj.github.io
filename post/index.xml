@@ -6,10 +6,23 @@
     <description>Recent content in Posts on Forged Defiance</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 26 Jun 2018 20:58:32 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 30 Jun 2018 17:03:46 +0100</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Escape Login Loop in Fedora</title>
+      <link>/post/escape-login-loop-in-fedora/</link>
+      <pubDate>Sat, 30 Jun 2018 17:03:46 +0100</pubDate>
+      
+      <guid>/post/escape-login-loop-in-fedora/</guid>
+      <description>The problem seems to be caused by an update to SDDM (Simple Desktop Display Manager).
+On Fedora it can be downgraded, but first you need an internet connection. I enabled my wireless internet connection by running:
+nmcli connection up &amp;lt;wireless-network&amp;gt;  Where &amp;lt;wireless-network&amp;gt; is the SSID of my wireless network.
+I then downgraded SDDM:
+sudo dnf downgrade sddm  Logins should then work after a reboot.</description>
+    </item>
     
     <item>
       <title>Make kdesu use sudo (a.k.a. stop asking for root&#39;s password)</title>
