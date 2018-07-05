@@ -6,10 +6,25 @@
     <description>Recent content on Forged Defiance</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Sat, 30 Jun 2018 17:03:46 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 05 Jul 2018 16:56:06 +0100</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ignore a Package Update When Using Fedora and KDE</title>
+      <link>/post/ignore-a-package-update-when-using-fedora-and-kde/</link>
+      <pubDate>Thu, 05 Jul 2018 16:56:06 +0100</pubDate>
+      
+      <guid>/post/ignore-a-package-update-when-using-fedora-and-kde/</guid>
+      <description>Recently I wrote about Escaping a login loop when using Fedora. Well, once I had downgraded the package, I wanted to ensure that it would not get automatically updated again!
+To ignore the package when performing updated via dnf, add an exclude=&amp;lt;package&amp;gt; line to /etc/dnf/dnf.conf. For example:
+[main] gpgcheck=1 installonly_limit=3 clean_requirements_on_remove=True exclude=sddm  dnf no longer requests me to update SDDM.
+Unfortunately, the built-in updater for KDE (which I blieve is PackageKit) does not honour the settings in dnf.conf. It will, however, honour exclude= lines in the repo files in /etc/yum.repos.d.
+Since I wanted to block an update to SDDM, I edited /etc/yum.repos.d/fedora-updates.repo and added an exclude=sddm directive to the [updates] block:
+[updates] name=Fedora $releasever - $basearch - Updates failovermethod=priority #baseurl=http://download.fedoraproject.org/pub/fedora/linux/updates/$releasever/$basearch/ metalink=https://mirrors.fedoraproject.org/metalink?repo=updates-released-f$releasever&amp;amp;arch=$basearch enabled=1 repo_gpgcheck=0 type=rpm gpgcheck=1 metadata_expire=6h gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-$basearch skip_if_unavailable=False exclude=sddm  After a while, KDE stopped pestering me to install the SDDM update.
+I technically probably only have to add the exclude to the repo files, but this is the process that I went through. If you&amp;rsquo;re feeling adventurous, you may try only updating the repo files.</description>
+    </item>
     
     <item>
       <title>Escape Login Loop in Fedora</title>

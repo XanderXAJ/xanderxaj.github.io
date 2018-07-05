@@ -16,7 +16,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Forged Defiance" />
 
-  <meta name="generator" content="Hugo 0.41" />
+  <meta name="generator" content="Hugo 0.42.2" />
   <link rel="canonical" href="/post/" />
   <link rel="alternate" href="/post/index.xml" type="application/rss+xml" title="Forged Defiance">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
@@ -153,6 +153,40 @@
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         
         <div class="posts-list">
+          
+            <article class="post-preview">
+              <a href="/post/ive-been-expecting-you/">
+                <h2 class="post-title">I&#39;ve Been Expecting You…</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on October 5, 2010
+  
+  
+  
+</span>
+
+
+              </p>
+              <div class="post-entry">
+                
+                  <p>I&rsquo;m finally getting around to sorting out many of the photos I&rsquo;ve taken over the last year, partly thanks to getting a new laptop, but probably mostly because I&rsquo;m motivating myself to do so!</p>
+
+<p>This guy likes nothing more than a bit of bread on the Thames.  In fact, the expression tells me he almost expects it…</p>
+
+<p>I&rsquo;ve been trying out a few post-processing techniques, so there have been some tweaks to contrast, balance and saturation, plus a bit of noise reduction has been applied.</p>
+
+                
+              </div>
+
+              
+
+            </article>
           
             <article class="post-preview">
               <a href="/post/making-ringtones-loop-on-android/">
@@ -757,68 +791,6 @@
 
             </article>
           
-            <article class="post-preview">
-              <a href="/post/gnome-power-manager-hides-do-nothing/">
-                <h2 class="post-title">Gnome Power Manager Hides Do Nothing</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on February 16, 2010
-  
-  
-  
-</span>
-
-
-              </p>
-              <div class="post-entry">
-                
-                  <p>Found <a href="http://www.rebelzero.com/fixes/karmic-gnome-power-manager-hides-do-nothing-from-the-gui/223">this rather handy post</a> that tells you what to do in newer versions of Gnome Power Manager, which for some reason hide the Do Nothing options as default.</p>
-
-<p>Personally I find it irritating as the battery readout in all the distros of Linux I&rsquo;ve used on my Eee report the battery at 0% over half an hour before the battery is actually dead.  No amount of conditioning or software modification seems to fix it, so I&rsquo;m living with it.</p>
-
-<p>However, with the newer versions of Gnome Power Manager, Do Nothing is hidden!  So my machine would go to sleep, despite the fact I know there&rsquo;s at least 30 more minutes of battery life going to waste.  So annoying!</p>
-
-<p>To fix it (albeit temporarily), you need to edit the gconf values for the settings you&rsquo;re interested in to &ldquo;nothing&rdquo;.</p>
-
-<p>The easiest way to do this is to use an application like <em>gconf-editor</em> and edit the values through that:</p>
-
-<ol>
-<li>Run <em>gconf-editor</em>.
-
-<ul>
-<li>If you don&rsquo;t have it installed, go to your favourite package manager and install it through that.</li>
-</ul></li>
-<li>Using the column on the left side, navigate to <strong>apps &gt; gnome-power-manager</strong>.</li>
-<li>In my case, I wanted to change the critical battery behaviour to Do Nothing.  So I navigated in to <strong>actions</strong> and set the value of <strong>critical_battery</strong> to <strong>nothing</strong>.
-
-<ul>
-<li>If you want to change, say, the behaviour of a power button press, navigate to **buttons **instead of <strong>actions</strong>.</li>
-<li>Repeat this step for each value you want to change.</li>
-</ul></li>
-<li>Close <em>gconf-editor</em>.</li>
-</ol>
-
-<p>That&rsquo;s it!  One thing you need to keep in mind is that if you later change the setting away from Do Nothing to something else, the Do Nothing option will disappear.</p>
-
-<p>Hope this works for you as it has me.</p>
-
-<p>(I&rsquo;m typing this post with 0% battery left!  What I crazy daredevil I am.)</p>
-
-<p><strong>Update 19:58:</strong> Forgot to mention that Do Nothing will disappear if deselected.  Fixed.</p>
-
-                
-              </div>
-
-              
-
-            </article>
-          
         </div>
         
           <ul class="pager main-pager">
@@ -903,7 +875,7 @@
         </p>
         
         <p class="credits theme-by text-muted">
-          <a href="http://gohugo.io">Hugo v0.41</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          <a href="http://gohugo.io">Hugo v0.42.2</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
           
         </p>
       </div>

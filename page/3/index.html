@@ -16,7 +16,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Forged Defiance" />
 
-  <meta name="generator" content="Hugo 0.41" />
+  <meta name="generator" content="Hugo 0.42.2" />
   <link rel="canonical" href="/" />
   <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Forged Defiance">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
@@ -168,6 +168,138 @@
 
         <div class="posts-list">
           
+          
+            <article class="post-preview">
+              <a href="/post/building-and-testing-a-jekyll-website-on-windows-with-docker/">
+                <h2 class="post-title">Building and Testing a Jekyll website with Docker on Windows</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on November 8, 2015
+  
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  
+
+<p>I&rsquo;ve recently talked about [how I&rsquo;ve changed my website to be created with Jekyll][migrate-to-jekyll].  One of the big reasons was to simplify how the site is built and run.</p>
+
+<p>Well, if it&rsquo;s so simple now, then I should be able to modify it on the go within Windows, right?  I&rsquo;ve recently been using an openSUSE VM to modify the site, but figured I could do one better and operate (mostly) natively.  This article describes my solution.</p>
+
+<p>It is assumed that you already have a Jekyll site to work with.</p>
+
+<p>Much of this will also work for anyone using the Linux or Mac OS X versions of Docker Toolbox, but I&rsquo;m approaching with a view to running this on Windows.</p>
+
+<p>[migrate-to-jekyll]: {% post_url 2015-10-04-migrating-from-wordpress-to-jekyll %}</p>
+
+<h1 id="install-docker-toolbox">Install Docker Toolbox</h1>
+
+<p><a href="https://www.docker.com/docker-toolbox">Install Docker Toolbox</a>.  If you&rsquo;re not familiar with Docker or Docker Toolbox, I highly recommend you <a href="http://docs.docker.com/windows/started/">go through their tutorials</a>.</p>
+
+<p>One note: If you already have VirtualBox installed or prefer to install it yourself, uncheck the VirtualBox option in the installer.</p>
+
+<h1 id="create-a-docker-machine">Create a Docker Machine</h1>
+
+<p>Docker Toolbox creates a couple of shortcuts for you.  If you run <em>Docker Quickstart Terminal</em>, a machine called <code>default</code> will be automatically created for you.</p>
+
+<p>Alternatively, you can create one with your own name from the command line:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">  docker-machine create --driver virtualbox dev</code></pre></div>
+<p>As you&rsquo;ll see later on, I decided to go the route of managing this myself with my build script.</p>
+
+<h1 id="create-dockerfile">Create Dockerfile</h1>
+
+<p>To run Jekyll in Docker, you need to build a Docker image!</p>
+
+<p>It struck me as simplest to build my own:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Dockerfile" data-lang="Dockerfile">  FROM debian:latest<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  # Install jekyll dependencies<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  RUN apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get -y install <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  	gcc <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  	make <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  	nodejs <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  	python <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  	ruby <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  	ruby-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  	<span style="color:#f92672">&amp;&amp;</span> gem install bundler<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  # Install site dependencies<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  WORKDIR /site<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  COPY Gemfile Gemfile.lock /site/<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  RUN bundle install<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  # Copy site files<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  COPY . /site/<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  CMD <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;bundle&#34;</span>, <span style="color:#e6db74">&#34;exec&#34;</span>, <span style="color:#e6db74">&#34;jekyll&#34;</span>, <span style="color:#e6db74">&#34;serve&#34;</span>, <span style="color:#e6db74">&#34;--port=4000&#34;</span>, <span style="color:#e6db74">&#34;--host=0.0.0.0&#34;</span><span style="color:#f92672">]</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>  EXPOSE <span style="color:#ae81ff">4000</span></code></pre></div>
+<p>I chose port 4000 as it isn&rsquo;t either 8000 or 8080, which can be commonly used by other applications.</p>
+
+<p>You&rsquo;ll note that <code>Gemfile</code> and <code>Gemfile.lock</code> are copied first.  Docker creates a layer out of each instruction (e.g. <code>RUN</code>, <code>COPY</code>) in the <code>Dockerfile</code>, and caches them.  This means a layer only needs to be rebuilt if it or one of its parents has changed.  These copied files are used to install your website&rsquo;s dependencies, and since this is generally quite a slow operation compared to actually building the site, I opt to get the install done first and utilise Docker&rsquo;s layer cache.</p>
+
+<h1 id="create-dockerignore-and-why-it-s-needed">Create .dockerignore (and why it&rsquo;s needed)</h1>
+
+<p>Docker builds work by archiving and sending the <em>entire</em> contents of the current working directly to the Docker daemon &mdash; the build does not happen on your local machine, but entirely on the remote machine.</p>
+
+<p>This means that if you have many temp, cache or large files that are not needed for the build, they will needlessly slow the build down.  to counter this, a <code>.dockerfile</code> can be created to tell the local Docker client which files the remote Docker daemon will not need.</p>
+
+<p><code>.dockerignore</code> works very similar to <code>.gitignore</code>.  I&rsquo;ll make a very simple one that ignores <code>_site</code>, just in case a build has happened locally:</p>
+
+<pre><code>  _site
+</code></pre>
+
+<h1 id="create-powershell-build-script">Create PowerShell build script</h1>
+
+<p>I created a build script, <code>build.ps1</code>, at the root of my website.  In this build script I create a Docker machine (if it doesn&rsquo;t exist) or start it (if it does), configure Docker to communicate with it, print out instructions on how to see the website, and finally build and serve it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">  <span style="color:#75715e"># Site building script for Powershell and Docker Toolbox</span>
+  <span style="color:#75715e"># Set the name of the machine</span>
+  set machine dev
+
+  <span style="color:#75715e"># Set up and/or start the machine -- note that create also starts the machine</span>
+  docker-machine create --driver virtualbox $machine
+  docker-machine start $machine
+
+  <span style="color:#75715e"># Set up Docker&#39;s env vars so it can connect</span>
+  docker-machine env --shell=powershell $machine | Invoke-Expression
+
+  <span style="color:#75715e"># We now need a means to connect to the website once it runs.  there are two methods:</span>
+  <span style="color:#75715e"># Method 1: Enable forwarding the port -- with thanks to http://stackoverflow.com/a/32175164</span>
+  <span style="color:#75715e">#   Only problem with this method is that it needs VBoxManage to be a part of the PATH -- this is a manual change.</span>
+  <span style="color:#75715e">#   Example address: http://localhost:4000/</span>
+  <span style="color:#75715e">#VBoxManage modifyvm $machine --natpf1 &#34;jekyll,tcp,127.0.0.1,4000,,4000&#34;</span>
+  <span style="color:#75715e"># Method 2: Connect to the docker machine&#39;s IP directly without port forwarding</span>
+  <span style="color:#75715e">#   Example address: http://192.168.99.100:4000/</span>
+  docker-machine ip $machine | set ip
+  echo <span style="color:#e6db74">&#34;Building website; will be available in a few moments. Press Ctrl+C when done.&#34;</span>
+  echo <span style="color:#e6db74">&#34;Connect to: http://${ip}:4000&#34;</span>
+
+  <span style="color:#75715e"># Build and serve the website</span>
+  (docker build -t blog .) <span style="color:#f92672">-and</span> (docker run -it --rm --publish=4000<span style="color:#960050;background-color:#1e0010">:</span>4000 blog)</code></pre></div>
+<p>Note: The very last command, with the <code>-and</code> in the middle, will absorb all <code>stdout</code>, meaning that things will look very quiet.  Rest assured that if the script doe <em>not</em> end, then things are working fine.</p>
+
+<p>If you update the site and want to see what the changes look like, or are simply finished, press <code>Ctrl+C</code> and then re-run the build script as desired.</p>
+
+<h1 id="profit">Profit</h1>
+
+<p>While not certainly not as easy to modify as when I&rsquo;m on a Linux machine, this is certainly a big improvement on local testing than trying to run a Wordpress stack on Windows!  I&rsquo;ve also learnt a lot about <code>docker-machine</code>.</p>
+
+<p>It may or may not be possible to mount the Windows website directory on to the docker machine in order to allow rebuilds on file modification, but I suspect that may turn out to be difficult, complicated or fragile, and the method described above works for me.  If I change my mind, I&rsquo;ll inevitably describe what I do!</p>
+
+<p>Hopefully this guide helps you out, as well as future me!</p>
+
+                
+              </div>
+
+              
+            </article>
           
             <article class="post-preview">
               <a href="/post/deploying-jekyll-website-on-git-commit/">
@@ -700,47 +832,6 @@ command: goto_symbol_in_project
               
             </article>
           
-            <article class="post-preview">
-              <a href="/post/fixing-gran-turismo-5s-slow-loading-times/">
-                <h2 class="post-title">Fixing Gran Turismo 5&#39;s slow loading times</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on June 2, 2013
-  
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <p>Just this morning Gran Turismo 5 just out of nowhere started loading really slowly.</p>
-
-<p>I fixed this by signing out of PSN. It&rsquo;s not ideal if you want to play online, but it&rsquo;s worked for me.</p>
-
-<p>It should be noted that the problem can been seen from the XMB before you even launch the game – just after it displays the message that you&rsquo;ve &ldquo;signed in&rdquo;, watch the clock and see how long it spins; this is the console synchronizing the time with PSN. If this takes more than a couple of seconds, there might be a problem.</p>
-
-<p>In addition, check your friends list. If it seems significantly shorter, and each friend is only very slowly appearing one at once, you can count on having troubles launching GT5.</p>
-
-<p>Finally, note that when you launch GT5 without being connected, the points where the game hangs are the points it asks you if you want to connect to PSN.</p>
-
-<p>I can only assume that this is a PSN issue because I can confirm on my Tomato router that my connection is entirely utilised. Of course, that doesn&rsquo;t guarantee the problem isn&rsquo;t my end…</p>
-
-<p>If your loading problem isn&rsquo;t thanks to PSN or a slow internet connection, then it might be that it isn&rsquo;t installed, the <acronym title="Hard Disk Drive">HDD</acronym> is dying, the disc is scratched, the Blu-ray is dying… All the usual suspects really.</p>
-
-<p>Good luck!</p>
-
-                
-              </div>
-
-              
-            </article>
-          
         </div>
 
         
@@ -826,7 +917,7 @@ command: goto_symbol_in_project
         </p>
         
         <p class="credits theme-by text-muted">
-          <a href="http://gohugo.io">Hugo v0.41</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          <a href="http://gohugo.io">Hugo v0.42.2</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
           
         </p>
       </div>

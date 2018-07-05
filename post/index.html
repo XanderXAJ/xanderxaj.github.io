@@ -16,7 +16,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Forged Defiance" />
 
-  <meta name="generator" content="Hugo 0.41" />
+  <meta name="generator" content="Hugo 0.42.2" />
   <link rel="canonical" href="/post/" />
   <link rel="alternate" href="/post/index.xml" type="application/rss+xml" title="Forged Defiance">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
@@ -153,6 +153,70 @@
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         
         <div class="posts-list">
+          
+            <article class="post-preview">
+              <a href="/post/ignore-a-package-update-when-using-fedora-and-kde/">
+                <h2 class="post-title">Ignore a Package Update When Using Fedora and KDE</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 5, 2018
+  
+  
+  
+</span>
+
+
+              </p>
+              <div class="post-entry">
+                
+                  <p>Recently I wrote about <a href="/post/escape-login-loop-in-fedora/">Escaping a login loop when using Fedora</a>.  Well, once I had downgraded the package, I wanted to ensure that it would not get automatically updated again!</p>
+
+<p>To ignore the package when performing updated via dnf, add an <code>exclude=&lt;package&gt;</code> line to <code>/etc/dnf/dnf.conf</code>.  For example:</p>
+
+<pre><code>[main]
+gpgcheck=1
+installonly_limit=3
+clean_requirements_on_remove=True
+exclude=sddm
+</code></pre>
+
+<p><code>dnf</code> no longer requests me to update SDDM.</p>
+
+<p>Unfortunately, the built-in updater for KDE (which I blieve is PackageKit) does not honour the settings in <code>dnf.conf</code>.  It will, however, honour <code>exclude=</code> lines in the repo files in <code>/etc/yum.repos.d</code>.</p>
+
+<p>Since I wanted to block an update to SDDM, I edited <code>/etc/yum.repos.d/fedora-updates.repo</code> and added an <code>exclude=sddm</code> directive to the <code>[updates]</code> block:</p>
+
+<pre><code>[updates]
+name=Fedora $releasever - $basearch - Updates
+failovermethod=priority
+#baseurl=http://download.fedoraproject.org/pub/fedora/linux/updates/$releasever/$basearch/
+metalink=https://mirrors.fedoraproject.org/metalink?repo=updates-released-f$releasever&amp;arch=$basearch
+enabled=1
+repo_gpgcheck=0
+type=rpm
+gpgcheck=1
+metadata_expire=6h
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-$basearch
+skip_if_unavailable=False
+exclude=sddm
+</code></pre>
+
+<p>After a while, KDE stopped pestering me to install the SDDM update.</p>
+
+<p>I technically probably only have to add the exclude to the repo files, but this is the process that I went through.  If you&rsquo;re feeling adventurous, you may try only updating the repo files.</p>
+
+                
+              </div>
+
+              
+
+            </article>
           
             <article class="post-preview">
               <a href="/post/escape-login-loop-in-fedora/">
@@ -581,81 +645,6 @@ yarn global add &lt;package&gt;</code></pre></div>
 
             </article>
           
-            <article class="post-preview">
-              <a href="/post/react-unexpected-token/">
-                <h2 class="post-title">React: Unexpected token &lt;</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on February 25, 2017
-  
-  
-  
-</span>
-
-
-              </p>
-              <div class="post-entry">
-                
-                  <p>I&rsquo;ve been <a href="https://github.com/XanderXAJ/pluralsight-react-redux">fiddling around with React recently</a> and made some pages with some normal-looking URLs, despite being a single-page application.  This was done using React Router and configuring it to use the <a href="https://github.com/ReactTraining/react-router/blob/master/docs/guides/Histories.md">History API with <code>browserHistory</code></a>.  Here is one of those URLS:</p>
-
-<pre><code>http://localhost:3000/course/react-flux-building-applications
-</code></pre>
-
-<p>When the page was refreshed (either manually or by the hot loader), or when I visited that page manually, I got this odd error in the console:</p>
-
-<pre><code>Unexpected token &lt;
-</code></pre>
-
-<p>When I inspected the contents of <code>bundle.js</code>, which is what I had configured <code>webpack</code> to bundle all of my JS in to, I noticed it wasn&rsquo;t JS at all; it was the HTML for my index page!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
-&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
-&lt;<span style="color:#f92672">head</span>&gt;
-    &lt;<span style="color:#f92672">title</span>&gt;Pluralsight Admin&lt;/<span style="color:#f92672">title</span>&gt;
-&lt;/<span style="color:#f92672">head</span>&gt;
-&lt;<span style="color:#f92672">body</span>&gt;
-    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;app&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
-    &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bundle.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
-&lt;/<span style="color:#f92672">body</span>&gt;
-&lt;/<span style="color:#f92672">html</span>&gt;</code></pre></div>
-<p>After a few moments of wondering, I realised what had happened.  It was pretty dumb.  Can you see it?</p>
-
-<hr />
-
-<p>What happened is that <code>bundle.js</code> was being loaded from:</p>
-
-<pre><code>http://localhost:3000/course/bundle.js
-</code></pre>
-
-<p>And not:</p>
-
-<pre><code>http://localhost:3000/bundle.js
-</code></pre>
-
-<p>Since the URL was not recognised, webpack or React Router (I&rsquo;m unsure exactly which) merely served <code>index.html</code> instead of a 404 error.</p>
-
-<p>This meant that HTML was served for a JS request!</p>
-
-<p>The simple fix is to change:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bundle.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;</code></pre></div>
-<p>To:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/bundle.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;</code></pre></div>
-<p>That way the requests always go to <code>http://localhost:3000/bundle.js</code>.</p>
-
-<p>This may need to be solved slightly better if I don&rsquo;t want to host the application at the root of a domain, but it&rsquo;ll work for now while I experiment!</p>
-
-                
-              </div>
-
-              
-
-            </article>
-          
         </div>
         
           <ul class="pager main-pager">
@@ -736,7 +725,7 @@ yarn global add &lt;package&gt;</code></pre></div>
         </p>
         
         <p class="credits theme-by text-muted">
-          <a href="http://gohugo.io">Hugo v0.41</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          <a href="http://gohugo.io">Hugo v0.42.2</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
           
         </p>
       </div>

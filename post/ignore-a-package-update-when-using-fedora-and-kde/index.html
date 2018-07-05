@@ -5,20 +5,36 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>Ogg</title>
-  <meta property="og:title" content="Ogg" />
-  <meta name="twitter:title" content="Ogg" />
+  <title>Ignore a Package Update When Using Fedora and KDE</title>
+  <meta property="og:title" content="Ignore a Package Update When Using Fedora and KDE" />
+  <meta name="twitter:title" content="Ignore a Package Update When Using Fedora and KDE" />
+  <meta name="description" content="Recently I wrote about Escaping a login loop when using Fedora. Well, once I had downgraded the package, I wanted to ensure that it would not get automatically updated again!
+To ignore the package when performing updated via dnf, add an exclude=&lt;package&gt; line to /etc/dnf/dnf.conf. For example:
+[main] gpgcheck=1 installonly_limit=3 clean_requirements_on_remove=True exclude=sddm  dnf no longer requests me to update SDDM.
+Unfortunately, the built-in updater for KDE (which I blieve is PackageKit) does not honour the settings in dnf.conf. It will, however, honour exclude= lines in the repo files in /etc/yum.repos.d.
+Since I wanted to block an update to SDDM, I edited /etc/yum.repos.d/fedora-updates.repo and added an exclude=sddm directive to the [updates] block:
+[updates] name=Fedora $releasever - $basearch - Updates failovermethod=priority #baseurl=http://download.fedoraproject.org/pub/fedora/linux/updates/$releasever/$basearch/ metalink=https://mirrors.fedoraproject.org/metalink?repo=updates-released-f$releasever&amp;arch=$basearch enabled=1 repo_gpgcheck=0 type=rpm gpgcheck=1 metadata_expire=6h gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-$basearch skip_if_unavailable=False exclude=sddm  After a while, KDE stopped pestering me to install the SDDM update.
+I technically probably only have to add the exclude to the repo files, but this is the process that I went through. If you&rsquo;re feeling adventurous, you may try only updating the repo files.">
+  <meta property="og:description" content="Recently I wrote about Escaping a login loop when using Fedora. Well, once I had downgraded the package, I wanted to ensure that it would not get automatically updated again!
+To ignore the package when performing updated via dnf, add an exclude=&lt;package&gt; line to /etc/dnf/dnf.conf. For example:
+[main] gpgcheck=1 installonly_limit=3 clean_requirements_on_remove=True exclude=sddm  dnf no longer requests me to update SDDM.
+Unfortunately, the built-in updater for KDE (which I blieve is PackageKit) does not honour the settings in dnf.conf. It will, however, honour exclude= lines in the repo files in /etc/yum.repos.d.
+Since I wanted to block an update to SDDM, I edited /etc/yum.repos.d/fedora-updates.repo and added an exclude=sddm directive to the [updates] block:
+[updates] name=Fedora $releasever - $basearch - Updates failovermethod=priority #baseurl=http://download.fedoraproject.org/pub/fedora/linux/updates/$releasever/$basearch/ metalink=https://mirrors.fedoraproject.org/metalink?repo=updates-released-f$releasever&amp;arch=$basearch enabled=1 repo_gpgcheck=0 type=rpm gpgcheck=1 metadata_expire=6h gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-$basearch skip_if_unavailable=False exclude=sddm  After a while, KDE stopped pestering me to install the SDDM update.
+I technically probably only have to add the exclude to the repo files, but this is the process that I went through. If you&rsquo;re feeling adventurous, you may try only updating the repo files.">
+  <meta name="twitter:description" content="Recently I wrote about Escaping a login loop when using Fedora. Well, once I had downgraded the package, I wanted to ensure that it would not get automatically updated again!
+To ignore the package …">
   <meta name="author" content="Alex Palmer"/>
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@XanderXAJ" />
   <meta name="twitter:creator" content="@XanderXAJ" />
-  <meta property="og:url" content="/tags/ogg/" />
+  <meta property="og:url" content="/post/ignore-a-package-update-when-using-fedora-and-kde/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Forged Defiance" />
 
   <meta name="generator" content="Hugo 0.42.2" />
-  <link rel="canonical" href="/tags/ogg/" />
-  <link rel="alternate" href="/tags/ogg/index.xml" type="application/rss+xml" title="Forged Defiance">
+  <link rel="canonical" href="/post/ignore-a-package-update-when-using-fedora-and-kde/" />
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Forged Defiance">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -132,14 +148,37 @@
 
 
     
+  
+  
+  
+
+
+
+
+  
+
   <header class="header-section ">
+    
     <div class="intro-header no-img">
+      
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="page-heading">
-              <h1>#Ogg</h1>
-              <hr class="small">
+            <div class="post-heading">
+              <h1>Ignore a Package Update When Using Fedora and KDE</h1>
+                
+                
+                  <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 5, 2018
+  
+  
+  
+</span>
+
+
+                
             </div>
           </div>
         </div>
@@ -147,90 +186,71 @@
     </div>
   </header>
 
+
     
-  <div class="container" role="main">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>Recently I wrote about <a href="/post/escape-login-loop-in-fedora/">Escaping a login loop when using Fedora</a>.  Well, once I had downgraded the package, I wanted to ensure that it would not get automatically updated again!</p>
+
+<p>To ignore the package when performing updated via dnf, add an <code>exclude=&lt;package&gt;</code> line to <code>/etc/dnf/dnf.conf</code>.  For example:</p>
+
+<pre><code>[main]
+gpgcheck=1
+installonly_limit=3
+clean_requirements_on_remove=True
+exclude=sddm
+</code></pre>
+
+<p><code>dnf</code> no longer requests me to update SDDM.</p>
+
+<p>Unfortunately, the built-in updater for KDE (which I blieve is PackageKit) does not honour the settings in <code>dnf.conf</code>.  It will, however, honour <code>exclude=</code> lines in the repo files in <code>/etc/yum.repos.d</code>.</p>
+
+<p>Since I wanted to block an update to SDDM, I edited <code>/etc/yum.repos.d/fedora-updates.repo</code> and added an <code>exclude=sddm</code> directive to the <code>[updates]</code> block:</p>
+
+<pre><code>[updates]
+name=Fedora $releasever - $basearch - Updates
+failovermethod=priority
+#baseurl=http://download.fedoraproject.org/pub/fedora/linux/updates/$releasever/$basearch/
+metalink=https://mirrors.fedoraproject.org/metalink?repo=updates-released-f$releasever&amp;arch=$basearch
+enabled=1
+repo_gpgcheck=0
+type=rpm
+gpgcheck=1
+metadata_expire=6h
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-$basearch
+skip_if_unavailable=False
+exclude=sddm
+</code></pre>
+
+<p>After a while, KDE stopped pestering me to install the SDDM update.</p>
+
+<p>I technically probably only have to add the exclude to the repo files, but this is the process that I went through.  If you&rsquo;re feeling adventurous, you may try only updating the repo files.</p>
+
+
         
-        <div class="posts-list">
-          
-            <article class="post-preview">
-              <a href="/post/use-ogg-vorbis-for-lag-free-ringtones-on-android/">
-                <h2 class="post-title">Use Ogg Vorbis for Lag-free Ringtones on Android</h2>
 
-                
-              </a>
-
-              <p class="post-meta">
-                <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on September 21, 2009
-  
-  
-  
-</span>
-
-
-              </p>
-              <div class="post-entry">
-                
-                  <div class="update">
-  <p>
-    <strong>Update 2010-06-21:</strong> If you want to use custom ringtones in the first place, install Rings Extended from the Android Market, then go to Home > Settings > Sound & display > Phone ringtone.  When it asks which application you want to use, select Rings Extended, and check the checkbox so that it doesn't ask you again.
-  </p>
-  
-  <p>
-    This will work anywhere any application asks for you to pick a ringtone, assuming it asks via a standard means!
-  </p>
-  
-  <p>
-    I've also written <a href="http://xanderx.com/2009/11/08/ogg-vorbis-encoder-for-windows/">another article detailing how to convert your music in to Ogg Vorbis files</a>.
-  </p>
-</div>
-
-<p>Why, do I hear you cry?</p>
-
-<p>Simple really, here&rsquo;s the story: when I first transferred various files to my phone for use as ringtones (one each for calls, texts, e-mails…) I used MP3s.  Thanks to the Rings Extended application in the marketplace I had no trouble in using them.</p>
-
-<p>But one thing struck me as odd whenever I got a call (or text etc.); lag.  If I were to get a call right now, the phone would vibrate, the screen would turn black, and then a couple of seconds later the contact details show and my ringtone starts playing.  Not ideal.</p>
-
-<p>So I decided to try something.  I set one of the standard ringtones that came with the phone as the current ringtone, and tried again.  This time the phone started vibrating and played the tone at the same time.</p>
-
-<p>After that I had to figure out what format they used, since I had no idea where the files could be and what format they were.  I reasoned that Ogg Vorbis would be the format they&rsquo;d use — an open-source <acronym title="Operating System">OS</acronym> with open-source ringtones.  Makes sense, right?</p>
-
-<p>So I tried it: I converted those same ringtones I started out with to 128kbps CBR Vorbis files.  128kbps because I thought that a higher bitrate would lag the phone out (plus you wouldn&rsquo;t hear a quality difference from the speaker anyway), and CBR because I thought it would be easier for the decoder to work with, though I have no evidence to back this up.</p>
-
-<p>Voilà!  Suddenly my ringtones loaded a lot quicker, and no longer did I get vibrations with no accompanying ringtone (unless it was set to vibrate only!).</p>
-
-<p>I haven&rsquo;t tested other settings on the Vorbis encoder (different bitrates, VBR etc.), nor have I tested other formats aside from MP3 and Ogg.</p>
-
-<p>Hope this is of help to someone that actually cares about this stuff.</p>
-
-                
-              </div>
-
-              
-                <div class="blog-tags">
-                  
-                    <a href="//tags/android/">android</a>&nbsp;
-                  
-                    <a href="//tags/ogg/">ogg</a>&nbsp;
-                  
-                    <a href="//tags/ringtones/">ringtones</a>&nbsp;
-                  
-                    <a href="//tags/vorbis/">vorbis</a>&nbsp;
-                  
-                </div>
-              
-
-            </article>
-          
-        </div>
         
-      </div>
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="/post/escape-login-loop-in-fedora/" data-toggle="tooltip" data-placement="top" title="Escape Login Loop in Fedora">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+
     </div>
   </div>
+</div>
 
     <footer>
   <div class="container">
