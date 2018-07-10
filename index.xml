@@ -6,10 +6,24 @@
     <description>Recent content on Forged Defiance</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Thu, 05 Jul 2018 16:56:06 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 10 Jul 2018 18:34:17 +0100</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Using .netrc with curl for Automatic Authorisation</title>
+      <link>/post/using-netrc-with-curl-for-automatic-authorisation/</link>
+      <pubDate>Tue, 10 Jul 2018 18:34:17 +0100</pubDate>
+      
+      <guid>/post/using-netrc-with-curl-for-automatic-authorisation/</guid>
+      <description>The ~/.netrc file can store credentials. This can include things like OAuth tokens and plain text passwords.
+Warning: Be very careful if you decide to store passwords in this file. The file is not encrypted, so you&amp;rsquo;ll be storing your password in plain text on the disk. This is generally a bad idea!
+First, create the file and make it readable by only yourself:
+touch ~/.netrc chmod go= ~/.netrc  Then edit the file to contain lines that look like the following (one line per machine):
+machine the.address.tld login the-username password the-password  curl can then read this file by providing the --netrc option:
+curl --netrc http://the.address.tld/classified  </description>
+    </item>
     
     <item>
       <title>Ignore a Package Update When Using Fedora and KDE</title>

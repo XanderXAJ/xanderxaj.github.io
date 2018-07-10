@@ -16,7 +16,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Forged Defiance" />
 
-  <meta name="generator" content="Hugo 0.42.2" />
+  <meta name="generator" content="Hugo 0.42.1" />
   <link rel="canonical" href="/post/" />
   <link rel="alternate" href="/post/index.xml" type="application/rss+xml" title="Forged Defiance">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
@@ -153,6 +153,54 @@
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         
         <div class="posts-list">
+          
+            <article class="post-preview">
+              <a href="/post/using-netrc-with-curl-for-automatic-authorisation/">
+                <h2 class="post-title">Using .netrc with curl for Automatic Authorisation</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 10, 2018
+  
+  
+  
+</span>
+
+
+              </p>
+              <div class="post-entry">
+                
+                  <p>The <code>~/.netrc</code> file can store credentials.  This can include things like OAuth tokens and plain text passwords.</p>
+
+<p><strong>Warning:</strong> Be very careful if you decide to store passwords in this file.  The file is not encrypted, so you&rsquo;ll be storing your password in plain text on the disk.  This is generally a bad idea!</p>
+
+<p>First, create the file and make it readable by only yourself:</p>
+
+<pre><code>touch ~/.netrc
+chmod go= ~/.netrc
+</code></pre>
+
+<p>Then edit the file to contain lines that look like the following (one line per machine):</p>
+
+<pre><code>machine the.address.tld login the-username password the-password
+</code></pre>
+
+<p><code>curl</code> can then read this file by providing the <code>--netrc</code> option:</p>
+
+<pre><code>curl --netrc http://the.address.tld/classified
+</code></pre>
+
+                
+              </div>
+
+              
+
+            </article>
           
             <article class="post-preview">
               <a href="/post/ignore-a-package-update-when-using-fedora-and-kde/">
@@ -613,38 +661,6 @@ yarn global add &lt;package&gt;</code></pre></div>
 
             </article>
           
-            <article class="post-preview">
-              <a href="/post/using-the-option-key-in-macos-terminal/">
-                <h2 class="post-title">Using the option key in macOS Terminal</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on March 19, 2017
-  
-  
-  
-</span>
-
-
-              </p>
-              <div class="post-entry">
-                
-                  <p>I like using the Meta+left/right to navigate back and forth between words.  On macOS by default, no key is mapped to Meta!</p>
-
-<p>Fortunately for me, it is possible to configure the Option key to act as a Meta key.  With the Terminal app selected, this can be done by going in to <em>Terminal &gt; Preferences (Cmd+,) &gt; Profiles &gt; Select your profile &gt; Keyboard &gt; <strong>Use Option as Meta</strong></em>.</p>
-
-                
-              </div>
-
-              
-
-            </article>
-          
         </div>
         
           <ul class="pager main-pager">
@@ -725,7 +741,7 @@ yarn global add &lt;package&gt;</code></pre></div>
         </p>
         
         <p class="credits theme-by text-muted">
-          <a href="http://gohugo.io">Hugo v0.42.2</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          <a href="http://gohugo.io">Hugo v0.42.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
           
         </p>
       </div>

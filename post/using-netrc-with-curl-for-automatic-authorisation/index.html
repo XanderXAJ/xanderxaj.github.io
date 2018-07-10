@@ -5,20 +5,34 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>Superuser</title>
-  <meta property="og:title" content="Superuser" />
-  <meta name="twitter:title" content="Superuser" />
+  <title>Using .netrc with curl for Automatic Authorisation</title>
+  <meta property="og:title" content="Using .netrc with curl for Automatic Authorisation" />
+  <meta name="twitter:title" content="Using .netrc with curl for Automatic Authorisation" />
+  <meta name="description" content="The ~/.netrc file can store credentials. This can include things like OAuth tokens and plain text passwords.
+Warning: Be very careful if you decide to store passwords in this file. The file is not encrypted, so you&rsquo;ll be storing your password in plain text on the disk. This is generally a bad idea!
+First, create the file and make it readable by only yourself:
+touch ~/.netrc chmod go= ~/.netrc  Then edit the file to contain lines that look like the following (one line per machine):
+machine the.address.tld login the-username password the-password  curl can then read this file by providing the --netrc option:
+curl --netrc http://the.address.tld/classified  ">
+  <meta property="og:description" content="The ~/.netrc file can store credentials. This can include things like OAuth tokens and plain text passwords.
+Warning: Be very careful if you decide to store passwords in this file. The file is not encrypted, so you&rsquo;ll be storing your password in plain text on the disk. This is generally a bad idea!
+First, create the file and make it readable by only yourself:
+touch ~/.netrc chmod go= ~/.netrc  Then edit the file to contain lines that look like the following (one line per machine):
+machine the.address.tld login the-username password the-password  curl can then read this file by providing the --netrc option:
+curl --netrc http://the.address.tld/classified  ">
+  <meta name="twitter:description" content="The ~/.netrc file can store credentials. This can include things like OAuth tokens and plain text passwords.
+Warning: Be very careful if you decide to store passwords in this file. The file is not …">
   <meta name="author" content="Alex Palmer"/>
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@XanderXAJ" />
   <meta name="twitter:creator" content="@XanderXAJ" />
-  <meta property="og:url" content="/tags/superuser/" />
+  <meta property="og:url" content="/post/using-netrc-with-curl-for-automatic-authorisation/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Forged Defiance" />
 
   <meta name="generator" content="Hugo 0.42.1" />
-  <link rel="canonical" href="/tags/superuser/" />
-  <link rel="alternate" href="/tags/superuser/index.xml" type="application/rss+xml" title="Forged Defiance">
+  <link rel="canonical" href="/post/using-netrc-with-curl-for-automatic-authorisation/" />
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Forged Defiance">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -132,14 +146,37 @@
 
 
     
+  
+  
+  
+
+
+
+
+  
+
   <header class="header-section ">
+    
     <div class="intro-header no-img">
+      
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="page-heading">
-              <h1>#Superuser</h1>
-              <hr class="small">
+            <div class="post-heading">
+              <h1>Using .netrc with curl for Automatic Authorisation</h1>
+                
+                
+                  <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 10, 2018
+  
+  
+  
+</span>
+
+
+                
             </div>
           </div>
         </div>
@@ -147,89 +184,55 @@
     </div>
   </header>
 
+
     
-  <div class="container" role="main">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>The <code>~/.netrc</code> file can store credentials.  This can include things like OAuth tokens and plain text passwords.</p>
+
+<p><strong>Warning:</strong> Be very careful if you decide to store passwords in this file.  The file is not encrypted, so you&rsquo;ll be storing your password in plain text on the disk.  This is generally a bad idea!</p>
+
+<p>First, create the file and make it readable by only yourself:</p>
+
+<pre><code>touch ~/.netrc
+chmod go= ~/.netrc
+</code></pre>
+
+<p>Then edit the file to contain lines that look like the following (one line per machine):</p>
+
+<pre><code>machine the.address.tld login the-username password the-password
+</code></pre>
+
+<p><code>curl</code> can then read this file by providing the <code>--netrc</code> option:</p>
+
+<pre><code>curl --netrc http://the.address.tld/classified
+</code></pre>
+
+
         
-        <div class="posts-list">
-          
-            <article class="post-preview">
-              <a href="/post/fix-superuser-permissions-hanging-on-android/">
-                <h2 class="post-title">Fix Superuser Permissions Hanging on Android</h2>
 
-                
-              </a>
-
-              <p class="post-meta">
-                <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on June 14, 2009
-  
-  
-  
-</span>
-
-
-              </p>
-              <div class="post-entry">
-                
-                  <p><strong>Update 2010-03-04:</strong> Added another potential solution courtesy of Blazt in the comments. Thanks!</p>
-
-<p>So, you have a phone with root permissions?  Finding whenever a program requests root permissions the Superuser Permissions program hangs (usually with a black screen or even a force close) at the &ldquo;<acronym title="Superuser">SU</acronym> request&rdquo; screen?</p>
-
-<p>Fortunately there are a couple of things you can try, which I&rsquo;ll detail for you.</p>
-
-<p>First, make sure <strong><acronym title="Universal Serial Bus">USB</acronym> Debugging</strong> is enabled.  To do that:</p>
-
-<ol>
-<li>Press the <strong>Home button</strong>.</li>
-<li>Press the <strong>Menu button</strong>.</li>
-<li>Select <strong>Settings &gt; Applications &gt; Development</strong>.</li>
-<li>Make sure that <strong><acronym title="Universal Serial Bus">USB</acronym> Debugging</strong> is <strong>checked</strong>.  If not, check it.</li>
-</ol>
-
-<p>If that fixes your problem, you are done!  If not, then you can try <strong>clearing the Superuser Permissions data</strong>.  This is just any options you have set within the app and whether or not particular apps are always allowed or blocked — you won&rsquo;t lose any of your other data, and it&rsquo;s easy to allow/deny stuff again.</p>
-
-<p>To clear the data:</p>
-
-<ol>
-<li>Press the <strong>Home button</strong>.</li>
-<li>Press the <strong>Menu button</strong>.</li>
-<li>Select <strong>Settings &gt; Applications &gt; Manage applications</strong>.</li>
-<li>Find <strong>Superuser Permissions</strong> on the list.  Tap it.</li>
-<li>Tap &ldquo;<strong>Clear data&rdquo;</strong> and &ldquo;<strong>Clear cache</strong>&rdquo; if they&rsquo;re enabled.</li>
-</ol>
-
-<p>This should prevent any hangs with Superuser Permissions in the future.</p>
-
-<p>This works on the HTC Dream (T-Mobile G1) with the 1.5 and 1.6 firmwares, and presumably other Android devices with the Superuser Permissions app.</p>
-
-                
-              </div>
-
-              
-                <div class="blog-tags">
-                  
-                    <a href="//tags/android/">android</a>&nbsp;
-                  
-                    <a href="//tags/g1/">G1</a>&nbsp;
-                  
-                    <a href="//tags/superuser/">superuser</a>&nbsp;
-                  
-                    <a href="//tags/tip/">tip</a>&nbsp;
-                  
-                </div>
-              
-
-            </article>
-          
-        </div>
         
-      </div>
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="/post/ignore-a-package-update-when-using-fedora-and-kde/" data-toggle="tooltip" data-placement="top" title="Ignore a Package Update When Using Fedora and KDE">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+
     </div>
   </div>
+</div>
 
     <footer>
   <div class="container">

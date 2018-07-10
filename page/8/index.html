@@ -16,7 +16,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Forged Defiance" />
 
-  <meta name="generator" content="Hugo 0.42.2" />
+  <meta name="generator" content="Hugo 0.42.1" />
   <link rel="canonical" href="/" />
   <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Forged Defiance">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
@@ -168,6 +168,47 @@
 
         <div class="posts-list">
           
+          
+            <article class="post-preview">
+              <a href="/post/fixing-slugs-in-wordpress/">
+                <h2 class="post-title">Fixing Slugs in WordPress</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 22, 2009
+  
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <p>Having trouble selecting the slug you want in WordPress?  If you&rsquo;re like I was just a moment ago, you&rsquo;ll try changing the slug on one of your categories to something different that you prefer, only to have WordPress change it back to whatever it was previously.  What gives?</p>
+
+<p>Turns out the solution might be simpler than you think — check your Post Tags for a tag with the same slug!</p>
+
+<p>Slugs are shared between tags and categories, so <strong>if you use a particular slug with a tag, you cannot use the same one with a category, and vice versa</strong>.</p>
+
+<p>Keep that in mind the next time you get all <acronym title="Obsessive-Compulsive Disorder">OCD</acronym> about slugs!</p>
+
+                
+              </div>
+
+              
+                <div class="blog-tags">
+                  
+                    <a href="//tags/slugs/">slugs</a>&nbsp;
+                  
+                    <a href="//tags/wordpress/">Wordpress</a>&nbsp;
+                  
+                </div>
+              
+            </article>
           
             <article class="post-preview">
               <a href="/post/lazy-days/">
@@ -501,74 +542,6 @@
               
             </article>
           
-            <article class="post-preview">
-              <a href="/post/fix-superuser-permissions-hanging-on-android/">
-                <h2 class="post-title">Fix Superuser Permissions Hanging on Android</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on June 14, 2009
-  
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <p><strong>Update 2010-03-04:</strong> Added another potential solution courtesy of Blazt in the comments. Thanks!</p>
-
-<p>So, you have a phone with root permissions?  Finding whenever a program requests root permissions the Superuser Permissions program hangs (usually with a black screen or even a force close) at the &ldquo;<acronym title="Superuser">SU</acronym> request&rdquo; screen?</p>
-
-<p>Fortunately there are a couple of things you can try, which I&rsquo;ll detail for you.</p>
-
-<p>First, make sure <strong><acronym title="Universal Serial Bus">USB</acronym> Debugging</strong> is enabled.  To do that:</p>
-
-<ol>
-<li>Press the <strong>Home button</strong>.</li>
-<li>Press the <strong>Menu button</strong>.</li>
-<li>Select <strong>Settings &gt; Applications &gt; Development</strong>.</li>
-<li>Make sure that <strong><acronym title="Universal Serial Bus">USB</acronym> Debugging</strong> is <strong>checked</strong>.  If not, check it.</li>
-</ol>
-
-<p>If that fixes your problem, you are done!  If not, then you can try <strong>clearing the Superuser Permissions data</strong>.  This is just any options you have set within the app and whether or not particular apps are always allowed or blocked — you won&rsquo;t lose any of your other data, and it&rsquo;s easy to allow/deny stuff again.</p>
-
-<p>To clear the data:</p>
-
-<ol>
-<li>Press the <strong>Home button</strong>.</li>
-<li>Press the <strong>Menu button</strong>.</li>
-<li>Select <strong>Settings &gt; Applications &gt; Manage applications</strong>.</li>
-<li>Find <strong>Superuser Permissions</strong> on the list.  Tap it.</li>
-<li>Tap &ldquo;<strong>Clear data&rdquo;</strong> and &ldquo;<strong>Clear cache</strong>&rdquo; if they&rsquo;re enabled.</li>
-</ol>
-
-<p>This should prevent any hangs with Superuser Permissions in the future.</p>
-
-<p>This works on the HTC Dream (T-Mobile G1) with the 1.5 and 1.6 firmwares, and presumably other Android devices with the Superuser Permissions app.</p>
-
-                
-              </div>
-
-              
-                <div class="blog-tags">
-                  
-                    <a href="//tags/android/">android</a>&nbsp;
-                  
-                    <a href="//tags/g1/">G1</a>&nbsp;
-                  
-                    <a href="//tags/superuser/">superuser</a>&nbsp;
-                  
-                    <a href="//tags/tip/">tip</a>&nbsp;
-                  
-                </div>
-              
-            </article>
-          
         </div>
 
         
@@ -654,7 +627,7 @@
         </p>
         
         <p class="credits theme-by text-muted">
-          <a href="http://gohugo.io">Hugo v0.42.2</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          <a href="http://gohugo.io">Hugo v0.42.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
           
         </p>
       </div>
