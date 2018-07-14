@@ -6,10 +6,31 @@
     <description>Recent content on Forged Defiance</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 10 Jul 2018 18:34:17 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 14 Jul 2018 19:37:14 +0100</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Backup and restore a stock Android device</title>
+      <link>/post/backup-and-restore-a-stock-android-device/</link>
+      <pubDate>Sat, 14 Jul 2018 19:37:14 +0100</pubDate>
+      
+      <guid>/post/backup-and-restore-a-stock-android-device/</guid>
+      <description> Overview Taking regular backups of important devices is sensible advice. And backups themselves are no good unless you can restore them. This guide gives a brief overview on how to backup and restore a stock Android device &amp;ndash; that is, a device that runs an uncustomised version of Android, that is unrooted. It may also work for non-stock Android devices.
+One big caveat: While this is the best method I have found without root, I have not had consistent results across devices when restoring backups, even among Nexus devices. So I recommend that this method is not relied upon exclusively for backup.
+Usage information We will be using adb backup and adb restore to backup and restore device state.
+To find out usage information for your device, connect it and run:
+adb shell bu help  This info was found by simply running adb.
+This guide assumes the backup and restore commands work like stock Android devices.
+Backup  Set up your computer and device so that your computer can access the device via USB. There are plenty of good guides out there, but in summary this&amp;rsquo;ll involve enabling USB debugging on the device and installing the Android SDK Platform Tools.
+ Run the following command, authorising your computer to access the device if you have not already:
+adb backup -apk -obb -shared -all -system  Follow the instructions. In my case, I needed to unlock the device and confirm the backup operation (optionally entering a password to encrypt the backup).
+  This will store a file in the current working directory.
+Restore  Ensure the device to restore to is connected.
+ Run:
+adb restore &amp;lt;path_to_backup&amp;gt;   </description>
+    </item>
     
     <item>
       <title>Using .netrc with curl for Automatic Authorisation</title>

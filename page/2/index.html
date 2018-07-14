@@ -170,6 +170,37 @@
           
           
             <article class="post-preview">
+              <a href="/post/fix-yarn-global-installs-on-macos-sierra/">
+                <h2 class="post-title">Fix Yarn global installs on macOS Sierra</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on March 20, 2017
+  
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <p>I was having some trouble getting yarn to globally install some commands, such as <code>jest-cli</code>.</p>
+
+<p>Fortunately <a href="https://github.com/yarnpkg/yarn/issues/1321#issuecomment-283495343">zmorris on Github found a reasonably elegant solution</a>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yarn config set prefix /usr/local/
+yarn global remove &lt;package&gt;
+yarn global add &lt;package&gt;</code></pre></div>
+                
+              </div>
+
+              
+            </article>
+          
+            <article class="post-preview">
               <a href="/post/using-the-option-key-in-macos-terminal/">
                 <h2 class="post-title">Using the option key in macOS Terminal</h2>
                 
@@ -548,38 +579,6 @@ curl <span style="color:#e6db74">&#34;https://freedns.afraid.org/dynamic/update.
 <span style="color:#66d9ef">else</span>
     /sbin/ddns_custom_updated <span style="color:#ae81ff">0</span>
 <span style="color:#66d9ef">fi</span></code></pre></div>
-                
-              </div>
-
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="/post/connecting-to-an-adb-over-network-android-device/">
-                <h2 class="post-title">Connecting to an ADB-over-network Android device</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on February 6, 2016
-  
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <p>Just a quick reminder to myself in future.</p>
-
-<p>To connect to an Android device using ADB over network (in my case when using cyanogen mod), use the following command:</p>
-
-<pre><code>adb connect &lt;IP address/hostname&gt;
-</code></pre>
-
                 
               </div>
 

@@ -155,6 +155,81 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="/post/backup-and-restore-a-stock-android-device/">
+                <h2 class="post-title">Backup and restore a stock Android device</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 14, 2018
+  
+  
+  
+</span>
+
+
+              </p>
+              <div class="post-entry">
+                
+                  
+
+<h1 id="overview">Overview</h1>
+
+<p>Taking regular backups of important devices is sensible advice.  And backups themselves are no good unless you can restore them.  This guide gives a brief overview on how to backup and restore a stock Android device &ndash; that is, a device that runs an uncustomised version of Android, that is unrooted.  It may also work for non-stock Android devices.</p>
+
+<p><strong>One big caveat:</strong> While this is the best method I have found without root, I have not had consistent results across devices when restoring backups, even among Nexus devices.  So I recommend that this method is not relied upon exclusively for backup.</p>
+
+<h1 id="usage-information">Usage information</h1>
+
+<p>We will be using <code>adb backup</code> and <code>adb restore</code> to backup and restore device state.</p>
+
+<p>To find out usage information for your device, connect it and run:</p>
+
+<pre><code>adb shell bu help
+</code></pre>
+
+<p>This info was found by simply running <code>adb</code>.</p>
+
+<p>This guide assumes the <code>backup</code> and <code>restore</code> commands work like stock Android devices.</p>
+
+<h1 id="backup">Backup</h1>
+
+<ol>
+<li><p>Set up your computer and device so that your computer can access the device via USB.  There are plenty of good guides out there, but in summary this&rsquo;ll involve enabling USB debugging on the device and installing the Android SDK Platform Tools.</p></li>
+
+<li><p>Run the following command, authorising your computer to access the device if you have not already:</p>
+
+<pre><code>adb backup -apk -obb -shared -all -system
+</code></pre></li>
+
+<li><p>Follow the instructions.  In my case, I needed to unlock the device and confirm the backup operation (optionally entering a password to encrypt the backup).</p></li>
+</ol>
+
+<p>This will store a file in the current working directory.</p>
+
+<h1 id="restore">Restore</h1>
+
+<ol>
+<li><p>Ensure the device to restore to is connected.</p></li>
+
+<li><p>Run:</p>
+
+<pre><code>adb restore &lt;path_to_backup&gt;
+</code></pre></li>
+</ol>
+
+                
+              </div>
+
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="/post/using-netrc-with-curl-for-automatic-authorisation/">
                 <h2 class="post-title">Using .netrc with curl for Automatic Authorisation</h2>
 
@@ -620,40 +695,6 @@ exit</code></pre></div></li>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> i in BDMV/STREAM/*.m2ts; <span style="color:#66d9ef">do</span> ffmpeg -hide_banner -i <span style="color:#e6db74">&#34;</span>$i<span style="color:#e6db74">&#34;</span> -map <span style="color:#ae81ff">0</span>:1 -acodec pcm_s16le -af silenceremove<span style="color:#f92672">=</span>start_periods<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>:detection<span style="color:#f92672">=</span>peak <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>basename <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>i%.*<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">.wav&#34;</span>; <span style="color:#66d9ef">done</span></code></pre></div>
 <p><em>Update 2017-05-14:</em> Changed <code>${i/.*}</code> to <code>${i%.*}</code> to remove file extensions, as the new way will only remove everything following the last <code>.</code> in the filename, not the first.  Thanks to my good friend <a href="http://m.holland-avery.com/">Mark Holland-Avery</a> for the suggestion!</p>
 
-                
-              </div>
-
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="/post/fix-yarn-global-installs-on-macos-sierra/">
-                <h2 class="post-title">Fix Yarn global installs on macOS Sierra</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on March 20, 2017
-  
-  
-  
-</span>
-
-
-              </p>
-              <div class="post-entry">
-                
-                  <p>I was having some trouble getting yarn to globally install some commands, such as <code>jest-cli</code>.</p>
-
-<p>Fortunately <a href="https://github.com/yarnpkg/yarn/issues/1321#issuecomment-283495343">zmorris on Github found a reasonably elegant solution</a>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yarn config set prefix /usr/local/
-yarn global remove &lt;package&gt;
-yarn global add &lt;package&gt;</code></pre></div>
                 
               </div>
 

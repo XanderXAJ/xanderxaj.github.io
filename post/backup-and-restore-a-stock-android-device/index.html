@@ -5,33 +5,46 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>Using .netrc with curl for Automatic Authorisation</title>
-  <meta property="og:title" content="Using .netrc with curl for Automatic Authorisation" />
-  <meta name="twitter:title" content="Using .netrc with curl for Automatic Authorisation" />
-  <meta name="description" content="The ~/.netrc file can store credentials. This can include things like OAuth tokens and plain text passwords.
-Warning: Be very careful if you decide to store passwords in this file. The file is not encrypted, so you&rsquo;ll be storing your password in plain text on the disk. This is generally a bad idea!
-First, create the file and make it readable by only yourself:
-touch ~/.netrc chmod go= ~/.netrc  Then edit the file to contain lines that look like the following (one line per machine):
-machine the.address.tld login the-username password the-password  curl can then read this file by providing the --netrc option:
-curl --netrc http://the.address.tld/classified  ">
-  <meta property="og:description" content="The ~/.netrc file can store credentials. This can include things like OAuth tokens and plain text passwords.
-Warning: Be very careful if you decide to store passwords in this file. The file is not encrypted, so you&rsquo;ll be storing your password in plain text on the disk. This is generally a bad idea!
-First, create the file and make it readable by only yourself:
-touch ~/.netrc chmod go= ~/.netrc  Then edit the file to contain lines that look like the following (one line per machine):
-machine the.address.tld login the-username password the-password  curl can then read this file by providing the --netrc option:
-curl --netrc http://the.address.tld/classified  ">
-  <meta name="twitter:description" content="The ~/.netrc file can store credentials. This can include things like OAuth tokens and plain text passwords.
-Warning: Be very careful if you decide to store passwords in this file. The file is not …">
+  <title>Backup and restore a stock Android device</title>
+  <meta property="og:title" content="Backup and restore a stock Android device" />
+  <meta name="twitter:title" content="Backup and restore a stock Android device" />
+  <meta name="description" content=" Overview Taking regular backups of important devices is sensible advice. And backups themselves are no good unless you can restore them. This guide gives a brief overview on how to backup and restore a stock Android device &ndash; that is, a device that runs an uncustomised version of Android, that is unrooted. It may also work for non-stock Android devices.
+One big caveat: While this is the best method I have found without root, I have not had consistent results across devices when restoring backups, even among Nexus devices. So I recommend that this method is not relied upon exclusively for backup.
+Usage information We will be using adb backup and adb restore to backup and restore device state.
+To find out usage information for your device, connect it and run:
+adb shell bu help  This info was found by simply running adb.
+This guide assumes the backup and restore commands work like stock Android devices.
+Backup  Set up your computer and device so that your computer can access the device via USB. There are plenty of good guides out there, but in summary this&rsquo;ll involve enabling USB debugging on the device and installing the Android SDK Platform Tools.
+ Run the following command, authorising your computer to access the device if you have not already:
+adb backup -apk -obb -shared -all -system  Follow the instructions. In my case, I needed to unlock the device and confirm the backup operation (optionally entering a password to encrypt the backup).
+  This will store a file in the current working directory.
+Restore  Ensure the device to restore to is connected.
+ Run:
+adb restore &lt;path_to_backup&gt;   ">
+  <meta property="og:description" content=" Overview Taking regular backups of important devices is sensible advice. And backups themselves are no good unless you can restore them. This guide gives a brief overview on how to backup and restore a stock Android device &ndash; that is, a device that runs an uncustomised version of Android, that is unrooted. It may also work for non-stock Android devices.
+One big caveat: While this is the best method I have found without root, I have not had consistent results across devices when restoring backups, even among Nexus devices. So I recommend that this method is not relied upon exclusively for backup.
+Usage information We will be using adb backup and adb restore to backup and restore device state.
+To find out usage information for your device, connect it and run:
+adb shell bu help  This info was found by simply running adb.
+This guide assumes the backup and restore commands work like stock Android devices.
+Backup  Set up your computer and device so that your computer can access the device via USB. There are plenty of good guides out there, but in summary this&rsquo;ll involve enabling USB debugging on the device and installing the Android SDK Platform Tools.
+ Run the following command, authorising your computer to access the device if you have not already:
+adb backup -apk -obb -shared -all -system  Follow the instructions. In my case, I needed to unlock the device and confirm the backup operation (optionally entering a password to encrypt the backup).
+  This will store a file in the current working directory.
+Restore  Ensure the device to restore to is connected.
+ Run:
+adb restore &lt;path_to_backup&gt;   ">
+  <meta name="twitter:description" content=" Overview Taking regular backups of important devices is sensible advice. And backups themselves are no good unless you can restore them. This guide gives a brief overview on how to backup and restore …">
   <meta name="author" content="Alex Palmer"/>
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@XanderXAJ" />
   <meta name="twitter:creator" content="@XanderXAJ" />
-  <meta property="og:url" content="/post/using-netrc-with-curl-for-automatic-authorisation/" />
+  <meta property="og:url" content="/post/backup-and-restore-a-stock-android-device/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Forged Defiance" />
 
   <meta name="generator" content="Hugo 0.42.1" />
-  <link rel="canonical" href="/post/using-netrc-with-curl-for-automatic-authorisation/" />
+  <link rel="canonical" href="/post/backup-and-restore-a-stock-android-device/" />
   <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Forged Defiance">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -163,13 +176,13 @@ Warning: Be very careful if you decide to store passwords in this file. The file
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
-              <h1>Using .netrc with curl for Automatic Authorisation</h1>
+              <h1>Backup and restore a stock Android device</h1>
                 
                 
                   <span class="post-meta">
   
   
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 10, 2018
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 14, 2018
   
   
   
@@ -190,25 +203,52 @@ Warning: Be very careful if you decide to store passwords in this file. The file
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <p>The <code>~/.netrc</code> file can store credentials.  This can include things like OAuth tokens and plain text passwords.</p>
+        
 
-<p><strong>Warning:</strong> Be very careful if you decide to store passwords in this file.  The file is not encrypted, so you&rsquo;ll be storing your password in plain text on the disk.  This is generally a bad idea!</p>
+<h1 id="overview">Overview</h1>
 
-<p>First, create the file and make it readable by only yourself:</p>
+<p>Taking regular backups of important devices is sensible advice.  And backups themselves are no good unless you can restore them.  This guide gives a brief overview on how to backup and restore a stock Android device &ndash; that is, a device that runs an uncustomised version of Android, that is unrooted.  It may also work for non-stock Android devices.</p>
 
-<pre><code>touch ~/.netrc
-chmod go= ~/.netrc
+<p><strong>One big caveat:</strong> While this is the best method I have found without root, I have not had consistent results across devices when restoring backups, even among Nexus devices.  So I recommend that this method is not relied upon exclusively for backup.</p>
+
+<h1 id="usage-information">Usage information</h1>
+
+<p>We will be using <code>adb backup</code> and <code>adb restore</code> to backup and restore device state.</p>
+
+<p>To find out usage information for your device, connect it and run:</p>
+
+<pre><code>adb shell bu help
 </code></pre>
 
-<p>Then edit the file to contain lines that look like the following (one line per machine):</p>
+<p>This info was found by simply running <code>adb</code>.</p>
 
-<pre><code>machine the.address.tld login the-username password the-password
-</code></pre>
+<p>This guide assumes the <code>backup</code> and <code>restore</code> commands work like stock Android devices.</p>
 
-<p><code>curl</code> can then read this file by providing the <code>--netrc</code> option:</p>
+<h1 id="backup">Backup</h1>
 
-<pre><code>curl --netrc http://the.address.tld/classified
-</code></pre>
+<ol>
+<li><p>Set up your computer and device so that your computer can access the device via USB.  There are plenty of good guides out there, but in summary this&rsquo;ll involve enabling USB debugging on the device and installing the Android SDK Platform Tools.</p></li>
+
+<li><p>Run the following command, authorising your computer to access the device if you have not already:</p>
+
+<pre><code>adb backup -apk -obb -shared -all -system
+</code></pre></li>
+
+<li><p>Follow the instructions.  In my case, I needed to unlock the device and confirm the backup operation (optionally entering a password to encrypt the backup).</p></li>
+</ol>
+
+<p>This will store a file in the current working directory.</p>
+
+<h1 id="restore">Restore</h1>
+
+<ol>
+<li><p>Ensure the device to restore to is connected.</p></li>
+
+<li><p>Run:</p>
+
+<pre><code>adb restore &lt;path_to_backup&gt;
+</code></pre></li>
+</ol>
 
 
         
@@ -220,13 +260,9 @@ chmod go= ~/.netrc
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="/post/ignore-a-package-update-when-using-fedora-and-kde/" data-toggle="tooltip" data-placement="top" title="Ignore a Package Update When Using Fedora and KDE">&larr; Previous Post</a>
+              <a href="/post/using-netrc-with-curl-for-automatic-authorisation/" data-toggle="tooltip" data-placement="top" title="Using .netrc with curl for Automatic Authorisation">&larr; Previous Post</a>
             </li>
           
-          
-            <li class="next">
-              <a href="/post/backup-and-restore-a-stock-android-device/" data-toggle="tooltip" data-placement="top" title="Backup and restore a stock Android device">Next Post &rarr;</a>
-            </li>
           
         </ul>
       
