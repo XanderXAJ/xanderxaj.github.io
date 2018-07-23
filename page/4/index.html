@@ -16,7 +16,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Forged Defiance" />
 
-  <meta name="generator" content="Hugo 0.42.1" />
+  <meta name="generator" content="Hugo 0.45" />
   <link rel="canonical" href="/" />
   <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Forged Defiance">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
@@ -168,6 +168,57 @@
 
         <div class="posts-list">
           
+          
+            <article class="post-preview">
+              <a href="/post/migrating-from-wordpress-to-jekyll/">
+                <h2 class="post-title">Migrating from Wordpress to Jekyll</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on October 4, 2015
+  
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <p>I&rsquo;ve recently moved from the rather dynamic Wordpress to the rather static Jekyll.  Can you tell?</p>
+
+<p>I&rsquo;ve come to like the idea of simply serving a bunch of static files instead of dynamically building them when required.  Static files are simple, cheap to host and serve, introduce no further security problems beyond the web server and configuration, and easy enough for me, as a developer, to edit.</p>
+
+<p>I&rsquo;ve still got plenty of hurdles to work through &mdash; in particular how to host all my pictures &mdash; but this can all be worked out over time one way or another (including reverting back to Wordpress!).</p>
+
+<p>I just wanted to scrawl a few notes about my discoveries &mdash; and what better way to do it than within the blog itself!</p>
+
+<ul>
+<li><p>If you run <code>jekyll serve</code> inside of a VM (like Virtualbox) or container (like Docker), if you want to hit the site outside of the VM then make sure to specify <code>--host=0.0.0.0</code> so the server binds to the outside network interface instead of the loopback interface.</p></li>
+
+<li><p>I exported the Wordpress data by using the <a href="https://github.com/benbalter/wordpress-to-jekyll-exporter">jekyll-export plugin</a>.  The <a href="http://import.jekyllrb.com/docs/wordpress/">script recommended by Jekyll&rsquo;s own import website</a> produced a bunch of HTML which did not play well with Jekyll.</p></li>
+
+<li><p>One thing I wanted to do afterwards is convert many of the HTML entities to simpler equivalents, like <code>’</code> to <code>'</code> and <code>“</code> and <code>”</code> to <code>&quot;</code>.  I did this to make my files easily readable and editable, in the spirit of Markdown.  A <a href="http://serverfault.com/questions/440805/how-can-i-easily-convert-html-special-entities-from-a-standard-input-stream-in-l">quick way to do this</a> is to run the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> post in _posts/*; <span style="color:#66d9ef">do</span> cat <span style="color:#e6db74">&#34;</span>$post<span style="color:#e6db74">&#34;</span> | perl -n -mHTML::Entities -e <span style="color:#e6db74">&#39;use open ( &#34;:encoding(UTF-8)&#34;, &#34;:std&#34; ); print HTML::Entities::decode_entities($_) ;&#39;</span> &gt; $post.new <span style="color:#f92672">&amp;&amp;</span> mv $post.new $post; <span style="color:#66d9ef">done</span></code></pre></div>
+<p>You&rsquo;ll also need to convert any pages that were brought across too.</p>
+
+<p>The <code>use open ( &quot;:encoding(UTF-8)&quot;, &quot;:std&quot; );</code> part is of as it instructs perl that <a href="http://blog.thewebsitepeople.org/2012/06/perl-default-to-utf-8-encoding/">all input and output streams are UTF-8</a>.</p></li>
+
+<li><p>You see that code block nested inside the list above?  That <a href="https://github.com/jekyll/jekyll/issues/588">cannot be done with Jekyll and Markdown</a>.  This is because the <code>{% raw %}{% highlight %}{% endraw %}</code> code Jekyll uses is substituted before the markdown is parsed.  If you want highlighting, this means you need to use the <code>~~~</code> fenced code blocks.</p>
+
+<p>You could try <a href="https://github.com/mvdbos/kramdown-with-pygments">adding pygments support to Kramdown</a>.  Alternatively, you can switch to a renderer, like <a href="https://github.com/vmg/redcarpet">redcarpet</a>, that does support it.  This may well come and bite me in the future.</p></li>
+</ul>
+
+<p>After all of these changes, my markup (or should I say markdown?) started to look respectable &mdash; although there&rsquo;s a long way to go!</p>
+
+                
+              </div>
+
+              
+            </article>
           
             <article class="post-preview">
               <a href="/post/larger-tab-close-buttons-in-firefox/">
@@ -492,37 +543,6 @@
               
             </article>
           
-            <article class="post-preview">
-              <a href="/post/descent/">
-                <h2 class="post-title">Descent</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on December 30, 2010
-  
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <p>Time for my obligatory seagull picture.</p>
-
-<p>Here you can see a couple of seagulls going in for the kill — on some bread. Would they have it any other way?</p>
-
-<p>I&rsquo;ve increased the contrast and played around with saturation a bit. Call me crazy, but I decided not to crop the picture.</p>
-
-                
-              </div>
-
-              
-            </article>
-          
         </div>
 
         
@@ -608,7 +628,7 @@
         </p>
         
         <p class="credits theme-by text-muted">
-          <a href="http://gohugo.io">Hugo v0.42.1</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          <a href="http://gohugo.io">Hugo v0.45</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
           
         </p>
       </div>

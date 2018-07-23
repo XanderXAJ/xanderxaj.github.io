@@ -6,10 +6,21 @@
     <description>Recent content in Posts on Forged Defiance</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Sat, 14 Jul 2018 19:37:14 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 23 Jul 2018 20:26:06 +0100</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Cancel All Queued Jenkins Jobs</title>
+      <link>/post/cancel-all-queued-jenkins-jobs/</link>
+      <pubDate>Mon, 23 Jul 2018 20:26:06 +0100</pubDate>
+      
+      <guid>/post/cancel-all-queued-jenkins-jobs/</guid>
+      <description>I do not believe cancelling all queued Jenkins jobs is possible via the UI. Fortunately, it is possible if you have access to the Script Console.
+Run this in Manage Jenkins &amp;gt; Script Console:
+Hudson.instance.queue.clear() While this script is innocuous, always be careful when using the Script Console. Any script run inside it effectively has administrative permissions over Jenkins!</description>
+    </item>
     
     <item>
       <title>Backup and restore a stock Android device</title>
