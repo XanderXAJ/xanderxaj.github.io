@@ -3,11 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/post/cancel-all-queued-jenkins-jobs/</loc>
-    <lastmod>2018-07-23T20:32:16+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/post/backup-and-restore-a-stock-android-device/</loc>
     <lastmod>2018-07-14T19:52:29+01:00</lastmod>
   </url>
@@ -19,7 +14,7 @@
   
   <url>
     <loc>/post/ignore-a-package-update-when-using-fedora-and-kde/</loc>
-    <lastmod>2018-07-05T17:01:57+01:00</lastmod>
+    <lastmod>2018-08-14T20:14:39+01:00</lastmod>
   </url>
   
   <url>
@@ -480,7 +475,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-07-23T20:32:16+01:00</lastmod>
+    <lastmod>2018-07-14T19:52:29+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -588,7 +583,7 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2018-07-23T20:32:16+01:00</lastmod>
+    <lastmod>2018-07-14T19:52:29+01:00</lastmod>
     <priority>0</priority>
   </url>
   

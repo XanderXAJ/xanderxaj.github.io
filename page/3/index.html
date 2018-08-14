@@ -170,63 +170,6 @@
           
           
             <article class="post-preview">
-              <a href="/post/dynamic-dns-ddns-on-asus-routers/">
-                <h2 class="post-title">Dynamic DNS (DDNS) on Asus routers</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on February 7, 2016
-  
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <p>When using the stock or Merlin firmware on various Asus routers (I have an RT-N66U), you can use dynamic DNS to get a web domain to point to your router&rsquo;s IP address.</p>
-
-<p>To use dynamic DNS, do the following:</p>
-
-<ol>
-<li>Go to your router&rsquo;s administration console (sometimes available at <a href="http://router.asus.com">http://router.asus.com</a>) and head to <em>WAN &gt; DDNS</em>.  There is also a link on the <em>Network Map</em> page.</li>
-<li><em>Enable the DDNS client</em>, set <em>Server</em> to <em>Custom</em> and set the hostname to the web domain you will be updating (e.g. example.com).</li>
-<li>Connect to the router.  I tend to enable SSH (and disable Telnet) via <em>Administration &gt; System</em>.</li>
-
-<li><p>Create the script that will update your DDNS at <em><code>/jffs/scripts/ddns-start</code></em>.  My favoured tactic here is to run:</p>
-
-<pre><code>cat &gt; /jffs/scripts/ddns-start
-</code></pre>
-
-<p>Then paste the code, ensure the cursor is on a blank line (press Enter if not), then press Ctrl+D.</p></li>
-
-<li><p>Finally, ensure the script is executable:</p>
-
-<pre><code>chmod +x /jffs/scripts/ddns-start
-</code></pre></li>
-</ol>
-
-<p>In my case, I&rsquo;m updating an address using the <a href="http://afraid.org">http://afraid.org</a> service.  I get my private key from <a href="http://freedns.afraid.org/dynamic/">the dynamic section of the Afraid.org site</a>, and I use a <a href="https://github.com/RMerl/asuswrt-merlin/wiki/Custom-DDNS">script taken almost verbatim from the Merlin wiki</a>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/sh
-</span><span style="color:#75715e"></span>
-curl <span style="color:#e6db74">&#34;https://freedns.afraid.org/dynamic/update.php?&lt;PRIVATE_KEY_HERE&gt;&#34;</span>
-
-<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $? -eq <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-    /sbin/ddns_custom_updated <span style="color:#ae81ff">1</span>
-<span style="color:#66d9ef">else</span>
-    /sbin/ddns_custom_updated <span style="color:#ae81ff">0</span>
-<span style="color:#66d9ef">fi</span></code></pre></div>
-                
-              </div>
-
-              
-            </article>
-          
-            <article class="post-preview">
               <a href="/post/connecting-to-an-adb-over-network-android-device/">
                 <h2 class="post-title">Connecting to an ADB-over-network Android device</h2>
                 
@@ -832,6 +775,57 @@ command: goto_symbol_in_project
 </code></pre>
 
 <p>The nice thing about the keybindings override is that the instructions described above should work for any addon package <a href="http://www.sublimetext.com/docs/3/packages.html">as the User package is sourced last</a> &mdash; meaning that the User package overrides all.</p>
+
+                
+              </div>
+
+              
+            </article>
+          
+            <article class="post-preview">
+              <a href="/post/migrating-from-wordpress-to-jekyll/">
+                <h2 class="post-title">Migrating from Wordpress to Jekyll</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on October 4, 2015
+  
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <p>I&rsquo;ve recently moved from the rather dynamic Wordpress to the rather static Jekyll.  Can you tell?</p>
+
+<p>I&rsquo;ve come to like the idea of simply serving a bunch of static files instead of dynamically building them when required.  Static files are simple, cheap to host and serve, introduce no further security problems beyond the web server and configuration, and easy enough for me, as a developer, to edit.</p>
+
+<p>I&rsquo;ve still got plenty of hurdles to work through &mdash; in particular how to host all my pictures &mdash; but this can all be worked out over time one way or another (including reverting back to Wordpress!).</p>
+
+<p>I just wanted to scrawl a few notes about my discoveries &mdash; and what better way to do it than within the blog itself!</p>
+
+<ul>
+<li><p>If you run <code>jekyll serve</code> inside of a VM (like Virtualbox) or container (like Docker), if you want to hit the site outside of the VM then make sure to specify <code>--host=0.0.0.0</code> so the server binds to the outside network interface instead of the loopback interface.</p></li>
+
+<li><p>I exported the Wordpress data by using the <a href="https://github.com/benbalter/wordpress-to-jekyll-exporter">jekyll-export plugin</a>.  The <a href="http://import.jekyllrb.com/docs/wordpress/">script recommended by Jekyll&rsquo;s own import website</a> produced a bunch of HTML which did not play well with Jekyll.</p></li>
+
+<li><p>One thing I wanted to do afterwards is convert many of the HTML entities to simpler equivalents, like <code>’</code> to <code>'</code> and <code>“</code> and <code>”</code> to <code>&quot;</code>.  I did this to make my files easily readable and editable, in the spirit of Markdown.  A <a href="http://serverfault.com/questions/440805/how-can-i-easily-convert-html-special-entities-from-a-standard-input-stream-in-l">quick way to do this</a> is to run the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> post in _posts/*; <span style="color:#66d9ef">do</span> cat <span style="color:#e6db74">&#34;</span>$post<span style="color:#e6db74">&#34;</span> | perl -n -mHTML::Entities -e <span style="color:#e6db74">&#39;use open ( &#34;:encoding(UTF-8)&#34;, &#34;:std&#34; ); print HTML::Entities::decode_entities($_) ;&#39;</span> &gt; $post.new <span style="color:#f92672">&amp;&amp;</span> mv $post.new $post; <span style="color:#66d9ef">done</span></code></pre></div>
+<p>You&rsquo;ll also need to convert any pages that were brought across too.</p>
+
+<p>The <code>use open ( &quot;:encoding(UTF-8)&quot;, &quot;:std&quot; );</code> part is of as it instructs perl that <a href="http://blog.thewebsitepeople.org/2012/06/perl-default-to-utf-8-encoding/">all input and output streams are UTF-8</a>.</p></li>
+
+<li><p>You see that code block nested inside the list above?  That <a href="https://github.com/jekyll/jekyll/issues/588">cannot be done with Jekyll and Markdown</a>.  This is because the <code>{% raw %}{% highlight %}{% endraw %}</code> code Jekyll uses is substituted before the markdown is parsed.  If you want highlighting, this means you need to use the <code>~~~</code> fenced code blocks.</p>
+
+<p>You could try <a href="https://github.com/mvdbos/kramdown-with-pygments">adding pygments support to Kramdown</a>.  Alternatively, you can switch to a renderer, like <a href="https://github.com/vmg/redcarpet">redcarpet</a>, that does support it.  This may well come and bite me in the future.</p></li>
+</ul>
+
+<p>After all of these changes, my markup (or should I say markdown?) started to look respectable &mdash; although there&rsquo;s a long way to go!</p>
 
                 
               </div>
