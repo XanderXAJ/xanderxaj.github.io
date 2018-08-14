@@ -5,27 +5,35 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>Cancel All Queued Jenkins Jobs</title>
-  <meta property="og:title" content="Cancel All Queued Jenkins Jobs" />
-  <meta name="twitter:title" content="Cancel All Queued Jenkins Jobs" />
-  <meta name="description" content="I do not believe cancelling all queued Jenkins jobs is possible via the UI. Fortunately, it is possible if you have access to the Script Console.
-Run this in Manage Jenkins &gt; Script Console:
-Hudson.instance.queue.clear() While this script is innocuous, always be careful when using the Script Console. Any script run inside it effectively has administrative permissions over Jenkins!">
-  <meta property="og:description" content="I do not believe cancelling all queued Jenkins jobs is possible via the UI. Fortunately, it is possible if you have access to the Script Console.
-Run this in Manage Jenkins &gt; Script Console:
-Hudson.instance.queue.clear() While this script is innocuous, always be careful when using the Script Console. Any script run inside it effectively has administrative permissions over Jenkins!">
-  <meta name="twitter:description" content="I do not believe cancelling all queued Jenkins jobs is possible via the UI. Fortunately, it is possible if you have access to the Script Console.
-Run this in Manage Jenkins &gt; Script Console: …">
+  <title>Currying vs Partial Function Application</title>
+  <meta property="og:title" content="Currying vs Partial Function Application" />
+  <meta name="twitter:title" content="Currying vs Partial Function Application" />
+  <meta name="description" content="While having a read in to the art of function programming, I stumbled upon a curious technicality. Those that know me know (perhaps wearily) I love talking about technical stuff.
+Currying (wikipedia) builds a single function that, in effect, takes multiple arguments by composing a chain of functions that each take a single argument and eventually yield the final result:
+f: (x, y, z) -&gt; result curry(f): x -&gt; (y -&gt; (z -&gt; result))  So if you wanted to call a curried function, it would look something like:
+f(first_arg)(second_arg)(third_arg)  Functional languages often compose multiple-argument functions using what appears to be currying.
+But wait, that&rsquo;s not what I just said! I must be an awful writer, spreading misinformation like that. After all, I&rsquo;ve read plenty of blogs and articles that tell me that currying is where you &ldquo;fix&rdquo; some arguments in place ahead of final invocation. The result is creating a function with fewer arguments, like so:
+f(x, y, z) -&gt; result g(z) -&gt; f(1, 2, z)  It turns out that this is known as partial function application. How it came to be known as currying I am not sure, but it seems to be a very common misconception. I believed it too until recently! Yet another thing to remember.
+Wikipedia contrasts currying and partial function application in detail if you want to compare them further.">
+  <meta property="og:description" content="While having a read in to the art of function programming, I stumbled upon a curious technicality. Those that know me know (perhaps wearily) I love talking about technical stuff.
+Currying (wikipedia) builds a single function that, in effect, takes multiple arguments by composing a chain of functions that each take a single argument and eventually yield the final result:
+f: (x, y, z) -&gt; result curry(f): x -&gt; (y -&gt; (z -&gt; result))  So if you wanted to call a curried function, it would look something like:
+f(first_arg)(second_arg)(third_arg)  Functional languages often compose multiple-argument functions using what appears to be currying.
+But wait, that&rsquo;s not what I just said! I must be an awful writer, spreading misinformation like that. After all, I&rsquo;ve read plenty of blogs and articles that tell me that currying is where you &ldquo;fix&rdquo; some arguments in place ahead of final invocation. The result is creating a function with fewer arguments, like so:
+f(x, y, z) -&gt; result g(z) -&gt; f(1, 2, z)  It turns out that this is known as partial function application. How it came to be known as currying I am not sure, but it seems to be a very common misconception. I believed it too until recently! Yet another thing to remember.
+Wikipedia contrasts currying and partial function application in detail if you want to compare them further.">
+  <meta name="twitter:description" content="While having a read in to the art of function programming, I stumbled upon a curious technicality. Those that know me know (perhaps wearily) I love talking about technical stuff.
+Currying (wikipedia) …">
   <meta name="author" content="Alex Palmer"/>
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@XanderXAJ" />
   <meta name="twitter:creator" content="@XanderXAJ" />
-  <meta property="og:url" content="/post/cancel-all-queued-jenkins-jobs/" />
+  <meta property="og:url" content="/post/currying-vs-partial-function-application/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Forged Defiance" />
 
   <meta name="generator" content="Hugo 0.45" />
-  <link rel="canonical" href="/post/cancel-all-queued-jenkins-jobs/" />
+  <link rel="canonical" href="/post/currying-vs-partial-function-application/" />
   <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Forged Defiance">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -157,13 +165,13 @@ Run this in Manage Jenkins &gt; Script Console: …">
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
-              <h1>Cancel All Queued Jenkins Jobs</h1>
+              <h1>Currying vs Partial Function Application</h1>
                 
                 
                   <span class="post-meta">
   
   
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on July 23, 2018
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on August 14, 2018
   
   
   
@@ -184,11 +192,30 @@ Run this in Manage Jenkins &gt; Script Console: …">
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <p>I do not believe cancelling all queued Jenkins jobs is possible via the UI.  Fortunately, it is possible if you have access to the <a href="https://wiki.jenkins.io/display/JENKINS/Jenkins+Script+Console">Script Console</a>.</p>
+        <p>While having a read in to the art of function programming, I stumbled upon a curious technicality.  Those that know me know (perhaps wearily) I love talking about technical stuff.</p>
 
-<p>Run this in <em>Manage Jenkins &gt; Script Console</em>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy">Hudson<span style="color:#f92672">.</span><span style="color:#a6e22e">instance</span><span style="color:#f92672">.</span><span style="color:#a6e22e">queue</span><span style="color:#f92672">.</span><span style="color:#a6e22e">clear</span><span style="color:#f92672">()</span></code></pre></div>
-<p>While this script is innocuous, always be careful when using the Script Console.  Any script run inside it effectively has administrative permissions over Jenkins!</p>
+<p><em>Currying</em> (<a href="https://en.wikipedia.org/wiki/Currying">wikipedia</a>) builds a single function that, in effect, takes multiple arguments by composing a chain of functions that each take a single argument and eventually yield the final result:</p>
+
+<pre><code>f: (x, y, z) -&gt; result
+curry(f): x -&gt; (y -&gt; (z -&gt; result))
+</code></pre>
+
+<p>So if you wanted to call a curried function, it would look something like:</p>
+
+<pre><code>f(first_arg)(second_arg)(third_arg)
+</code></pre>
+
+<p>Functional languages often compose <a href="https://www.uncarved.com/articles/not_currying">multiple-argument functions using what appears to be currying</a>.</p>
+
+<p>But wait, that&rsquo;s not what I just said!  I must be an awful writer, spreading misinformation like that.  After all, I&rsquo;ve read plenty of blogs and articles that tell me that currying is where you &ldquo;fix&rdquo; some arguments in place ahead of final invocation.  The result is creating a function with fewer arguments, like so:</p>
+
+<pre><code>f(x, y, z) -&gt; result
+g(z) -&gt; f(1, 2, z)
+</code></pre>
+
+<p>It turns out that this is known as <em>partial function application</em>.  How it came to be known as currying I am not sure, but it seems to be a very common misconception.  I believed it too until recently!  Yet another thing to remember.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Currying#Contrast_with_partial_function_application">Wikipedia contrasts currying and partial function application in detail</a> if you want to compare them further.</p>
 
 
         
@@ -200,13 +227,9 @@ Run this in Manage Jenkins &gt; Script Console: …">
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="/post/backup-and-restore-a-stock-android-device/" data-toggle="tooltip" data-placement="top" title="Backup and restore a stock Android device">&larr; Previous Post</a>
+              <a href="/post/cancel-all-queued-jenkins-jobs/" data-toggle="tooltip" data-placement="top" title="Cancel All Queued Jenkins Jobs">&larr; Previous Post</a>
             </li>
           
-          
-            <li class="next">
-              <a href="/post/currying-vs-partial-function-application/" data-toggle="tooltip" data-placement="top" title="Currying vs Partial Function Application">Next Post &rarr;</a>
-            </li>
           
         </ul>
       

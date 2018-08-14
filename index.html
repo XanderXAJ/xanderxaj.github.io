@@ -170,6 +170,56 @@
           
           
             <article class="post-preview">
+              <a href="/post/currying-vs-partial-function-application/">
+                <h2 class="post-title">Currying vs Partial Function Application</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on August 14, 2018
+  
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <p>While having a read in to the art of function programming, I stumbled upon a curious technicality.  Those that know me know (perhaps wearily) I love talking about technical stuff.</p>
+
+<p><em>Currying</em> (<a href="https://en.wikipedia.org/wiki/Currying">wikipedia</a>) builds a single function that, in effect, takes multiple arguments by composing a chain of functions that each take a single argument and eventually yield the final result:</p>
+
+<pre><code>f: (x, y, z) -&gt; result
+curry(f): x -&gt; (y -&gt; (z -&gt; result))
+</code></pre>
+
+<p>So if you wanted to call a curried function, it would look something like:</p>
+
+<pre><code>f(first_arg)(second_arg)(third_arg)
+</code></pre>
+
+<p>Functional languages often compose <a href="https://www.uncarved.com/articles/not_currying">multiple-argument functions using what appears to be currying</a>.</p>
+
+<p>But wait, that&rsquo;s not what I just said!  I must be an awful writer, spreading misinformation like that.  After all, I&rsquo;ve read plenty of blogs and articles that tell me that currying is where you &ldquo;fix&rdquo; some arguments in place ahead of final invocation.  The result is creating a function with fewer arguments, like so:</p>
+
+<pre><code>f(x, y, z) -&gt; result
+g(z) -&gt; f(1, 2, z)
+</code></pre>
+
+<p>It turns out that this is known as <em>partial function application</em>.  How it came to be known as currying I am not sure, but it seems to be a very common misconception.  I believed it too until recently!  Yet another thing to remember.</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Currying#Contrast_with_partial_function_application">Wikipedia contrasts currying and partial function application in detail</a> if you want to compare them further.</p>
+
+                
+              </div>
+
+              
+            </article>
+          
+            <article class="post-preview">
               <a href="/post/cancel-all-queued-jenkins-jobs/">
                 <h2 class="post-title">Cancel All Queued Jenkins Jobs</h2>
                 
@@ -571,53 +621,6 @@ git commit --amend -c @ --date now --reset-author</code></pre></div>
 </ol>
 
 <p><code>gmsync</code> uploads without matching by default. Perfect.</p>
-
-                
-              </div>
-
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="/post/working-around-intel-cpu-running-at-a-maximum-of-49-50/">
-                <h2 class="post-title">Working around Intel CPU Running at a Maximum of 49%/50%</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on June 10, 2017
-  
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <p>My laptop had been feeling slower than it had used to, and I was getting more and more certain that it wasn&rsquo;t just me.</p>
-
-<p>One time I opened Task Manager and noticed that whenever I put load on the machine, it maxed out at 49%.  Every time.  Cooling wasn&rsquo;t the issue as the laptop fan (which is a dumb fan controlled by hardware, not software) wasn&rsquo;t spinning up much.</p>
-
-<p>After searching online, <a href="https://answers.microsoft.com/en-us/windows/forum/windows_10-other_settings/windows-10-only-use-half-of-max-cpu-speed/d97b219f-10ee-4a42-a0fc-d517c1b60be8">I stumbled across a thread</a> that would provide the (really rather insane) workaround: Move the Intel processor driver so Windows does not use it.  Thanks to everyone there for the discussion.</p>
-
-<ol>
-<li>Restart in the advanced command prompt mode.  (Hold Shift when clicking Restart)</li>
-<li>Log in to your account.</li>
-
-<li><p>Run the following:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">cd drivers
-move intelppm.sys intelppm.sys.old
-exit</code></pre></div></li>
-
-<li><p>Select the option to exit and continue to Windows 10.</p></li>
-</ol>
-
-<p>One comment on that thread suggests that this also works for AMD CPUs by moving <code>amdppm.sys</code> instead of <code>intelppm.sys</code>.</p>
-
-<p><strong>Update 2017-06-23</strong>: I previously suggested to add the <code>.bak</code> extension to the driver file.  However, Windows recognises this extension, and so it will restore the driver back to its original location at the next restart, meaning the problem will return!  I&rsquo;ve changed the instructions to suggest using <code>.old</code> instead, which I don&rsquo;t believe Windows recognises, but is still fairly obvious to users.</p>
 
                 
               </div>

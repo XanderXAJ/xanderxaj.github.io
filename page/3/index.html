@@ -170,6 +170,53 @@
           
           
             <article class="post-preview">
+              <a href="/post/caching-git-credentials-on-windows/">
+                <h2 class="post-title">Caching git credentials on Windows</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on February 7, 2016
+  
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <p>You may have already used the <a href="https://help.github.com/articles/caching-your-github-password-in-git/">git credential cache</a> to cache your remote credentials for some time, via something like:</p>
+
+<pre><code>git config --global credential.helper 'cache --timeout=3600'
+</code></pre>
+
+<p>However this will not work on Windows, as <a href="http://blog.sdbarker.com/git-credential-caching-on-windows/"><code>cache</code> communicates over a Unix socket</a>.</p>
+
+<p>Fortunately, <a href="http://www.codewrecks.com/blog/index.php/2015/06/23/git-for-windows-getting-invalid-username-or-password-with-wincred/">support for Windows&rsquo;s built-in credential manager</a> has been added to the Windows git distribution (along with msysgit).  To leverage it, use the <code>wincred</code> helper:</p>
+
+<pre><code>git config --global credential.helper wincred
+</code></pre>
+
+<p>If, like me, you like to use your dotfiles across many platforms, you may not want to put this in your global <code>.gitconfig</code>.  Instead, you can include an environment-specific config file globally and make a new file with the credential helper configuration inside:</p>
+
+<pre><code>git config --global include.path .gitconfig_env
+git config --file ~/.gitconfig_env credential.helper wincred
+</code></pre>
+
+<p>If you want to remove, modify or otherwise manage your Windows credentials, use the Credential Manager.  This can be found in Control Panel &gt; Credential Manager.</p>
+
+<p>PRO TIP: In Windows 8 and above, you can quickly get to the Control Panel by pressing Win+X, P.</p>
+
+                
+              </div>
+
+              
+            </article>
+          
+            <article class="post-preview">
               <a href="/post/dynamic-dns-ddns-on-asus-routers/">
                 <h2 class="post-title">Dynamic DNS (DDNS) on Asus routers</h2>
                 
@@ -748,90 +795,6 @@ update-alternatives --config pip
 <p>Now that I&rsquo;ve disabled both the AMD graphics driver and the AMD HDMI audio driver, perhaps I could re-enable the switchable graphics configuration.</p>
 
 <p>One last note: assuming that hiding updates works in Windows 10 like it did in previous Windows releases, then hiding an update only hides <em>that version</em>.  That means that if either driver were to get updated in future, you&rsquo;ll probably have to go through the entire rigmarole again (hide update, uninstall, reinstall) to get a working driver again.</p>
-
-                
-              </div>
-
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="/post/troubleshooting-keyboard-shortcuts-in-sublime-text/">
-                <h2 class="post-title">Troubleshooting keyboard shortcuts in Sublime Text</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on October 8, 2015
-  
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  
-
-<p>I recently installed a couple of new plugins to Sublime Text, and then <code>Ctrl+Shift+R</code>, the shortcut for searching through all symbols in a project, stopped working!</p>
-
-<p>You can get Sublime Text to display what&rsquo;s actually going on when you press the shortcut &mdash; that information may give you a hint as to what plugin or configuration has changed your value.</p>
-
-<h2 id="is-the-shortcut-reaching-sublime">Is the shortcut reaching Sublime?</h2>
-
-<p>The following commands are run in the Sublime Text Console; you can access on Linux and Windows by pressing <code>Ctrl+`</code>.</p>
-
-<p>You can check the shortcut is actually managing to get to Sublime in the first place:</p>
-
-<pre><code>sublime.log_input(True)
-</code></pre>
-
-<p>You&rsquo;ll notice that the console will now display the keys that you press &mdash; try pressing a keyboard shortcut too!</p>
-
-<pre><code>key evt: shift+control+r
-</code></pre>
-
-<p>If the console is showing your keystrokes correctly, then Sublime is receiving them loud and clear and the problem lies elsewhere.</p>
-
-<h2 id="what-is-sublime-doing-when-the-shortcut-is-invoked">What is Sublime doing when the shortcut is invoked?</h2>
-
-<p>By running the following in the Sublime console, you&rsquo;ll see what commands Sublime is running as you press keyboard shortcuts:</p>
-
-<pre><code>sublime.log_commands(True)
-</code></pre>
-
-<p>You&rsquo;ll now note the command names appearing inside of the console.  I got the following:</p>
-
-<pre><code>key evt: shift+control+r
-command: run_emmet_action {&quot;action&quot;: &quot;reflect_css_value&quot;}
-</code></pre>
-
-<p>In my case, it turned out that <a href="https://github.com/sergeche/emmet-sublime">Emmet</a> had taken over the shortcut!  I got my shortcut back by copying the default <code>Ctrl+Shift+R</code> shortcut definition from <em>Preferences &gt; Keybindings - Default</em> and pasting it in to the user file at <em>Preferences &gt; Keybindings - User</em>.</p>
-
-<pre><code>[
-    { &quot;keys&quot;: [&quot;ctrl+shift+r&quot;], &quot;command&quot;: &quot;goto_symbol_in_project&quot; }
-]
-</code></pre>
-
-<p>I feel there should be a better way to do this, but this works as Sublime is now.  Now I try the shortcut again:</p>
-
-<pre><code>key evt: shift+control+r
-command: goto_symbol_in_project
-</code></pre>
-
-<p>Much better.</p>
-
-<h2 id="emmet-has-its-own-special-shortcut-handling">Emmet has its own special shortcut handling</h2>
-
-<p>Those of you familiar with Emmet might know that it has <a href="https://github.com/sergeche/emmet-sublime#overriding-keyboard-shortcuts">its own built-in mechanism</a> to disable keyboard shortcuts of your choice.  And in this case, that&rsquo;s exactly what could be used.</p>
-
-<pre><code>&quot;disabled_keymap_actions&quot;: &quot;reflect_css_value&quot;
-</code></pre>
-
-<p>The nice thing about the keybindings override is that the instructions described above should work for any addon package <a href="http://www.sublimetext.com/docs/3/packages.html">as the User package is sourced last</a> &mdash; meaning that the User package overrides all.</p>
 
                 
               </div>

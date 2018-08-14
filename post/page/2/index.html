@@ -155,6 +155,56 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="/post/working-around-intel-cpu-running-at-a-maximum-of-49-50/">
+                <h2 class="post-title">Working around Intel CPU Running at a Maximum of 49%/50%</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on June 10, 2017
+  
+  
+  
+</span>
+
+
+              </p>
+              <div class="post-entry">
+                
+                  <p>My laptop had been feeling slower than it had used to, and I was getting more and more certain that it wasn&rsquo;t just me.</p>
+
+<p>One time I opened Task Manager and noticed that whenever I put load on the machine, it maxed out at 49%.  Every time.  Cooling wasn&rsquo;t the issue as the laptop fan (which is a dumb fan controlled by hardware, not software) wasn&rsquo;t spinning up much.</p>
+
+<p>After searching online, <a href="https://answers.microsoft.com/en-us/windows/forum/windows_10-other_settings/windows-10-only-use-half-of-max-cpu-speed/d97b219f-10ee-4a42-a0fc-d517c1b60be8">I stumbled across a thread</a> that would provide the (really rather insane) workaround: Move the Intel processor driver so Windows does not use it.  Thanks to everyone there for the discussion.</p>
+
+<ol>
+<li>Restart in the advanced command prompt mode.  (Hold Shift when clicking Restart)</li>
+<li>Log in to your account.</li>
+
+<li><p>Run the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">cd drivers
+move intelppm.sys intelppm.sys.old
+exit</code></pre></div></li>
+
+<li><p>Select the option to exit and continue to Windows 10.</p></li>
+</ol>
+
+<p>One comment on that thread suggests that this also works for AMD CPUs by moving <code>amdppm.sys</code> instead of <code>intelppm.sys</code>.</p>
+
+<p><strong>Update 2017-06-23</strong>: I previously suggested to add the <code>.bak</code> extension to the driver file.  However, Windows recognises this extension, and so it will restore the driver back to its original location at the next restart, meaning the problem will return!  I&rsquo;ve changed the instructions to suggest using <code>.old</code> instead, which I don&rsquo;t believe Windows recognises, but is still fairly obvious to users.</p>
+
+                
+              </div>
+
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="/post/tips-for-ripping-blu-ray-audio/">
                 <h2 class="post-title">Tips for Ripping Blu-Ray Audio</h2>
 
@@ -580,56 +630,6 @@ yarn global add &lt;package&gt;</code></pre></div>
                   <p>If I&rsquo;m making informal CD mixtapes (mixdiscs?), use Foobar2000 (or other software) to convert the tracks to WAV, and then use <a href="http://www.imgburn.com/index.php?act=download">ImgBurn</a> to create a CUE file (Tools &gt; Create CUE file&hellip;), drag and drop the tracks in to the new window, and customise the disc before burning it.</p>
 
 <p>EAC can also be used for this (and is likely the better choice for making clones of audio CDs), but seems to be a little unreliable on my laptop.  And I don&rsquo;t like to waste CDs, especially when I only have 2 or 3 of them!</p>
-
-                
-              </div>
-
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="/post/caching-git-credentials-on-windows/">
-                <h2 class="post-title">Caching git credentials on Windows</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on February 7, 2016
-  
-  
-  
-</span>
-
-
-              </p>
-              <div class="post-entry">
-                
-                  <p>You may have already used the <a href="https://help.github.com/articles/caching-your-github-password-in-git/">git credential cache</a> to cache your remote credentials for some time, via something like:</p>
-
-<pre><code>git config --global credential.helper 'cache --timeout=3600'
-</code></pre>
-
-<p>However this will not work on Windows, as <a href="http://blog.sdbarker.com/git-credential-caching-on-windows/"><code>cache</code> communicates over a Unix socket</a>.</p>
-
-<p>Fortunately, <a href="http://www.codewrecks.com/blog/index.php/2015/06/23/git-for-windows-getting-invalid-username-or-password-with-wincred/">support for Windows&rsquo;s built-in credential manager</a> has been added to the Windows git distribution (along with msysgit).  To leverage it, use the <code>wincred</code> helper:</p>
-
-<pre><code>git config --global credential.helper wincred
-</code></pre>
-
-<p>If, like me, you like to use your dotfiles across many platforms, you may not want to put this in your global <code>.gitconfig</code>.  Instead, you can include an environment-specific config file globally and make a new file with the credential helper configuration inside:</p>
-
-<pre><code>git config --global include.path .gitconfig_env
-git config --file ~/.gitconfig_env credential.helper wincred
-</code></pre>
-
-<p>If you want to remove, modify or otherwise manage your Windows credentials, use the Credential Manager.  This can be found in Control Panel &gt; Credential Manager.</p>
-
-<p>PRO TIP: In Windows 8 and above, you can quickly get to the Control Panel by pressing Win+X, P.</p>
 
                 
               </div>

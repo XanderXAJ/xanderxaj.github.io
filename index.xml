@@ -6,10 +6,25 @@
     <description>Recent content on Forged Defiance</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Mon, 23 Jul 2018 20:26:06 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 14 Aug 2018 20:16:31 +0100</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Currying vs Partial Function Application</title>
+      <link>/post/currying-vs-partial-function-application/</link>
+      <pubDate>Tue, 14 Aug 2018 20:16:31 +0100</pubDate>
+      
+      <guid>/post/currying-vs-partial-function-application/</guid>
+      <description>While having a read in to the art of function programming, I stumbled upon a curious technicality. Those that know me know (perhaps wearily) I love talking about technical stuff.
+Currying (wikipedia) builds a single function that, in effect, takes multiple arguments by composing a chain of functions that each take a single argument and eventually yield the final result:
+f: (x, y, z) -&amp;gt; result curry(f): x -&amp;gt; (y -&amp;gt; (z -&amp;gt; result))  So if you wanted to call a curried function, it would look something like:
+f(first_arg)(second_arg)(third_arg)  Functional languages often compose multiple-argument functions using what appears to be currying.
+But wait, that&amp;rsquo;s not what I just said! I must be an awful writer, spreading misinformation like that. After all, I&amp;rsquo;ve read plenty of blogs and articles that tell me that currying is where you &amp;ldquo;fix&amp;rdquo; some arguments in place ahead of final invocation. The result is creating a function with fewer arguments, like so:
+f(x, y, z) -&amp;gt; result g(z) -&amp;gt; f(1, 2, z)  It turns out that this is known as partial function application. How it came to be known as currying I am not sure, but it seems to be a very common misconception. I believed it too until recently! Yet another thing to remember.
+Wikipedia contrasts currying and partial function application in detail if you want to compare them further.</description>
+    </item>
     
     <item>
       <title>Cancel All Queued Jenkins Jobs</title>
