@@ -34,7 +34,7 @@ Wikipedia contrasts currying and partial function application in detail if you w
       <guid>/post/cancel-all-queued-jenkins-jobs/</guid>
       <description>I do not believe cancelling all queued Jenkins jobs is possible via the UI. Fortunately, it is possible if you have access to the Script Console.
 Run this in Manage Jenkins &amp;gt; Script Console:
-Hudson.instance.queue.clear() While this script is innocuous, always be careful when using the Script Console. Any script run inside it effectively has administrative permissions over Jenkins!</description>
+Jenkins.instance.queue.clear() While this script is innocuous, always be careful when using the Script Console. Any script run inside it effectively has administrative permissions over Jenkins!</description>
     </item>
     
     <item>

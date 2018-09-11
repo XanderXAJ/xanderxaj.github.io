@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hints  Tips on Forged Defiance</title>
+    <link>/categories/hints-tips/</link>
+    <description>Recent content in Hints  Tips on Forged Defiance</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sun, 02 Jun 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/hints-tips/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fixing Gran Turismo 5&#39;s slow loading times</title>
+      <link>/post/fixing-gran-turismo-5s-slow-loading-times/</link>
+      <pubDate>Sun, 02 Jun 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/post/fixing-gran-turismo-5s-slow-loading-times/</guid>
+      <description>Just this morning Gran Turismo 5 just out of nowhere started loading really slowly.
+I fixed this by signing out of PSN. It&amp;rsquo;s not ideal if you want to play online, but it&amp;rsquo;s worked for me.
+It should be noted that the problem can been seen from the XMB before you even launch the game – just after it displays the message that you&amp;rsquo;ve &amp;ldquo;signed in&amp;rdquo;, watch the clock and see how long it spins; this is the console synchronizing the time with PSN. If this takes more than a couple of seconds, there might be a problem.
+In addition, check your friends list. If it seems significantly shorter, and each friend is only very slowly appearing one at once, you can count on having troubles launching GT5.
+Finally, note that when you launch GT5 without being connected, the points where the game hangs are the points it asks you if you want to connect to PSN.
+I can only assume that this is a PSN issue because I can confirm on my Tomato router that my connection is entirely utilised. Of course, that doesn&amp;rsquo;t guarantee the problem isn&amp;rsquo;t my end…
+If your loading problem isn&amp;rsquo;t thanks to PSN or a slow internet connection, then it might be that it isn&amp;rsquo;t installed, the HDD is dying, the disc is scratched, the Blu-ray is dying… All the usual suspects really.
+Good luck!</description>
+    </item>
+    
+    <item>
+      <title>Supreme Commander 2 Hidden Objectives List</title>
+      <link>/post/supreme-commander-2-hidden-objectives-list/</link>
+      <pubDate>Mon, 22 Mar 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/supreme-commander-2-hidden-objectives-list/</guid>
+      <description> Update 2010-03-26: Missed &amp;ldquo;Master of Pawns&amp;rdquo; hidden objective off of Cybran mission 6. Added it.
+Trying to find and complete all the secret missions in SupCom 2? Here&amp;rsquo;s a quick and dirty list of them all!
+This information is copied from the map files within the SupCom 2 directory.
+Feel free to copy and paste — a link back to this page would be appreciated!
+The List UEF  1 – Prime Target  Survivor  Survive the initial wave of Cybran attackers without losing any units.   2 – Off Base  Economic Opportunist  Build at least two Mass Extractors in enemy territory.   3 – Strike While Cold  Master of the Seas  Build an Atlantis II Experimental Aircraft Carrier.   4 – Titans of Industry  Brutal Conqueror  Defeat Coleman without the aid of the Fatboys.   5 – Factions or Family Plan  Experimenter  Build at least four Experimental units   6 – End of an Alliance  Nuke King  Launch your first nuke.  None Shall Pass!  Prevent any enemy King Kriptors from crossing the main fortress bridge.    Illuminate  1 – Delta Force  Blockhead  Prevent the blockade from taking more than 25% damage.   2 – Lethal Weapons  Master Tactician  Complete the operation by constructing fewer than 30 mobile units.   3 – Back on the Chain Gang  Not the Bees!  You have successfully taken over the enemy air defenses.  Pro Anti-Air  You have successfully taken over the prison&amp;rsquo;s defensive structures.  Agent Provocateur  Capture all of the Security Stations.   4 – Steamed  Experimental Fanatic  Build at least eight Experimental units.   5 – Cliff Diving  Supremest Commander  Reach the highest level of veterancy with your ACU.   6 – Prime Time  Bot Lord  Complete the operation with an army made up entirely of Assault Bots.  A Czar is Born  Build your first Darkenoid.    Cybran  1 – Fact Finder  Survival Expert  Survive Gauge&amp;rsquo;s onslaught after the download completes.   2 – The Trouble With Technology  Master Thief  Capture a Rogue Engineer.  Great Escapist  Complete the operation without a unit being captured by the enemy.   3 – The Great Leap Forward  Cache and Carry  Collect all of the Technology Caches.   4 – Gatekeeper  Sultan of Soul  Build at least four Soul Ripper Experimentals.   5 – Surface Tension  Master of the Deep  Build a Kraken Experimental Submarine.   6 – The Final Countdown  Research Savant  Complete all available research.  Master of Pawns  Win the operation without the aid of any Experimentals.    </description>
+    </item>
+    
+    <item>
+      <title>Gnome Power Manager Hides Do Nothing</title>
+      <link>/post/gnome-power-manager-hides-do-nothing/</link>
+      <pubDate>Tue, 16 Feb 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/gnome-power-manager-hides-do-nothing/</guid>
+      <description>Found this rather handy post that tells you what to do in newer versions of Gnome Power Manager, which for some reason hide the Do Nothing options as default.
+Personally I find it irritating as the battery readout in all the distros of Linux I&amp;rsquo;ve used on my Eee report the battery at 0% over half an hour before the battery is actually dead. No amount of conditioning or software modification seems to fix it, so I&amp;rsquo;m living with it.
+However, with the newer versions of Gnome Power Manager, Do Nothing is hidden! So my machine would go to sleep, despite the fact I know there&amp;rsquo;s at least 30 more minutes of battery life going to waste. So annoying!
+To fix it (albeit temporarily), you need to edit the gconf values for the settings you&amp;rsquo;re interested in to &amp;ldquo;nothing&amp;rdquo;.
+The easiest way to do this is to use an application like gconf-editor and edit the values through that:
+ Run gconf-editor.  If you don&amp;rsquo;t have it installed, go to your favourite package manager and install it through that.  Using the column on the left side, navigate to apps &amp;gt; gnome-power-manager. In my case, I wanted to change the critical battery behaviour to Do Nothing. So I navigated in to actions and set the value of critical_battery to nothing.  If you want to change, say, the behaviour of a power button press, navigate to **buttons **instead of actions. Repeat this step for each value you want to change.  Close gconf-editor.  That&amp;rsquo;s it! One thing you need to keep in mind is that if you later change the setting away from Do Nothing to something else, the Do Nothing option will disappear.
+Hope this works for you as it has me.
+(I&amp;rsquo;m typing this post with 0% battery left! What I crazy daredevil I am.)
+Update 19:58: Forgot to mention that Do Nothing will disappear if deselected. Fixed.</description>
+    </item>
+    
+    <item>
+      <title>Take Control of Your Settings: Configuring Synaptics Touchpads and Making GNOME Respect Them</title>
+      <link>/post/take-control-of-your-settings-configuring-synaptics-touchpads-and-making-gnome-respect-them/</link>
+      <pubDate>Mon, 18 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/post/take-control-of-your-settings-configuring-synaptics-touchpads-and-making-gnome-respect-them/</guid>
+      <description> Update 2010-05-28: If you&amp;rsquo;re using Fedora 13, then the configuration for synaptics touchpads is done through what is practically the old xorg.conf method. (This is as udev now handles devices instead of HAL.) Check out the Fedora Wiki for more information.
+The Problem Today I&amp;rsquo;ve been trying to configure the touchpad on my Eee PC 901 to my liking. It&amp;rsquo;s a Synaptics touchpad, and supports tracking multiple fingers, and I wanted to take more advantage of that.
+GNOME does have support for configuring multiple finger gestures out of the box, with gnome-mouse-properties (or System » Preferences » Mouse) and then selecting the Touchpad tab. This is all good and works fine — if you&amp;rsquo;re satisfied with what GNOME gives you.
+Unfortunately I wasn&amp;rsquo;t. When you enable clicking on the touchpad, GNOME sets one finger taps to left-click, two to right, and three to middle. I tend to use middle-click more often than right-click, thanks to browsing the web and liking making new tabs, plus I already have a dedicated right-click button.
+So I set off to change it. After reading material courteousy of Arch Linux&amp;rsquo;s wiki, I found (and remembered from attempting the same thing ages ago) that configuration is done through the HAL using fdi policies, which are just specifically formatted XML files. (The old xorg.conf way is deprecated and isn&amp;rsquo;t as flexible, not that it matters for configuring the trackpad.)
+It sounds scary and involves more typing, but in the end it&amp;rsquo;s just as simple a process as it used to be, even if it involves jumping through an extra hoop or two.
+Configuration First you have to create a file with the fdi extension in /etc/hal/fdi/policy/. I&amp;rsquo;ve named my file 99-synaptics.fdi, following example from /usr/share/hal/fdi/policy/10osvendor/, but you can name yours whatever you like.
+sudo gedit /etc/hal/fdi/policy/99-synaptics.fdi  Note: You need root permissions to be able to create and edit this file. If you run Ubuntu (or are in the /etc/sudoers file), this can be accomplished using the sudo command as shown above. You can use whatever editor you like, too. vi, emacs, nano, *kate*…
+Once the file is created, it&amp;rsquo;s time to get messy! The fdi file contains a match rule, which tells HAL which device you want to configure, and then a series of merge rules which apply your desired configuration into the HAL. The easiest way to show this is by example, so here&amp;rsquo;s my prospective configuration:
+&amp;lt;br /&amp;gt; &amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;deviceinfo version=&amp;quot;0.2&amp;quot;&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;device&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;match key=&amp;quot;info.product&amp;quot; contains=&amp;quot;Elantech Touchpad&amp;quot;&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;merge type=&amp;quot;string&amp;quot; key=&amp;quot;input.x11_driver&amp;quot;&amp;gt;synaptics&amp;lt;/merge&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;merge type=&amp;quot;string&amp;quot; key=&amp;quot;input.x11_options.VertTwoFingerScroll&amp;quot;&amp;gt;true&amp;lt;/merge&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;merge type=&amp;quot;string&amp;quot; key=&amp;quot;input.x11_options.HorizTwoFingerScroll&amp;quot;&amp;gt;true&amp;lt;/merge&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;merge type=&amp;quot;string&amp;quot; key=&amp;quot;input.x11_options.TapButton1&amp;quot;&amp;gt;1&amp;lt;/merge&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;merge type=&amp;quot;string&amp;quot; key=&amp;quot;input.x11_options.TapButton2&amp;quot;&amp;gt;2&amp;lt;/merge&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;merge type=&amp;quot;string&amp;quot; key=&amp;quot;input.x11_options.TapButton3&amp;quot;&amp;gt;3&amp;lt;/merge&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;merge type=&amp;quot;string&amp;quot; key=&amp;quot;input.x11_options.ClickFinger1&amp;quot;&amp;gt;1&amp;lt;/merge&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;merge type=&amp;quot;string&amp;quot; key=&amp;quot;input.x11_options.ClickFinger2&amp;quot;&amp;gt;3&amp;lt;/merge&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;merge type=&amp;quot;string&amp;quot; key=&amp;quot;input.x11_options.ClickFinger3&amp;quot;&amp;gt;2&amp;lt;/merge&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;/match&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;/device&amp;gt;&amp;lt;br /&amp;gt; &amp;lt;/deviceinfo&amp;gt;&amp;lt;br /&amp;gt; 
+Starting from the top, here&amp;rsquo;s a quick description of each part:
+ The &amp;lt;?xml part is the XML declaration required in any valid XML file. Nothing interesting here. The  and &amp;lt;device&amp;gt; are just boilerplate code that tell the HAL to expect rules relating to devices. Again, nothing interesting here. Now things start getting good! The  line describes how to find the device you want to configure:  Simply put, the HAL searches for the contains string inside the key field. Whatever matches that search it&amp;rsquo;ll apply the merge rules to. There are other ways to match aside from contains, but this is all you need to know to get things working.  The  lines are the meat of the file, describing each and every configuration change you want to make.  You&amp;rsquo;re probably thinking this is all good and well, but how did I come up with this stuff in the first place? Well, the answer lies in the HAL itself.
+The lshal command lists all the devices the HAL can detect (that&amp;rsquo;s &amp;ldquo;ls hal&amp;rdquo;, get it?). You might want to pipe the contents to less, to be able to scroll and search through the large amount of text that&amp;rsquo;s returned:
+lshal | less  In less, type /synaptics to search for the string &amp;ldquo;synaptics&amp;rdquo;. less should automatically scroll to the point we&amp;rsquo;re interested in; your touchpad. If it cannot be found, you either don&amp;rsquo;t have a Synaptics touchpad or the synaptics driver isn&amp;rsquo;t being loaded. Try **searching for Touchpad **or similar words, but anything more than that is beyond the scope of this article.
+Once you have found the device on your list, you&amp;rsquo;ll be able to see a list of keys and their values. You want to pick one of these fields that will not change between boots to place as the match rule inside your fdi file. I chose info.product, but you can choose something else like input.product if it strikes your fancy. Either way, fill in the &amp;lt;match&amp;gt; line with the key that you chose and the string that&amp;rsquo;ll match it. Ideally this search will only match your touchpad and nothing else.
+Next is the fun part — configuration. To do this simply open up the man page for synaptics:
+man synaptics  This&amp;rsquo;ll give a detailed list of everything that can be changed within the synaptics driver. For each value that you want to change, find its name on the manpage, and add a new merge rule with the appropriate key. Note that every key in the fdi begins with &amp;ldquo;input.x11_options.&amp;rdquo; followed by the synaptics key you want to change. (The exception to this in my file is the first merge rule, which just makes sure that the synaptics driver has been loaded for my touchpad.)
+If you want to test an option before making it permanent, use the synclient key=value command, filling in key and value with the option you want to change.
+Once you&amp;rsquo;ve added all the merge rules you like, close all the tags and save the file. Now just restart the HAL (or your computer) and your settings will be applied. Almost.
+GNOME Respect Now that you have your configuration all set up, you need to stop GNOME from changing your carefully crafted settings to ones of its choosing.
+To do this, simply run the following command:
+gconftool-2 --type bool --set /apps/gnome_settings_daemon/plugins/mouse/active false  If you get cold feet and want to enable GNOME&amp;rsquo;s control over mouse and trackpad settings, run this command:
+gconftool-2 --type bool --set /apps/gnome_settings_daemon/plugins/mouse/active true  That&amp;rsquo;s really it. Thanks to jan for finding this value.
+I&amp;rsquo;ve written this to be as generalised as possible, so it should work for many different distros so long as they are using the latest HAL/Xorg/kernel. I&amp;rsquo;m running Fedora 11 and have added my name to the /etc/sudoers file, allowing me to run sudo.
+If you have any questions or just want to say thanks, feel free to leave a comment or contact me!
+
+synaptics
+true
+true
+1
+2
+3
+1
+3
+2
+
+
+  </description>
+    </item>
+    
+    <item>
+      <title>Stop Exact Audio Copy Crashing on Windows 7</title>
+      <link>/post/stop-exact-audio-copy-crashing-on-windows-7/</link>
+      <pubDate>Fri, 18 Dec 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/stop-exact-audio-copy-crashing-on-windows-7/</guid>
+      <description>When I tried to rip a disc using Exact Audio Copy on Windows 7 x64, I found it kept crashing as soon as the rip tried to start. Bummer.
+Remembering the previous times I&amp;rsquo;ve used EAC, when you click a button to start a rip, it asks you where you want to save the ripped files.
+Turns out if you set EAC to save into a predetermined location instead of asking, EAC manages to rip perfectly fine!
+So, here&amp;rsquo;s a step-by-step guide to stop it crashing:
+ Open Exact Audio Copy. Go to File &amp;gt; EAC Options. Click the Directories tab. Instead of &amp;ldquo;Ask every time&amp;rdquo;, choose Use this Directory, and pick a directory of your choosing.
+ I personally use: C:\Users&amp;lt;Username&amp;gt;\Music\Extracted  Click OK.
+  That&amp;rsquo;s it! Good luck.</description>
+    </item>
+    
+    <item>
+      <title>Delete Songs From Smart Playlists in iTunes</title>
+      <link>/post/delete-songs-from-smart-playlists-in-itunes/</link>
+      <pubDate>Fri, 20 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/delete-songs-from-smart-playlists-in-itunes/</guid>
+      <description>Update 2009-11-23: Corrected Mac keyboard keys. I don&amp;rsquo;t own a Mac myself, but a friend of mine tells me that iTunes defies the normal behaviour of many other Apple applications. Probably because it&amp;rsquo;s ancient and desperately needs an update.
+Made a smart playlist to find songs you want to delete, then found that the delete function no longer works?
+Just hold Shift. Or Option.
+Pressing Shift+Delete on Windows or Option+Delete on Mac will give you a prompt to delete songs just like any other delete operation performed in the library.
+Holding Shift on Windows or Option on Mac and right-clicking on one or more songs will show &amp;ldquo;Delete&amp;rdquo; in the context menu.
+As an aside, this shortcut also allows you to delete songs from static playlists as well.</description>
+    </item>
+    
+    <item>
+      <title>The Windows 7 Taskbar — Keyboard Goodness</title>
+      <link>/post/the-windows-7-taskbar-keyboard-goodness/</link>
+      <pubDate>Sun, 15 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/the-windows-7-taskbar-keyboard-goodness/</guid>
+      <description>If you&amp;rsquo;re fortunate enough to be using Windows 7, then no doubt you&amp;rsquo;ve noticed the new taskbar. Well, here&amp;rsquo;s a couple of golden nuggets of info for you:
+Did you know that all the icons you line up on the taskbar automatically get keyboard shortcuts? If you want to launch one of them, just press the Windows key and the number of the program&amp;rsquo;s position along the list. So to launch the first program, press Win+1; to launch the second, press Win+2; this continues all the way up to Win+0, which opens the tenth program. Cool, huh? This is the same behaviour as the Quick Launch Bar in Windows Vista (which I used extensively).
+Even better, if you want to open one of those programs with admin permissions (for example, using Notepad to edit the hosts file), you can press Win+Ctrl+Shift+, accept any UAC prompt, and voilà! Program a la admin.
+I love keyboard shortcuts.</description>
+    </item>
+    
+    <item>
+      <title>A Word of Warning: Check Your Windows 7 Backup Settings</title>
+      <link>/post/a-word-of-warning-check-your-windows-7-backup-settings/</link>
+      <pubDate>Thu, 12 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/a-word-of-warning-check-your-windows-7-backup-settings/</guid>
+      <description>Backups in Windows 7 have been greatly improved, what with the fact you can restore from them (without needing to take a separate backup) and that they backup to networks better.
+However, there has been one change which caught me out, thanks to a subtle and ambiguous rewording of the backups dialog.
+When backups are taken, as default only user folders that were created by Windows are backed up. For reference that&amp;rsquo;s Appdata, Contacts, Desktop, Downloads, Favorites, Links, Music, Pictures, Saved Games, Searches and Videos.
+This is different from the default behaviour of backups in Windows Vista, which backed up everything in C:\Users&amp;lt;Your Username&amp;gt;
+If you make any folders of your own at the root of your user folder, they will NOT be backed up. If you want to back those up, I recommend you go through the backup wizard again and say that you want to configure what gets backed up yourself. Select more locations, and navigate through the filesystem until you check C:\Users&amp;lt;Your Username&amp;gt;.
+I lost a few files when I reinstalled 7 for unrelated reasons, and lost the contents of my Code and Programs folders. I&amp;rsquo;m lucky that I had only been using the OS for a couple of weeks–had I been using it longer I could have lost a lot more. At least it&amp;rsquo;s given me an excuse to code!
+Just a friendly warning for fellow Windows 7 users who are as fussy about file organisation as I am.</description>
+    </item>
+    
+    <item>
+      <title>Adding your most recent Twitter tweet to your Pidgin status</title>
+      <link>/post/adding-your-most-recent-twitter-tweet-to-your-pidgin-status/</link>
+      <pubDate>Tue, 10 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/adding-your-most-recent-twitter-tweet-to-your-pidgin-status/</guid>
+      <description>This guide is intended to be a more up-to-date mirror of the guide you can find at Tech Jawa. All credit to them for the original instructions! Basically nothing changes, but I just like to be comprehensive.
+ Download the TwitterStatus plugin. It&amp;rsquo;ll be a file ending in .pl. Move this file to your Pidgin plugins folder. If any folders don&amp;rsquo;t exist, create them:  Linux: ~/.purple/plugins/ Windows Vista/7: C:\Users&amp;lt;Username&amp;gt;\AppData\Roaming.purple\plugins  Install Perl:  Linux: It&amp;rsquo;s probably already installed. Windows: Use the most recent Strawberry Perl installation:  Install the XML::XPath module into perl:  Open a command line. Run perl -MCPAN -e shell. Type install XML::XPath and then hit Return. Wait for the install to finish. Type quit and hit Return, then close your command line  Start (or restart) Pidgin. From the contact list, go to Help &amp;gt; About. At the very bottom of the textbox that appears it should say &amp;ldquo;Perl: Enabled&amp;rdquo;. If it does not, repeat steps 3 and 4. From the contact list, go to Tools &amp;gt; Plug-ins. Find Twitter Status on the list, check the checkbox next to it, and then click Configure Plug-in. In the configuration window that appears, type in your username in the top textbox (labelled Username, surprise surprise). Configure anything else you want to your liking.  That&amp;rsquo;s it! You do not need to set this up again, it is a one-off set up for the computer. Of course, you will need to go through this procedure again if you have multiple computers you use Pidgin on, or if you format and reinstall your OS.</description>
+    </item>
+    
+    <item>
+      <title>Use Ogg Vorbis for Lag-free Ringtones on Android</title>
+      <link>/post/use-ogg-vorbis-for-lag-free-ringtones-on-android/</link>
+      <pubDate>Mon, 21 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/use-ogg-vorbis-for-lag-free-ringtones-on-android/</guid>
+      <description>Update 2010-06-21: If you want to use custom ringtones in the first place, install Rings Extended from the Android Market, then go to Home  Settings  Sound &amp; display  Phone ringtone. When it asks which application you want to use, select Rings Extended, and check the checkbox so that it doesn&#39;t ask you again.  This will work anywhere any application asks for you to pick a ringtone, assuming it asks via a standard means!  I&#39;ve also written another article detailing how to convert your music in to Ogg Vorbis files.  Why, do I hear you cry?
+Simple really, here&amp;rsquo;s the story: when I first transferred various files to my phone for use as ringtones (one each for calls, texts, e-mails…) I used MP3s. Thanks to the Rings Extended application in the marketplace I had no trouble in using them.
+But one thing struck me as odd whenever I got a call (or text etc.); lag. If I were to get a call right now, the phone would vibrate, the screen would turn black, and then a couple of seconds later the contact details show and my ringtone starts playing. Not ideal.
+So I decided to try something. I set one of the standard ringtones that came with the phone as the current ringtone, and tried again. This time the phone started vibrating and played the tone at the same time.
+After that I had to figure out what format they used, since I had no idea where the files could be and what format they were. I reasoned that Ogg Vorbis would be the format they&amp;rsquo;d use — an open-source OS with open-source ringtones. Makes sense, right?
+So I tried it: I converted those same ringtones I started out with to 128kbps CBR Vorbis files. 128kbps because I thought that a higher bitrate would lag the phone out (plus you wouldn&amp;rsquo;t hear a quality difference from the speaker anyway), and CBR because I thought it would be easier for the decoder to work with, though I have no evidence to back this up.
+Voilà! Suddenly my ringtones loaded a lot quicker, and no longer did I get vibrations with no accompanying ringtone (unless it was set to vibrate only!).
+I haven&amp;rsquo;t tested other settings on the Vorbis encoder (different bitrates, VBR etc.), nor have I tested other formats aside from MP3 and Ogg.
+Hope this is of help to someone that actually cares about this stuff.</description>
+    </item>
+    
+    <item>
+      <title>Strip ID3v1 Tags from MP3s in Linux</title>
+      <link>/post/strip-id3v1-tags-from-mp3s-in-linux/</link>
+      <pubDate>Wed, 16 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/strip-id3v1-tags-from-mp3s-in-linux/</guid>
+      <description>For kicks I decided to remove all the ID3v1 tags from my music files today. They were just getting in the way and served no useful purpose — since I had perfectly fine ID3v2 tags — so they just had to go.
+I cooked up a little command to help out here! But first, we need to make sure you have the command that we&amp;rsquo;re going to need here, id3v2. Install it from the official repositories using your distribution&amp;rsquo;s package manager. For example, on Ubuntu:
+sudo apt-get install id3v2 This command is used to view and manipulate ID3 tags inside of music files. One argument in particular is of use to us, -s, which strips ID3v1 tags out of the specified file(s).
+With that in mind the task is just getting a list of the files that you want to remove ID3v1 tags from. I&amp;rsquo;ve managed to solve that and fit it all in one line — don&amp;rsquo;t forget to replace the path with the correct one:
+find /path/to/music -name \*.mp3 -type f -print0 | xargs -0 id3v2 -s That&amp;rsquo;s it! After testing I ran it on my whole music library and it appears to have survived just fine. Just be patient (and careful) if you&amp;rsquo;re stripping tags out of hundreds or thousands of files.
+Let me know how it works out for you, and any improvements you may have!</description>
+    </item>
+    
+    <item>
+      <title>Forgotten the Installation Code for your Sagem Digital Set-Top Box?</title>
+      <link>/post/forgotten-the-installation-code-for-your-sagem-digitalset-top-box/</link>
+      <pubDate>Sat, 12 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/forgotten-the-installation-code-for-your-sagem-digitalset-top-box/</guid>
+      <description>It&amp;rsquo;s annoying when that or something similar happens — in my case, someone else had changed the code meaning I couldn&amp;rsquo;t retune the box to accept more channels.
+But all is not lost! Simply follow this quick guide. This is from a Sagem ITC 62 — it may or may not be the same process for other models:
+ Press Menu on your remote control. Select Installation. You&amp;rsquo;ll be presented with a screen where you have to enter an Installation Code. Press these buttons one after the other on your remote: Menu, Menu, Red button, Menu. You should be taken to a new screen displaying User Settings and Box Settings. Select User Settings.  Now what you do at this point is up to you. You have two choices:
+Disable the Installation Code This means that you don&amp;rsquo;t have to enter or remember an installation code in future, but it might be vulnerable to inquisitive children. If this isn&amp;rsquo;t an issue for you (or you don&amp;rsquo;t care!), follow these steps:
+ Select Locking. Switch Box Locked and Channels Locked to No.  Change the Installation Code If you still want an installation code for whatever reason, follow these steps:
+ Select Change Installation Code. Enter any four digit code you like, and press OK. Re-enter the same code again. Press OK.  That&amp;rsquo;s it! Let me know how it goes for you.
+Credit to Steven Checkley for his amazing hackery.</description>
+    </item>
+    
+    <item>
+      <title>Quickly Open an Elevated Command Prompt in Vista</title>
+      <link>/post/quickly-open-an-elevated-command-prompt-in-vista/</link>
+      <pubDate>Sun, 26 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/quickly-open-an-elevated-command-prompt-in-vista/</guid>
+      <description>Just a quick little thing I noticed, although everyone else probably knows it by now.
+To launch an elevated command prompt (i.e. a prompt with admin privileges, required to do various things if UAC is enabled on Vista), simply open the Start Menu (Windows key), type &amp;ldquo;cmd&amp;rdquo; without quotes, and press Control+Shift+Return.
+This will bring up a UAC prompt asking you to elevate the process. Select Continue (Alt+C). Done!
+This does work for some other applications. But in my experience it&amp;rsquo;s hit and miss! Strange.
+This technique may also work in Windows 7, but I haven&amp;rsquo;t been able to test it myself.</description>
+    </item>
+    
+    <item>
+      <title>Fixing Slugs in WordPress</title>
+      <link>/post/fixing-slugs-in-wordpress/</link>
+      <pubDate>Wed, 22 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/fixing-slugs-in-wordpress/</guid>
+      <description>Having trouble selecting the slug you want in WordPress? If you&amp;rsquo;re like I was just a moment ago, you&amp;rsquo;ll try changing the slug on one of your categories to something different that you prefer, only to have WordPress change it back to whatever it was previously. What gives?
+Turns out the solution might be simpler than you think — check your Post Tags for a tag with the same slug!
+Slugs are shared between tags and categories, so if you use a particular slug with a tag, you cannot use the same one with a category, and vice versa.
+Keep that in mind the next time you get all OCD about slugs!</description>
+    </item>
+    
+    <item>
+      <title>Changing GPRS, MMS and Access Point Settings on Android</title>
+      <link>/post/changing-gprs-mms-and-access-point-settings-on-android/</link>
+      <pubDate>Fri, 10 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/changing-gprs-mms-and-access-point-settings-on-android/</guid>
+      <description>I feel kind of silly for falling foul of this, but I guess it&amp;rsquo;s just a case of going against what you&amp;rsquo;re used to.
+I was looking for a way to check on my MMS settings on Android. On just about every other phone I&amp;rsquo;ve used it&amp;rsquo;s been a submenu of the messaging application, so that&amp;rsquo;s where I went — except I couldn&amp;rsquo;t find anything pertaining to access point settings! I mean, if one phone does it one way, all phones do it that way, right? Right?
+Wrong. Turns out Android hides the settings in — guess what — its Settings menus! That&amp;rsquo;s good, because it&amp;rsquo;s centralised. It makes sense when you think about it. Honest.
+Anyway, to find these elusive settings, just follow these instructions:
+ Go to the Home screen. Press Menu. Select Settings. Select Wireless controls. Select Mobile network settings. Select Access Point Names. Finally, select an access point to edit, or press Menu to create a new APN or reset to the defaults that shipped with the phone.  Have fun with changing access point settings! Mmm.</description>
+    </item>
+    
+    <item>
+      <title>Reset iTunes Dimensions to Fit Resolution</title>
+      <link>/post/reset-itunes-dimensions-to-fit-resolution/</link>
+      <pubDate>Thu, 25 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/reset-itunes-dimensions-to-fit-resolution/</guid>
+      <description>Here&amp;rsquo;s a handy little feature that I find useful. If you ever play around with the size or location of the iTunes window and want to make it fit the screen better, simply follow the instructions:
+ If you&amp;rsquo;re on Windows: hold Shift and either double-click the title bar or single-click the maximise button (The title bar is the small bar at the top that says &amp;ldquo;iTunes&amp;rdquo; in the middle.) If you&amp;rsquo;re on Mac OS: hold Option and click the Zoom (+) button  This&amp;rsquo;ll reset the size and position to its default for your screen resolution. Assuming you haven&amp;rsquo;t changed screen resolution since installing it, it&amp;rsquo;ll look just as it did when you first installed it — nearly filling the entire screen, but not quite. It&amp;rsquo;s also a very useful shortcut if you ever change your screen resolution.
+Doing the operation a second time will move the iTunes window back to where it was before you started reading this article and messing with it. Simple!</description>
+    </item>
+    
+    <item>
+      <title>Fix Windows Sidebar Gadget File Association in Vista</title>
+      <link>/post/fix-windows-sidebar-gadget-file-association-in-vista/</link>
+      <pubDate>Wed, 17 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/fix-windows-sidebar-gadget-file-association-in-vista/</guid>
+      <description>Have you ever somehow managed to break the Gadget file association in Windows Vista? I have somehow, and that means that you can no longer install gadgets. Double-clicking a .gadget file does nothing, and the Sidebar offers no option to install gadgets itself!
+If you try to re-associate the files with Windows Sidebar by telling to Open With… and navigating to the Sidebar executable, you&amp;rsquo;ll have found that that doesn&amp;rsquo;t help — all it does is bring the Sidebar to focus, but doesn&amp;rsquo;t install the gadget.
+Fortunately, help is at hand: all you need to do is **download the following archive **and apply the registry entries by double-clicking the .reg file inside the archive, and saying Yes at the prompt.
+Download Gadget Association registry entries.
+All I did was export the corresponding keys from the registry on a Vista machine with a working Sidebar — nothing else!
+Hope this helps others like it has me.</description>
+    </item>
+    
+    <item>
+      <title>Fix Superuser Permissions Hanging on Android</title>
+      <link>/post/fix-superuser-permissions-hanging-on-android/</link>
+      <pubDate>Sun, 14 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/fix-superuser-permissions-hanging-on-android/</guid>
+      <description>Update 2010-03-04: Added another potential solution courtesy of Blazt in the comments. Thanks!
+So, you have a phone with root permissions? Finding whenever a program requests root permissions the Superuser Permissions program hangs (usually with a black screen or even a force close) at the &amp;ldquo;SU request&amp;rdquo; screen?
+Fortunately there are a couple of things you can try, which I&amp;rsquo;ll detail for you.
+First, make sure USB Debugging is enabled. To do that:
+ Press the Home button. Press the Menu button. Select Settings &amp;gt; Applications &amp;gt; Development. Make sure that USB Debugging is checked. If not, check it.  If that fixes your problem, you are done! If not, then you can try clearing the Superuser Permissions data. This is just any options you have set within the app and whether or not particular apps are always allowed or blocked — you won&amp;rsquo;t lose any of your other data, and it&amp;rsquo;s easy to allow/deny stuff again.
+To clear the data:
+ Press the Home button. Press the Menu button. Select Settings &amp;gt; Applications &amp;gt; Manage applications. Find Superuser Permissions on the list. Tap it. Tap &amp;ldquo;Clear data&amp;rdquo; and &amp;ldquo;Clear cache&amp;rdquo; if they&amp;rsquo;re enabled.  This should prevent any hangs with Superuser Permissions in the future.
+This works on the HTC Dream (T-Mobile G1) with the 1.5 and 1.6 firmwares, and presumably other Android devices with the Superuser Permissions app.</description>
+    </item>
+    
+    <item>
+      <title>Unlock Android Device Using PUK Code</title>
+      <link>/post/unlock-android-device-using-puk-code/</link>
+      <pubDate>Fri, 12 Jun 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/post/unlock-android-device-using-puk-code/</guid>
+      <description>If you&amp;rsquo;ve ever got your PIN code wrong too many times and got your SIM locked, you were probably as surprised as I was when Android gives you no option to unlock the phone! Fortunately there&amp;rsquo;s an answer.
+To unlock your Android-based device go to the Emergency Call screen and enter in the following (replace the angled brackets with the appropriate info):
+**05*«PUK Code»*«Your new pin»*«Confirm your new pin»# So for example:
+**05*12345678*9090*9090# As a side effect this should work on any SIM-containing device at a screen where you can enter phone numbers, not just devices running the Android OS. As of writing, Android-based devices are the HTC Dream (T-Mobile G1) and HTC Magic.
+And make sure you keep your PUK code secret — anyone can override your PIN with their own using it!
+Thanks to theWeir for posting that solution.
+http://androidcommunity.com/forums/99706-post6.html  </description>
+    </item>
+    
+  </channel>
+</rss>
