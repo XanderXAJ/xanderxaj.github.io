@@ -6,10 +6,34 @@
     <description>Recent content in Posts on Forged Defiance</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Tue, 14 Aug 2018 20:16:31 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 11 Sep 2018 08:33:08 +0100</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Run Jenkins Script Console Scripts from Command Line (Without Remoting)</title>
+      <link>/post/run-jenkins-script-console-scripts-from-command-line-without-remoting/</link>
+      <pubDate>Tue, 11 Sep 2018 08:33:08 +0100</pubDate>
+      
+      <guid>/post/run-jenkins-script-console-scripts-from-command-line-without-remoting/</guid>
+      <description>If you&amp;rsquo;re like me, you generally enjoy using the command line, and want to make as much available to it as possible.
+Jenkins has a decent CLI client, Jenkins CLI, that allows you to do a number of Jenkins things from the command line. It also seems to be steeped in history &amp;ndash; at least judging from the number of deprecated protocols and options. The most relevant deprecation here is Remoting, which, among other things, allows the transfer of files to and from the server &amp;ndash; so that is no longer possible. More on that later.
+Setting up Jenkins CLI Throughout this guide, replace my.jenkins.instance with the domain for your Jenkins instance.
+Download the correct version of the CLI to match your Jenkins instance. Fortunately, all Jenkins instances host their matching version, so it is easy to download from your own instance:
+curl &amp;#39;https://my.jenkins.instance/jnlpJars/jenkins-cli.jar&amp;#39; &amp;gt; &amp;#34;$HOME/bin/jenkins-cli.jar&amp;#34; Next, to use the Jenkins CLI, you need a token to be able to log in. To get the token, log in to your Jenkins instance, go to your user&amp;rsquo;s dropdown in the top-right corner of the screen &amp;gt; Configure &amp;gt; Show API Token&amp;hellip;. Copy the User ID and API Token in to the following command, replacing &amp;lt;User ID&amp;gt; and &amp;lt;API Token&amp;gt; respectively, which will put them in to a file we&amp;rsquo;ll use shortly:
+echo &amp;#39;&amp;lt;User ID&amp;gt;:&amp;lt;API Token&amp;gt;&amp;#39; &amp;gt; &amp;#34;$HOME/.jenkins-cli-auth&amp;#34; You are now able to use the Jenkins CLI with your own commands!
+java -jar &amp;#34;$HOME/bin/jenkins-cli.jar&amp;#34; -s &amp;#39;https://my.jenkins.instance&amp;#39; -noKeyAuth -auth &amp;#34;@$HOME/.jenkins-cli-auth&amp;#34; &amp;lt;command...&amp;gt; I recommend making an alias &amp;ndash; future examples will use this alias:
+jenkinsCli() { java -jar &amp;#34;$HOME/bin/jenkins-cli.jar&amp;#34; -s &amp;#39;https://my.jenkins.instance&amp;#39; -noKeyAuth -auth &amp;#34;@$HOME/.jenkins-cli-auth&amp;#34; &amp;#34;$@&amp;#34; } Pro Tip: There&amp;rsquo;s nothing stopping you from downloading multiple JARs for different instances of Jenkins, and making multiple aliases to use them.
+Getting an interactive shell Once you have the CLI working, you can log on to Jenkins and get an interactive shell for scripting using:
+jenkinsCli groovysh For example, let&amp;rsquo;s say you want to clear the build queue of all of its jobs, something I&amp;rsquo;ve written about before. Entering the following code in to the shell will do that:
+import jenkins.model.* Jenkins.instance.queue.clear() Note the import, which has been added to the code from the original post. This is because the web shell automatically imports import jenkins.model.* and import hudson.model.* for you, whereas the CLI&amp;rsquo;s interactive shell doesn&amp;rsquo;t. So we add it ourselves.
+Running scripts from files without remoting Now suppose that you like to clear the build queue quite regularly, and you get fed up of typing it or copying and pasting it. It is possible to place code in to re-usable scripts.
+Following our example from earlier, let&amp;rsquo;s say we got fed up and copied the script (with imports) in to a new file, ~/jenkins-cli/clear-build-queue.groovy.
+We can then run this script in Jenkins by running the following command:
+jenkinsCli groovy = &amp;lt; ~/jenkins-cli/clear-build-queue.groovy groovy is a subcommand that runs a Groovy script directly on the Jenkins master, without a wrapper shell. = instructs Jenkins CLI to expect stdin to provide a script to run. &amp;lt; feeds the contents of the Groovy file to jenkinsCli via stdin (where it is listening, thanks to =).
+With that, you can now run scripts on Jenkins without leaving the comfort of your command line.</description>
+    </item>
     
     <item>
       <title>Currying vs Partial Function Application</title>

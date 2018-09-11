@@ -155,6 +155,80 @@
         <div class="posts-list">
           
             <article class="post-preview">
+              <a href="/post/getting-battery-life-back-on-an-acer-aspire-5820tg-running-windows-10/">
+                <h2 class="post-title">Getting battery life back on an Acer Aspire 5820TG running Windows 10</h2>
+
+                
+              </a>
+
+              <p class="post-meta">
+                <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on October 9, 2015
+  
+  
+  
+</span>
+
+
+              </p>
+              <div class="post-entry">
+                
+                  
+
+<p>Details upfront: My workaround is to completely disable the AMD GPU via a modded BIOS and let Windows Update install a valid driver for the Intel card.  If this concerns you, then don&rsquo;t follow the instructions on this page!</p>
+
+<p>==Disclaimer: I can&rsquo;t be held responsible should things go wrong etc. etc.  I can only describe what worked for me.==</p>
+
+<h2 id="i-ll-be-careful-instructions-please">I&rsquo;ll be careful. Instructions please!</h2>
+
+<p>I first made sure that I had uninstalled all of the graphics drivers.  I would do this by uninstalling the drivers (either via <em>Device Manager</em> or <em>Programs &amp; Features</em>), rebooting in to Safe Mode (hold <code>Shift</code> while clicking <em>Restart</em> in the <em>Start Menu</em>, then find the Advanced Boot Options command) and using something like <a href="https://treexy.com/products/driver-fusion">Driver Fusion</a> to eradicate the AMD and Intel drivers.</p>
+
+<p>I installed the <a href="http://forum.notebookreview.com/threads/acer-aspire-timelinex-4820tg-5820tg-modded-bios-insyde.568951/">modded BIOS available on Notebook Review&rsquo;s forum</a>.  That same page also has some useful instructions should things go wrong!</p>
+
+<p>I then rebooted in to the BIOS and set the graphics mode to the newly-added <em>Integrated</em>.  Note that if you shut down Windows 10 it will still seem to flag to the BIOS that it is hibernating (likely one of the many ways Microsoft have sped up boot times), which means you can&rsquo;t access the BIOS; I&rsquo;ve found that restarting always gives me the option.</p>
+
+<p>I then reboot to Windows, check <em>Device Manager</em> to see that only one graphics device shows up (on the Acer 5820TG, if the AMD GPU is enabled you&rsquo;ll see 2 devices), then go to <em>Start &gt; Settings &gt; Update &gt; Check for Updates</em>.  Windows 10 will, in short order, get to installing the Intel driver (assuming you haven&rsquo;t disabled it!).</p>
+
+<p>My personal testing suggests that this is about as good as when you would have normally switched to Integrated graphics, which is good.  <a href="https://batterybarpro.com/">BatteryBar Pro</a> tells me that when the laptop is idle with WiFi on and the screen on the battery discharge rate in the 7,000-8,000mW region, which is excellent for this machine.</p>
+
+<h2 id="why-remove-the-amd-card-entirely">Why remove the AMD card entirely?</h2>
+
+<p>In Windows 10 Microsoft have made the decision to automatically install the most up-to-date drivers it has for all the hardware connected to your machine.</p>
+
+<p>It&rsquo;s noble, but the problem here is that the up-to-date driver for the graphics cards in this machine doesn&rsquo;t properly utilise switching.  It instead uses both GPUs all the time &mdash; leading to lacklustre battery life.  So I would install a much older driver that I know works (and still behaves correctly in Windows 10) instead.</p>
+
+<p>However, there is no easy way to opt-out of driver updated.  The option in System to tell Windows Update to not install drivers is ignored.  The only way I know of to stop the updates is to hide them before they&rsquo;re installed by using <a href="https://support.microsoft.com/en-gb/kb/3073930">a troubleshooter explicitly for this purpose</a>; indeed, the functionality to disable updates is no longer built in to Windows.  At least you can store the troubleshooter somewhere and keep running it to pretend the functionality is still there.</p>
+
+<p>But there was a hitch: even once I&rsquo;d hidden the AMD graphics driver update, it was still getting installed sooner or later.</p>
+
+<p>I also found that so long as I stuck exclusively with the Intel card then everything was OK and Windows could not detect the AMD hardware.  But as soon as I switched to the AMD GPU (such as can automatically happen when you connect a power supply), it effectively enabled a kill switch for the graphics driver in Windows as it&rsquo;ll sooner or later install the up-to-date driver against my wishes.</p>
+
+<p>I figured that it would just be a whole lot simpler to run with the one GPU and bypass the switchable business.  The default BIOS lets you choose between <em>Discrete</em> and <em>Switchable</em> configurations, but I wanted an <em>Integrated</em> option.  That&rsquo;s where the modded BIOS came in.</p>
+
+<h2 id="but-i-don-t-want-to-lose-my-amd-card">But I don&rsquo;t want to lose my AMD card!</h2>
+
+<p>I might revisit this at some point, because while figuring all this stuff out I noticed something odd.</p>
+
+<p>I went the one GPU route because I found that, despite disabling the update, the AMD graphics driver would still install.  Except it might <em>not</em> have been the AMD graphics driver that was installing.</p>
+
+<p>Once I had disabled the AMD GPU and rebooted, I noted that another option appeared in the disable update troubleshooter: the AMD HDMI audio driver.</p>
+
+<p>I had already noted by this point that despite the fact that <em>something</em> would install and hose the driver, the driver version reported in Device Manager would not always change.  This could be quite neatly explained if the HDMI audio driver, which wouldn&rsquo;t change the <em>graphics</em> driver version, had enough stuff in it to stop the graphics driver working.</p>
+
+<p>Now that I&rsquo;ve disabled both the AMD graphics driver and the AMD HDMI audio driver, perhaps I could re-enable the switchable graphics configuration.</p>
+
+<p>One last note: assuming that hiding updates works in Windows 10 like it did in previous Windows releases, then hiding an update only hides <em>that version</em>.  That means that if either driver were to get updated in future, you&rsquo;ll probably have to go through the entire rigmarole again (hide update, uninstall, reinstall) to get a working driver again.</p>
+
+                
+              </div>
+
+              
+
+            </article>
+          
+            <article class="post-preview">
               <a href="/post/troubleshooting-keyboard-shortcuts-in-sublime-text/">
                 <h2 class="post-title">Troubleshooting keyboard shortcuts in Sublime Text</h2>
 
@@ -552,40 +626,6 @@ command: goto_symbol_in_project
 <p>I&rsquo;ve been correcting machine-translated English and writing lots of useful scripts to help everyone out. ^^</p>
 
 <p>So if you&rsquo;re wondering what I&rsquo;ve been up to lately, that&rsquo;s probably it!  Check it out if you have a PSP and are in to Monster Hunter. =3</p>
-
-                
-              </div>
-
-              
-
-            </article>
-          
-            <article class="post-preview">
-              <a href="/post/searchlight-1-1-released/">
-                <h2 class="post-title">Searchlight 1.1 released</h2>
-
-                
-              </a>
-
-              <p class="post-meta">
-                <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on August 26, 2011
-  
-  
-  
-</span>
-
-
-              </p>
-              <div class="post-entry">
-                
-                  <p>Searchlight, my application for lighting up your world (or at least a few metres in front of you) using your Android device&rsquo;s LED has been updated to 1.1.</p>
-
-<p>This update brings better behaviour on HTC Sense devices, where the screen is kept on (as this is necessary to keep the device&rsquo;s light switched on).  In addition, when the screen is switched off (manually) and switched on again, it can switch on the light again; previously it didn&rsquo;t switch the light back on, yet still ran the service.  Oops.</p>
-
-<p>Get the <a href="https://market.android.com/details?id=com.xanderx.android.searchlight" title="Searchlight on web Android Market">update through the Android Market</a>, or <a href="http://download.xanderx.com/software/android/searchlight/Searchlight_1.1.apk" title="Searchlight APK hosted locally">download the APK right here</a>.</p>
 
                 
               </div>

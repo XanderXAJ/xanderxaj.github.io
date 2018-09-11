@@ -170,6 +170,74 @@
           
           
             <article class="post-preview">
+              <a href="/post/run-jenkins-script-console-scripts-from-command-line-without-remoting/">
+                <h2 class="post-title">Run Jenkins Script Console Scripts from Command Line (Without Remoting)</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on September 11, 2018
+  
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  
+
+<p>If you&rsquo;re like me, you generally enjoy using the command line, and want to make as much available to it as possible.</p>
+
+<p>Jenkins has a decent CLI client, <a href="https://wiki.jenkins.io/display/JENKINS/Jenkins+CLI">Jenkins CLI</a>, that allows you to do a number of Jenkins things from the command line.  It also seems to be steeped in history &ndash; at least judging from the number of deprecated protocols and options.  The most relevant deprecation here is Remoting, which, among other things, allows the transfer of files to and from the server &ndash; so that is no longer possible.  More on that later.</p>
+
+<h2 id="setting-up-jenkins-cli">Setting up Jenkins CLI</h2>
+
+<p>Throughout this guide, replace <code>my.jenkins.instance</code> with the domain for your Jenkins instance.</p>
+
+<p>Download the correct version of the CLI to match your Jenkins instance.  Fortunately, all Jenkins instances host their matching version, so it is easy to download from your own instance:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl <span style="color:#e6db74">&#39;https://my.jenkins.instance/jnlpJars/jenkins-cli.jar&#39;</span> &gt; <span style="color:#e6db74">&#34;</span>$HOME<span style="color:#e6db74">/bin/jenkins-cli.jar&#34;</span></code></pre></div>
+<p>Next, to use the Jenkins CLI, you need a token to be able to log in.  To get the token, log in to your Jenkins instance, go to <em>your user&rsquo;s dropdown in the top-right corner of the screen</em> &gt; <em>Configure</em> &gt; <em>Show API Token&hellip;</em>.  Copy the <strong>User ID</strong> and <strong>API Token</strong> in to the following command, replacing <code>&lt;User ID&gt;</code> and <code>&lt;API Token&gt;</code> respectively, which will put them in to a file we&rsquo;ll use shortly:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo <span style="color:#e6db74">&#39;&lt;User ID&gt;:&lt;API Token&gt;&#39;</span> &gt; <span style="color:#e6db74">&#34;</span>$HOME<span style="color:#e6db74">/.jenkins-cli-auth&#34;</span></code></pre></div>
+<p>You are now able to use the Jenkins CLI with your own commands!</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">java -jar <span style="color:#e6db74">&#34;</span>$HOME<span style="color:#e6db74">/bin/jenkins-cli.jar&#34;</span> -s <span style="color:#e6db74">&#39;https://my.jenkins.instance&#39;</span> -noKeyAuth -auth <span style="color:#e6db74">&#34;@</span>$HOME<span style="color:#e6db74">/.jenkins-cli-auth&#34;</span> &lt;command...&gt;</code></pre></div>
+<p>I recommend making an alias &ndash; future examples will use this alias:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">jenkinsCli<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    java -jar <span style="color:#e6db74">&#34;</span>$HOME<span style="color:#e6db74">/bin/jenkins-cli.jar&#34;</span> -s <span style="color:#e6db74">&#39;https://my.jenkins.instance&#39;</span> -noKeyAuth -auth <span style="color:#e6db74">&#34;@</span>$HOME<span style="color:#e6db74">/.jenkins-cli-auth&#34;</span> <span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">&#34;</span>
+<span style="color:#f92672">}</span></code></pre></div>
+<p><strong>Pro Tip</strong>:  There&rsquo;s nothing stopping you from downloading multiple JARs for different instances of Jenkins, and making multiple aliases to use them.</p>
+
+<h2 id="getting-an-interactive-shell">Getting an interactive shell</h2>
+
+<p>Once you have the CLI working, you can log on to Jenkins and get an interactive shell for scripting using:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">jenkinsCli groovysh</code></pre></div>
+<p>For example, let&rsquo;s say you <a href="/post/cancel-all-queued-jenkins-jobs/">want to clear the build queue of all of its jobs, something I&rsquo;ve written about before</a>.  Entering the following code in to the shell will do that:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#f92672">import</span> jenkins.model.*
+Jenkins<span style="color:#f92672">.</span><span style="color:#a6e22e">instance</span><span style="color:#f92672">.</span><span style="color:#a6e22e">queue</span><span style="color:#f92672">.</span><span style="color:#a6e22e">clear</span><span style="color:#f92672">()</span></code></pre></div>
+<p>Note the <code>import</code>, which has been added to the code from the original post.  This is because the web shell automatically imports <code>import jenkins.model.*</code> and <code>import hudson.model.*</code> for you, whereas the CLI&rsquo;s interactive shell doesn&rsquo;t.  So we add it ourselves.</p>
+
+<h2 id="running-scripts-from-files-without-remoting">Running scripts from files without remoting</h2>
+
+<p>Now suppose that you like to clear the build queue quite regularly, and you get fed up of typing it or copying and pasting it.  It is possible to place code in to re-usable scripts.</p>
+
+<p>Following our example from earlier, let&rsquo;s say we got fed up and copied the script (with <code>import</code>s) in to a new file, <code>~/jenkins-cli/clear-build-queue.groovy</code>.</p>
+
+<p>We can then run this script in Jenkins by running the following command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">jenkinsCli groovy <span style="color:#f92672">=</span> &lt; ~/jenkins-cli/clear-build-queue.groovy</code></pre></div>
+<p><code>groovy</code> is a subcommand that runs a Groovy script directly on the Jenkins master, without a wrapper shell.  <code>=</code> instructs Jenkins CLI to expect stdin to provide a script to run. <code>&lt;</code> feeds the contents of the Groovy file to <code>jenkinsCli</code> via stdin (where it is listening, thanks to <code>=</code>).</p>
+
+<p>With that, you can now run scripts on Jenkins without leaving the comfort of your command line.</p>
+
+                
+              </div>
+
+              
+            </article>
+          
+            <article class="post-preview">
               <a href="/post/currying-vs-partial-function-application/">
                 <h2 class="post-title">Currying vs Partial Function Application</h2>
                 
@@ -578,54 +646,6 @@ git commit --amend -C @ --date now --reset-author</code></pre></div>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git commit --amend -c @ --date now
 git commit --amend -c @ --reset-author
 git commit --amend -c @ --date now --reset-author</code></pre></div>
-                
-              </div>
-
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="/post/uploading-to-google-play-music-without-matching/">
-                <h2 class="post-title">Uploading to Google Play Music without matching</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on September 10, 2017
-  
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <p>I&rsquo;ve had some trouble with Google Play Music&rsquo;s scan and match service.  It sometimes matches tracks to the wrong versions of them.  Sometimes the volume of a track is wildly different from what I have locally (with or without ReplayGain).  Unfortunately, there is no way to disable matching in Google&rsquo;s official Music Manager application.</p>
-
-<p><a href="https://github.com/simon-weber/gmusicapi"><code>gmusicapi</code></a> supports uploading to Google Play Music without their &ldquo;scan and match&rdquo; service.  <a href="https://github.com/thebigmunch/gmusicapi-scripts"><code>gmusicapi-scripts</code></a> utilises <code>gmusicapi</code>.  Let&rsquo;s use them!</p>
-
-<ol>
-<li><p>Install <a href="https://thebigmunch.github.io/gmusicapi-scripts">gmusicapi-scripts</a>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Windows
-</span><span style="color:#75715e"></span>py -3 -m pip install gmusicapi-scripts
-<span style="color:#75715e"># Others
-</span><span style="color:#75715e"></span>pip install gmusicapi-scripts</code></pre></div></li>
-
-<li><p>Convert tracks (if needed) to 320kbps MP3 and place them in <code>&lt;directory&gt;</code>.</p>
-
-<ul>
-<li>If you place non-MP3 files in this directory, <code>gmsync</code> will try to convrt them with FFMPEG or AVConv if they are on the <code>PATH</code>.  <a href="https://thebigmunch.github.io/gmusicapi-scripts">Look at the docs</a> to see what formats it supports.</li>
-</ul></li>
-
-<li><p>Run <code>gmsync</code>.  Follow any instructions it provides:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gmsync up &lt;directory&gt;</code></pre></div></li>
-</ol>
-
-<p><code>gmsync</code> uploads without matching by default. Perfect.</p>
-
                 
               </div>
 

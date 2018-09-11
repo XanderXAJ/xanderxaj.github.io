@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Run Jenkins Script Console Scripts from Command Line (Without Remoting)</title>
+  <meta property="og:title" content="Run Jenkins Script Console Scripts from Command Line (Without Remoting)" />
+  <meta name="twitter:title" content="Run Jenkins Script Console Scripts from Command Line (Without …" />
+  <meta name="description" content="If you&rsquo;re like me, you generally enjoy using the command line, and want to make as much available to it as possible.
+Jenkins has a decent CLI client, Jenkins CLI, that allows you to do a number of Jenkins things from the command line. It also seems to be steeped in history &ndash; at least judging from the number of deprecated protocols and options. The most relevant deprecation here is Remoting, which, among other things, allows the transfer of files to and from the server &ndash; so that is no longer possible. More on that later.
+Setting up Jenkins CLI Throughout this guide, replace my.jenkins.instance with the domain for your Jenkins instance.
+Download the correct version of the CLI to match your Jenkins instance. Fortunately, all Jenkins instances host their matching version, so it is easy to download from your own instance:
+curl &#39;https://my.jenkins.instance/jnlpJars/jenkins-cli.jar&#39; &gt; &#34;$HOME/bin/jenkins-cli.jar&#34; Next, to use the Jenkins CLI, you need a token to be able to log in. To get the token, log in to your Jenkins instance, go to your user&rsquo;s dropdown in the top-right corner of the screen &gt; Configure &gt; Show API Token&hellip;. Copy the User ID and API Token in to the following command, replacing &lt;User ID&gt; and &lt;API Token&gt; respectively, which will put them in to a file we&rsquo;ll use shortly:
+echo &#39;&lt;User ID&gt;:&lt;API Token&gt;&#39; &gt; &#34;$HOME/.jenkins-cli-auth&#34; You are now able to use the Jenkins CLI with your own commands!
+java -jar &#34;$HOME/bin/jenkins-cli.jar&#34; -s &#39;https://my.jenkins.instance&#39; -noKeyAuth -auth &#34;@$HOME/.jenkins-cli-auth&#34; &lt;command...&gt; I recommend making an alias &ndash; future examples will use this alias:
+jenkinsCli() { java -jar &#34;$HOME/bin/jenkins-cli.jar&#34; -s &#39;https://my.jenkins.instance&#39; -noKeyAuth -auth &#34;@$HOME/.jenkins-cli-auth&#34; &#34;$@&#34; } Pro Tip: There&rsquo;s nothing stopping you from downloading multiple JARs for different instances of Jenkins, and making multiple aliases to use them.
+Getting an interactive shell Once you have the CLI working, you can log on to Jenkins and get an interactive shell for scripting using:
+jenkinsCli groovysh For example, let&rsquo;s say you want to clear the build queue of all of its jobs, something I&rsquo;ve written about before. Entering the following code in to the shell will do that:
+import jenkins.model.* Jenkins.instance.queue.clear() Note the import, which has been added to the code from the original post. This is because the web shell automatically imports import jenkins.model.* and import hudson.model.* for you, whereas the CLI&rsquo;s interactive shell doesn&rsquo;t. So we add it ourselves.
+Running scripts from files without remoting Now suppose that you like to clear the build queue quite regularly, and you get fed up of typing it or copying and pasting it. It is possible to place code in to re-usable scripts.
+Following our example from earlier, let&rsquo;s say we got fed up and copied the script (with imports) in to a new file, ~/jenkins-cli/clear-build-queue.groovy.
+We can then run this script in Jenkins by running the following command:
+jenkinsCli groovy = &lt; ~/jenkins-cli/clear-build-queue.groovy groovy is a subcommand that runs a Groovy script directly on the Jenkins master, without a wrapper shell. = instructs Jenkins CLI to expect stdin to provide a script to run. &lt; feeds the contents of the Groovy file to jenkinsCli via stdin (where it is listening, thanks to =).
+With that, you can now run scripts on Jenkins without leaving the comfort of your command line.">
+  <meta property="og:description" content="If you&rsquo;re like me, you generally enjoy using the command line, and want to make as much available to it as possible.
+Jenkins has a decent CLI client, Jenkins CLI, that allows you to do a number of Jenkins things from the command line. It also seems to be steeped in history &ndash; at least judging from the number of deprecated protocols and options. The most relevant deprecation here is Remoting, which, among other things, allows the transfer of files to and from the server &ndash; so that is no longer possible. More on that later.
+Setting up Jenkins CLI Throughout this guide, replace my.jenkins.instance with the domain for your Jenkins instance.
+Download the correct version of the CLI to match your Jenkins instance. Fortunately, all Jenkins instances host their matching version, so it is easy to download from your own instance:
+curl &#39;https://my.jenkins.instance/jnlpJars/jenkins-cli.jar&#39; &gt; &#34;$HOME/bin/jenkins-cli.jar&#34; Next, to use the Jenkins CLI, you need a token to be able to log in. To get the token, log in to your Jenkins instance, go to your user&rsquo;s dropdown in the top-right corner of the screen &gt; Configure &gt; Show API Token&hellip;. Copy the User ID and API Token in to the following command, replacing &lt;User ID&gt; and &lt;API Token&gt; respectively, which will put them in to a file we&rsquo;ll use shortly:
+echo &#39;&lt;User ID&gt;:&lt;API Token&gt;&#39; &gt; &#34;$HOME/.jenkins-cli-auth&#34; You are now able to use the Jenkins CLI with your own commands!
+java -jar &#34;$HOME/bin/jenkins-cli.jar&#34; -s &#39;https://my.jenkins.instance&#39; -noKeyAuth -auth &#34;@$HOME/.jenkins-cli-auth&#34; &lt;command...&gt; I recommend making an alias &ndash; future examples will use this alias:
+jenkinsCli() { java -jar &#34;$HOME/bin/jenkins-cli.jar&#34; -s &#39;https://my.jenkins.instance&#39; -noKeyAuth -auth &#34;@$HOME/.jenkins-cli-auth&#34; &#34;$@&#34; } Pro Tip: There&rsquo;s nothing stopping you from downloading multiple JARs for different instances of Jenkins, and making multiple aliases to use them.
+Getting an interactive shell Once you have the CLI working, you can log on to Jenkins and get an interactive shell for scripting using:
+jenkinsCli groovysh For example, let&rsquo;s say you want to clear the build queue of all of its jobs, something I&rsquo;ve written about before. Entering the following code in to the shell will do that:
+import jenkins.model.* Jenkins.instance.queue.clear() Note the import, which has been added to the code from the original post. This is because the web shell automatically imports import jenkins.model.* and import hudson.model.* for you, whereas the CLI&rsquo;s interactive shell doesn&rsquo;t. So we add it ourselves.
+Running scripts from files without remoting Now suppose that you like to clear the build queue quite regularly, and you get fed up of typing it or copying and pasting it. It is possible to place code in to re-usable scripts.
+Following our example from earlier, let&rsquo;s say we got fed up and copied the script (with imports) in to a new file, ~/jenkins-cli/clear-build-queue.groovy.
+We can then run this script in Jenkins by running the following command:
+jenkinsCli groovy = &lt; ~/jenkins-cli/clear-build-queue.groovy groovy is a subcommand that runs a Groovy script directly on the Jenkins master, without a wrapper shell. = instructs Jenkins CLI to expect stdin to provide a script to run. &lt; feeds the contents of the Groovy file to jenkinsCli via stdin (where it is listening, thanks to =).
+With that, you can now run scripts on Jenkins without leaving the comfort of your command line.">
+  <meta name="twitter:description" content="If you&rsquo;re like me, you generally enjoy using the command line, and want to make as much available to it as possible.
+Jenkins has a decent CLI client, Jenkins CLI, that allows you to do a number …">
+  <meta name="author" content="Alex Palmer"/>
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@XanderXAJ" />
+  <meta name="twitter:creator" content="@XanderXAJ" />
+  <meta property="og:url" content="/post/run-jenkins-script-console-scripts-from-command-line-without-remoting/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Forged Defiance" />
+
+  <meta name="generator" content="Hugo 0.48" />
+  <link rel="canonical" href="/post/run-jenkins-script-console-scripts-from-command-line-without-remoting/" />
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Forged Defiance">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="/css/syntax.css" /><link rel="stylesheet" href="/css/codeblock.css" />
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Forged Defiance</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="About" href="/about">About</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Contact" href="/contact">Contact</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Privacy Policy" href="/privacy-policy">Privacy Policy</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <h1>Run Jenkins Script Console Scripts from Command Line (Without Remoting)</h1>
+                
+                
+                  <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on September 11, 2018
+  
+  
+  
+</span>
+
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        
+
+<p>If you&rsquo;re like me, you generally enjoy using the command line, and want to make as much available to it as possible.</p>
+
+<p>Jenkins has a decent CLI client, <a href="https://wiki.jenkins.io/display/JENKINS/Jenkins+CLI">Jenkins CLI</a>, that allows you to do a number of Jenkins things from the command line.  It also seems to be steeped in history &ndash; at least judging from the number of deprecated protocols and options.  The most relevant deprecation here is Remoting, which, among other things, allows the transfer of files to and from the server &ndash; so that is no longer possible.  More on that later.</p>
+
+<h2 id="setting-up-jenkins-cli">Setting up Jenkins CLI</h2>
+
+<p>Throughout this guide, replace <code>my.jenkins.instance</code> with the domain for your Jenkins instance.</p>
+
+<p>Download the correct version of the CLI to match your Jenkins instance.  Fortunately, all Jenkins instances host their matching version, so it is easy to download from your own instance:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl <span style="color:#e6db74">&#39;https://my.jenkins.instance/jnlpJars/jenkins-cli.jar&#39;</span> &gt; <span style="color:#e6db74">&#34;</span>$HOME<span style="color:#e6db74">/bin/jenkins-cli.jar&#34;</span></code></pre></div>
+<p>Next, to use the Jenkins CLI, you need a token to be able to log in.  To get the token, log in to your Jenkins instance, go to <em>your user&rsquo;s dropdown in the top-right corner of the screen</em> &gt; <em>Configure</em> &gt; <em>Show API Token&hellip;</em>.  Copy the <strong>User ID</strong> and <strong>API Token</strong> in to the following command, replacing <code>&lt;User ID&gt;</code> and <code>&lt;API Token&gt;</code> respectively, which will put them in to a file we&rsquo;ll use shortly:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo <span style="color:#e6db74">&#39;&lt;User ID&gt;:&lt;API Token&gt;&#39;</span> &gt; <span style="color:#e6db74">&#34;</span>$HOME<span style="color:#e6db74">/.jenkins-cli-auth&#34;</span></code></pre></div>
+<p>You are now able to use the Jenkins CLI with your own commands!</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">java -jar <span style="color:#e6db74">&#34;</span>$HOME<span style="color:#e6db74">/bin/jenkins-cli.jar&#34;</span> -s <span style="color:#e6db74">&#39;https://my.jenkins.instance&#39;</span> -noKeyAuth -auth <span style="color:#e6db74">&#34;@</span>$HOME<span style="color:#e6db74">/.jenkins-cli-auth&#34;</span> &lt;command...&gt;</code></pre></div>
+<p>I recommend making an alias &ndash; future examples will use this alias:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">jenkinsCli<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    java -jar <span style="color:#e6db74">&#34;</span>$HOME<span style="color:#e6db74">/bin/jenkins-cli.jar&#34;</span> -s <span style="color:#e6db74">&#39;https://my.jenkins.instance&#39;</span> -noKeyAuth -auth <span style="color:#e6db74">&#34;@</span>$HOME<span style="color:#e6db74">/.jenkins-cli-auth&#34;</span> <span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">&#34;</span>
+<span style="color:#f92672">}</span></code></pre></div>
+<p><strong>Pro Tip</strong>:  There&rsquo;s nothing stopping you from downloading multiple JARs for different instances of Jenkins, and making multiple aliases to use them.</p>
+
+<h2 id="getting-an-interactive-shell">Getting an interactive shell</h2>
+
+<p>Once you have the CLI working, you can log on to Jenkins and get an interactive shell for scripting using:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">jenkinsCli groovysh</code></pre></div>
+<p>For example, let&rsquo;s say you <a href="/post/cancel-all-queued-jenkins-jobs/">want to clear the build queue of all of its jobs, something I&rsquo;ve written about before</a>.  Entering the following code in to the shell will do that:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="color:#f92672">import</span> jenkins.model.*
+Jenkins<span style="color:#f92672">.</span><span style="color:#a6e22e">instance</span><span style="color:#f92672">.</span><span style="color:#a6e22e">queue</span><span style="color:#f92672">.</span><span style="color:#a6e22e">clear</span><span style="color:#f92672">()</span></code></pre></div>
+<p>Note the <code>import</code>, which has been added to the code from the original post.  This is because the web shell automatically imports <code>import jenkins.model.*</code> and <code>import hudson.model.*</code> for you, whereas the CLI&rsquo;s interactive shell doesn&rsquo;t.  So we add it ourselves.</p>
+
+<h2 id="running-scripts-from-files-without-remoting">Running scripts from files without remoting</h2>
+
+<p>Now suppose that you like to clear the build queue quite regularly, and you get fed up of typing it or copying and pasting it.  It is possible to place code in to re-usable scripts.</p>
+
+<p>Following our example from earlier, let&rsquo;s say we got fed up and copied the script (with <code>import</code>s) in to a new file, <code>~/jenkins-cli/clear-build-queue.groovy</code>.</p>
+
+<p>We can then run this script in Jenkins by running the following command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">jenkinsCli groovy <span style="color:#f92672">=</span> &lt; ~/jenkins-cli/clear-build-queue.groovy</code></pre></div>
+<p><code>groovy</code> is a subcommand that runs a Groovy script directly on the Jenkins master, without a wrapper shell.  <code>=</code> instructs Jenkins CLI to expect stdin to provide a script to run. <code>&lt;</code> feeds the contents of the Groovy file to <code>jenkinsCli</code> via stdin (where it is listening, thanks to <code>=</code>).</p>
+
+<p>With that, you can now run scripts on Jenkins without leaving the comfort of your command line.</p>
+
+
+        
+
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="/post/currying-vs-partial-function-application/" data-toggle="tooltip" data-placement="top" title="Currying vs Partial Function Application">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+
+    </div>
+  </div>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="https://github.com/XanderXAJ" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/XanderXAJ" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://stackoverflow.com/users/5893392/alex-palmer" title="StackOverflow">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/channel/UCIqfeTPDnN9doZzKlVXpqww" title="Youtube">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://xanderxaj.bandcamp.com/" title="Bandcamp">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-bandcamp fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="https://xanderx.com">Alex Palmer</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;
+          2018
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="/">Forged Defiance</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.48</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="/js/main.js"></script><script> renderMathInElement(document.body); </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script>
+<script src="/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+  </body>
+</html>
+

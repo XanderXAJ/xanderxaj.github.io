@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/post/run-jenkins-script-console-scripts-from-command-line-without-remoting/</loc>
+    <lastmod>2018-09-11T13:13:11+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/post/currying-vs-partial-function-application/</loc>
     <lastmod>2018-08-14T20:27:30+01:00</lastmod>
   </url>
@@ -485,7 +490,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-08-14T20:27:30+01:00</lastmod>
+    <lastmod>2018-09-11T13:13:11+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -593,7 +598,7 @@
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2018-08-14T20:27:30+01:00</lastmod>
+    <lastmod>2018-09-11T13:13:11+01:00</lastmod>
     <priority>0</priority>
   </url>
   

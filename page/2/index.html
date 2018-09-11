@@ -170,6 +170,54 @@
           
           
             <article class="post-preview">
+              <a href="/post/uploading-to-google-play-music-without-matching/">
+                <h2 class="post-title">Uploading to Google Play Music without matching</h2>
+                
+                
+              </a>
+
+              <span class="post-meta">
+  
+  
+  <i class="fa fa-calendar-o"></i>&nbsp;Posted on September 10, 2017
+  
+  
+  
+</span>
+
+
+              <div class="post-entry">
+                
+                  <p>I&rsquo;ve had some trouble with Google Play Music&rsquo;s scan and match service.  It sometimes matches tracks to the wrong versions of them.  Sometimes the volume of a track is wildly different from what I have locally (with or without ReplayGain).  Unfortunately, there is no way to disable matching in Google&rsquo;s official Music Manager application.</p>
+
+<p><a href="https://github.com/simon-weber/gmusicapi"><code>gmusicapi</code></a> supports uploading to Google Play Music without their &ldquo;scan and match&rdquo; service.  <a href="https://github.com/thebigmunch/gmusicapi-scripts"><code>gmusicapi-scripts</code></a> utilises <code>gmusicapi</code>.  Let&rsquo;s use them!</p>
+
+<ol>
+<li><p>Install <a href="https://thebigmunch.github.io/gmusicapi-scripts">gmusicapi-scripts</a>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Windows
+</span><span style="color:#75715e"></span>py -3 -m pip install gmusicapi-scripts
+<span style="color:#75715e"># Others
+</span><span style="color:#75715e"></span>pip install gmusicapi-scripts</code></pre></div></li>
+
+<li><p>Convert tracks (if needed) to 320kbps MP3 and place them in <code>&lt;directory&gt;</code>.</p>
+
+<ul>
+<li>If you place non-MP3 files in this directory, <code>gmsync</code> will try to convrt them with FFMPEG or AVConv if they are on the <code>PATH</code>.  <a href="https://thebigmunch.github.io/gmusicapi-scripts">Look at the docs</a> to see what formats it supports.</li>
+</ul></li>
+
+<li><p>Run <code>gmsync</code>.  Follow any instructions it provides:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">gmsync up &lt;directory&gt;</code></pre></div></li>
+</ol>
+
+<p><code>gmsync</code> uploads without matching by default. Perfect.</p>
+
+                
+              </div>
+
+              
+            </article>
+          
+            <article class="post-preview">
               <a href="/post/working-around-intel-cpu-running-at-a-maximum-of-49-50/">
                 <h2 class="post-title">Working around Intel CPU Running at a Maximum of 49%/50%</h2>
                 
@@ -587,35 +635,6 @@ yarn global add &lt;package&gt;</code></pre></div>
 </ol>
 
 <p>Bonus chatter: The driver needed updating as it was causing BSODs.  A very helpful post by Glenn Meuth <a href="http://answers.microsoft.com/en-us/windows/forum/windows_10-performance/my-computer-has-popped-up-with-the-error/673c4134-6f39-47fe-b455-1f884a76eb3a?auth=1">on this forum thread</a> helped me identify the unreliable driver via analysing the BSOD&rsquo;s memory dump.</p>
-
-                
-              </div>
-
-              
-            </article>
-          
-            <article class="post-preview">
-              <a href="/post/making-cd-mixtapes/">
-                <h2 class="post-title">Making CD Mixtapes</h2>
-                
-                
-              </a>
-
-              <span class="post-meta">
-  
-  
-  <i class="fa fa-calendar-o"></i>&nbsp;Posted on February 13, 2016
-  
-  
-  
-</span>
-
-
-              <div class="post-entry">
-                
-                  <p>If I&rsquo;m making informal CD mixtapes (mixdiscs?), use Foobar2000 (or other software) to convert the tracks to WAV, and then use <a href="http://www.imgburn.com/index.php?act=download">ImgBurn</a> to create a CUE file (Tools &gt; Create CUE file&hellip;), drag and drop the tracks in to the new window, and customise the disc before burning it.</p>
-
-<p>EAC can also be used for this (and is likely the better choice for making clones of audio CDs), but seems to be a little unreliable on my laptop.  And I don&rsquo;t like to waste CDs, especially when I only have 2 or 3 of them!</p>
 
                 
               </div>
